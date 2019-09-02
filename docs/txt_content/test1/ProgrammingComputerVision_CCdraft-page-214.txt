@@ -1,0 +1,57 @@
+to a regular grid across the whole imagez. We can use the same executables as in
+Section 2.2 and get dense SIFT features by adding some extra parameters. Create a
+ﬁle dsift.py as a place-holder for the dense SIFT computation and add the following
+function:
+
+import sift
+
+def process,image_dsift(imagename,resultname,size=20,steps=10,
+force,orientation=False,resize=None):
+""" Process an image with densely sampled SIFT descriptors
+
+and save the results in a file. Optional input: size of features,
+
+steps between locations, forcing computation of descriptor orientation
+(False means all are oriented upwards), tuple for resizing the image."""
+
+im = Image.open(imagename).convert('L')
+if resize!=None:
+
+im = im.resize(resize)
+m,n = im.size
+
+if imagename[—3:] != ’pgm’:
+# create a pgm file
+im.save(’tmp.pgm')
+imagename = 'tmp.pgm'
+
+# create frames and save to temporary file
+
+scale = size/3.0
+
+x,y = meshgrid(range(steps,m,steps),range(steps,n,steps))
+
+xx,yy x.flatten(),y.flatten()
+
+frame = array([xx,yy,scale*ones(xx.shape[0]),zeros(xx.shape[0])])
+savetXt(’tmp.frame',frame.T,fmt='%03.3f’)
+
+if forceiorientation:
+cmmd = str(”sift “+imagename+" -—output="+resultname+
+“ --read-frames=tmp.frame --orientations“)
+else:
+cmmd = str("sift “+imagename+" -—output="+resultname+
+" --read-frames=tmp.frame")
+os.system(cmmd)
+print 'processed’, imagename, 'to', resultname
+
+Compare this to the function process_image() in Section 2.2. We use the function
+savetxt() to store the frame array in a text ﬁle for command line processing. The
+last parameter of this function can be used to resize the image before extracting the
+descriptors. For example, passing imsize=(100,100) will resize to square images 100 X
+100 pixels. Lastly, if force_orientation is true the descriptors will be normalized based
+
+2Another common name is Histogram of Oriented Gradients (HOG).
+
+214 8.1. K—Nearest Neighbors
+

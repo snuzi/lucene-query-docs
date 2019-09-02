@@ -1,0 +1,35 @@
+Chapter 9
+
+Image Segmentation
+
+Image segmentation is the process of partitioning an image into meaningful regions.
+Regions can be foreground versus background or individual objects in the image. The
+regions are constructed using some feature such as color, edges or neighbor similarity.
+In this chapter we will look at some different techniques for segmentation.
+
+9. 1 Graph Cuts
+
+A graph is a set of nodes (sometimes called Vertices) with edges between them. See
+Figure 9.1 for an examplel. The edges can be directed (as illustrated with arrows in
+Figure 9.1) or undirected and may have weights associated with them.
+
+A graph cut is the partitioning of a directed graph into two disjoint sets. Graph cuts
+can be used for solving many different computer vision problems like stereo depth
+reconstruction, image stitching and image segmentation. By creating a graph from
+image pixels and their neighbors and introducing an energy or a "cost" it is possible
+to use a graph cut process to segment an image in two or more regions. The basic
+idea is that similar pixels that are also close to each other should belong to the same
+partition.
+
+The cost of a graph cut C (where C is a set of edges) is deﬁned as the sum of the
+edge weights of the cuts
+
+Ecut : Z wij 7 
+(z',j)EC'
+where wij is the weight of the edge (z', j) from node 2' to node j in the graph and the
+sum is taken over all edges in the cut C.
+
+1You also saw graphs in action in Section 2.3, this time we are going to use them to partition images.
+
+237
+

@@ -1,0 +1,56 @@
+import warp
+
+# open image to warp
+
+fromim = array(Image.open('sunset,tree.jpg'))
+X,y = meshgrid(range(5),range(6))
+
+x = (fromim.shape[l]/4) * X.f1atten()
+
+y = (fromim.shape[0]/5) * y.f1atten()
+
+# triangulate
+tri = warp.triangu1ate,points(X,y)
+
+# open image and destination points
+im = array(Image.open('turningtorsol.jpg’))
+tp = 1oadtxt(’turningtorso1,points.txt’) # destination points
+
+# convert points to hom. coordinates
+fp = vstack((y,x,ones((1,1en(x)))))
+tp vstack((tp[:.1].tp[:.0].ones((1.1en(tp)))))
+
+# warp triangles
+im = warp.pmLaffine(fromim,im,fp,tp,tri)
+
+# plot
+
+figure()
+
+imshow(im)
+warp.p1ot,mesh(tp[l],tp[0],tri)
+axis('off')
+
+show()
+
+The resulting image is shown in Figure 3.5. The triangles are plotted with the following
+helper function (add this to waIp.py):
+
+def p1ot_mesh(X,y,tri):
+""“ Plot triangles. ""“
+
+for t in tri:
+t_ext = [t[0], t[l], t[2], t[0]] # add first point to end
+p1ot(X[t,ext],y[t,ext],'r')
+
+This example should give you all you need to apply piece-wise afﬁne warping of images
+to your own applications. There are many improvements that can be made to the
+functions used, let's leave some to the exercises and the rest to you.
+
+Registering images
+
+Image registration is the process of transferring images so that they are aligned in
+a common coordinate frame. Registration can be rigid or non-rigid and and is an
+
+86 3.2. Warping images
+

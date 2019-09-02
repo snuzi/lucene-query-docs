@@ -1,0 +1,7 @@
+Figure 1.11: An example of computing image derivatives using Gaussian derivatives.
+(top) x-derivative, (middle) y-derivative and (bottom) gradient magnitude. (a) original
+image in grayscale, (b) Gaussian derivative ﬁlter with a = 2, (c) with 0 = 5, (d) with
+cr = 10.
+
+36 1.4. SciPy
+

@@ -1,0 +1,49 @@
+5.3 Multiple View Reconstruction
+
+Let's look at how to use the concepts above to compute an actual 3D reconstruction
+from a pair of images. Computing a 3D reconstruction like this is usually referred to
+as structure from motion (StM) since the motion of a camera (or cameras) give you
+3D structure.
+
+Assuming the camera has been calibrated, the steps are as follows:
+
+1. Detect feature points and match them between the two images.
+2. Compute the fundamental matrix from the matches.
+
+3. Compute the camera matrices from the fundamental matrix.
+
+4. Triangulate the 3D points.
+
+We have all the tools to do this but we need a robust way to compute a fundamental ma-
+trix when the point correspondences between the images contain incorrect matches.
+
+Robust fundamental matrix estimation
+
+Similar to when we needed a robust way to compute homographies (Section 3.3),
+we also need to be able to estimate a fundamental matrix when there is noise and
+incorrect matches. As before we will use RANSAC, this time combined with the eight
+point algorithm. It should be mentioned that the eight point algorithm breaks down
+for planar scenes so you cannot use it for scenes where the scene points are all on a
+plane.
+Add this class to sfm.py.
+
+class RansacModel(object):
+""" Class for fundmental matrix fit with ransac.py from
+http://www.scipy.org/Cookbook/RANSAC”"”
+
+def iiinitii(self,debug=False):
+self.debug = debug
+
+def fit(self,data):
+""" Estimate fundamental matrix using eight
+selected correspondences. """
+
+# transpose and split data into the two point sets
+data = data.T
+
+x1 = data[:3,:8]
+
+x2 data[3:,:8]
+
+144 5.3. Multiple View Reconstruction
+

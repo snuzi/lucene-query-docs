@@ -1,0 +1,52 @@
+The following function takes a grayscale image and a direction and returns the ten
+edges for that direction.
+
+from scipy.ndimage import measurements
+
+def findisudokuiedges(im,axis=0):
+”"" Finds the cell edges for an aligned sudoku image. ”""
+
+# threshold and sum rows and columns
+trim = l*(im<128)
+s = trim.sum(aXis=aXis)
+
+# find center of strongest lines
+
+s_labels,s_nbr = measurements.label(s>(0.5*maX(s)))
+
+m = measurements.center_of_mass(s,s_labels,range(1,s_nbr+1))
+X = [int(X[0]) for X in m]
+
+# if only the strong lines are detected add lines in between
+if len(X)==4:
+dx = diff(x)
+X = [X[0],X[0]+dX[0]/3,X[0]+2*dX[0]/3,
+X[l],X[l]+dX[1]/3,X[l]+2*dX[l]/3,
+X[2],X[2]+dX[2]/3,X[2]+2*dX[2]/3,X[3]]
+
+if len(X)==l0:
+return X
+else:
+raise RuntimeError('Edges not detected.')
+
+First the image is thresholded at the midpoint to give ones on the dark areas. Then
+these are added up in the speciﬁed direction (axis=0 or 1). The scipy.ndimage pack-
+age contains a module, measurements, that is very useful for counting and measur-
+ing regions in binary or label arrays. First 1abe1s() ﬁnds the connected compo-
+nents of a binary array computed by thresholding the sum at the midpoint. Then
+the center_of_mass() function computes the center point of each independent compo-
+nent. Depending on the graphic design of the sudoku (all lines equally strong or the
+sub-grid lines stronger than the other) you might get four or ten points. In the case of
+four, the intermediary lines are interpolated at even intervals. If the end result does
+not have ten lines, an exception is raised.
+
+In the "sudokus" folder are a collection of sudoku images of varying difﬁculty. There
+is also a ﬁle for each image containing the true values of the sudoku so that we can
+check our results. Some of the images are aligned with the image sides. Picking one
+of them, you can check the performance of the cropping and classiﬁcation like this.
+
+imname = 'sudokus/sudoku18.jpg'
+vername = ’sudokus/sudoku18.sud'
+
+8.4. Optical Character Recognition 231
+

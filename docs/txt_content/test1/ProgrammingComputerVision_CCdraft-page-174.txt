@@ -1,0 +1,54 @@
+# height and width
+rows = node.get_height()*20
+cols = 1200
+
+# scale factor for distances to fit image width
+s = float(cols—150)/node.get,depth()
+
+# create image and draw object
+im = Image.new(’RGB',(cols,rows),(255,255,255))
+draw = ImageDraw.Draw(im)
+
+# initial line for start of tree
+draw.1ine((0,rows/2,20,rows/2),fil1=(0,0,0))
+
+# draw the nodes recursively
+node.draw(draw,20,(rows/2),s,imlist,im)
+im.save(filename)
+
+im.show()
+
+Here the dendrogram drawing uses a draw() method for each node. Add this method
+to the ClusterNode Class:
+
+def draw(self,draw,x,y,s,imlist,im):
+""" Draw nodes recursively with image
+thumbnails for leaf nodes. """
+
+hl = int(se1f.1eft.get,height()*20 / 2)
+h2 = int(self.right.get,height()*20 /2)
+top = y-(h1+h2)
+
+bottom = y+(hl+h2)
+
+# vertical line to children
+draw.line((X,top+h1,x,bottom-h2),fi1l=(0,0,0))
+
+# horizontal lines
+
+ll = self.distance*s
+draw.line((X,top+h1,x+11,top+hl),fi11=(0,0,0))
+draw.1ine((X,bottom-h2,x+l1,bottom—h2),fi11=(0,0,0))
+
+# draw left and right child nodes recursively
+self.left.draw(draw,x+11,top+hl,s,im1ist,im)
+self.right.draw(draw,x+ll,bottom-h2,s,im1ist,im)
+
+The leaf nodes have their own special method to draw thumbnails of the actual images.
+Add this to the ClusterLeafNode Class:
+
+def draw(se1f,draw,X,y,s,imlist,im):
+nodeim = Image.open(im1ist[se1f.id])
+
+174 6.2. Hierarchical Clustering
+

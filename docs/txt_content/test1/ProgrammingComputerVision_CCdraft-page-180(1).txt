@@ -1,0 +1,42 @@
+aaimmfwa/a« ClCL22?(Z(I3d216l
+4
+
+38330618836 aaaaaaaaau.
+6818 aaaaaaaaaa
+
+aaaaaaaaoa
+aaoa
+
+Figure 6.8: Spectral clustering of font images using the eigenvectors of the Laplacian
+matrix.
+
+# k—means
+
+features = whiten(features)
+centroids,distortion = kmeans(features,k)
+code,distance = vq(features,centroids)
+
+# plot clusters
+for c in range(k):
+ind = where(code== )[0]
+figure()
+for i in range(minimum(1en(ind),39)):
+im = Image.open(path+im1ist[ind[i]])
+subp1ot(4,10,i+1)
+imshow(array(im))
+axis(’equa1')
+axis('off')
+show()
+
+In this case we just create 8 using pair-wise Euclidean distances and compute a stan-
+dard k:-means clustering on the k eigenvectors (k: = 5 in this particular case). Remem-
+ber that the matrix V contains the eigenvectors sorted with respect to the eigenvalues.
+Finally, the clusters are plotted. Figure 6.8 shows the clusters for an example run (re-
+member that the k:-means step might give different results each run).
+
+We can also try this on an example where we don't have any feature vectors or any
+strict deﬁnition of similarity The geotagged Panoramio images on page 63 were linked
+based on how many matching local descriptors were found between them. The matrix
+
+180 6.3. Spectral Clustering
+

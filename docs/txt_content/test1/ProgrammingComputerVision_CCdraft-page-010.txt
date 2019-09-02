@@ -1,0 +1,47 @@
+Python and NumPy
+
+Python is the programming language used in the code examples throughout this book.
+Python is a clear and concise language with good support for input/output, numerics,
+images and plotting. The language has some peculiarities such as indentation and
+compact syntax that takes getting used to. The code examples assume you have Python
+2.6 or later as most packages are only available for these versions. The upcoming
+Python 3.x version has many language differences and is not backward compatible
+with Python 2.x or compatible with the ecosystem of packages we need (yet).
+
+Some familiarity with basic Python will make the material more accessible for read-
+ers. For beginners to Python, Mark Lutz’ book [20] and the online documentation at
+http : //www. python . org/ are good starting points.
+
+When programming computer vision we need representations of vectors and ma-
+trices and operations on them. This is handled by Python's NumPy module where both
+vectors and matrices are represented by the array type. This is also the represen-
+tation we will use for images. A good NumPy reference is Travis Oliphant’s free book
+[24]. The documentation at http : //numpy . scipy . org/ is also a good starting point if
+you are new to NumPy. For visualizing results we will use the Mat plotlib module and
+for more advanced mathematics, we will use SciPy. These are the central packages
+you will need and will be explained and introduced in Chapter 1.
+
+Besides these central packages there will be many other free Python packages used
+for speciﬁc purposes like reading JSON or XML, loading and saving data, generating
+graphs, graphics programming, web demos, classiﬁers and many more. These are
+usually only needed for speciﬁc applications or demos and can be skipped if you are
+not interested in that particular application.
+
+It is worth mentioning IPython, an interactive Python shell that makes debug-
+ging and experimentation easier. Documentation and download available at http:
+//ipython.org/.
+
+Notation and Conventions
+
+Code is given in a special boxed environment with color highlighting (in the electronic
+version) and looks like this:
+# some points
+
+X = [100,l00,400,400]
+y = [200,500,200,500]
+
+# plot the points
+p1ot(x.y)
+
+10 CONTENTS
+

@@ -1,0 +1,38 @@
+   
+
+Figure 1.1: Examples of processing images with PIL.
+is shown in Figure 1.1.
+
+Convert images to another format
+
+Using the save() method, PIL can save images in most image ﬁle formats. Here's
+an example that takes all image ﬁles in a list of ﬁlenames (ﬂlelist) and converts the
+images to JPEG ﬁles.
+
+from PIL import Image
+import os
+
+for infile in filelist:
+outfile = os.path.sp1itext(infi1e)[0] + ".jpg"
+if infile != outfile:
+try:
+Image.open(infi1e).save(outfi1e)
+except IOError:
+print "cannot convert", infile
+
+The PIL function open() creates a PIL image object and the save() method saves the
+image to a ﬁle with the given ﬁlename. The new ﬁlename will be the same as the
+original with the ﬁle ending ".jpg" instead. PIL is smart enough to determine the image
+format from the ﬁle extension. There is a simple check that the ﬁle is not already a
+JPEG ﬁle and a message is printed to the console if the conversion fails.
+
+Throughout this book we are going to need lists of images to process. Here's how
+you could create a list of ﬁlenames of all images in a folder. Create a ﬁle 1'mtoo1s.py to
+store some of these generally useful routines and add the following function.
+
+import os
+
+def get,im1ist(path):
+
+14 1.1. PIL — the Python Imaging Library
+

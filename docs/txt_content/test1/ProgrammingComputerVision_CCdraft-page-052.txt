@@ -1,0 +1,49 @@
+axis('off')
+
+Figure 2.2 shows an example of ﬁnding such corresponding points using normal-
+ized cross correlation (in this case with 11 x 11 pixels in a patch) using the commands:
+wid = 5
+harrisim = harris.compute_harris,response(im1,5)
+
+fi1tered,coordsl = harris.get,harris,points(harrisim,wid+1)
+d1 = harris.get,descriptors(im1,fi1tered,coordsl,wid)
+
+harrisim = harris.compute_harris,response(im2,5)
+fi1tered,coords2 = harris.get,harris,points(harrisim,wid+1)
+d2 = harris.get,descriptors(im2,fi1tered,coords2,wid)
+
+print 'starting matching’
+matches = harris.match,twosided(dl,d2)
+
+figure()
+
+9Fay()
+harris.p1ot_matches(iml,im2,fi1tered_coords1,fi1tered_coords2,matches)
+show()
+
+If you only want to plot a subset of the matches to make the visualization clearer,
+substitute matches with for example matches[.-100] or a random set of indices.
+
+As you can see in Figure 2.2, there are quite a lot of incorrect matches. This
+is because cross correlation on image patches is not as descriptive as more modern
+approaches. As a consequence, it is important to use robust methods for handling
+these correspondences in an application. Another problem is that these descriptors
+are not invariant to scale or rotation and the choice of patch sizes affect the results.
+
+In recent years there has been a lot of development in improving feature point
+detection and description. Let's take a look at one of the best algorithms in the next
+section.
+
+2.2 SIFT - Scale-Invariant Feature Transform
+
+One of the most successful local image descriptors in the last decade is the Scale-
+Invariant Feature Transform (SIFT), introduced by David Lowe in [17]. SIFT was later
+reﬁned and described in detail in the paper [18] and has stood the test of time. SIFT
+includes both an interest point detector and a descriptor. The descriptor is very robust
+and is largely the reason behind the success and popularity of SIFT Since its introduc-
+tion many alternatives have been proposed with essentially the same type of descrip-
+tor. The descriptor is nowadays often combined with many different interest point
+detectors (and region detectors for that matter) and sometimes even applied densely
+
+52 2.2. SIFT — Scale—Invariant Feature Transform
+

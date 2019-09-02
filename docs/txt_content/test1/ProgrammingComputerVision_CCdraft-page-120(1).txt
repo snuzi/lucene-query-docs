@@ -1,0 +1,53 @@
+g1C1ear(GL,COLOR,BUFFER_BIT | GL,DEPTH,BUFFER,BIT)
+
+# bind the texture
+
+g1Enab1e(GL,TEXTURE,2D)
+
+g1BindTexture(GL,TEXTURE,2D,g1GenTextures(1))
+g1TeXImage2D(GL,TEXTURE,2D,0,GL,RGBA,width,height,0,GL,RGBA,GL,UNSIGNED,BYTE,bg,data)
+g1TeXParameterf(GL,TEXTURE,2D,GL,TEXTURE,MAG,FILTER,GL,NEAREST)
+g1TeXParameterf(GL,TEXTURE,2D,GL,TEXTURE,MIN,FILTER,GL,NEAREST)
+
+# create quad to fill the whole window
+g1Begin(GL,QUADS)
+
+g1TexCoord2f(0.0,0.0); g1Vertex3f(-1.0,-1.0,-1.0)
+g1TeXCoord2f(l.0,0.0); g1VerteX3f( l.0,—l.0,-1.0)
+g1TeXCoord2f(l.0,l.0); g1VerteX3f( 1.0, 1.0,-1.0)
+g1TexCoord2f(0.0,1.0); g1Vertex3f(-1.0, 1.0,-1.0)
+g1End()
+
+# clear the texture
+g1De1eteTextures(1)
+
+This function ﬁrst uses some PyGame functions to load an image and serialize it to a
+raw string representation that can be used by PyOpenGL. Then we reset the model
+View and clear the color and depth buffer. Next we bind the texture so that we can use
+it for the quad and specify interpolation. The quad is deﬁned with corners at -1 and 1
+in both dimensions. Note that the coordinates in the texture image goes from O to 1.
+Finally, we clear the texture so it doesn't interfere with what we want to draw later.
+
+Now we are ready to place objects in the scene. We will use the "hello world"
+computer graphics example, the Utah teapot http : //en .wikipedia . org/wi ki/Utah_
+teapot. This teapot has a rich history and is available as one of the standard shapes
+in GLUT:
+
+from 0penGL.GLUT import *
+g1utSo1idTeapot(size)
+
+This generates a solid teapot model of relative size size.
+The following function will set up the color and properties to make a pretty red
+teapot.
+
+def dramLteapot(size):
+""“ Draw a red teapot at the origin. ""“
+g1Enab1e(GL_LIGHTING)
+g1Enab1e(GL,LIGHTO)
+g1Enab1e(GL_DEPTH_TEST)
+glclear(GL_DEPTH_BUFFER_BIT)
+
+# draw red teapot
+
+120 4.4. Augmented Reality
+

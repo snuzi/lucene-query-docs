@@ -1,0 +1,39 @@
+aaaaaaaama aaaaaaaaaa
+
+aaaaaa aaaaaa
+
+waawwwww aaaaaaaaoa
+aaaaaaaaaa
+aaaaaa
+
+Figure 6.2: An example of k:-means clustering with k: = 4 of the font images using 40
+principal components.
+
+For the visualization we will use the ImageDraw module in PIL. Assuming that you
+have the projected images and image list as above, the following short script will
+generate a plot like the one in Figure 6.3
+
+from PIL import Image, ImageDraw
+
+# height and width
+h,w = 1200,1200
+
+# create a new image with a white background
+img = Image.new('RGB',(w,h),(255,255,255))
+draw = ImageDraw.Draw(img)
+
+# draw axis
+draw.1ine((0,h/2,w,h/2),fi11=(255,0,0))
+draw.1ine((w/2,0,w/2,h),fi11=(255,0,0))
+
+# scale coordinates to fit
+
+scale = abs(projected).max(0)
+
+scaled = f1oor(array([ (D / scale) * (w/2-20,h/2-20) +
+(w/2,h/2) for p in projected]))
+
+# paste thumbnail of each image
+
+6.1. K—means Clustering 165
+

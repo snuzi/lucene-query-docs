@@ -1,0 +1,31 @@
+ 
+
+Figure 6.6: Example clusters from the 100 images of sunsets obtained with hierar-
+chical clustering using a threshold set to 23% of the maximum node distance in the
+tree.
+
+A similarity matrix (or afﬁnity matrix, or sometimes distance matrix) for n elements
+(for example images) is an n x n matrix with pair-wise similarity scores. Spectral
+clustering gets its name from the use of the spectrum of a matrix constructed from a
+similarity matrix. The eigenvectors of this matrix are used for dimensionality reduction
+and then clustering.
+
+One of the beneﬁts of spectral clustering methods is that the only input needed
+is this matrix and it can be constructed from any measure of similarity you can think
+of. Methods like k:-means and hierarchical clustering compute mean of feature vectors
+and this restricts the features (or descriptors) to vectors (in order to be able to com-
+pute the mean). With spectral methods, there is no need to have feature vectors of
+any kind, just a notion of "distance" or "similarity".
+
+Here's how it works. Given a n x n similarity matrix S with similarity scores 3,5, we
+can create a matrix, called the Laplacian matrixz,
+
+L = I — D‘1/2SD"1/2 ,
+
+where I is the identity matrix and D is the diagonal matrix containing the row sums
+
+Zsometimes L = D‘1/2S’D‘1/2 is used as the Laplacian matrix instead but the choice doesn't really
+matter since it only changes the eigenvalues, not the eigenvectors.
+
+6.3. Spectral Clustering 177
+

@@ -1,0 +1,6 @@
+Figure 3.8: Comparing PCA-modes of unregistered and registered images. (top) the
+mean image and the ﬁrst nine principal components without registering the images
+beforehand. (bottom) the same with the registered images.
+
+3.3. Creating Panoramas 93
+

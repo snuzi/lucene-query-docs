@@ -1,0 +1,55 @@
+svn co https://code.ros.org/svn/opencv/trunk/opencv
+cd opencv/
+
+sudo cmake -G "Unix Makefiles" .
+
+sudo make -j8
+
+sudo make install
+
+-%-%-%-%-%
+
+If you have all the dependencies in place, everything should build and install properly.
+If you get an error like
+
+import cv2
+
+Traceback (most recent call last):
+File ”", line 1, in
+
+ImportError: No module named cv2
+
+then you need to add the directory containing cv2.so to PYTHONPATH. For example:
+$ export PYTHONPATH=/usr/local/lib/python2.7/site—packages/
+
+Linux
+
+Linux users could try the package installer for the distribution (the package is usually
+called "opencv") or install from source as described in the Mac OS X section.
+
+A.6 VLFeat
+
+To install VLFeat, download and unpack the latest binary package from http : / / vl feat .
+
+org/download . html (currently the latest version is 0.9.14). Add the paths to your en-
+vironment or copy the binaries to a directory in your path. The binaries are in the bin/
+directory, just pick the sub-directory for your platform.
+
+The use of the VLFeat command line binaries is described in the src/ sub-directory.
+Alternatively you can ﬁnd the documentation online at http : //vlfeat .0 rg/ man / man .
+html.
+
+A.7 PyGame
+
+PyGame can be downloaded from http : //www. pygame . org/download . shtml. The lat-
+est version is 1.9.1. The easiest way is to get the binary install package for your system
+and Python version.
+
+Alternatively, you can download the source and in the downloaded folder do:
+
+$ python setup.py install
+
+from the command line.
+
+282 A.6. VLFeat
+

@@ -1,0 +1,56 @@
+The direct linear transformation algorithm
+
+Homographies can be computed directly from corresponding points in two images (or
+planes). As mentioned earlier, a full projective transformation has eight degrees of
+freedom. Each point correspondence gives two equations, one each for the :1: and y
+coordinates, and therefore four point correspondences are needed to compute H.
+
+The direct linear transformation (DLT) is an algorithm for computing H given four
+or more correspondences. By rewriting the equation for mapping points using H for
+several correspondences we get an equation like
+
+711
+712
+—:B1 -311 -1 O O 0 ;t1:r’1 y1:r’1 .171 [13
+0 0 0 —:r1 -1/1 -1 $11/1 1/11/1 1/1 n4
+-002 -1/2 -1 0 0 0 $2535 y2fU§ 552 mg :0,
+0 0 0 -232 -1/2 -1 $21/5 112115 112 I16
+
+. . . . b7
+718
+-719-
+
+or Ah = 0 where A is a matrix with twice as many rows as correspondences. By
+stacking all corresponding points a least squares solution for H can be found using
+singular value decomposition (SVD). Here's what it looks like in code. Add the function
+below to homographypy.
+
+def H,from,points(fp,tp):
+”"" Find homography H, such that fp is mapped to tp
+using the linear DLT method. Points are conditioned
+automatically. ”""
+
+if fp.shape != tp.shape:
+raise RuntimeError('number of points do not match’)
+
+# condition points (important for numerical reasons)
+# --from points--
+
+m = mean(fp[:2], aXis=l)
+
+maxstd = max(std(tp[:2], axis=l)) + 1e—9
+
+C1 = diag([l/maxstd, 1/maxstd, 1])
+
+Cl[0][2] = -m[0]/maxstd
+
+Cl[l][2] = -m[l]/maxstd
+
+fp = dot(Cl,fp)
+
+# --to points--
+m = mean(tp[:2], aXis=l)
+maxstd = max(std(tp[:2], axis=l)) + 1e—9
+
+3.1. Homographies 75
+

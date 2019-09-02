@@ -1,0 +1,53 @@
+ 
+
+Figure 2.9: An example of using pydot to create graphs.
+
+make it look nice we also scale each image to a thumbnail with largest side 100 pixels.
+Here's how to do it:
+
+import pydot
+
+threshold = 2 # min number of matches needed to create link
+
+g:
+
+pydot.Dot(graph_type='graph') # don't want the default directed graph
+
+for i in range(nbr,images):
+
+for j in range(i+1,nbr_images):
+
+if matchscores[i,j] > threshold:
+
+#first image in pair
+
+im = Image.open(im1ist[i])
+
+im.thumbnai1((100,100))
+
+filename = str(i)+'.png'
+
+im.save(fi1ename) # need temporary files of the right size
+g.add_node(pydot.Node(str(i),fontco1or='transparent',
+
+shape='rectang1e',image=path+fi1ename))
+
+# second image in pair
+
+im = Image.open(im1ist[j])
+
+im.thumbnai1((100,100))
+
+filename = str(j)+'.png'
+
+im.save(fi1ename) # need temporary files of the right size
+g.add_node(pydot.Node(str(j),fontco1or='transparent',
+
+shape='rectang1e',image=path+fi1ename))
+
+g.add,edge(pydot.Edge(str(i),str(j)))
+
+68
+
+2.3. Matching Geotagged Images
+

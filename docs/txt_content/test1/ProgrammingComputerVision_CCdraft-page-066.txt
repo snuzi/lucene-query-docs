@@ -1,0 +1,54 @@
+Matching using local descriptors
+
+Having downloaded the images, we now need to extract local descriptors. In this case
+we will use SIFT descriptors as described in the previous section. Let's assume that
+the images have been processed with the SIFT extraction code and the features are
+stored in ﬁles with the same name as the images (but with ﬁle ending ".sift" instead of
+".jpg"). The lists 1'm11'st and featlist are assumed to contain the ﬁlenames. We can do a
+pairwise matching between all combinations as follows.
+
+import sift
+nbriimages = len(imlist)
+
+matchscores = zeros((nbr_images,nbr_images))
+for i in range(nbr,images):
+for j in range(i,nbr_images): # only compute upper triangle
+print 'comparing ', imlist[i], imlist[j]
+
+l1,d1
+l2,d2
+
+sift.read,features,from,file(featlist[i])
+sift.read,features_from,file(featlist[j])
+
+matches = sift.match,twosided(d1,d2)
+
+nbr_matches = sum(matches > 0)
+
+print 'number of matches = , nbr_matches
+matchscores[i,j] = nbr_matches
+
+# copy values
+for i in range(nbr_images):
+for j in range(i+1,nbr,images): # no need to copy diagonal
+matchscores[j,i] = matchscores[i,j]
+
+We store the number of matching features between each pair in matchscores. The
+last part of copying the values to ﬁll the matrix completely is not necessary since this
+"distance measure" is symmetric, it just looks better that way. The matchscores matrix
+for these particular images looks like this:
+
+662 0 0 2 0 0 0 0 1 0 0 1 2 0 3 0 19 1 0 2
+0 901 0 1 0 0 0 1 1 0 0 1 0 0 0 0 0 0 1 2
+0 0 266 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0
+2 1 0 1481 0 0 2 2 0 0 0 2 2 0 0 0 2 3 2 0
+0 0 0 0 1748 0 0 1 0 0 0 0 0 2 0 0 0 0 0 1
+0 0 0 0 0 1747 0 0 1 0 0 0 0 0 0 0 0 1 1 0
+0 0 0 2 0 0 555 0 0 0 1 4 4 0 2 0 0 5 1 0
+0 1 0 2 1 0 0 2206 0 0 0 1 0 0 1 0 2 0 1 1
+1 1 0 0 0 1 0 0 629 0 0 0 0 0 0 0 1 0 0 20
+0 0 0 0 0 0 0 0 0 829 0 0 1 0 0 0 0 0 0 2
+0 0 0 0 0 0 1 0 0 0 1025 0 0 0 0 0 1 1 1 0
+1 1 0 2 0 0 4 1 0 0 0 528 5 2 15 0 3 6 0 0
+66 2.3. Matching Geotagged Images
+

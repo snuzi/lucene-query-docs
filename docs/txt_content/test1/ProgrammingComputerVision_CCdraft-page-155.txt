@@ -1,0 +1,71 @@
+filters.uniform_fi1ter(norm,r*norm,r,wid,s,r) # sum denominator
+
+# store ncc scores
+dmaps[:,:,displ] = s/sqrt(s,l*s,r)
+
+# pick best depth for each pixel
+return argmax(dmaps,axis=2)
+
+First we need to create some arrays to hold the ﬁltering results as uniform_f i1ter()
+takes them as input arguments. Then we create an array to hold each of the planes
+so that we can apply argmax() along the last dimension to ﬁnd the best depth for each
+pixel. The function iterates over all steps displacements from start. One image is
+shifted using the roll() function and the three sums of the NCC are computed using
+ﬁltering.
+
+Here is a full example of loading images and computing the displacement map
+using this function.
+
+import stereo
+
+I
+
+imil
+imir
+
+array(Image.open(’scenel.row3.col3.ppm’).convert(
+array(Image.open(’scenel.row3.col4.ppm’).convert(
+
+')
+
+f’)
+I) I
+
+1‘ )
+
+L
+'L
+
+I
+I
+
+I
+I
+
+# starting displacement and steps
+steps = 12
+start = 4
+
+# width for ncc
+wid = 9
+
+res = stereo.p1ane,sweep_ncc(im_l,im_r,start,steps,wid)
+
+import scipy.misc
+scipy.misc.imsave('depth.png',res)
+
+Here we ﬁrst load a pair of images from the classic "tsukuba" set and convert them
+to grayscale. Next we set the parameters needed for the plane sweep function, the
+number of displacements to try, the starting value and the width of the NCC patch.
+You will notice that this method is fairly fast, at least compared to matching features
+with NCC. This is because everything is computed using ﬁlters.
+
+This approach also works for other ﬁlters. The uniform ﬁlter gives all pixels in a
+square patch equal weight but in some cases other ﬁlters for the NCC computation
+might be preferred. Here is one alternative using a Gaussian ﬁlter that produces
+smoother disparity maps, add this to stereo. py.
+
+def planeisweepigauss(im,l,im_r,start,steps,wid):
+
+5.4. Stereo Images 155
+

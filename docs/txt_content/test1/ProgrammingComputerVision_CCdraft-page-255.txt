@@ -1,0 +1,28 @@
+lillllllll
+
+(C)
+
+Figure 9.8: Examples image segmentation by minimizing the Chan-Vese model using
+ROF de-noising. (a) original image, (b) image after ROF de-noising. (c) ﬁnal segmen-
+tation.
+
+import rof
+
+im = array(Image.open('ceramic-houses_t0.png').convert("L"))
+U,T = rof.denoise(im,im,to1erance=0.001)
+t = 0.4 #thre5hold
+
+import scipy.misc
+scipy.misc.imsave('resu1t.pdf',U < t*U.max())
+
+In this case we turn down the tolerance threshold for stopping the ROF iterations to
+make sure we get enough iterations. Figure 9.8 shows the result on two rather difﬁcult
+images.
+
+Exercises
+
+1. It is possible to speed up computation for the graph cut optimization by reducing
+the number of edges. This graph construction is described in Section 4.2 of [16].
+
+9.3. Variational Methods 255
+

@@ -1,0 +1,18 @@
+A , ‘ Elena
+Fl 3,
+t Ia?
+Z_,‘:LL
+
+I A ALAIIIIL1 I A LLAIIAIL1
+
+(a) (b)
+
+(C) ((1)
+
+Figure 1.12: An example of morphology. Binary opening to separate objects followed
+by counting them. (a) original binary image, (b) label image corresponding to the
+original, grayvalues indicate object index, (0) binary image after opening, (d) label
+image corresponding to the opened image.
+
+38 1.4. SciPy
+

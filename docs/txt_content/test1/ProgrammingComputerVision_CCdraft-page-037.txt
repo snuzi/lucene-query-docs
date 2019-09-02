@@ -1,0 +1,47 @@
+The second argument of binary_opening() speciﬁes the structuring element, an array
+that indicates what neighbors to use when centered around a pixel. In this case we
+used 9 pixels (4 above, the pixel itself, and 4 below) in the y direction and 5 in the
+x direction. You can specify any array as structuring element, the non-zero elements
+will determine the neighbors. The parameter iterations determines how many times
+to apply the operation. Try this and see how the number of objects changed. The
+image after opening and the corresponding label image are shown in Figure 1.12c-
+d. As you might expect, there is a function named binary_c1osing() that does the
+reverse. Vweleave that and.the other ﬁJnCthJnsin.morphology and.measurements to
+the exercises. You can learn more about them from the scipy.ndimage documentation
+http://docs . scipy.org/doc/scipy/ reference/ndimage.htm1.
+
+Useful SciPy modules
+
+SciPy comes with some useful modules for input and output. Two of them are i0 and
+misc
+
+Reading and writing .mat ﬁles If you have some data, or ﬁnd some interesting
+data set online, stored in Matlab’s .mat ﬁle format, it is possible to read this using the
+scipy.io module. This is how to do it:
+
+data = scipy.io.1oadmat('test.mat')
+
+The object data now contains a dictionary with keys corresponding to the variable
+names saved in the original .mat ﬁle. The variables are in array format. Saving to
+.mat ﬁles is equally simple. Just create a dictionary with all variables you want to save
+and use savemat()
+
+data = {}
+
+data['x'] = X
+
+scipy.io.savemat('test.mat’,data)
+
+This saves the array X so that it has the name "x" when read into Matlab. More infor-
+mation on scipy.io can be found in the online documentation, http://docs . scipy.
+org/doc/scipy/ reference/io.htm1.
+
+Saving arrays as images Since we are manipulating images and doing computa-
+tions using array objects, it is useful to be able to save them directly as image ﬁles.4
+Many images in this book are created just like this.
+
+4All PyLab ﬁgures can be saved in a multitude of image formats by clicking the "save" button in the
+ﬁgure window.
+
+1.4.SciPy 37
+

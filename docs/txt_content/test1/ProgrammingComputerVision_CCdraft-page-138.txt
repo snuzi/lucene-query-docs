@@ -1,0 +1,67 @@
+import sfm
+
+# index for points in first two views
+ndX = (corr[:,0]>=0) & (corr[:,1]>=0)
+
+# get coordinates and make homogeneous
+X1 = points2D[0][:,corr[ndX,0]]
+
+X1 vstack( (X1,ones(X1.shape[1])) )
+X2 points2D[1][:,corr[ndX,1]]
+
+X2 vstack( (X2,ones(X2.shape[l])) )
+
+Xtrue
+Xtrue
+
+points3D[:,ndX]
+vstack( (Xtrue,ones(Xtrue.shape[1])) )
+
+# check first 3 points
+
+Xest = sfm.triangu1ate(X1,X2,P[0].P,P[1].P)
+print Xest[:,:3]
+
+print Xtrue[:,:3]
+
+# plotting
+
+from mp1_too1kits.mp1ot3d import aXes3d
+fig = figure()
+
+ax = fig.gca(projection='3d')
+aX.p1ot(Xest[0],Xest[1],Xest[2],'ko')
+aX.p1ot(Xtrue[0],Xtrue[1],Xtrue[2],'r.')
+aXis('equa1')
+
+show()
+
+This will triangulate the points in correspondence from the ﬁrst two Views and print
+out the coordinates of the ﬁrst three points to the console before plotting the recovered
+3D points next to the true values. The printout looks like this:
+
+[ 03743725 1.56125273 1.40720017]
+57574987 -0.55504127 -0.46523952]
+44173797 3.44249282 7.53176488]
+
+1. 1. ]]
+0378863 1.5606923 1.4071907 ]
+54627892 -0.5211711 -0.46371818]
+4601538 3.4636809 7.5323397 ]
+
+1. 1. ]]
+
+[ 1.
+[-0.
+[ 3.
+[ 1.
+[[ 1.
+[-0.
+[ 3.
+[ 1.
+
+The estimated points are close enough. The plot looks like Figure 5.5, as you can see
+the points match fairly well.
+
+138 5.2. Computing with Cameras and 3D Structure
+

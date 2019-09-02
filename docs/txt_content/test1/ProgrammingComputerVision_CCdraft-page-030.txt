@@ -1,0 +1,55 @@
+# save mean and principal components
+f = open('font_pca_modes.pkl', 'wb')
+pickle.dump(immean,f)
+pick1e.dump(V,f)
+
+f.close()
+
+As you can see, several objects can be pickled to the same ﬁle. There are several
+different protocols available for the .pkl ﬁles, and if unsure it is best to read and write
+binary ﬁles. To load the data in some other Python session, just use the load() method
+like this:
+
+# load mean and principal components
+f = open('font_pca_modes.pkl', 'rb')
+immean = pickle.1oad(f)
+
+V = pickle.load(f)
+
+f.close()
+
+Note that the order of the objects should be the same! There is also an optimized
+version written in C called cpickle that is fully compatible with the standard pickle
+module. More details can be found on the pickle module documentation page http:
+//docs . python . org/library/pickle . htm1#modu1e-pickle.
+
+For the remainder of this book we will use the with statement to handle ﬁle reading
+and writing. This is a construct that was introduced in Python 2.5 that automatically
+handles opening and closing of ﬁles (even if errors occur while the ﬁles are open).
+Here is what the saving and loading above looks like using with().
+
+# open file and save
+
+with open('font,pca,modes.pkl', 'wb') as f:
+pickle.dump(immean,f)
+pick1e.dump(V,f)
+
+and
+
+# open file and load
+
+with open('font,pca_modes.pkl', 'rb') as f:
+immean = pick1e.load(f)
+V = pickle.load(f)
+
+This might look strange the ﬁrst time you see it but it is a very useful construct. If you
+don't like it, just use the open and close functions as above.
+
+As an alternative to using pickle, NumPy also has simple functions for reading and
+writing text ﬁles that can be useful if your data does not contain complicated struc-
+tures, for example a list of points clicked in an image. To save an array X to ﬁle use
+
+savetxt('test.txt',x,'%i')
+
+30 1.3.NumPy
+

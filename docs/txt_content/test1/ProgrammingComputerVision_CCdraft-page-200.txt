@@ -1,0 +1,5 @@
+Figure 7.2: Some example search results on the ukbench data set. The query image is
+shown on the far left followed by the top ﬁve retrieved images.
+
+200 7.5. Ranking Results using Geometry
+

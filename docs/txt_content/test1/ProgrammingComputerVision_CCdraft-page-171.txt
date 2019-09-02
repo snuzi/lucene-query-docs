@@ -1,0 +1,52 @@
+# initialize with each row as a cluster
+node = [ClusterLeafNode(array(f),id=i) for i,f in enumerate(features)]
+
+while len(node)>1:
+closest = float(’Inf’)
+
+# loop through every pair looking for the smallest distance
+for ni,nj in combinations(node,2):
+if (ni,nj) not in distances:
+distances[ni,nj] = distfcn(ni.vec,nj.vec)
+
+d = distances[ni,nj]
+if d<closest:
+closest = d
+lowestpair = (ni,nj)
+ni,nj = lowestpair
+
+# average the two clusters
+neuLvec = (ni.vec + nj.vec) / 2.0
+
+# create new node
+
+neuunode = ClusterNode(neuLvec,left=ni,right=nj,distance=closest)
+node.remove(ni)
+
+node.remove(nj)
+
+node.append(nemLnode)
+
+return node[0]
+
+We created two classes for tree nodes, C1usterNode and ClusterLeafNode, to be used
+to create the cluster tree. The function hc1uster() builds the tree. First a list of leaf
+nodes is created, then the closest pairs are iteratively grouped together based on the
+distance measure chosen. Returning the ﬁnal node will give you the root of the tree.
+Running hc1uster() on a matrix with feature vectors as rows will create and return
+the cluster tree.
+
+The choice of distance measure depends on the actual feature vectors, here we
+used the Euclidean (L2) distance (a function for L1 distance is also provided) but you
+can create any function and use that as parameter to hc1uster(). We also used the
+average feature vector of all nodes in a sub-tree as a new feature vector to represent
+the sub-tree and treat each sub-tree as objects. There are other choices for decid-
+ing which two nodes to merge next, such as using single linking (use the minimum
+distance between objects in two sub-trees) and complete linking (use the maximum
+distance between objects in two sub-trees). The choice of linking will affect the type
+of clusters produced.
+
+To extract the clusters from the tree you need to traverse the tree from the top until
+
+6.2. Hierarchical Clustering 1 7 1
+

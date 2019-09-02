@@ -1,0 +1,5 @@
+Programming Computer Vision
+with Python
+
+Jan Erik Solem
+

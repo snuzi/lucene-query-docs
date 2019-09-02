@@ -1,0 +1,57 @@
+def dramLcirc1e(c,r):
+
+t = arange(0,1.01,.01)*2*pi
+x = r*cos(t) + c[0]
+y = r*sin(t) + c[l]
+
+p1ot(X,y,’b',1inewidth=2)
+
+imshow(im)
+if circle:
+
+for p in locs:
+
+drauLcirc1e(p[:2],p[2])
+
+else:
+
+plot(1ocs[:,0],locs[:,l],’ob’)
+axis('off’)
+
+This will plot the location of the SIFT points as blue dots overlaid on the image. If the
+optional parameter circle is set to "True", circles with radius equal to the scale of the
+feature will be drawn instead using the helper function draw_circ1e().
+
+The following commands
+
+import sift
+
+imname = 'empire.jpg'
+
+iml = array(Image.open(imname).convert('L'))
+sift.process,image(imname,'empire.sift')
+
+1l,dl = sift.read,features,from,fi1e('empire.sift')
+
+figure()
+
+9Fay()
+sift.p1ot,features(iml,1l,circ1e=True)
+show()
+
+will create a plot like the one in Figure 2.4b with the SIFT feature locations shown. To
+see the difference compared to Harris corners, the Harris corners for the same image
+is shown to the right (Figure 2.4c). As you can see the two algorithms select different
+locations.
+
+Matching descriptors
+
+A robust criteria (also introduced by Lowe) for matching a feature in one image to a
+feature in another image is to use the ratio of the distance to the two closest matching
+features. This ensures that only features that are distinct enough compared to the
+other features in the image are used. As a consequence, the number of false matches
+is lowered. Here's what this matching function looks like in code. Add match() to
+s1'ft.py.
+
+2.2. SIFT — Sca1e—InVariant Feature Transform 57
+

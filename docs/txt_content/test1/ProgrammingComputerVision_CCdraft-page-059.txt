@@ -1,0 +1,52 @@
+This function uses the angle between descriptor vectors as distance measure. This
+makes sense only after we have normalized the vectors to unit length2. Since the
+matching is one-sided, meaning that we are matching each feature to all features
+in the other image, we can pre-compute the transpose of the matrix containing the
+descriptor vectors containing the points in the second image so that we don't have to
+repeat this exact same operation for each feature.
+
+To further increase the robustness of the matches, we can reverse the procedure
+and match the other way (from the features in the second image to features in the
+ﬁrst) and only keep the correspondences that satisfy the matching criteria both ways
+(same as what we did for the Harris points). The function match_twosided() does just
+this:
+
+def match_twosided(descl,desc2):
+"“" Two—sided symmetric version of match(). "“"
+
+matches,12
+matches,21
+
+match(desc1,desc2)
+match(desc2,desc1)
+
+ndx,l2 = matches,l2.nonzero()[0]
+
+# remove matches that are not symmetric
+for n in ndx,l2:
+if matches_2l[int(matches,l2[n])] != n:
+matches,l2[n] = 0
+
+return matches_l2
+
+To plot the matches we can use the same functions used in harr1's.py. Just copy the
+functions appendimages() and plot_mat ches() and add them to siftpy for Convenience
+(you could also import harr1's.py and use them from there if you like).
+
+Figures 2.5 and 2.6 shows some examples of SIFT feature points detected in image
+pairs together with pair-wise matches returned from the function match_twosided().
+
+Figure 2.7 shows another example of matching features found in two images us-
+ing match() and match_twosided(). As you can see, using the symmetric (two-sided)
+matching condition removes the incorrect matches and keeps the good ones (some
+correct matches are also removed).
+
+With detection and matching of feature points we have everything needed to apply
+these local descriptors to a number of applications. The coming two chapters will add
+geometric constraints on correspondences in order to robustly ﬁlter out the incorrect
+
+2In the case of unit length vectors the scalar product (without the arccos()) is equivalent to the stan-
+dard Euclidean distance.
+
+2.2. SIFT — Scale—Invariant Feature Transform 59
+

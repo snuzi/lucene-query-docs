@@ -1,0 +1,50 @@
+and zeros everywhere else. This model is also called a bag-of-word representation
+since order and location of words is ignored.
+
+Documents are indexed by doing a word count to construct the document his-
+togram vector v, usually with common words like "the", "and", "is" etc. ignored. These
+common words are called stop words. To compensate for document length, the vec-
+tors can be normalized to unit length by dividing with the total histogram sum. The
+individual components of the histogram vector are usually weighted according to the
+importance of each word. Usually, the importance of a word increases proportional
+to how often it appears in the document but decreases if the word is common in all
+documents in a data set (or "corpus").
+
+The most common weighting is tf-idf weighting (term frequency - inverse document
+frequency) where the term frequency of a word w in document d, is
+
+nu)
+
+tf =
+w,d   7
+
+where n,,, is the number of occurrences of w in d. To normalize, this is divided by the
+total number of occurrences of all words in the document.
+The inverse document frequency is
+
+|D|
+
+idf,,,7 = loge ,
+“ |{d : w e d}|
+
+where |D| is the number of documents in the corpus D and the denominator the num-
+ber of documents d in D containing w. Multiplying the two gives the tf-idf weight which
+is then the elements in v. You can read more about tf-idf at http://en .wikipedia.
+org/wiki/Tf- idf.
+
+This is really all we need at the moment. Let's see how to carry this model over to
+indexing and searching images based on their visual content.
+
+7.2 Visual Words
+
+To apply text mining techniques to images, we ﬁrst need to create the visual equiva-
+lent of words. This is usually done using local descriptors like the SIFT descriptor in
+Section 2.2. The idea is to quantize the descriptor space into a number of typical exam-
+ples and assign each descriptor in the image to one of those examples. These typical
+examples are determined by analyzing a training set of images and can be considered
+as visual words and the set of all words is then a visual vocabulary (sometimes called
+a visual codebook). This vocabulary can be created speciﬁcally for a given problem or
+type of images or just try to represent visual content in general.
+
+186 7.2. Visual Words
+

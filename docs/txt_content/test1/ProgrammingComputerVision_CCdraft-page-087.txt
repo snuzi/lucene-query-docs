@@ -1,0 +1,43 @@
+ 
+
+(b) (C) (d)
+
+ 
+
+Figure 3.5: An example of piecewise afﬁne warping using Delaunay triangulated land-
+mark points. (a) the target image with landmarks. (b) image with triangulation. (c)
+with warped image. (d) with warped image and triangulation.
+
+important step in order to be able to do image comparisons and more sophisticated
+analysis.
+
+Let's look at an example of rigidly registering a set of face images so that we can
+compute the mean face and face appearance variations in a meaningful way. In this
+type of registration we are actually looking for a similarity transform (rigid with scale)
+to map correspondences. This is because the faces are not all at the same size, position
+and rotation in the images.
+
+In the ﬁle jkfaces.z1'p are 366 images of a single person (one for each day in 2O08)3.
+The images are annotated with eye and mouth coordinates in the ﬁle jkfaces.Xm1. Us-
+ing the points, a similarity transformation can be computed and the images warped
+to a normalized coordinate frame using this transformation (which as mentioned, in-
+cludes scaling). To read XML ﬁles we will use minidom that comes with Python's built
+in xm1.dom module.
+
+The XML ﬁle looks like this:
+
+<?xm1 version="1.0" encoding="utf-8"?>
+
+<faces>
+<face fi1e="jk-002.jpg" xf="46“ xm="56“ xs="67“ yf="38" ym="65“ ys="39"/>
+<face fi1e="jk-006.jpg" xf="38“ xm="48“ xs '59“ yf="38" ym="65“ ys="38"/>
+<face fi1e="jk-004.jpg" xf="40“ xm="50“ xs '61“ yf="38" ym="66" ys="39"/>
+<face fi1e="jk-010.jpg“ xf="33“ xm="44“ xs "55" yf="38" ym="65“ ys="38"/>
+
+</faces>
+
+3hnages are courtesy of]K KeHer(vvnh.pernnssionL see http://jk-keller.com/dai1y-photo/ for
+nnore detaﬂs.
+
+3.2. Warping images 87
+

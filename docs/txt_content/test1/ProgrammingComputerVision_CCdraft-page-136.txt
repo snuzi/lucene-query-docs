@@ -1,0 +1,26 @@
+ 
+
+Figure 5.4: Epipolar lines in view 1 shown for ﬁve points in view 2 of the Mertonl
+data. The bottom row shows a close up of the area around the points. The lines can be
+seen to converge on a point outside the image to the left. The lines show where point
+correspondences can be found in the other image (the color coding matches between
+lines and points).
+
+the epipole will be plotted as well (and computed if not passed as input). The plots are
+shown in Figure 5.4. The color coding matches between the plots so you can see that
+the corresponding point in one image lies somewhere along the same-color line as a
+point in the other image.
+
+5.2 Computing with Cameras and 3D Structure
+
+The previous section covered relationships between views and how to compute the
+fundamental matrix and epipolar lines. Here we brieﬂy explain the tools we need for
+computing with cameras and 3D structure.
+
+Triangulation
+
+Given known camera matrices, a set of point correspondences can be triangulated to
+recover the 3D positions of these points. The basic algorithm is fairly simple.
+
+136 5.2. Computing with Cameras and 3D Structure
+

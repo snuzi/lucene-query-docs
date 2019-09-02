@@ -1,0 +1,37 @@
+Exercises
+
+1. Create a function that takes the image coordinates of a square (or rectangular)
+object, for example a book, a poster or a 2D bar code, and estimates the trans-
+form that takes the rectangle to a full on frontal view in a normalized coordinate
+system. Use ginput() or the strongest Harris corners to ﬁnd the points.
+
+2. Write a function that correctly determines the alpha map for a warp like the one
+in Figure 3.1.
+
+3. Find a data set of your own that contains three common landmark points (like in
+the face example or using a famous object like the Eiffel tower). Create aligned
+images where the landmarks are in the same position. Compute mean and me-
+dian images and visualize them.
+
+4. Implement intensity normalization and a better way to blend the images in the
+panorama example to remove the edge effects in Figure 3.12.
+
+5. Instead of warping to a central image, panoramas can be created by warping on
+to a cylinder. Try this for the example in Figure 3.12.
+
+6. Use RANSAC to ﬁnd several dominant homography inlier sets. An easy way to
+do this is to ﬁrst make one run of RANSAC, ﬁnd the homograohy with the largest
+consistent subset, then remove the inliers from the set of matches, then run
+RANSAC again to get the next biggest set, and so on.
+
+7. Modify the homography RANSAC estimation to instead estimate afﬁne transfor-
+mations using three point correspondences. Use this to determine if a pair of
+images contains a planar scene, for example using the inlier count. A planar
+scene will have a high inlier count for an afﬁne transformation.
+
+8. Build a panograph (http://en.wikipedia.org/wiki/Panography) from a col-
+lection (for example from Flickr) by matching local features and using least-
+squares rigid registration.
+
+3.3. Creating Panoramas 101
+

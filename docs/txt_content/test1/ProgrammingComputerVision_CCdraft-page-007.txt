@@ -1,0 +1,38 @@
+Preface
+
+Today, images and video are everywhere. Online photo sharing sites and social net-
+works have them in the billions. Search engines will produce images of just about any
+conceivable query. Practically all phones and computers come with built in cameras.
+It is not uncommon for people to have many gigabytes of photos and videos on their
+devices.
+
+Programming a computer and designing algorithms for understanding what is in
+these images is the ﬁeld of computer vision. Computer vision powers applications like
+image search, robot navigation, medical image analysis, photo management and many
+more.
+
+The idea behind this book is to give an easily accessible entry point to hands-on
+computer vision with enough understanding of the underlying theory and algorithms
+to be a foundation for students, researchers and enthusiasts. The Python programming
+language, the language choice of this book, comes with many freely available powerful
+modules for handling images, mathematical computing and data mining.
+
+When writing this book I have had the following principles as a guideline. The book
+should:
+
+- be written in an exploratory style. Encourage readers to follow the examples on
+their computers as they are reading the text.
+
+- promote and use free and open software with a low learning threshold. Python
+was the obvious choice.
+
+- be complete and self-contained. Not complete as in covering all of computer vi-
+sion (this book is far from that!) but rather complete in that all code is presented
+and explained. The reader should be able to reproduce the examples and build
+upon them directly.
+
+- be broad rather than detailed, inspiring and motivational rather than theoretical.
+
+In short: act as a source of inspiration for those interested in programming computer
+vision applications.
+

@@ -1,0 +1,52 @@
+candidates (where "reasonable" can be determined by search response time, memory
+requirements etc.). This is where the word index comes into play. Using the index we
+can get a set of candidates and then do the full comparison against that set.
+
+Using the index to get candidates
+
+We can use our index to ﬁnd all images that contain a particular word. This is just
+a simple query to the database. Add candidates_from_word() as a method for the
+Searcher(ﬂas&
+
+def candidatesifromiword(self,imword):
+”“" Get list of images containing imword. ”“"
+
+imiids = self.con.execute(
+"select distinct imid from imwords where wordid=%d“ % imword).fetchall()
+return [i[0] for i in imiids]
+
+This gives the image ids for all images containing the word. To get candidates for more
+than one word, for example all the nonzero entries in a word histogram, we can loop
+over each word, get images with that word and aggregate the lists3. Here we should
+also keep track of how many times each image id appears in the aggregate list since
+this shows how many words that matches the ones in the word histogram. This can be
+done with the following Searcher method:
+
+def candidatesifromihistogram(self,imwords):
+”“" Get list of images with similar words. ”“"
+
+# get the word ids
+words = imwords.nonzero()[0]
+
+# find candidates
+
+candidates = []
+
+for word in words:
+c = self.candidates_from_word(word)
+candidates+=c
+
+# take all unique words and reverse sort an occurrence
+tmp = [(w,candidates.count(w)) for w in set(candidates)]
+tmp.sort(cmp=1ambda X,y:cmp(X[l],y[l]))
+
+tmp.reverse()
+
+# return sorted list, best matches first
+return [w[0] for w in tmp]
+
+3If you don't want to use all words, try ranking them according to their idf weight and use the ones
+with highest weights.
+
+7.4. Searching the Database for Images 195
+

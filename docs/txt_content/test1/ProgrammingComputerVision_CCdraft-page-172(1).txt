@@ -1,0 +1,45 @@
+a node with distance value smaller than some threshold is found. This is easiest done
+recursively. The C1usterNode method extract_clusters() handles this by returning
+a list with the node itself if below the distance threshold, otherwise call the child
+nodes (leaf nodes always returns themselves). Calling this function will return a list
+of sub-trees containing the clusters. To get the leaf nodes for each cluster sub-tree
+that contain the object ids, traverse each sub-tree and return a list of leaves using the
+nnethod.get_c1uster_elements()
+
+Let's try this on a simple example to see it all in action. First create some 2D data
+points (same as for k-means above).
+
+classl = 1.5 * randn(100,2)
+c1ass2 = randn(l00,2) + array([5,5])
+features = vstack((class1,class2))
+
+Cluster the points and extract the clusters from the list using some threshold (here we
+used 5) and print the clusters in the console.
+
+import hcluster
+tree = hcluster.hc1uster(features)
+clusters = tree.extract,clusters(5)
+
+print len(clusters)
+for c in clusters:
+print c.get,cluster_e1ements()
+
+This should give a printout similar to this:
+number of clusters 2
+[184,187,196,137,174,102,147,145,185,109,166,152,173,180,128,163,141,178,151,158,108,
+182,112,199,100,119,132,195,105,159,140,171,191,164,130,149,150,157,176,135,123,131,
+118,170,143,125,127,139,179,126,160,162,114,122,103,146,115,120,142,111,154,116,129,
+136, 144, 167, 106, 107, 198, 186, 153, 156, 134,101, 110, 133, 189, 168, 183, 148, 165, 172, 188, 138,
+192,104,124,113,194,190,161,175,121,197,177,193,169,117,155]
+[56, 4, 47, 18, 51, 95, 29, 91, 23, 80, 83, 3, 54, 68, 69, 5, 21, 1, 44, 57, 17, 90, 30, 22, 63, 41, 7, 14, 59,
+96, 20, 26, 71, 88, 86, 40, 27, 38, 50, 55, 67, 8, 28, 79, 64, 66, 94, 33, 53, 70, 31, 81, 9, 75, 15, 32, 89, 6,
+11, 48, 58, 2, 39, 61, 45, 65, 82, 93, 97, 52, 62, 16, 43, 84, 24, 19, 74, 36, 37, 60, 87, 92, 181, 99, 10, 49,
+12, 76, 98,46, 72, 34, 35, 13, 73, 78, 25, 42, 77,85]
+
+Ideally you should get two clusters but depending on the actual data you might get
+
+three or even more. In this simple example of clustering 2D points, one cluster should
+contain values lower than 100 and the other values 100 and above.
+
+172 6.2. Hierarchical Clustering
+

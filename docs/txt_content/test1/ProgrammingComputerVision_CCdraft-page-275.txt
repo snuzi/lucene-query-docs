@@ -1,0 +1,31 @@
+ 
+
+Figure 10.8: An example of inpainting with OpenCV. The left image shows areas
+marked by a user as "corrupt". The right image shows the result after inpainting.
+
+The implementation in OpenCV uses an algorithm by Meyer [22]. Try it using the
+command:
+
+$ python watershed.py empire.jpg
+
+This will open an interactive window where you can draw the seed regions you want
+the algorithm to use as input. The results are shown in a second window with colors
+representing regions overlaid on a grayscale version of the input image.
+
+Line detection with a Hough transform
+
+The Hough transform (http : //en .wikipedia . org/wiki/Hough_t ransfo rm) is a method
+for ﬁnding shapes in images. It works by using a voting procedure in the parameter
+space of the shapes. The most common use is to ﬁnd line structures in images. In that
+case edges and line segments can be grouped together by them voting for the same
+line parameters in the 2D parameter space of lines.
+
+The OpenCV sample detects lines using this approachz. Try the following com-
+mand:
+
+$ python hough1ines.py empire.jpg
+
+2This sample is currently in the /samples/python folder.
+
+10.5. More Examples 275
+

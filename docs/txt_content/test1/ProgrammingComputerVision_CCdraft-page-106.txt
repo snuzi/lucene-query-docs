@@ -1,0 +1,56 @@
+def project(se1f,X):
+"“" Project points in X (4*n array) and normalize coordinates. "“"
+
+x = dot(se1f.P,X)
+for i in range(3):
+
+X[i] /= x[2]
+return X
+
+The example below shows how to project 3D points into an image view. In this
+example we will use one of the Oxford multi-view datasets, the "Model House" data set,
+available at http://www. robots.ox.ac.uk/~vgg/data/data-mview.html. Download
+the 3D geometry ﬁle and copy the "house.p3d" ﬁle to your working directory.
+
+import camera
+
+# load points
+points = 1oadtxt(’house.p3d’).T
+points = vstack((points,ones(points.shape[1])))
+
+# setup camera
+
+P = hstack((eye(3),array([[0],[0],[-10]])))
+cam = camera.Camera(P)
+
+x = cam.project(points)
+
+# plot projection
+figure()
+p1ot(X[0],x[l],’k.’)
+show()
+
+First we make the points into homogeneous coordinates and create a Camera object
+with a projection matrix before projection the 3D points and plotting them. The result
+looks like the middle plot in Figure 4.2.
+
+To see how moving the camera changes the projection, try the following piece of
+code that incrementally rotates the camera around a random 3D axis.
+
+# create transformation
+r = 0.05*random.rand(3)
+rot = camera.rotation_matrix(r)
+
+# rotate camera and project
+figure()
+for t in range(20):
+
+cam.P = dot(cam.P,rot)
+
+x = cam.project(points)
+
+p1ot(x[0],x[l],'k.’)
+show()
+
+106 4.1. The Pin—hole Camera Model
+

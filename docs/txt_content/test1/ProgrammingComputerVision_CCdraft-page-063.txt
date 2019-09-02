@@ -1,0 +1,45 @@
+ones and apply local descriptors to examples such as automatic panorama creation,
+camera pose estimation, and 3D structure computation.
+
+2.3 Matching Geotagged Images
+
+Let's end this chapter by looking at an example application of using local descriptors
+for matching images with geotags. Geotagged images are images with GPS coordi-
+nates either added manually by the photographer or automatically by the camera.
+
+Downloading geotagged images from Panoramio
+
+One source of geotagged images is the photo-sharing service Panoramio (http : //www.
+panoramio . com/), owned by Google. Like many web services, Panoramio has an API
+to access content programmatically. Their API is simple and straight-forward and is
+described at http://www. panoramio.com/api/. By making a HTTP GET call to a url
+like this
+
+http://www.panoramic.com/map/get_panoramas.php?order=popu1arity&set=pub1ic&
+from=0&to=20&minx=-180&miny=-90&maxx=180&maxy=90&size=medium
+
+where minx, miny, maxx, maxy deﬁne the geographic area to select photos from (min-
+imum longitude, latitude, maximum longitude and latitude, respectively). You will get
+the response in easy-to-parse JSON format. JSON is a common format for data transfer
+between web services and is more lightweight than XML and other alternatives. You
+can read more aboutJSON at http : //en .wikipedia . org/wiki/JSON.
+
+An interesting location with two distinct views is the White house in Washington
+D.C. which is usually photographed from Pennsylvania Avenue from the south side or
+from the north. The coordinates (latitude, longitude) are:
+
+lt=38.897661
+ln=-77.036564
+
+To convert to the format needed for the API call, subtract and add a number from
+these coordinates to get all images within a square centered around the White house.
+The call
+
+http://www.panoramic.com/map/get_panoramas.php?order=popu1arity&set=pub1ic&
+from=0&to=20&minx=-77.037564&miny=38.896662&maxx=-77.035564&maxy=38.898662&size=medium
+
+returns the ﬁrst 20 images within the coordinate bounds (i0.001), ordered according
+to popularity. The response looks something like this
+
+2.3. Matching Geotagged Images 63
+

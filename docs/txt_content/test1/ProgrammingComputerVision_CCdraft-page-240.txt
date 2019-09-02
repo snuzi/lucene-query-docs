@@ -1,0 +1,50 @@
+- Every pixel node has one incoming and one outgoing edge to each of its neigh-
+bors.
+
+To determine the weights on these edges, you need a segmentation model that de-
+termines the edge weights (representing the maximum ﬂow allowed for that edge)
+between pixels and between pixels and the source and sink. As before we call the
+edge weight between pixel 2' and pixel j, w,-3». Let's call the weight from the source to
+pixel 2', ws,-, and from pixel 2' to the sink, w,-,5.
+
+Let's look at using a naive Bayesian classiﬁer from Section 8.2 on the color val-
+ues of the pixels. Given that we have trained a Bayes classiﬁer on foreground and
+background pixels (from the same image or from other images), we can compute the
+probabilities p p (I,-) and p B (I,-) for the foreground and background. Here I, is the color
+vector of pixel 2'.
+
+We can now create a model for the edge weights as follows:
+
+_ pF(Iz')
+wsi — T
+pF(Iz') +pB(Iz')
+
+_ _ pB(Iz')
+wzt — T
+pF(Iz') +pB(Iz')
+’LUz'j = Ii e_|I1'_1J’|2/U .
+
+With this model, each pixel is connected to the foreground and background (source
+and sink) with weights equal to a normalized probability of belonging to that class.
+The w,-j describe the pixel similarity between neighbors, similar pixels have weight
+close to K, dissimilar close to O. The parameter 0 determines how fast the values
+decay towards zero with increasing dissimilarity.
+
+Create a ﬁle graphcut.py and add the following function that creates this graph
+from an image.
+
+from pygraph.c1asses.digraph import digraph
+from pygraph.a1gorithms.minmaX import maximumiflow
+
+import bayes
+
+def bui1d_bayes_graph(im,1abe1s,sigma=1e2,kappa=2):
+""" Build a graph from 4-neighborhood of pixels.
+Foreground and background is determined from
+labels (1 for foreground, -1 for background, 0 otherwise)
+and is modeled with naive Bayes classifiers."“”
+
+m,n = im.shape[:2]
+
+240 9.1.Graph.Cuts
+

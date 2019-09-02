@@ -1,0 +1,19 @@
+M )l l\\ \l\’l
+1_]<_ I \\l\Kv
+
+E
+7
+/
+
+H\’l'l’
+
+Figure 4.4: Example of computing the projection matrix for a new View using a planar
+object as marker. Matching image features to an aligned marker gives a homography
+that can be used to compute the pose of the camera. (top left) template image with
+a blue square. (top right) an image taken from an unknown viewpoint with the same
+
+square transformed with the estimated homography. (bottom) a cube transformed
+using the estimated camera matrix.
+
+4.4. Augmented Reality 1 1 5
+

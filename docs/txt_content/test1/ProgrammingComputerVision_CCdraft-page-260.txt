@@ -1,0 +1,40 @@
+ 
+
+Figure 10.1: Example of computing an integral image using OpenCV’s integra1()
+function.
+
+# read image
+
+filename = 'fisherman.jpg'
+im = cv2.imread(filename)
+h,w = im.shape[:2]
+
+# flood fill example
+
+diff = (6,6,6)
+
+mask = zeros((h+2,w+2),uint8)
+cv2.floodFill(im,mask,(10,10). (255,255,0),diff,diff)
+
+# show the result in an OpenCV window
+cv2.imshow('flood fill',im)
+cv2.waitKey()
+
+# save the result
+cv2.imwrite('result.jpg',im)
+
+This example applies ﬂood ﬁll to the image and shows the result in an OpenCV window.
+The function waitKey() pauses until a key is pressed and the window is automatically
+closed. Here the function f1oodFi11() takes the image (grayscale or color), a mask
+with non-zero pixels indicating areas not to be ﬁlled, a seed pixel, the new color value
+to replace the ﬂooded pixels together with lower and upper difference thresholds to
+accept new pixels. The ﬂood ﬁll starts at the seed pixel and keeps expanding as long as
+new pixels can be added within the difference thresholds. The difference thresholds
+are given as tuples (R,G,B). The result looks like Figure 10.2.
+
+As a third and ﬁnal example, we look at extracting SURF features, a faster version
+of SIFT introduced by [1]. Here we also show how to use some basic OpenCV plotting
+commands.
+
+260 10.2. OpenCV Basics
+

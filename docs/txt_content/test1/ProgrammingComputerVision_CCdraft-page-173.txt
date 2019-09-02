@@ -1,0 +1,48 @@
+Clustering images
+
+Let's look at an example of clustering images based on their color content. The ﬁle
+sunsets.z1'p contains 100 images downloaded from Flickr using the tag "sunset" or
+"sunsets". For this example we will use a color histogram of each image as feature
+vector. This is a bit crude and simple but good enough for illustrating what hierarchical
+clustering does. Try running the following code in a folder containing the sunset
+images.
+
+import os
+import hcluster
+
+# create a list of images
+path = ’f1ickr—sunsets/'
+imlist = [os.path.join(path,f) for f in os.1istdir(path) if f.endswith('.jpg')]
+
+# extract feature vector (8 bins per color channel)
+features = zeros([len(im1ist), 512])
+for i,f in enumerate(im1ist):
+im = array(Image.open(f))
+
+# multi-dimensional histogram
+h,edges = histogramdd(im.reshape(—1,3),8,normed=True,range=[(0,255),(0,255),(0,255)])
+features[i] = h.flatten()
+
+tree = hcluster.hcluster(features)
+
+Here we take the R,G and B color channels as vectors and feed them into NumPy’s
+histogramdd() which computes multi-dimensional histograms (in this case three di-
+mensions). We chose 8 bins in each color dimension (8 * 8 >x< 8) which after ﬂattening
+gives 512 bins in the feature vector. We use the "normed=True" option to normalize
+the histograms in case the images are of different size and set the range to O . . .255 for
+each color channel. The use of reshape() with one dimension set to -1 will automat-
+ically determine the correct size and thereby create an input array to the histogram
+computation consisting of the RGB color values as rows.
+
+To visualize the cluster tree, we can draw a dendrogram. A dendrogram is a dia-
+gram that shows the tree layout. This often gives useful information on how good a
+given descriptor vector is and what is considered similar in a particular case. Add the
+following code to hclusteztpy.
+
+from PIL import Image,ImageDraw
+
+def dramLdendrogram(node,imlist,filename='clusters.jpg'):
+”"" Draw a cluster dendrogram and save to a file. ”""
+
+6.2. Hierarchical Clustering 173
+

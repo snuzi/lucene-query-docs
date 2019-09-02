@@ -1,0 +1,53 @@
+trix to GL_PROJECTION and subsequent commands will modify this matrixl. Then
+g1LoadIdentity() sets the matrix to the identity matrix, basically reseting any prior
+changes. We then calculate the vertical ﬁeld of view in degrees with the help of the
+image height and the camera's focal length as well as the aspect ratio. An OpenGL
+projection also has a near and far clipping plane to limit the depth range of what is ren-
+dered. We just set the near depth to be small enough to contain the nearest object and
+the far depth to some large number. We use the GLU utility function g1uPerspective()
+to set the projection matrix and deﬁne the whole image to be the view port (essen-
+tially what is to be shown). There is also an option to load a full projection matrix
+with glLoadMatrixf() similar to the model view function below. This is useful when
+the simple version of the calibration matrix is not good enough.
+
+The model view matrix should encode the relative rotation and translation that
+brings the object in front of the camera (as if the camera was at the origin). It is a 4 x 4
+matrix that typically looks like this
+
+R 1:
+[0 ll »
+
+where R is a rotation matrix with columns equal to the direction of the three coordinate
+axis and t is a translation vector. When creating a model view matrix the rotation part
+will need to hold all rotations (object and coordinate system) by multiplying together
+the individual components.
+
+The following function shows how to take a 3 x 4 pin-hole camera matrix with the
+calibration removed (multiply P with K ‘1) and create a model view.
+
+def setimodelviewifromicamera(Rt):
+""" Set the model view matrix from camera pose. """
+
+g1Mat riXMode ( GL,MODELVIEW)
+g1LoadIdentity()
+
+# rotate teapot 90 deg around X-axis so that 2-axis is up
+Rx = array([[1.0,0].[0.0.-1].[0.1.0]])
+
+# set rotation to best approximation
+
+R = Rt[:,:3]
+
+U,S,V = 1ina1g.svd(R)
+
+R = dot(U,V)
+
+R[0,:] = -R[0,:] # change sign of X-axis
+
+# set translation
+
+1This is an odd way to handle things, but there are only two matrices to switch between,
+GL_PRO]ECTlON and GL_MODELVIEW, so it is manageable.
+
+1 1 8 4.4. Augmented Reality
+

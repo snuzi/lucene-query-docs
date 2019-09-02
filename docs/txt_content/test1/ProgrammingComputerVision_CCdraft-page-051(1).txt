@@ -1,0 +1,55 @@
+matchesilz
+matches,21
+
+match(desc1,desc2,thresho1d)
+match(desc2,desc1,thresho1d)
+
+ndx_l2 = where(matches,l2 >= 0)[0]
+
+# remove matches that are not symmetric
+for n in ndX_12:
+if matches,2l[matches_l2[n]] != n:
+matches_l2[n] = -1
+
+return matches_12
+
+The matches can be visualized by showing the images side-by-side and connect-
+ing matched points with lines using the following code. Add these two functions to
+harr1's.py:
+
+def appendimages(im1,im2):
+”"" Return a new image that appends the two images side-by-side. ”""
+
+# select the image with the fewest rows and fill in enough empty rows
+rowsl = im1.shape[0]
+rows2 = im2.shape[0]
+
+if rowsl < rows2:
+
+iml = concatenate((iml,zeros((rows2-rows1,im1.shape[l]))),axis=0)
+elif rowsl > rows2:
+
+im2 = concatenate((im2,zeros((rowsl-rows2,im2.shape[l]))),axis=0)
+# if none of these cases they are equal, no filling needed.
+
+return concatenate((iml,im2), aXis=1)
+
+def p1ot,matches(im1,im2,locsl,locs2,matchscores,showLbelow=True):
+”"" Show a figure with lines joining the accepted matches
+input: im1,im2 (images as arrays), locs1,locs2 (feature locations),
+matchscores (as output from ’match()’),
+showibelow (if images should be shown below matches). ”""
+
+im3 = appendimages(im1,im2)
+if showibelow:
+im3 = vstack((im3,im3))
+
+imshow(im3)
+
+colsl = iml.shape[1]
+for i,m in enumerate(matchscores):
+if m>0:
+plot([locs1[i][l],locs2[m][1]+colsl],[locsl[i][0],locs2[m][0]],'c')
+
+2.1. Harris corner detector 51
+

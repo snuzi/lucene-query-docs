@@ -1,0 +1,56 @@
+of S, D = diag(d,-), d,- = :3. 5,5. The matrix D‘1/2 used in the construction of the
+Laplacian matrix is then
+L
+L
+W l
+
+D—1/2 : x/d_2
+
+1
+
+WE
+
+In order to make the presentation clearer, let's use low values of s,-j for similar ele-
+ments and require 5,5 2 O (the term distance matrix is perhaps more ﬁtting in this
+case).
+
+The clusters are found by computing the eigenvectors of L and using the k: eigen-
+vectors corresponding to the k largest eigenvalues to construct a set of feature vectors
+(remember that we may not have had any to start with!). Create a matrix with the k
+eigenvectors as columns, the rows will then be treated as new feature vectors (of
+length k). These new feature vectors can then be clustered using for example k:-means
+to produce the ﬁnal clusters. In essence, what the algorithm does is to transform the
+original data into new feature Vectors that can be more easily clustered (and in some
+cases using cluster algorithms that could not be used in the ﬁrst place).
+
+Enough about the theory, let's see what it looks like in code when applied to a real
+example. Again, we take the font images used in the k-means example above (and
+introduced on page 28).
+
+from scipy.c1uster.vq import *
+n = 1en(projected)
+
+# compute distance matrix
+S = array([[ sqrt(sum((projected[i]-projected[j])**2))
+for i in range(n) ] for j in range(n)], 'f')
+
+# create Laplacian matrix
+rowsum = sum(S,axis=0)
+
+D = diag(1 / sqrt(rowsum))
+I = identity(n)
+
+L = I - dot(D,dot(S,D))
+
+# compute eigenvectors of L
+U,sigma,V = 1ina1g.svd(L)
+
+k = 5
+
+# create feature vector from k first eigenvectors
+# by stacking eigenvectors as columns
+
+features = array(V[:k]).T
+
+6.3. Spectral Clustering 179
+

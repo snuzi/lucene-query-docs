@@ -1,0 +1,49 @@
+This method creates a list of word ids from the nonzero entries in a word histogram
+of an image. Candidates for each word are retrieved and aggregated in the list candi-
+dates. Then we create a list of tuples (word id, count) with the number of occurrences
+of each word in the candidate list and sort this list (in place for efﬁciency) using sort()
+with a custom comparison function that compares the second element in the tuple.
+The comparison function is declared inline using lambda functions, convenient one-
+line function declarations. The result is returned as a list of image ids with the best
+matching image ﬁrst.
+Consider the example
+src = imagesearch.Searcher('test.db')
+
+locs,descr = sift.read_features_from_fi1e(feat1ist[0])
+iw = voc.project(descr)
+
+print 'ask using a histogram...’
+print src.candidates_from,histogram(iw)[:10]
+
+which prints the ﬁrst 10 lookups from the index and gives the output (this will vary
+depending on your vocabulary):
+
+ask using a histogram...
+[655, 656, 654, 44, 9, 653, 42, 43, 41, 12]
+
+None of the top 10 candidates are correct. Don't worry, we can now take any number
+of elements from this list and compare histograms. As you will see, this improves
+things considerably.
+
+Querying with an image
+
+There is not much more needed to do a full search using an image as query. To do
+word histogram comparisons a Searcher object needs to be able to read the image
+word histograms from the database. Add this method to the Searcher class.
+
+def get,imhistogram(self,imname):
+”“" Return the word histogram for an image. ”“"
+
+imiid = se1f.con.execute(
+"select rowid from imlist where fi1ename='%s'" % imname).fetchone()
+s = self.con.execute(
+"select histogram from imhistograms where rowid='%d'" % im_id).fetchone()
+
+# use pickle to decode NumPy arrays from string
+return pick1e.1oads(str(s[0]))
+
+Again we use pickle to convert between string and NumPy arrays, this time with loads().
+Now we can combine everything into a query method:
+
+196 7.4. Searching the Database for Images
+

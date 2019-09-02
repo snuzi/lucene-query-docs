@@ -1,0 +1,31 @@
+ 
+
+Figure 9.5: Image segmentation using the normalized cuts algorithm. (top) the orig-
+inal image and the resulting three-class segmentation. (bottom) the ﬁrst four eigen-
+vectors of the graph similarity matrix.
+
+It is worth noting that even for these fairly simple examples a thresholding of the
+image would not have given the same result, neither would clustering the RGB or
+graylevel values. This is because neither of these take the pixel neighborhoods into
+account.
+
+9.3 Variational Methods
+
+In this book you have seen a number of examples of minimizing a cost or energy to
+solve computer vision problems. In the previous sections it was minimizing the cut
+in a graph but we also saw examples like the ROF de-noising, k-means and support
+vector machines. These are examples of optimization problems.
+
+When the optimization is taken over functions, the problems are called Variational
+problems and algorithms for solving such problems are called variational methods.
+Let's look at a simple and effective variational model.
+
+The Chan-Vese segmentation model [6] assumes a piece-wise constant image model
+for the image regions to be segmented. Here we will focus on the case of two regions,
+for example foreground and background, but the model extends to multiple regions as
+well, see for example [38]. The model can be described as follows.
+
+If we let a collection of curves F separate the image into two regions 91 and 92 as
+
+252 9.3. Variational Methods
+

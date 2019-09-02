@@ -1,0 +1,5 @@
+Figure 2.10: An example of grouping images taken at the same geographic location
+using local descriptors.
+
+70 2.3. Matching Geotagged Images
+

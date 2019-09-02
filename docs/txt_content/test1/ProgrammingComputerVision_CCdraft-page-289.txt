@@ -1,0 +1,55 @@
+http://www.panoramio.com/map/get_panoramas.php?order=popu1arity&set=pub1ic&
+from=0&to=20&minx=-180&miny=-90&maxx=180&maxy=90&size=medium
+
+where minx, miny, maxx, maxy deﬁne the geographic area to select photos from (mini-
+
+mum longitude, latitude, maximum longitude and latitude, respectively). The response
+
+will be in JSON and look like this:
+
+{"count": 3152, "photos":
+
+[{"up1oad_date": "02 February 2006", "owner,name": "***", "photo_id": 9439, "longitude":
+
+-151.75, "height": 375, "width": 500, "photo,title": "***", "latitude": -16.5, "owner,ur1":
+
+"http://www.panoramio.com/user/1600", "owner,id": 1600, "photo_fi1e_ur1":
+"http://mw2.google.com/mw-panoramio/photos/medium/9439.jpg", "photo,url": "http://www.panoramio.com/photo/9439"},
+
+{"up1oad,date": "18 January 2011", "owner,name": "***", "photo,id": 46752123, "longitude":
+
+120.52718600000003, “height”: 370, "width": 500, "photo,tit1e": ”***", "latitude": 23.327833999999999, ”owner,ur1":
+"http://www.panoramio.com/user/2780232", "owner,id": 2780232, "photo,file,url":
+"http://mw2.google.com/mw-panoramio/photos/medium/46752123.jpg“, "photo,url": "http://www.panoramio.com/photo/46752123"},
+
+{"upload,date": "20 January 2011", "owner,name": "***", "photo,id": 46817885, "longitude":
+
+-178.13709299999999, "height": 330, "width": 500, "photo,title": "***", "latitude": -14.310613, "owner,url":
+"http://www.panoramio.com/user/919358", "owner_id": 919358, "photo_fi1e_ur1":
+"http://mw2.google.com/mw-panoramio/photos/medium/46817885.jpg", "photo,url": "http://www.panoramio.com/photo/46817885"},
+
+], "has,more": true}
+
+Using a JSON package you can get the "photo_ﬁle_url" ﬁeld of the result, see Sec-
+tion 2.3 for an example.
+
+B.3 Oxford Visual Geometry Group
+
+The Visual Geometry research group at Oxford University has many datasets avail-
+able at http://www. robots.ox.ac.uk/~vgg/data/. We used some of the multi-view
+datasets in this book, for example the "Merton1", "Model House", "dinosaur" and "cor-
+ridor" sequences. The data is available for download (some with camera matrices and
+point tracks) at http://www. robots . ox.ac . uk/~vgg/data/data-mview. html.
+
+B.4 University of Kentucky Recognition Benchmark Im-
+ages
+
+The UK Benchmark image set, also called the "ukbench" set, is a set with 2550 groups
+of images. Each group has four images of an object or scene from varying viewpoints.
+This is a good set to test object recognition and image retrieval algorithms. The data
+set is available for download (the full set is around 1.5GB) at http: //www.vis . uky.
+edu/~stewe/ukbench/. It is described in detail in the paper [23].
+In this book we used a smaller subset using only the ﬁrst 1000 images.
+
+B.3. Oxford Visual Geometry Group 289
+

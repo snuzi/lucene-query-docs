@@ -1,0 +1,49 @@
+# how did the training do?
+res = svmipredict(labels,samples,m)
+
+Loading the data set is the same as before but this time we have to convert the arrays
+to lists since LibSVM does not support array objects as input. Here we used Python's
+built in map() function that applies the conversion function list() to each element. The
+next lines create a SVM problem object and sets some parameters. The svm_train()
+call solves the optimization problem for determining the model parameters. The model
+can then be used in a predictions. The last call to svm_predict() will classify the
+training data with the model In and shows how successful the training was. The print
+out looks something like this:
+
+Accuracy = 100% (400/400) (classification)
+
+This means that the classiﬁer completely separates the training data and correctly
+classiﬁes all 400 data points.
+
+Note that we added a string of parameter choices in the call to train the classiﬁer.
+These parameters are used to control the kernel type, degree and other choices for
+the classiﬁer. Most of them are outside the scope of this book but the important ones
+to know are "t" and  The parameter "t" determines the type of kernel used. The
+options are:
+
+"-t" kernel
+0 linear
+1 polynomial
+2 radial basis function (default)
+3 sigmoid
+
+The parameter "k" determines the degree of the polynomial (default is 3).
+Now, load the other point set and test the classiﬁer:
+
+# load test data using Pickle
+
+with open('pointsinormal_test.pkl', 'r') as f:
+classil = pickle.load(f)
+class,2 = pickle.load(f)
+labels = pickle.load(f)
+
+# convert to lists for libsvm
+classil = map(list,classi1)
+class_2 map(list,classi2)
+
+# define function for plotting
+def predict(x,y,model=m):
+return array(svmipredict([0]*len(x),zip(x,y),model)[0])
+
+8.3. Support Vector Machines 225
+

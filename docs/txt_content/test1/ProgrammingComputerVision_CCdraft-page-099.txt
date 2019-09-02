@@ -1,0 +1,50 @@
+transf,(toim.shape[0],toim.shape[1]+padding))
+else:
+# pad the destination image with zeros to the right
+toimit = hstack((toim,zeros((toim.shape[0],padding))))
+fromimit = ndimage.geometricitransform(fromim,transf,
+(toim.shape[0],toim.shape[1]+padding))
+else:
+print ’warp - left’
+# add translation to compensate for padding to the left
+Hidelta = array([[l,0,0],[0,1,-delta],[0,0,1]])
+H = dot(H,H,delta)
+# transform fromim
+if is_color:
+# pad the destination image with zeros to the left
+toim_t = hstack((zeros((toim.shape[0],padding,3)),toim))
+fromimit = zeros((toim.shape[0],toim.shape[l]+padding,toim.shape[2]))
+for col in range(3):
+fromim_t[:,:,col] = ndimage.geometric,transform(fromim[:,:,col],
+transf,(toim.shape[0],toim.shape[1]+padding))
+else:
+# pad the destination image with zeros to the left
+toim_t = hstack((zeros((toim.shape[0],padding)),toim))
+fromimit = ndimage.geometric,transform(fromim,
+transf,(toim.shape[0],toim.shape[l]+padding))
+
+# blend and return (put fromim above toim)
+if is_color:
+# all non black pixels
+alpha = ((fromim,t[:,:,0] * fromim,t[:,:,l] * fromim,t[:,:,2] ) > 0)
+for col in range(3):
+toim_t[:,:,col] = fromim,t[:,:,col]*alpha + toim,t[:,:,col]*(1-alpha)
+else:
+alpha = (fromimit > 0)
+toimit = fromim,t*alpha + toim,t*(1-alpha)
+
+return toimit
+
+For a general geometric_transform() a function, describing the pixel to pixel map,
+needs to be speciﬁed. In this case transf() does this by multiplying with H and nor-
+malizing the homogeneous coordinates. By checking the translation value in H we
+can decide if the image should be padded to the left or the right. When the image is
+padded to the left, the coordinates of the points in the target image changes so in the
+"left" case a translation is added to the homography. For simplicity we also still use
+the trick of zero pixels for ﬁnding the alpha map.
+Now use this function on the images as follows
+
+#warp the images
+
+3.3. Creating Panoramas 99
+

@@ -1,0 +1,61 @@
+with open('ukbench,imlist.pk1','rb') as f:
+imlist = pick1e.load(f)
+featlist = pick1e.load(f)
+
+nbriimages
+
+len(im1ist)
+
+with open(’vocabu1ary.pk1’, 'rb') as f:
+
+voc = pickle.load(f)
+
+src = imagesearch.Searcher('test.db',voc)
+
+# index of query image and number of results to return
+
+qiind = 50
+nbr_results = 20
+
+# regular query
+
+resireg = [w[l] for w in src.query(imlist[q,ind])[:nbr,resu1ts]]
+print 'top matches (regular):', resireg
+
+# load image features for query image
+
+q_locs,q,descr = sift.read_features,from,fi1e(feat1ist[q_ind])
+fp = homography.make,homog(q_1ocs[:,:2].T)
+
+# RANSAC model for homography fitting
+
+model = homography.RansacMode1()
+
+rank = {}
+
+# load image features for result
+
+for ndx in res_reg[1:]:
+1ocs,descr = sift.read,features_from_fi1e(featlist[ndx])
+
+# get matches
+
+matches = sift.match(q_descr,descr)
+
+ind = matches.nonzero()[0]
+
+ind2 = matches[ind]
+
+tp = homography.make,homog(1ocs[:,:2].T)
+
+# compute homography, count inliers. if not enough matches return empty list
+try:
+H,in1iers = homography.H,from,ransac(fp[:,ind],tp[:,ind2],mode1,match,theshold=4)
+except:
+inliers = []
+
+# store inlier count
+rank[ndx] = 1en(inliers)
+
+7.5. Ranking Results using Geometry 201
+

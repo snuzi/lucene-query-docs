@@ -1,0 +1,5 @@
+Figure 7.1: Some examples of images from the ukbench (University of Kentucky object
+recognition benchmark) data set.
+
+188 7.2. Visual Words
+

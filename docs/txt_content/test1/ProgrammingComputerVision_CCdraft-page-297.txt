@@ -1,0 +1,95 @@
+Index
+
+K -means, 215
+
+3D plotting, 175
+
+3D reconstruction, 197
+4-neighborhood, 324
+
+afﬁne transformation, 95
+afﬁne warping, 100
+afﬁnity matrix, 235
+agglomerative clustering, 224
+alpha map, 102
+
+AR, 153
+
+array, 25
+
+array slicing, 26
+
+aspect ratio, 137
+association, 336
+Augmented reality, 153
+
+bag of visual words, 250
+bag-of-word representation, 248
+baseline, 205
+
+Bayes classiﬁer, 294
+
+binary image, 44
+
+blurring, 39
+
+bundle adustment, 203
+
+calibration matrix, 137
+camera calibration, 143
+camera center, 136
+camera matrix, 136
+camera model, 135
+camera resectioning, 186
+CBIR, 247
+
+Chan-Vese segmentation, 344
+Characteristic functions, 345
+CherryPy, 273, 275
+
+class centroids, 215
+
+classifying images, 281
+
+clustering images, 215, 231
+complete linking, 230
+
+confusion matrix, 293
+Content-based image retrieval, 247
+convex combination, 106
+
+corner detection, 57
+
+correlation, 63
+
+corresponding points, 63
+cpick1e,37
+
+cross correlation, 63
+
+cumulative distribution function, 29
+cv, 350, 361
+
+cv2, 350
+
+de-noising, 49
+
+Delaunay triangulation, 1 08
+dendrogram, 232
+
+dense depth reconstruction, 205
+dense image features, 287
+dense SIFT, 287
+
+descriptor, 63
+difference-of-Gaussian, 69
+
+digit classiﬁcation, 308
+
+direct linear transformation, 96
+directed graph, 321
+
+distance matrix, 235
+
+297
+

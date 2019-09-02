@@ -1,0 +1,6 @@
+Figure 5.8: Example of computing a 3D reconstruction from a pair of images using
+image matches. (top) the two images with feature points shown in red and reprojected
+reconstructed 3D points shown in blue. (bottom) the 3D reconstruction.
+
+150 5.3. Multiple View Reconstruction
+

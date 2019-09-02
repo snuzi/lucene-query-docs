@@ -1,0 +1,28 @@
+(I
+(I
+I?
+I]
+A)
+:I_
+:5
+$5
+"3
+a Cl
+dag
+a
+11
+fl
+° ‘J
+3
+t
+"2
+“I
+i:
+0
+8
+
+Figure 6.7: An example of hierarchical clustering of 66 selected font images using 40
+principal components as feature vector.
+
+178 6.3. Spectral Clustering
+

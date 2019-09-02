@@ -1,0 +1,21 @@
+in Figure 7.2. Try to add color descriptors and see if you can improve the search
+results.
+
+. For large vocabularies using arrays to represent the visual word frequencies is
+
+inefﬁcient since most of the entries will be zero (think of the case with a few hun-
+dred thousand words and images with typically a thousand features). One way
+to overcome this inefﬁciency is to use dictionaries as sparse array representa-
+tions. Replace the arrays with a sparse class of your own and add the necessary
+methods. Alternatively, try to use the scipy.sparse module.
+
+7. As you try to increase the size of the vocabulary the clustering time will take too
+
+long and the projection of features to words also becomes slower. Implement a
+hierarchical vocabulary using hierarchical k:-mean clustering and see how this
+improves scaling. See the paper [23] for details and inspiration.
+
+208
+
+7.6. Building Demos and Web Applications
+

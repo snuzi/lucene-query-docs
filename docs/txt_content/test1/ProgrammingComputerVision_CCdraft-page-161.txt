@@ -1,0 +1,32 @@
+Chapter 6
+
+Clustering Images
+
+This chapter introduces several clustering methods and shows how to use them for
+clustering images for ﬁnding groups of similar images. Clustering can be used for
+recognition, for dividing data sets of images and for organization and navigation. We
+also look at using clustering for visualizing similarity between images.
+
+6. 1 K-means Clustering
+
+K -means is a very simple clustering algorithm that tries to partition the input data in
+k clusters. K -means works by iteratively reﬁning an initial estimate of class centroids
+as follows:
+
+1. Initialize centroids pl-, 2' = 1 . . . k, randomly or with some guess.
+2. Assign each data point to the class 01' of its nearest centroid.
+3. Update the centroids as the average of all data points assigned to that class.
+4. Repeat 2 & 3 until convergence.
+K -means tries to minimize the total within-class variance
+k:
+V=Z :(Xj—Hz')2a
+i=1 Xj Ecz-
+
+where xj are the data vectors. The algorithm above is a heuristic reﬁnement algorithm
+that works ﬁne for most cases but does not guarantee that the best solution is found.
+To avoid the effects of choosing a bad centroid initialization, the algorithm is often
+run several times with different initialization centroids. Then the solution with lowest
+variance V is selected.
+
+161
+

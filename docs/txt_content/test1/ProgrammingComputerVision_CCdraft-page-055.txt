@@ -1,0 +1,42 @@
+E E IF
+E: E I’ E
+E“~E_E/E
+
+arse
+
+ 
+
+(a) (b) (c)
+LLJI-|.LlJi.JLlJLlJL|.i.]L|.LlJi.JLlJ Lu|...i.JLu
+(d)
+
+Figure 2.3: An illustration of the construction of the feature vector for the SIFT de-
+scriptor. (a) a frame around an interest point, oriented according to the dominant
+gradient direction. (b) an 8 bin histogram over the direction of the gradient in a part
+of the grid. (c) histograms are extracted in each grid location. (d) the histograms are
+concatenated to form one long feature vector.
+
+The library is written in C but has a command line interface that we can use. There is
+also a Matlab interface and a Python wrapper http : //github . com/mmmikae1/v1feat/
+if you prefer that to the binaries used here. The Python wrapper can be a little tricky
+to install on some platforms due to its dependencies so we will focus on the binaries
+instead. There is also an alternative SIFT implementation available at Lowe's website
+http://www. cs. ubc.ca/~1owe/keypoints/ (Windows and Linux only).
+Create a ﬁle sift. py and add the following function that calls the executable.
+
+def process_image(imagename,resu1tname,params="——edge—thresh 10 --peak—thresh 5"):
+”"" Process an image and save the results in a file. ”""
+
+if imagename[-3:] != 'pgm':
+# create a pgm file
+im = Image.open(imagename).convert('L')
+im.save('tmp.pgm')
+imagename = 'tmp.pgm’
+
+cmmd = str("sift "+imagename+" --output="+resu1tname+
+" "+params)
+os.system(cmmd)
+print 'processed', imagename, 'to', resultname
+
+2.2. SIFT — Scale—InVariant Feature Transform 55
+

@@ -1,0 +1,46 @@
+" ' $  I .0 0 .0 ‘ .
+. ‘cf ’..C 9 Q . ‘ O
+‘C I . . . ‘
+‘a. Q’. I. 0  .0’. ‘
+4-’-
+
+ 
+
+-s ., ,
+‘,3. 4':'’.i:‘-':'-.,*}. -1°.’-E
+
+.4-o o.'¢ ~q,-::'.°3.-
+
+Figure 5.5: Triangulated points using camera matrices and point correspondences.
+The estimated points are shown with black circles and the true points with red dots.
+(left) view from above and to the side. (right) close up of the points from one of the
+building walls.
+
+Computing the camera matrix from 3D points
+
+With known 3D points and their image projections, the camera matrix, P, can be
+computed using a direct linear transform approach. This is essentially the inverse
+problem to triangulation and is sometimes called camera resectioning. This way to
+recover the camera matrix is again a least squares approach.
+
+From the camera equation (4.1), each visible 3D point X, (in homogeneous coordi-
+nates) is projected to an image point x,- = [17,-, y,-, 1] as )\,-x,- = PX, and the correspond-
+ing points satisfy the relation
+
+x1T 0 0 -351 0 0 . T
+T P1
+0 0 X1T -1 0 0 . 1%
+X3 0 0 0 -332 0 . l  :07
+0 X3 0 0 —y2 0 .
+0 .
+
+00X§0—1
+
+where p1, p2 and p3 are the three rows of P. This can be written more compactly as
+Mv = O .
+
+The estimation of the camera matrix is then obtained using SVD. With the matrices
+described above, the code is straight-forward. Add the function below to sfm.py.
+
+5.2. Computing with Cameras and 3D Structure 139
+

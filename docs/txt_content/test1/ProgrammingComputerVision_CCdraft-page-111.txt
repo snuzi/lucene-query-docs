@@ -1,0 +1,43 @@
+ 
+
+Figure 4.3: A simple camera calibration setup. (left) an image of the setup used.
+(right) the image used for the calibration. Measuring the width and height of the
+calibration object in the image and the physical dimensions of the setup is enough to
+determine the focal length.
+
+translation) if the image contains a planar marker object. This is marker object can be
+almost any ﬂat object.
+
+Let's illustrate with an example. Consider the two top images in Figure 4.4, the
+following code will extract SIFT features in both images and robustly estimate a ho-
+mography using RANSAC.
+
+import homography
+import camera
+import sift
+
+# compute features
+sift.process_image('book_fronta1.JPG','im0.sift')
+10,d0 = sift.read_features,from_fi1e('im0.sift')
+
+sift.process_image('book_perspective.JPG','im1.sift')
+1l,dl = sift.read,features,from,fi1e('im1.sift')
+
+# match features and estimate homography
+matches = sift.match_twosided(d0,d1)
+
+ndx = matches.nonzero()[0]
+
+fp = homography.make,homog(10[ndx,:2].T)
+ndx2 = [int(matches[i]) for i in ndx]
+
+tp = homography.make,homog(11[ndx2,:2].T)
+
+model = homography.RansacMode1()
+
+H = homography.H,from_ransac(fp,tp,mode1)
+
+Now we have a homography that maps points on the marker (in this case the book)
+
+4.3. Pose Estimation from Planes and Markers 11 1
+

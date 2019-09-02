@@ -1,0 +1,42 @@
+ 
+
+Figure 1.1; Examples of pmcesing images wim 1711..
+
+issnownin1=iguie 1.1.
+
+Convert images to anolher [ormal
+
+using tne save() memod, F11. can save images in most image ﬁle fonnals. Hem’:
+an example mat mkss all image ﬁles in a list of ﬁlenames (ﬁlelist) and converts me
+images to mac ﬁles.
+
+[rm m import Image
+impart as
+
+[or mile in fllellstz
+
+  
+ 
+
+autflle — patII.5pl)text()nf)le)[B] . ".]pg"
+it lllflle outfllez
+try:
+
+IIIage.apelI()nf)le).save(outf)lel
+extepl InErmr:
+print "cannot convert", lllflle
+
+The 1711 function npen() cieates a 1711 image object and me save() memod saves me
+image to a nle wim me given nlename. The new nlename will he tne same as me
+original wim me ﬁle ending ".jpg' instead. 1711 is smart enough to determine me image
+fonuat from me nle extension. Tneie is a simple check mat me nle is not already a
+mac ale and a message is printed to me oonsole irme conveision rails.
+
+Tnmugnout mis book we are going to need lists of images to piocess. Here’: now
+you oonld Cnaate a list of nlenames ofall images in a folder. cieate a nle 1'.mmols.py to
+stone some of tnese generally useful routines and add me rollowing runclion.
+
+impart as
+
+an get,)lIl)5t(|)atn):
+

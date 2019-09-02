@@ -1,0 +1,46 @@
+The image gradient is the vector VI = [I,, ly]T. The gradient has two important
+properties, the gradient magnitude
+
+|VI| = ./I,% +15,
+which describes how strong the image intensity change is, and the gradient angle
+a =:arctan2(Iy,Ix),
+
+which indicates the direction of largest intensity change at each point (pixel) in the im-
+age. The NumPy function arctan2() returns the signed angle in radians, in the interval
+-71" . . . 7T.
+
+Computing the image derivatives can be done using discrete approximations. These
+are most easily implemented as convolutions
+
+Lr=I*DmamiQg=I*Dy.
+
+Two common choices for D3, and Dy are the Prewitt ﬁlters
+
+-1 0 1 -1 -1 -1
+D,, = -1 0 1 and Dy = 0 0 0
+-1 0 1 1 1 1
+and Sobel ﬁlters
+-1 0 1 -1 -2 -1
+D,, = -2 0 2 and Dy = 0 0 0
+-1 0 1 1 2 1
+
+These derivative ﬁlters are easy to implement using the standard convolution avail-
+able in the scipy.ndimage.filters module. For example:
+
+from PIL import Image
+from numpy import *
+from scipy.ndimage import filters
+
+im = array(Image.open(’empire.jpg').convert('L'))
+#Sobel derivative filters
+imx = zeros(im.shape)
+
+fi1ters.sobe1(im,1,imx)
+
+imy = zeros(im.shape)
+fi1ters.sobe1(im,0,imy)
+
+magnitude = sqrt(imX**2+imy**2)
+
+1.4.SciPy 33
+

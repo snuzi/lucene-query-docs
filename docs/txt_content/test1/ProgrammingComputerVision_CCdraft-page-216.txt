@@ -1,0 +1,29 @@
+IIAII IIBII IICII
+|IFiVe ll Ilpointll IIVII
+
+Figure 8.3: Dense SIFT descriptors on sample images from the six categories of hand
+gesture images. (images from the Static Hand Posture Database)
+
+all images. Again, assuming the ﬁlenames are in a list 1'm11's1:, this is done like this.
+
+import dsift
+
+# process images at fixed size (50,50)
+
+for filename in imlist:
+featfile = fi1ename[:—3]+'dsift'
+dsift.process_image_dsift(fi1ename,featfi1e,10,5,resize=(50,50))
+
+This creates feature ﬁles for each image with the extension ".dsift". Note the resizing
+of the images to some common ﬁxed size. This is very important, otherwise your
+images will have varying number of descriptors and therefore varying length of the
+feature vectors. This will cause errors when comparing them later. Plotting the images
+with the descriptors looks like in Figure 8.3.
+Deﬁne a helper function for reading the dense SIFT descriptor ﬁles as this
+
+import os, sift
+
+def read_gesture_features_1abe1s(path):
+
+216 8.1. K~Nearest Neighbors
+

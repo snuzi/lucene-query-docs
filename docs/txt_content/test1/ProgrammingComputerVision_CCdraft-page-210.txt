@@ -1,0 +1,49 @@
+def __init,_(self,labels,samples):
+"“" Initialize classifier with training data. "“"
+
+self.labels = labels
+self.samples = samples
+
+def classify(self,point,k=3):
+"“" Classify a point against k nearest
+in the training data, return label. "“"
+
+# compute distance to all training points
+dist = array([L2dist(point,s) for s in self.samples])
+
+# sort them
+ndx = dist.argsort()
+
+# use dictionary to store the k nearest
+
+votes = {}
+
+for i in range(k):
+label = self.labels[ndx[i]]
+votes.setdefault(label,0)
+votes[label] += 1
+
+return max(votes)
+
+def L2dist(pl,p2):
+return sqrt( sum( (pl-p2)**2) )
+
+It is easiest to deﬁne a class and initialize with the training data. That way we don't
+have to store and pass the training data as arguments every time we want to classify
+something. Using a dictionary for storing the k: nearest labels makes it possible to
+have labels as text strings or numbers. In this example we used the Euclidean (L2)
+distance measure, if you have other measures, just add them as functions.
+
+A simple 2D example
+
+Let's ﬁrst create some simple 2D example data sets to illustrate and visualize how this
+classiﬁer works. The following script will create two different 2D point sets, each with
+two classes, and save the data using Pickle.
+
+from numpy.random import randn
+import pickle
+
+# create sample data of 2D points
+
+210 8.1. K—Nearest Neighbors
+

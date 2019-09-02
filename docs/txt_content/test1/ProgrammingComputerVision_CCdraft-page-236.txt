@@ -1,0 +1,29 @@
+. Try some more advanced feature vectors for the sudoku character recognition
+
+problem. If you need inspiration, look at [4].
+
+. Implement a method for automatically aligning the sudoku grid. Try for exam-
+
+ple feature detection with RANSAC, line detection or detecting the cells using
+morphological and measurement operations from scipy.ndimage (http : / / docs.
+scipy . org/doc/scipy/ reference/ndimage . html). Bonus task, solve the rota-
+tion ambiguity of ﬁnding the "up" direction. For example, you could try rotating
+the rectiﬁed grid and let the OCR classiﬁer’s accuracy vote for the best orienta-
+tion.
+
+. For a more challenging classiﬁcation problem than the sudoku digits, take a look
+
+at the MNIST database of handwritten digits http://yann.lecun.com/exdb/
+mnist/. Try to extract some features and apply SVM to that set. Check where
+your performance ends up on the ranking of best methods (some are insanely
+good).
+
+. If you want to dive deeper in classiﬁers and machine learning algorithms, take a
+
+look at the scikit.1earn package (http : //scikit - learn . org/) and try some of
+the algorithms on the data in this chapter.
+
+236
+
+8.4. Optical Character Recognition
+

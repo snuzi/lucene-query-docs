@@ -1,0 +1,57 @@
+im = array(Image.open('C-uniform03.ppm'))
+m,n = im.shape[:2]
+
+# resize image to (wid,wid)
+
+wid = 50
+
+rim imresize(im,(wid,wid),interp=’bi1inear’)
+rim array(rim,’f’)
+
+II
+
+II
+
+# create normalized cut matrix
+A = ncut.ncut,graph,matrix(rim,sigma,d=l,sigma_g=1e—2)
+
+# cluster
+code,V = ncut.cluster(A,k=3,ndim=3)
+
+# reshape to original image size
+codeim = imresize(code.reshape(wid,wid),(m,n),interp='nearest’)
+
+# plot result
+figure()
+imshow(codeim)
+
+9Fay()
+show()
+
+Here we resize the image to a ﬁxed size (50 x 50 in this example) in order to make
+the eigenvector computation fast enough. The NumPy 1ina1g.svd() function is not
+fast enough to handle large matrices (and sometimes gives inaccurate results for too
+large matrices). We use bilinear interpolation when resizing the image but nearest
+neighbor interpolation when resizing the resulting segmentation label image since we
+don't want to interpolate the class labels. Note the use of ﬁrst reshaping the one-
+dimensional array to (wid,wid) followed by resizing to the original image size.
+
+In the example we used one of the hand gesture images from the Static Hand
+Posture Database (see Section 8.1 for more details) with k: = 3. The resulting segmen-
+tation is shown in Figure 9.5 together with the ﬁrst four eigenvectors.
+
+The eigenvectors are returned as the array V in the example and can be visualized
+as images like this:
+
+imshow(imresize(V[i].reshape(wid,wid),(m,n),interp='bi1inear'))
+
+This will show eigenvector 2' as an image at the original image size.
+
+Figure 9.6 shows some more examples using the same script above. The airplane
+image is from the "airplane" category in the Caltech 101 dataset. For these examples
+we kept the parameters ad and 09 to the same values as above. Changing them can
+give you smoother more regularized results and quite different eigenvector images.
+We leave the experimentation to you.
+
+9.2. Segmentation using Clustering 251
+

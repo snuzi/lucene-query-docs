@@ -1,0 +1,35 @@
+Chapter 3
+
+Image to Image Mappings
+
+This chapter describes transformations between images and some practical methods
+for computing them. These transformations are used for warping, image registration
+and ﬁnally we look at an example of automatically creating panoramas.
+
+3. 1 Homographies
+
+A homography is a 2D projective transformation that maps points in one plane to an-
+other. In our case the planes are images or planar surfaces in 3D. Homographies have
+many practical uses such as registering images, rectifying images, texture warping
+and creating panoramas. We will make frequent use of them. In essence a homogra-
+phy H maps 2D points (in homogeneous coordinates) according to
+
+(El h1 h2 h3 (E
+y’ = /14 /15 I15 y or X’ = Hx .
+’LU/ h7 h8 h9 ’LU
+
+Homogeneous coordinates is a useful representation for points in image planes
+(and in 3D as we will see later). Points in homogeneous coordinates are only deﬁned
+up to scale so that x = [;r, y, w] = [om ay, aw] = [zr/w,y/10,1] all refer to the same 2D
+point. As a consequence, the homography H is also only deﬁned up to scale and has
+eight independent degrees of freedom. Often points are normalized with w = 1 to
+have a unique identiﬁcation of the image coordinates ;r,y. The extra coordinate makes
+is easy to represent transformations with a single matrix.
+
+Create a ﬁle homographypy and add the following functions to normalize and con-
+vert to homogeneous coordinates.
+
+def norma1ize(points):
+
+73
+

@@ -1,0 +1,38 @@
+ 
+
+Figure 3.4: An example of Delaunay triangulation of a set of random 2D points.
+
+t_ext = [t[0], t[l], t[2], t[0]] # add first point to end
+p1ot(X[t,ext],y[t,eXt],'r')
+
+p1ot(x.y.'*’)
+axis('off')
+show()
+
+Figure 3.4 shows some example points and the resulting triangulation. Delaunay tri-
+angulation chooses the triangles so that the minimum angle of all the angles of the
+triangles in the triangulation is maximized2. There are four outputs of de1aunay() of
+which we only need the list of triangles (the third of the outputs). Create a function in
+warp. py for the triangulation.
+
+import matp1ot1ib.de1aunay as md
+
+def triangu1ate,points(X,y):
+""" Delaunay triangulation of 2D points. """
+
+centers,edges,tri,neighbors = md.de1aunay(x,y)
+return tri
+
+The output is an array with each row containing the indices in the arrays X and y for
+the three points of each triangle.
+
+Let's now apply this to an example of warping an image to a non-ﬂat object in
+another image using 30 control points in a 5 by 6 grid. Figure 3.5 shows an image
+to be warped to the facade of the "turning torso". The target points were manually
+selected using ginput() and stored in the ﬁle turn1'ngtorso_po1'nts.tXt.
+
+2The edges are actuaﬂythe dualgraph.ofa VoronoidiagranL see http://en.wikipedia.org/wiki/
+De1aunay_triangu1ation
+
+84 3.2. Warping images
+

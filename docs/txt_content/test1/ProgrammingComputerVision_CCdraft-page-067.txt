@@ -1,0 +1,62 @@
+(DOGS
+<3G>I—|<3
+(DOOM
+(DONG
+(DOGS
+ONO-J>
+<3I—|<3<D
+(3000
+
+90020002101330
+71
+
+l\)<3I—|I—|<3ULJ<Dl\)
+l\)I—|G>
+(DOG)
+ONLU
+HOG)
+(DO
+D-‘I-'
+
+1 5 0 0
+1 1 1 0
+00120200000000
+Using this as a simple distance measure between images (images with similar content
+have higher number of matching features), we can now connect images with similar
+visual content.
+
+Visualizing connected images
+
+Let's visualize the connections between images deﬁned by them having matching
+local descriptors. To do this we can show the images in a graph with edges in-
+dicating connections. We will use the pydot package (http://code.goog1e.com/p/
+pydot/) which is a Python interface to the powerful GraphViz graphing library. Pydot
+uses Pyparsing (http://pyparsing.wikispaces.com/) and GraphViz (http://www.
+g raphviz . org / ) but don't worry, all of them are easy to install in just a few minutes.
+
+Pydot is very easy to use. The following code snippet illustrates this nicely by
+creating a graph illustrating a tree with depth two and branching factor ﬁve adding
+numbering to the nodes. The graph is shown in Figure 2.9. There are many ways to
+customize the graph layout and appearance. For more details, see the Pydot docu-
+mentation or the description of the DOT language used by GraphViz at http: //www.
+graphviz.org/Documentation.php.
+
+import pydot
+g = pydot.Dot(graph,type='graph')
+
+g.add_node(pydot.Node(str(0),fontco1or='transparent'))
+for i in range(5):
+g.add,node(pydot.Node(str(i+1)))
+g.add,edge(pydot.Edge(str(0),str(i+1)))
+for j in range(5):
+g.add_node(pydot.Node(str(j+1)+'-'+str(i+1)))
+g.add_edge(pydot.Edge(str(j+1)+'—'+str(i+1),str(j+1)))
+g.write,png('graph.jpg',prog='neato')
+
+Let's get back to our example with the geotagged images. To create a graph show-
+ing potential groups of images, we create an edge between nodes if the number of
+matches is above a threshold. To get the images in the graph you need to use the
+full path of each image (represented by the variable path in the example below). To
+
+2.3. Matching Geotagged Images 67
+

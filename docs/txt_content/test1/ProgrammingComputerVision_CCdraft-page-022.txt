@@ -1,0 +1,55 @@
+Graylevel transforms
+
+After reading images to NumPy arrays, we can perform any mathematical operation we
+like on them. A simple example of this is to transform the graylevels of an image. Take
+any function f that maps the interval 0 . . .255 (or if you like 0 . . . 1) to itself (meaning
+that the output has the same range as the input). Here are some examples.
+
+from PIL import Image
+from numpy import *
+
+im = array(Image.open('empire.jpg’).convert('L'))
+
+im2 = 255 — im #invert image
+
+ll
+
+im3 (100.0/255) * im + 100 #clamp to interval 100...200
+
+im4 255.0 * (im/255.0)**2 #squared
+
+II
+
+The ﬁrst example inverts the graylevels of the image, the second one clamps the in-
+tensities to the interval 100. . .200 and the third applies a quadratic function, which
+lowers the values of the darker pixels. Figure 1.4 shows the functions and Figure 1.5
+the resulting images. You can check the minimum and maximum values of each image
+using
+
+print int(im.min()), int(im.max())
+
+If you try that for each of the examples above, you should get the following output:
+
+2 255
+0 253
+100 200
+0 255
+
+The reverse of the array() transformation can be done using the PIL function fromarray()
+as:
+
+pi1,im = Image.fromarray(im)
+
+If you did some operation to change the type from "uint8" to another data type, for
+example as im3 or 1'm4 in the example above, you need to convert back before creating
+the PIL image.
+
+pil,im = Image.fromarray(uint8(im))
+
+If you are not absolutely sure of the type of the input, you should do this as it is the
+safe choice. Note that NumPy will always change the array type to the "lowest" type
+that can represent the data. Multiplication or division with ﬂoating point numbers will
+change an integer type array to ﬂoat.
+
+22 1.3.NumPy
+

@@ -1,0 +1,6 @@
+Figure 7.3: Some example search results with re-ranking based on geometric consis-
+tency using homographies. For each example, the top row is the regular result and
+the bottom row the re-ranked result.
+
+7.6. Building Demos and Web Applications 203
+

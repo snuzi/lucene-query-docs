@@ -1,0 +1,38 @@
+B.5 Other
+
+Prague Texture Segmentation Datagenerator and Benchmark
+
+This set used in the segmentation chapter can generate many different types of texture
+segmentation images. Available at http : //mosaic . utia . cas . cz/index. php.
+
+MSR Cambridge Grab Cut Dataset
+
+Originaly used in the Grab Cut paper [27], this set provides segmentation images with
+
+user annotations. The data set and some papers are available from http : // re sea rch.
+
+mic rosoft . com/en- us/um/camb ridge/projects/visionimagevideoediting/segmentation/
+g rabcut . htm. The original images in the data set are from a data set that now is part
+
+of the Berkeley Segmentation Dataset http ://www.eecs . berke1ey.edu/Research/
+Projects/CS/vision/grouping/segbench/.
+
+Caltech 101
+
+This is a classic dataset that contains pictures of objects from 101 different categories
+and can be used to test object recognition algorithms. The data set is available at
+http://www.vision .ca1tech .edu/Image_Datasets/Caltech101/.
+
+Static Hand Posture Database
+
+This dataset from Sebastien Marcel is available at http : //www.idiap . ch/resource/
+gestu res / together with a few other sets with hands and gestures.
+
+Middlebury Stereo Datasets
+
+These are datasets used to benchmark stereo algorithms. They are available for down-
+load at http://vision .midd1ebu ry . edu/ste reo/data/. Every stereo pair comes with
+ground truth depth images to compare results against.
+
+290 B.5. Other
+

@@ -1,0 +1,50 @@
+# project on the 40 first PCs
+immean = immean.f1atten()
+projected = array([d0t(V[:40],immatrix[i]-immean) for i in range(imnbr)])
+
+# k—means
+projected = whiten(projected)
+centroids,distortion = kmeans(projected,4)
+
+code,distance = vq(projected,centroids)
+
+Same as before, code contains the cluster assignment for each image. In this case we
+tried k = 4. We also chose to "whiten" the data using SciPy’s whiten(), normalizing
+so that each feature has unit variance. Try to vary parameters like the number of
+principal components used and the value of k: to see how the clustering results change.
+The clusters can be visualized like this:
+# plot clusters
+for k in range(4):
+ind = where(code==k)[0]
+figure()
+9FaY()
+for i in range(minimum(1en(ind),40)):
+subp1ot(4,10,i+1)
+imshow(immatriX[ind[i]].reshape((25,25)))
+axis('off')
+show()
+
+Here we show each cluster in a separate ﬁgure window in a grid with maximum 40
+images from the cluster shown. We use the PyLab function subp1ot() to deﬁne the
+
+grid. A sample cluster result can look like the one in Figure 6.2.
+For more details on the k—means SciPy implementation and the scipy.c1uster.vq
+
+package see the reference guide http://docs . scipy . org/doc/scipy/ refe rence/cluster.
+
+vq.htm1.
+
+Visualizing the images on principal components
+
+To see how the clustering using just a few principal components as above can work,
+we can visualize the images on their coordinates in a pair of principal component
+directions. One way is to project on two components by changing the projection to
+
+projected = array([dot(V[[0,2]],immatrix[i]-immean) for i in range(imnbr)])
+to only get the relevant coordinates (in this case V[[0,2]] gives the ﬁrst and third).
+
+Alternatively, project on all components and afterwards just pick out the columns you
+need.
+
+164 6.1. K—means Clustering
+

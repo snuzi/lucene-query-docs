@@ -1,0 +1,39 @@
+ 
+
+5 7
+“S é”‘”“"e‘" s
+“"57"” 06 W02 1
+1 s 2 9
+‘E8’ 9
+e 7 3
+9 o 4 ‘
+2 o
+3 z.__,
+
+Figure 8.8: An example of rectifying an image using a full perspective transform. (left)
+the original image with the four corners of the sudoku marked. (right) rectiﬁed image
+warped to a square image of 1000 x 1000 pixels.
+
+# helper function for geometric_transf0rm
+def warpfcn(x):
+X = array([X[0],x[1],1])
+xt = dot(H,x)
+xt = xt/xt[2]
+return xt[0],xt[1]
+
+# warp image with full perspective transform
+im_g = ndimage.geometric,transform(im,warpfcn,(l000,1000))
+
+In most of these sample images an afﬁne transform, as we used in Chapter 3, is not
+enough. Here we instead used the more general transform function geometric_transform()
+from scipy.ndimage. This function takes a 2D to 2D mapping instead of a transform
+matrix so we need to use a helper function (using a piece-wise afﬁne warp on trian-
+gles will introduce artifacts in this case). The warped image is shown to the right in
+Figure 8.8.
+
+This concludes our sudoku OCR example. There are many improvements to be
+made and alternatives to investigate. Some are mentioned in the following exercises,
+the rest we leave to you.
+
+234 8.4. Optical Character Recognition
+

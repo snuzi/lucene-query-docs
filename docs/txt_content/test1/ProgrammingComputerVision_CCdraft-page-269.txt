@@ -1,0 +1,49 @@
+class LKTracker(object):
+”"" Class for Lucas—Kanade tracking with
+pyramidal optical flow.“""
+
+def __init,,(self,imnames):
+”"" Initialize with a list of image names. ”""
+
+self.imnames = imnames
+self.features = []
+self.tracks = []
+self.current,frame = 0
+
+The tracker object is initialized with a list of ﬁlenames. The variables features and
+tracks will hold the corner points and their tracked positions. We also use a Variable
+to keep track of the current frame. We deﬁne three dictionaries with parameters for
+the feature extraction, the tracking, and the subpixel feature point reﬁnement.
+
+Now, to start detecting points, we need to load the actual image, create grayscale
+version and extract the "good features to track" points. The OpenCV function doing
+the main Work is goodFeaturesToTrack(). Add this detect_points() method to the
+class.
+def detect_points(self):
+
+”"" Detect ’good features to track’ (corners) in the current frame
+using sub-pixel accuracy. ”""
+
+# load the image and create grayscale
+self.image = cv2.imread(self.imnames[self.current_frame])
+self.gray = cv2.cvtColor(self.image,cv2.COLOR,BGR2GRAY)
+
+# search for good points
+features = cv2.goodFeaturesToTrack(self.gray, **feature_params)
+
+# refine the corner locations
+cv2.cornerSubPix(self.gray,features, **subpix_params)
+
+self.features = features
+self.tracks = [[p] for p in features.reshape((—l,2))]
+
+self.prev,gray = self.gray
+
+The point locations are reﬁned using cornerSubPix() and stored in the member Vari-
+ables features and tracks. Note that running this function clears the track history.
+Now that we can detect the points, we also need to track them. First we need
+to get the next frame, then apply the OpenCV function ca1cOptica1F1owPyrLK() that
+ﬁnds out where the points moved and remove and clean the lists of tracked points.
+
+10.4. Tracking 269
+

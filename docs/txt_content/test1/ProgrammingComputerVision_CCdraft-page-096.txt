@@ -1,0 +1,53 @@
+To ﬁt a homography using RANSAC we ﬁrst need to add the following model class
+to homographypy.
+class RansacMode1(object):
+
+"““ Class for testing homography fit with ransac.py from
+http://www.scipy.org/Cookbook/RANSAC”""
+
+def __init__(se1f,debug=Fa1se):
+se1f.debug = debug
+
+def fit(se1f, data):
+"““ Fit homography to four selected correspondences. "““
+
+# transpose to fit H_from,points()
+data = data.T
+
+# from points
+
+fp = data[:3,:4]
+# target points
+tp = data[3:,:4]
+
+# fit homography and return
+
+return H,from,points(fp,tp)
+
+def get_error( self, data, H):
+"““ Apply homography to all correspondences,
+return error for each transformed point. "““
+
+data = data.T
+
+# from points
+
+fp = data[:3]
+# target points
+tp = data[3:]
+
+# transform fp
+fpitransformed = dot(H,fp)
+
+# normalize hom. coordinates
+for i in range(3):
+fp,transformed[i] /= fp,transformed[2]
+
+# return error per point
+return sqrt( sum((tp-fpitransformed)**2,axis=0) )
+
+As you can see, this class contains a fit() method which just takes the four corre-
+spondences selected by ransaapy (they are the ﬁrst four in data) and ﬁts a homogra-
+
+96 3.3. Creating Panoramas
+

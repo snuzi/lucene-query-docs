@@ -1,0 +1,46 @@
+After the source image there is an OpenCV color conversion code. Some of the most
+useful conversion codes are:
+
+° Cv2.COLOR_BGR2GRAY
+° cv2.COLOR_BGR2RGB
+° CV2.COLOR_GRAY2BGR
+
+In each of these, the number of color channels for resulting images will match the
+conversion code (single channel for gray and three channels for RGB and BGR). The
+last version converts grayscale images to BGR and is useful if you want to plot or
+overlay colored objects on the images. We will use this in the examples.
+
+Displaying images and results
+
+Let's look at some examples of using OpenCV for image processing and how to show
+results with OpenCV plotting and window management.
+
+The ﬁrst example reads an image from ﬁle and creates an integral image represen-
+tation.
+
+import cv2
+
+# read image
+im = cv2.imread( 'fisherman.jpg')
+gray = cv2.cvtCo1or(im,cv2.COLOR,BGR2GRAY)
+
+# compute integral image
+intim = cv2.integral(gray)
+
+# normalize and save
+intim = (255.0*intim) / intim.max()
+cv2.imwrite('resu1t.jpg',intim)
+
+After reading the image and converting to grayscale the function integral() creates
+an image where the value at each pixel is the sum of the intensities above and to the
+left. This is a very useful trick for quickly evaluating features. Integral images are
+used in OpenCV’s CascadeC1assifier which is based on a framework introduced by
+Viola and Jones [39]. Before saving the resulting image, we normalize the values to
+O. . .255 by dividing with the largest value. Figure 1 0.1 shows the result for an example
+image.
+The second example applies ﬂood ﬁlling starting from a seed pixel.
+
+import cv2
+
+10.2. OpenCV Basics 259
+

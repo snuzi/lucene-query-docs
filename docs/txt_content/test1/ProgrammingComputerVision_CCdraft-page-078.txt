@@ -1,0 +1,52 @@
+3.2 Warping images
+
+Applying an afﬁne transformation matrix H on image patches is called warping (or
+afﬁne warping) and is frequently used in computer graphics but also in several com-
+puter vision algorithms. A warp can easily be performed with SciPy using the ndimage
+package. The command
+
+transformed_im = ndimage.affine,transform(im,A,b,size)
+
+transforms the image patch im with A a linear transformation and b a translation
+vector as above. The optional argument size can be used to specify the size of the
+output image. The default is an image with the same size as the original. To see how
+this works, try running the following commands:
+
+from scipy import ndimage
+
+im = array(Image.open('empire.jpg').convert('L'))
+H = array([[l.4,0.05,-100],[0.05,l.5,—l00],[0,0,l]])
+im2 = ndimage.affine,transform(im,H[:2,:2],(H[0,2],H[1,2]))
+
+figure()
+
+9Fay()
+imshow(im2)
+show()
+
+This gives a result like the image to the right in Figure 3.1. As you can see, missing
+pixel values in the result image are ﬁlled with zeros.
+
+Image in image
+
+A simple example of afﬁne warping is to place images, or parts of images, inside
+another image so that they line up with speciﬁc areas or landmarks.
+
+Add the function image_in_image() to waIp.py. This function takes two images and
+the corner coordinates of where to put the ﬁrst image in the second.
+def image,in,image(im1,im2,tp):
+
+""" Put iml in im2 with an affine transformation
+
+such that corners are as close to tp as possible.
+tp are homogeneous and counter-clockwise from top left. """
+
+# points to warp from
+m,n = iml.shape[:2]
+fp = array([[0.m.m.0].[0.0.n.n].[1.1.1.1]])
+
+# compute affine transform and apply
+H = homography.Haffineifromipoints(tp,fp)
+
+78 3.2. Warping images
+

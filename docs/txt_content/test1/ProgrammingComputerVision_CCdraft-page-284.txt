@@ -1,0 +1,44 @@
+$ easyiinstall python-graph-core
+
+Alternatively, download the source code from http : // code . google . com/ p/ pyt hon - g raph/
+downloads/list and run
+
+$ python setup.py install
+
+To write and visualize the graphs (using the DOT language) you need python-graph-dot
+which comes with the download or through easy_install:
+
+$ easyiinstall python-graph-dot
+
+Python-graph-dot depends on pydot, see above. The documentation (in html) is in the
+"docs/" folder.
+
+A.1 1 Simplejson
+
+Simplejson is the independently maintained version of the JSON module that comes
+with later versions of python (2.6 or later). The syntax is the same for both modules
+but simplejson is more optimized and will give better performance.
+
+To install, go to the project page https://github.com/simplejson/simplejson
+and click the Download button. Then select the latest version from the "Download
+Packages" section (currently this is 2.1.3). Unzip the folder and type
+
+$ python setup.py install
+
+from the command line. This should be all you need.
+
+A.12 PySQLite
+
+PySQLite is an SQLite binding for python. SQLite is a lightweight disk-based database
+that can be queried with SQL and is easy to install and use. The latest version is 2.6.3,
+see the project website http : //code . google . com/p/pysqlite/ for more details.
+
+To install, download from http : //code . google . com/p/pysqlite/downloads/list
+and unzip to a folder. Run
+
+$ python setup.py install
+
+from the command line.
+
+284 A.1 1. Simplejson
+

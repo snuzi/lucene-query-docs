@@ -1,0 +1,53 @@
+gr.add_edge((i,i+n), wt=edge_wt)
+return gr
+
+Here we used a label image with values 1 for foreground training data and -1 for
+background training data. Based on this labeling, a Bayes classiﬁer is trained on the
+RGB values. Then classiﬁcation probabilities are computed for each pixel. These are
+then used as edge weights for the edges going from the source and to the sink. A
+graph with n >a< m + 2 nodes is created. Note the index of the source and sink, we
+choose them as the last two to simplify the indexing of the pixels.
+
+To visualize the labeling overlaid on the image we can use the function contourf()
+which ﬁlls the regions between contour levels of an image (in this case the label im-
+age). The alpha variable sets the transparency. Add the following function to graph-
+
+cut.py.
+
+def showL1abe1ing(im,labels):
+""" Show image with foreground and background areas.
+labels = 1 for foreground, -1 for background, 0 otherwise."""
+
+imshow(im)
+
+contour(1abe1s,[-0.5,0.5])
+contourf(1abe1s,[-1,-0.5],colors='b',a1pha=0.25)
+contourf(1abe1s,[0.5,1],colors='r',alpha=0.25)
+axis('off')
+
+Once the graph is built it needs to be cut at the optimal location. The following
+function computes the min cut and reformats the output to a binary image of pixel
+labels.
+
+def cut_graph(gr,imsize):
+""" Solve max flow of graph gr and return binary
+labels of the resulting segmentation.”""
+
+m,n = imsize
+source = m*n # second to last is source
+sink = m*n+1 # last is sink
+
+# cut the graph
+f1ows,cuts = maXimum,f1ow(gr,source,sink)
+
+# convert graph to image with labels
+
+res = zeros(m*n)
+
+for pos,1abe1 in cuts.items()[:—2]: #don’t add source/sink
+res[pos] = label
+
+return res.reshape((m,n))
+
+242 9.1.Graph.Cuts
+

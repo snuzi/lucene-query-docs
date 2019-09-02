@@ -1,0 +1,50 @@
+# take the points in the first image as reference points
+refpoints = faces.values()[0]
+
+# warp each image using affine transform
+for face in faces:
+points = faces[face]
+
+R,tx,ty = compute,rigid_transform(refpoints, points)
+T = aFFay([[R[1][1]. R[1][0]]. [R[0][1]. R[0][0]]])
+
+im = array(Image.open(os.path.join(path,face)))
+im2 = zeros(im.shape, 'uint8’)
+
+# warp each color channel
+for i in range(1en(im.shape)):
+im2[:,:,i] = ndimage.affine,transform(im[:,:,i],1ina1g.inv(T),offset=[-ty,-tX])
+
+if plotflag:
+imshow(im2)
+show()
+
+# crop away border and save aligned images
+h,w = im2.shape[:2]
+border = (w+h)/20
+
+# crop away border
+imsave(os.path.join(path, 'aligned/’+face),im2[border:h—border,border:w—border,:])
+
+Here we use the imsave() function to save the aligned images to a sub-directory
+"aligned".
+
+The following short script will read the XML ﬁle containing ﬁlenames as keys and
+points as values and then register all the images to align them with the ﬁrst one.
+
+import imregistration
+
+# load the location of control points
+xmlFileName = 'jkfaces2008_small/jkfaces.xml'
+points = imregistration.readipointsifromixml(xm1Fi1eName)
+
+# register
+imregistration.rigid,a1ignment(points,'jkfaces2008,sma11/')
+
+If you run this you should get aligned face images in a sub-directory. Figure 3.6 shows
+six sample images before and after registration. The registered images are cropped
+slightly to remove the undesired black ﬁll pixels that may appear at the borders of the
+images.
+
+90 3.2. Warping images
+

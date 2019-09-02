@@ -1,0 +1,50 @@
+glEnable(GL,LIGHTO)
+glEnable(GL,DEPTH,TEST)
+glClear(GL,DEPTH,BUFFER,BIT)
+
+# set model color
+glMaterialfv(GL,FRONT,GL,AMBIENT,[0,0,0,0])
+glMaterialfv(GL,FRONT,GL,DIFFUSE,[0.5,0.75,l.0,0.0])
+glMaterialf(GL,FRONT,GL,SHININESS,0.25*128.0)
+
+# load from a file
+
+import objloader
+
+obj = objloader.0BJ(filename,swapyz=True)
+glCallList(obj.gl,list)
+
+Same as before, we set the lighting and the color properties of the model. Next we
+load a model ﬁle into an OBJ object and execute the OpenGL calls from the ﬁle.
+
+You can set the texture and material properties in a corresponding .mtl ﬁle. The
+obj loader module actually requires a material ﬁle. Rather than modifying the loading
+script, we take the pragmatic approach of just creating a tiny material ﬁle. In this case
+we'll just specify the color.
+
+Create a ﬁle toyp1ane.mt1 with the following lines.
+
+newmtl lightblue
+Kd 0.5 0.75 1.0
+illum 1
+
+This sets the diffuse color of the object to a light grayish blue. Now, make sure to
+replace the "usemtl" tag in your .obj ﬁle to
+
+usemtl lightblue
+
+Adding textures we leave to the exercises. Replacing the call to draw_teapot() in the
+example above with
+
+load,and_drawLmodel('toyplane.obj')
+
+should generate a window like the one shown in Figure 4.6.
+
+This is as deep as we will go into augmented reality and OpenGL in this book. With
+the recipe for calibrating cameras, computing camera pose, translating the cameras
+into OpenGL format and rendering models in the scene, the groundwork is laid for you
+to continue exploring augmented reality. In the next chapter we will continue with the
+camera model and compute 3D structure and camera pose without the use of markers.
+
+124 4.4. Augmented Reality
+

@@ -1,0 +1,30 @@
+ 
+
+Figure 9.1: A simple directed graph created using python — graph.
+
+These two python dictionaries contain the ﬂow through each edge and the label for
+each node, 0 for the part of the graph containing the source, 1 for the nodes connected
+to the sink. You can verify manually that the cut is indeed the minimum. The graph is
+shown in Figure 9.1.
+
+Graphs from images
+
+Given a neighborhood structure, we can deﬁne a graph using the image pixels as
+nodes. Here we will focus on the simplest case of 4-neighborhood of pixels and two
+image regions (which we can call foreground and background). A 4-neighborhood is
+where a pixel is connected to the pixels directly above, below, left, and right3.
+
+In addition to the pixel nodes, we will also need two special nodes a "source" node
+and a "sink" node, representing the foreground and background respectively. We will
+use a simple model where all pixels are connected to the source and the sink.
+
+Here's how to build the graph:
+
+- Every pixel node has an incoming edge from the source node.
+
+- Every pixel node has an outgoing edge to the sink node.
+
+3Another common option is 8—neighborhood where the diagonal pixels are also connected
+
+9.1. Graph Cuts 239
+

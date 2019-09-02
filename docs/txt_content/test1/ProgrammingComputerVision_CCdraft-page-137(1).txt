@@ -1,0 +1,54 @@
+For two views with camera matrices P1 and P2, each with a projection X1 and X2
+of the same 3D point X (all in homogeneous coordinates), the camera equation (4.1)
+gives the following relation
+
+X
+[P1 —X1 0 :| A _ 0
+P2 0 —X2 
+
+There might not be an exact solution to these equations due to image noise, errors in
+the camera matrices or other sources of errors. Using SVD, we can get a least squares
+estimate of the 3D point.
+
+Add the following function that computes the least squares triangulation of a point
+pair to sfm.py.
+def triangulateipoint(X1,X2,Pl,P2):
+
+”"" Point pair triangulation from
+least squares solution. ”""
+
+M = zeros((6,6))
+
+M[:3,:4] = P1
+M[3:,:4] = P2
+
+M[:3,4] = —Xl
+
+M[3:,5] = -X2
+
+U,S,V = linalg.svd(M)
+X = V[-l,:4]
+
+return X / X[3]
+
+The ﬁrst four values in the last eigenvector are the 3D coordinates in homogeneous
+coordinates. To triangulate many points, we can add the following convenience func-
+tion.
+
+def triangulate(Xl,X2,Pl,P2):
+
+”"" Two-View triangulation of points in
+x1,x2 (3*n homog. coordinates). ”""
+
+n = xl.shape[1]
+if x2.shape[l] != n:
+raise Va1ueError(”Number of points don't match.")
+
+X = [ triangu1ate_point(Xl[:,i],x2[:,i],Pl,P2) for i in range(n)]
+return array(X).T
+
+This function takes two arrays of points and returns an array of 3D coordinates.
+Try the triangulation on the Mertonl data like this.
+
+5.2. Computing with Cameras and 3D Structure 137
+

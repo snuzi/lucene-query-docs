@@ -1,0 +1,35 @@
+Chapter 10
+
+OpenCV
+
+This chapter gives a brief overview of how to use the popular computer vision library
+OpenCV through the Python interface. OpenCV is a C++ library for real time computer
+vision initially developed by Intel, now maintained by Willow Garage. OpenCV is open
+source and released under a BSD license, meaning it is free for both academic and
+commercial use. As of version 2.0, Python support has been greatly improved. We will
+go through some basic examples and look deeper into tracking and video.
+
+10.1 The OpenCV Python Interface
+
+OpenCV is a C++ library with modules that cover many areas of computer vision. Be-
+sides C++ (and C) there is growing support for Python as a simpler scripting language
+through a Python interface on top of the C++ code base. The Python interface is still
+under development and not all parts of OpenCV are exposed and many functions are
+undocumented. This is likely to change as there is an active community behind this
+interface. The Python interface is documented at http : //opencv .wi1lowga rage . com/
+doc umentation/ pyt hon/index. html. See the appendix for installation instructions.
+
+The current OpenCV version (2.3.1) actually comes with two Python interfaces.
+The old cv module uses internal OpenCV datatypes and can be a little tricky to use
+from NumPy. The new cv2 module uses NumPy arrays and is much more intuitive to
+usel. The module is available as
+
+import cv2
+
+and the old module can be accessed as
+
+1The names and location of these two modules are likely to change over time, check the online docu-
+mentation for changes.
+
+257
+

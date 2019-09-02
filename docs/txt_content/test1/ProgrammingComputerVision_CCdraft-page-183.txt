@@ -1,0 +1,23 @@
+ 
+
+Figure 6.10: Spectral clustering of geotagged images of the White House with k =
+10 and the similarity scores as the number of matching local descriptors. Only the
+clusters with more than one image shown.
+
+groups of a given size. Implement this small change and try it out on some real
+data. How does it perform?
+
+4. Experiment with using single and complete linking for building the hierarchical
+cluster tree. How do the resulting clusters differ?
+
+5. In some spectral clustering algorithms the matrix D‘1S is used instead of L. Try
+replacing the Laplacian matrix with this and apply this on a few different data
+sets.
+
+6. Download some image collections from Flickr searches with different tags. Ex-
+tract the RGB histogram like you did for the sunset images. Cluster the images
+using one of the methods from this chapter. Can you separate the classes with
+the clusters?
+
+6.3. Spectral Clustering 183
+

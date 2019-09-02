@@ -1,0 +1,34 @@
+ 
+
+Figure 1.3: Examples of visualizing image contours and plotting image histograms
+with Matplotlib.
+
+This plots an image and waits for the user to click three times in the image region of
+the ﬁgure window. The coordinates [33, y] of the clicks are saved in a list X.
+
+1.3 NumPy
+
+NumPy (http : //www . scipy . o rg/NumPy/) is a package popularly used for scientiﬁc com-
+puting with Python. NumPy contains a number of useful concepts such as array objects
+(for representing vectors, matrices, images and much more) and linear algebra func-
+tions. The NumPy array object will be used in almost all examples throughout this
+bookl. The array object let's you do important operations such as matrix multiplica-
+tion, transposition, solving equation systems, vector multiplication, and normalization,
+which are needed to do things like aligning images, warping images, modeling varia-
+tions, classifying images, grouping images, and so on.
+
+NumPy is freely available from http : //www. scipy . org/Download and the online
+documentation (http : //docs . scipy . o rg/doc/numpy/) contains answers to most ques-
+tions. For more details on NumPy, the freely available book [24] is a good reference.
+
+Array image representation
+
+When we loaded images in the previous examples, we converted them to NumPy array
+objects with the array() call but didn't mention what that means. Arrays in NumPy are
+multi-dimensional and can represent vectors, matrices, and images. An array is much
+
+1PyLab actually includes some components of NumPy, like the array type. That's why we could use it in
+the examples in Section 1.2.
+
+20 1.3. NumPy
+

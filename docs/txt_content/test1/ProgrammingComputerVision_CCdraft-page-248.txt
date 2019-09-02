@@ -1,0 +1,52 @@
+9.2 Segmentation using Clustering
+
+The graph cut formulation in the previous section solves the segmentation problem
+by ﬁnding a discrete solution using max ﬂow / min cut over an image graph. In this
+section we will look at an alternative way to cut the image graph. The normalized
+cut algorithm, based on spectral graph theory, combines pixel similarities with spatial
+proximity to segment the image.
+
+The idea comes from deﬁning a cut cost that takes into account the size of the
+groups and "normalizes" the cost with the size of the partitions. The normalized cut
+formulation modiﬁes the cut cost of equation (9.1) to
+
+Ecut + Ecut
+Zia/1 wins ZjEB wjm
+where A and B indicate the two sets of the cut and the sums add the weights from
+A and B respectively to all other nodes in the graph (which is pixels in the image in
+this case). This sum is called the association and for images where pixels have the
+same number of connections to other pixels it is a rough measure of the size of the
+partitions. In the paper [32] the cost function above was introduced together with an
+algorithm for ﬁnding a minimizer. The algorithm is derived for two-class segmentation
+and will be described next.
+
+Deﬁne W as the edge weight matrix with elements w,-j containing the weight of the
+edge connecting pixel 2' with pixel j. Let D be the diagonal matrix of the row sums of S,
+D = diag(d,-), d,- = Zj w,-j (same as in Section 6.3). The normalized cut segmentation
+is obtained as the minimum of the following optimization problem
+
+. yT(D - W)y
+min T
+y yTDy
+
+Encut : 7
+
+where the vector y contains the discrete labels that satisfy the constraints y,- E {1, —b}
+for some constant (9 (meaning that y only takes two discrete values) and yTD sum to
+zero. Because of these constraints, this is not easily solvable4.
+
+However, by relaxing the constraints and letting y take any real value, the problem
+becomes an eigenvalue problem that is easily solved. The drawback is that you need
+to threshold or cluster the output to make it a discrete segmentation again.
+
+Relaxing the problem results in solving for eigenvectors of a Laplacian matrix
+
+L = D‘1/2WD‘1/2 ,
+
+just like the spectral clustering case. The only remaining difﬁculty is now to deﬁne the
+between-pixel edge weights w,-j. Normalized cuts have many similarities to spectral
+
+4In fact this problem is NP—hard.
+
+248 9.2. Segmentation using Clustering
+

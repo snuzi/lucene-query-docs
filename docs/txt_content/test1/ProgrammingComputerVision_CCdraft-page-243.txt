@@ -1,0 +1,51 @@
+Again, note the indices for the source and sink. We need to take the size of the image
+as input to compute these indices and to reshape the output before returning the
+segmentation. The cut is returned as a dictionary which needs to be copied to an
+image of segmentation labels. This is done using the .items() method that returns a
+list of (key, value) pairs. Again we skip the last two elements of that list.
+
+Let's see how to use these functions for segmenting an image. The following is a
+complete example of reading an image and creating a graph with class probabilities
+estimated from two rectangular image regions.
+
+from scipy.misc import imresize
+import graphcut
+
+im = array(Image.open('empire.jpg'))
+im = imresize(im,0.07,interp='bi1inear')
+size = im.shape[:2]
+
+# add two rectangular training regions
+labels = zeros(size)
+
+1abe1s[3:18,3:18] = -1
+1abe1s[-18:—3,-18:—3] = 1
+
+# create graph
+g = graphcut.bui1d_bayes_graph(im,1abe1s,kappa=1)
+
+# cut the graph
+res = graphcut.cut_graph(g,size)
+
+figure()
+graphcut.shomL1abe1ing(im,1abe1s)
+
+figure()
+imshow(res)
+
+9Fay()
+axis('off')
+
+show()
+
+We use the imresize() function to make the image small enough for our Python graph
+library, in this case uniform scaling to 7% of the original size. The graph is cut and the
+result plotted together with an image showing the training regions. Figure 9.2 shows
+the training regions overlaid on the image and the ﬁnal segmentation result.
+
+The variable kappa (If in the equations) determines the relative weight of the edges
+between neighboring pixels. The effect of changing kappa can be seen in Figure 9.3.
+With increasing value, the segmentation boundary will be smoother and details will
+
+9.1. Graph Cuts 243
+

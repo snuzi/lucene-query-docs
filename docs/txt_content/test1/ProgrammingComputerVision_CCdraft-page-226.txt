@@ -1,0 +1,54 @@
+ 
+
+I I . Q
+4 . 0 "-.3‘
+'. " 3 ' c
+-. .
+2 .. . - .__
+2 , on I’. . , _
+_ . . _ It.
+0 0 :u_ : ‘F.
+.- .1 '. - ‘
+-2 -2 '.. . ‘ -:50’. u
+.. . _ '0 on
+-4 . ,o u: . : _ ._
+.
+-4 ° 3' .'.‘.§-, .3‘
+-6 - ° 0 .
+
+Figure 8.5: Classifying 2D data using a Support Vector Machine classiﬁer. For each
+example the color shows the class label (blue and red). Correctly classiﬁed points
+are shown with stars and misclassiﬁed points with circles. The curve is the classiﬁer
+decision boundary.
+
+# plot the classification boundary
+imtools.plot_2D_boundary([—6,6,—6,6],[array(class_1),array(c1ass_2)],predict,[—1,1])
+show()
+
+Again we have to convert the data to lists for LibSVM. As before, we also deﬁne a
+helper function predict() for plotting the classiﬁcation boundary Note the use of a list
+of zeros [0] *1en(x) as a replacement for the label list if true labels are unavailable.
+You can use any list as long as it has the correct length. The 2D plots for the two
+different point data sets are shown in Figure 8.5.
+
+Hand gesture recognition again
+
+Using LibSVM on our multi-class hand gesture recognition problem is fairly straight
+forward. Multiple classes are automatically handled, we only need to format the data
+so that the input and output matches the requirements of LibSVM.
+
+With training and testing data features and test_features as in the previous exam-
+ples, the following will load the data and train a linear SVM classiﬁer.
+
+features = map(list,features)
+test_features = map(list,test,features)
+
+# create conversion function for the labels
+
+transl = {}
+
+for i,c in enumerate(classnames):
+trans1[c],trans1[i] = i,c
+
+226 8.3. Support Vector Machines
+

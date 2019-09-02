@@ -1,0 +1,56 @@
+# RGB vector version (one pixel per row)
+vim = im.reshape((—1,3))
+
+# RGB for foreground and background
+foreground = im[labels==1].reshape((-1,3))
+background = im[labels==—1].reshape((-1,3))
+train_data = [foreground,background]
+
+# train naive Bayes classifier
+bc = bayes.BayesClassifier()
+bc.train(train,data)
+
+# get probabilities for all pixels
+bc_lables,prob = bc.classify(vim)
+prob_fg = prob[0]
+
+probibg prob[1]
+
+# create graph with m*n+2 nodes
+gr = digraph()
+gr.add,nodes(range(m*n+2))
+
+source = m*n # second to last is source
+sink = m*n+l # last node is sink
+
+# normalize
+for i in range(vim.shape[0]):
+vim[i] = vim[i] / linalg.norm(vim[i])
+
+# go through all nodes and add edges
+for i in range(m*n):
+# add edge from source
+gr.add_edge((source,i), wt=(prob_fg[i]/(probifg[i]+probibg[i])))
+
+# add edge to sink
+gr.add_edge((i,sink), wt=(prob,bg[i]/(probifg[i]+probibg[i])))
+
+# add edges to neighbors
+
+if i%n != 0: # left exists
+edgeiwt = kappa*exp(—1.0*sum((vim[i]-vim[i—1])**2)/sigma)
+gr.add_edge((i,i—1), wt=edge_wt)
+
+if (i+l)%n != 0: # right exists
+edgeiwt = kappa*exp(-l.0*sum((vim[i]-vim[i+l])**2)/sigma)
+gr.add_edge((i,i+1), wt=edge_wt)
+
+if i//n != 0: # up exists
+edgeiwt = kappa*exp(-l.0*sum((vim[i]-vim[i-n])**2)/sigma)
+gr.add_edge((i,i-n), wt=edge_wt)
+
+if i//n != m—1: # down exists
+edgeiwt = kappa*exp(-l.0*sum((vim[i]-vim[i+n])**2)/sigma)
+
+9.1. Graph Cuts 241
+

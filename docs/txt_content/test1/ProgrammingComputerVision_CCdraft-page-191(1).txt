@@ -1,0 +1,45 @@
+imlist l l imwords| l imhistograms
+
+rowid imid imid
+ﬁlename wordid histogram
+vocname vocname
+
+Table 7.1: A simple database schema for storing images and visual words.
+
+import pickle
+from pysqlite2 import dbapi2 as sqlite
+
+class Indexer(object):
+def ,_initi,(self,db,voc):
+
+""" Initialize with the name of the database
+and a vocabulary object. """
+
+self.con - sqlite.connect(db)
+self.voc voc
+
+def i_del__(self):
+self.con.close()
+
+def db_commit(self):
+self.con.commit()
+
+First of all, we need pickle for encoding and decoding these arrays to and from
+strings. SQLite is imported from the pysq1ite2 module (see appendix for installa-
+tion details). The Indexer class connects to to a database and stores a vocabulary
+object upon creation (where the _init_() method is called). The _de1_() method
+makes sure to close the database connection and db_commit() writes the changes to
+the database ﬁle.
+
+We only need a very simple database schema of three tables. The table imlist
+contains the ﬁlenames of all indexed images, imwords contains a word index of the
+words, which vocabulary was used, and which images the words appear in. Finally,
+imhistograms contains the full word histograms for each image. We need those to
+compare images according to our vector space model. The schema is shown in Ta-
+ble 7.1.
+
+The following method for the Indexer class creates the tables and some useful
+indexes to make searching faster.
+
+7.3. Indexing Images 191
+

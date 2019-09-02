@@ -1,0 +1,56 @@
+imshow(iml)
+# plot each line individually, this gives nice colors
+for i in range(5):
+
+sfm.plot,epipolar,line(iml,F,x2[:,i],e,False)
+axis('off')
+
+figure()
+
+imshow(im2)
+
+# plot each point individually, this gives same colors as the lines
+for i in range(5):
+
+plot(x2[0,i],X2[l,i],'0’)
+axis('off')
+
+show()
+
+First the points that are in correspondence between the two images are selected and
+made into homogeneous coordinates. Here we just read them from a text ﬁle, in reality
+these would be the result of extracting features and matching them like we did in
+Chapter 2. The missing values in the correspondence list corr are -1 so picking indices
+greater or equal to zero gives the points visible in each view. The two conditions are
+combined with the array operator &.
+
+Lastly, the ﬁrst ﬁve of the epipolar lines are shown in the ﬁrst view and the corre-
+sponding matching points in view 2. Here we used the helper plot function.
+def plot,epipolar,line(im,F,X,epipole=None,shouLepipo1e=True):
+
+”"" Plot the epipole and epipolar line F*x=0
+
+in an image. F is the fundamental matrix
+and X a point in the other image.“""
+
+m,n = im.shape[:2]
+line = dot(F,x)
+
+# epipolar line parameter and values
+t = linspace(0,n,100)
+It = array([(line[2]+1ine[0]*tt)/(-line[l]) for tt in t])
+
+# take only line points inside the image
+ndx = (lt>=0) & (1t<m)
+p1ot(t[ndx],lt[ndx],linewidth=2)
+
+if show_epipole:
+if epipole is None:
+epipole = compute_epipole(F)
+plot(epipole[0]/epipole[2],epipole[1]/epipole[2],'r*')
+
+This function parameterizes the line with the range of the x axis and removes parts of
+lines above and below the image border. If the last parameter show_ep1'po1e is true,
+
+5.1. Epipolar Geometry 135
+

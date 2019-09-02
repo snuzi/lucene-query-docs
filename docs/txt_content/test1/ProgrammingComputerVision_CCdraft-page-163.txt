@@ -1,0 +1,44 @@
+Q : .
+O O O.
+I ‘ . I
+. #05:’? .0’.
+. " ‘EN
+- .. C. '10?!‘ o
+‘ 0 . " Q’ :0
+. f.-0: . I
+”--. ‘.3
+N. Ev‘. q 0 "
+0 o . \
+
+Figure 6.1: An example of k:-means clustering of 2D points. Class centroids are marked
+as green rings and the predicted classes are blue stars and red dots respectively.
+
+Clustering images
+
+Let's try k:-means on the font images described on page 28. The ﬁle se1ectedfont1'm-
+ages.z1'p contains 66 images from this font data set (these are selected for easy overview
+when illustrating the clusters). As descriptor vector for each image we will use the
+projection coefﬁcients after projecting on the 40 ﬁrst principal components computed
+earlier. Loading the model ﬁle using pickle, projecting the images on the principal
+components and clustering is then done like this.
+
+import imtools
+import pickle
+from scipy.cluster.vq import *
+
+# get list of images
+imlist = imtools.get,imlist('selected_fontimages/')
+imnbr = len(imlist)
+
+# load model file
+
+with open('a_pca,modes.pkl','rb') as f:
+immean = pickle.load(f)
+V = pickle.load(f)
+
+# create matrix to store all flattened images
+immatrix = array([array(Image.open(im)).flatten()
+for im in imlist],'f')
+
+6.1. K—means Clustering 163
+

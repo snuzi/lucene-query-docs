@@ -1,0 +1,49 @@
+that have all coefﬁcients positivel. That means the pixel is inside the triangle. Add
+the following function alpha_for_triangle(), which was used in the example above,
+to warp.py.
+
+def a1pha,for_triang1e(points,m,n):
+""" Creates alpha map of size (m,n)
+for a triangle with corners defined by points
+(given in normalized homogeneous coordinates). """
+
+alpha = zeros((m,n))
+for i in range(min(points[0]),max(points[0])):
+for j in range(min(points[l]),max(points[l])):
+X = 1ina1g.so1ve(points,[i,j,l])
+if min(X) > 0: #all coefficients positive
+a1pha[i,j] = 1
+return alpha
+
+This is an operation your graphics card can do extremely fast. Python is a lot slower
+than your graphics card (or a C/C++ implementation for that matter) but it works just
+ﬁne for our purposes. As you can see at the bottom of Figure 3.3, the corners now
+match.
+
+Piecewise afﬁne warping
+
+As we saw in the example above, afﬁne warping of triangle patches can be done to
+exactly match the corner points. Let's look at the most common form of warping
+between a set of corresponding points, piecewise afﬁne warping. Given any image
+with landmark points we can warp that image to corresponding landmarks in another
+image by triangulating the points into a triangle mesh and then warping each triangle
+with an afﬁne transform. These are standard operations for any graphics and image
+processing library. Here we show how to do this using PyLab and SciPy.
+
+To triangulate points, Delaunay triangulation is often used. An implementation of
+Delaunay triangulation comes included in Mat pl otlib (but outside the PyLab part) and
+can be used like this:
+
+import matplot1ib.de1aunay as md
+
+X,y = array(random.standard,normal((2,100)))
+centers,edges,tri,neighbors = md.delaunay(x,y)
+
+figure()
+for t in tri:
+
+1A convex combination is a linear combination 2]. ozjx.» (in this case of the triangle points) such that
+all coefﬁcients oz,» are non—negative and sum to 1.
+
+82 3.2. Warping images
+

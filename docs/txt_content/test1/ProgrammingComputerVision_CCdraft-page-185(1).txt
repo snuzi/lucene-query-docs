@@ -1,0 +1,34 @@
+Chapter 7
+
+Searching Images
+
+This chapter shows how to use text mining techniques to search for images based
+on their visual content. The basic ideas of using visual words are presented and the
+details of a complete setup are explained and tested on an example image data set.
+
+7.1 Content-based Image Retrieval
+
+Content-based image retrieval (CBIR) deals with the problem of retrieving visually
+similar images from a (large) database of images. This can be images with similar
+color, similar textures or similar objects or scenes, basically any information contained
+in the images themselves.
+
+For high-level queries, like ﬁnding similar objects, it is not feasible to do a full com-
+parison (for example using feature matching) between a query image and all images in
+the database. It would simply take too much time to return any results if the database
+is large. In the last couple of years, researchers have successfully introduced tech-
+niques from the world of text mining for CBIR problems making it possible to search
+millions of images for similar content.
+
+Inspiration from text mining - the vector space model
+
+The vector space mode] is a model for representing and searching text documents. As
+we will see, it can be applied to essentially any kind of objects, including images. The
+name comes from the fact that text documents are represented with vectors that are
+histograms of the word frequencies in the textl. In other words, the vector will contain
+the number of occurrences of every word (at the position corresponding to that word)
+
+1Often you see "term" used instead of "word", the meaning is the same.
+
+185
+

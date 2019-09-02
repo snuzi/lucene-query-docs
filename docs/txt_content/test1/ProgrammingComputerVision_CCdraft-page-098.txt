@@ -1,0 +1,51 @@
+tp,fp = convert,points(3) #NB: reverse order
+H,43 = homography.H_from,ransac(fp,tp,mode1)[0] #im 4 to 3
+
+In this example image number 2 is the central image and the one we want to warp the
+others to. Image 0 and 1 should be warped from the right and image 3 and 4 from
+the left. The matches were computed from the rightmost image in each pair, therefore
+we reverse the order of the correspondences for the images warped from the left. We
+also take only the ﬁrst output (the homography) as we are not interested in the inlier
+points for this warping case.
+
+Stitching the images together
+
+With the homographies between the images estimated (using RANSAC) we now need
+to warp all images to a common image plane. It makes most sense to use the plane
+of the center image (otherwise the distortions will be huge). One way to do this is to
+create a very large image, for example ﬁlled with zeros, parallel to the central image
+and warp all the images to it. Since all our images are taken with a horizontal rotation
+of the camera we can use a simpler procedure, we just pad the central image with
+zeros to the left or right to make room for the warped images. Add the following
+function which handles this to waIp.py.
+
+def panorama(H,fromim,toim,padding=2400,de1ta=2400):
+""" Create horizontal panorama by blending two images
+using a homography H (preferably estimated using RANSAC).
+The result is an image with the same height as toim. ’padding’
+specifies number of fill pixels and ’delta’ additional translation. """
+
+# check if images are grayscale or color
+is,color = len(fromim.shape) == 3
+
+# homography transformation for geometric_transform()
+def transf(p):
+D2 = d0t(H.[p[0].D[1].l])
+return (p2[0]/p2[2].p2[l]/p2[2])
+
+if H[l,2]<0: # fromim is to the right
+
+print 'warp - right’
+
+# transform fromim
+
+if is_color:
+# pad the destination image with zeros to the right
+toim_t = hstack((toim,zeros((toim.shape[0],padding,3))))
+fromimit = zeros((toim.shape[0],toim.shape[l]+padding,toim.shape[2]))
+for C01 in range(3):
+
+fromim_t[:,:,col] = ndimage.geometric,transform(fromim[:,:,co1],
+
+98 3.3. Creating Panoramas
+

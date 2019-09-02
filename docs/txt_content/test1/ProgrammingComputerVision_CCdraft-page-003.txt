@@ -1,0 +1,36 @@
+Contents
+
+Preface 7
+Prerequisites and Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+
+Introduction to Computer Vision . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+
+Python and NumPy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+
+Notation and Conventions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+
+Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1
+1 Basic Image Handling and Processing 13
+1.1 PIL — the Python Imaging Library . . . . . . . . . . . . . . . . . . . . . . . . 13
+
+1.2 Matplotlib . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+
+1.3 NumPy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+
+1.4 SciPy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+
+1.5 Advanced example: Image de-noising . . . . . . . . . . . . . . . . . . . . . 39
+2 Local Image Descriptors 45
+2.1 Harris corner detector . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+2.2 SIFT - Scale-Invariant Feature Transform . . . . . . . . . . . . . . . . . . . 52
+2.3 Matching Geotagged Images . . . . . . . . . . . . . . . . . . . . . . . . . . 63
+3 Image to Image Mappings 73
+3.1 Homographies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 73
+3.2 Warping images . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 78
+3.3 Creating Panoramas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 91
+4 Camera Models and Augmented Reality 103
+4.1 The Pin-hole Camera Model . . . . . . . . . . . . . . . . . . . . . . . . . . . 103
+4.2 Camera Calibration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 109
+4.3 Pose Estimation from Planes and Markers . . . . . . . . . . . . . . . . . . . 1 10
+4.4 Augmented Reality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 114
+

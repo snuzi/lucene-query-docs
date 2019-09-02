@@ -1,0 +1,43 @@
+g .write,png( 'whitehouse . png ')
+
+The result should look something like Figure 2.10 depending on which images you
+download. For this particular set, we see two groups of images, one from each side of
+the White house.
+
+This application was a very simple example of using local descriptors for matching
+regions between images. For example, we did not use any veriﬁcation on the matches.
+This can be done (in a very robust way) using concepts that we will deﬁne in the
+coming two chapters.
+
+Exercises
+
+1. Modify the function for matching Harris corner points to also take a maximum
+pixel distance between points for them to be considered as correspondences in
+order to make matching more robust.
+
+2. Incrementally apply stronger blur (or ROF de-noising) to an image and extract
+Harris corners. What happens?
+
+3. An alternative corner detector to Harris is the FAST corner detector. There
+are a number of implementations including a pure Python version available at
+http://www.edwa rdrosten.com/work/fast.htm1. Try this detector, play with
+the sensitivity threshold, and compare the corners with the ones from our Harris
+implementation.
+
+4. Create copies of an image with different resolutions (for example by halving the
+size a few times). Extract SIFT features for each image. Plot and match features
+to get a feel for how and when the scale independence breaks down.
+
+5. The VLFeat command line tools also contain an implementation of Maximally
+Stable Extremal Regions (MSER), http : //en .wikipedia . org/wiki/Maxima11y_
+stab1e_ext rema1_ regions, a region detector that ﬁnds blob like regions. Create
+a function for extracting MSER regions and pass them to the descriptor part of
+SIFT using the "--read-frames" option and one function for plotting the ellipse
+regions.
+
+6. Write a function that matches features between a pair of images and estimates
+the scale difference and in-plane rotation of the scene based on the correspon-
+dences.
+
+2.3. Matching Geotagged Images 69
+

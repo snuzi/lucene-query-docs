@@ -1,0 +1,10 @@
+so that namespaces can be kept (to know where each function comes from) and only
+import the pyplot part of Matplotlib since the NumPy parts imported with PyLab
+are not needed. Purists and experienced programmers know the difference and can
+choose whichever option they prefer. In the interest of making the content and exam-
+ples in this book easily accessible to readers, I have chosen not to do this.
+
+Caveat emptor.
+
+44 1.5. Advanced example: Image de—noising
+

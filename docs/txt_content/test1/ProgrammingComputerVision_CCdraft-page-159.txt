@@ -1,0 +1,17 @@
+5. Try smoothing the stereo depth maps using the ROF de-noising from Section 1.5.
+Experiment with the size of the cross-correlation patches to get sharp edges with
+noise levels that can be removed with smoothing.
+
+6. One way to improve the quality of the disparity maps is to compare the disparities
+from moving the left image to the right and the right image to the left and only
+keep the parts that are consistent. This will for example clean up the parts
+where there is occlusion. Implement this idea and compare the results to the
+one-directional plane sweeping.
+
+7. The New York Public Library has many old historic stereo photographs. Browse
+the gallery at http://stereo.nyp1.org/gallery and download some images
+you like (you can right click and save JPEGs). The images should be rectiﬁed
+already. Cut the image in two parts and try the dense depth reconstruction code.
+
+5.4. Stereo Images 159
+

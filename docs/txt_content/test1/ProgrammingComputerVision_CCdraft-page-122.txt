@@ -1,0 +1,49 @@
+while True:
+event = pygame.event.po11()
+if event.type in (QUIT,KEYDOWN):
+break
+pygame.display.f1ip()
+
+First this script loads the camera calibration matrix and the rotation and translation
+part of the camera matrix using Pickle. This assumes that you saved them as described
+on page 114. The setup() function initializes PyGame, sets the window to the size of
+the image and makes the drawing area a double buffer OpenGL window. Next the
+background image is loaded and placed to ﬁt the window. The camera and model view
+matrices are set and ﬁnally the teapot is drawn at the correct position.
+
+Events in PyGame are handled using inﬁnite loops with regular polling for any
+changes. These can be keyboard, mouse or other events. In this case we check if
+the application was quit or if a key was pressed and exit the loop. The command
+pygame.disp1ay.f1ip() draws the objects on the screen.
+
+The result should look like Figure 4.5. As you can see, the orientation is correct
+(the teapot is aligned with the sides of the cube in Figure 4.4). To check that the
+placement is correct, you can try to make the teapot really small by passing a smaller
+value for the size variable. The teapot should be placed close to the [0, 0, 0] corner of
+the cube in Figure 4.4. An example is shown in Figure 4.5.
+
+Loading models
+
+Before we end this chapter, we will touch upon one last detail; loading 3D models and
+displaying them. The PyGame cookbook has a script for loading models in .obj format
+available at http : //www. pygame . org/wiki/OBJ Fi1eLoade r. You can learn more about
+the .obj format and the corresponding material ﬁle format at http : / / en .wikipedia.
+org/wiki/Wavefront_ . obj_fi1e.
+
+Let's see how to use that with a basic example. We will use a freely available
+toy plane model from http://www.oyona1e.com/modeles.phpz. Download the .obj
+version and save it as toyp1ane.obj. You can of course replace this model with any
+model of your choice, the code below will be the same.
+
+Assuming that you downloaded the ﬁle as objloadeztpy, add the following function
+to the ﬁle you used for the teapot example above.
+
+def 1oad,and_dramLmode1(filename):
+""" Loads a model from an .obj file using objloader.py.
+Assumes there is a .mtl material file with the same name. """
+g1Enab1e(GL_LIGHTING)
+
+2Models courtesy of Gilles Tran (Creative Commons License By Attribution).
+
+122 4.4. Augmented Reality
+

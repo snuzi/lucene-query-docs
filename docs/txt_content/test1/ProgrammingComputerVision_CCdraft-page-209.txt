@@ -1,0 +1,35 @@
+Chapter 8
+
+Classifying Image Content
+
+This chapter introduces algorithms for classifying images and image content. We look
+at some simple but effective methods as well as state of the art classiﬁers and apply
+them to two-class and multi-class problems. We show examples with applications in
+gesture recognition and object recognition.
+
+8. 1 K-Nearest Neighbors
+
+One of the simplest and most used methods for classiﬁcation is the k-nearest neigh-
+bor classiﬁer (kNN). The algorithm simply compares an object (for example a feature
+vector) to be classiﬁed with all objects in a training set with known class labels and
+lets the k: nearest vote for which class to assign. This method often performs well
+but has a number of drawbacks. Same as with the k:-means clustering algorithm, the
+number k needs to be chosen and the value will affect performance. Furthermore, the
+method requires the entire training set to be stored and if this set is large it will be
+slow to search. For large training sets some form of binning is usually used to reduce
+the number of comparisons neededl. On the positive side, there are no restrictions on
+what distance measure to use, practically anything you can think of will work (which
+is not the same as saying that it will perform well). The algorithm is also trivially
+parallelizable.
+
+Implementing kNN in a basic form is pretty straightforward. Given a set of training
+examples and a list of associated labels, the code below does the job. The training
+examples and labels can be rows in an array or just in a list. They can be numbers,
+strings, whatever you like. Add this class to a ﬁle called knn.py.
+
+class KnnClassifier(object):
+
+1Another option is to only keep a selected subset of the training set. This can however impact accuracy.
+
+209
+

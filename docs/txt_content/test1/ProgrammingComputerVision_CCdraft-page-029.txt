@@ -1,0 +1,46 @@
+agqm
+
+Figure 1.8: The mean image (top left) and the ﬁrst seven modes, i.e. the directions
+with most variation.
+
+ 
+
+># perform PCA
+
+V,S,immean = pca.pca(immatrix)
+
+# show some images (mean and 7 first modes)
+
+figure()
+
+9Fay()
+
+subp1ot(2,4,1)
+
+imshow(immean.reshape(m,n))
+
+for i in range(7):
+subp1ot(2,4,i+2)
+imshow(V[i].reshape(m,n))
+
+show()
+
+Note that the images need to be converted back from the one-dimensional represen-
+tation using reshape(). Running the example should give eight images in one ﬁgure
+window like the ones in Figure 1.8. Here we used the PyLab function subp1ot() to
+place multiple plots in one window.
+
+Using the Pickle module
+
+If you want to save some results or data for later use, the pickle module, which comes
+with Python, is very useful. Pickle can take almost any Python object and convert it to a
+string representation. This process is called pickling. Reconstructing the object from
+the string representation is conversely called unpickling. This string representation
+can then be easily stored or transmitted.
+
+Let's illustrate this with an example. Suppose we want to save the image mean and
+
+principal components of the font images in the previous section. This is done like this:
+
+1.3.NumPy 29
+

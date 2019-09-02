@@ -1,0 +1,15 @@
+f\ I‘ ’\ Ownﬂlﬂdoan
+
+ 
+
+P\ r\ - c;..nt.L um»-a
+
+ 
+
+Figure 4.5: Augmented reality. Placing a computer graphics model an a book in a
+scene using camera parameters computed from feature matches. (top) the Utah teapot
+rendered in place aligned with the coordinate axis. (bottom) sanity check to see the
+position of the origin.
+
+4.4. Augmented Reality 1 2 3
+

@@ -1,0 +1,57 @@
+def query(se1f,imname):
+”“" Find a list of matching images for imname"""
+
+h = self.get,imhistogram(imname)
+candidates = self.candidates_from_histogram(h)
+
+matchscores = []
+
+for imid in candidates:
+# get the name
+candiname = se1f.con.execute(
+
+"select filename from imlist where rowid=%d" % imid).fetchone()
+
+cand_h = self.get_imhistogram(cand_name)
+candidist = sqrt( sum( (h-cand_h)**2 ) ) #use L2 distance
+matchscores.append( (cand_dist,imid) )
+
+# return a sorted list of distances and database ids
+matchscores.sort()
+return matchscores
+
+This Searcher method takes the ﬁlename of an image, retrieves the word histogram
+and a list of candidates (which should be limited to some maximum number if you
+have a large data set). For each candidate, we compare histograms using standard
+Euclidean distance and return a sorted list of tuples containing distance and image id.
+Let's try a query for the same image as in the previous section:
+
+src = imagesearch.Searcher('test.db')
+
+print 'try a query...’
+
+print src.query(im1ist[0])[:10]
+
+This will again print the top 10 results, including the distance, and should look some-
+thing like this:
+
+try a query...
+
+[(0.0, 1), (100.03999200319841, 2), (105.45141061171255, 3), (129.47200469599596, 708).
+(129.73819792181484, 707), (132.68006632497588, 4), (139.89639023220005, 10).
+
+(142.31654858097141, 706), (148.1924424523734, 716). (143.22955170950223. 663)]
+
+Much better. The image has distance zero to itself and two out of the three images of
+the same scene are on the ﬁrst two positions. The third image coming in on position
+ﬁve.
+
+Benchmarking and plotting the results
+
+To get a feel for how good the search results are, we can compute the number of
+correct images on the top four positions. This is the measure used to report perfor-
+mance for the ukbench image set. Here's a function that computes this score. Add it
+to imagesearchpy and you can start optimizing your queries.
+
+7.4. Searching the Database for Images 197
+

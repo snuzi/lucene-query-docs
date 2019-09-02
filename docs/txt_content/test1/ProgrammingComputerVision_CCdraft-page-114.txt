@@ -1,0 +1,59 @@
+by multiplying P2 with the inverse of the calibration matrix and replacing the third
+column with the cross product of the ﬁrst two.
+
+As a sanity check we can project a point on the marker plane with the new matrix
+and check that it gives the same as the same point transformed with the ﬁrst camera
+and the homography. You should get the same printout in your console.
+
+Visualizing the projected points can be done like this.
+
+im0
+iml
+
+array(Image.open('book_fronta1.JPG'))
+array(Image.open('book_perspective.JPG'))
+
+# 2D projection of bottom square
+
+figure()
+
+imshow(im0)
+p1ot(boX,caml[0,:],boX,caml[l,:],1inewidth=3)
+
+# 2D projection transferred with H
+
+figure()
+
+imshow(iml)
+p1ot(boX,trans[0,:],boX_trans[l,:],1inewidth=3)
+
+# 3D cube
+
+figure()
+
+imshow(iml)
+plot(box_cam2[0,:],box_cam2[l,:],1inewidth=3)
+
+show()
+This should give three ﬁgures like the images in Figure 4.4. To be able to reuse these
+
+computations for future examples, we can save the camera matrices using Pickle.
+
+import pickle
+
+with open('ar,camera.pk1','w') as f:
+pick1e.dump(K,f)
+pickle.dump(dot(1ina1g.inv(K),cam2.P),f)
+
+Now we have seen how to compute the camera matrix given a planar scene object.
+We combined feature matching with homographies and camera calibration to produce
+a simple example of placing a cube in an image. With camera pose estimation, we now
+have the building blocks in place for creating simple augmented reality applications.
+
+4.4 Augmented Reality
+
+Augmented reality (AR) is a collective term for placing objects and information on top
+of image data. The classic example is placing a 3D computer graphics model so that
+
+1 1 4 4.4. Augmented Reality
+

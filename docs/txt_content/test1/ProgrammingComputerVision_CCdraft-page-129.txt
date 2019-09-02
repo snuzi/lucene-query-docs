@@ -1,0 +1,36 @@
+C1 '31 e2 C2
+
+Figure 5.1: An illustration of epipolar geometry. A 3D point X is projected to x1 and
+x2, in the two views respectively. The baseline between the two camera centers, C1
+and C2, intersect the image planes in the epipoles, e1 and eg. The lines 11 and 12 are
+called epipolar lines.
+
+The equation l1Tx1 = 0 determines a line with all points x1 in the ﬁrst image satisfying
+the equation belonging to the line. This line is called an ep1'po1ar11'ne corresponding
+to the point x2. This means that a corresponding point to x2 must lie on this line. The
+fundamental matrix can therefore help the search for correspondences by restricting
+the search to this line.
+
+The epipolar lines all meet in a point, e, called the epipole. The epipole is actually
+the image point corresponding to the projection of the other camera center. This point
+can be outside the actual image, depending on the relative orientation of the cameras.
+Since the epipole lies on all epipolar lines it must satisfy Fel = 0. It can therefore
+be computed as the null vector of F as we will see later. The other epipole can be
+computed from the relation e§F = 0.
+
+A sample data set
+
+In the coming sections we will need a data set with image points, 3D points and camera
+matrices to experiment with and illustrate the algorithms. We will use one of the sets
+from the Oxford multi-view datasets available at http : //www. robots . ox. ac . u k/~vgg/
+data/data - mview. html. Download the zipped ﬁle for the Mertonl data. The following
+script will load all the data for you.
+
+impo rt came ra
+
+# load some images
+iml = array(Image.open('images/001.jpg'))
+im2 = array(Image.open('images/002.jpg'))
+
+5.1. Epipolar Geometry 129
+

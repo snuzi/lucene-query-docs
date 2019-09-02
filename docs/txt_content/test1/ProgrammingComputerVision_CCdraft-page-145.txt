@@ -1,0 +1,60 @@
+# estimate fundamental matrix and return
+F = compute,fundamenta1_normalized(X1,X2)
+return F
+
+def get,error(se1f,data,F):
+""" Compute XAT F X for all correspondences,
+return error for each transformed point. """
+
+# transpose and split data into the two point
+data = data.T
+X1 = data[:3]
+X2 data[3:]
+
+# Sampson distance as error measure
+
+Fxl dot(F,X1)
+
+FX2 dot(F,x2)
+
+denom = FXl[0]**2 + FXl[l]**2 + FX2[0]**2 + FX2[l]**2
+err = ( diag(dot(Xl.T,dot(F,X2))) )**2 / denom
+
+# return error per point
+return err
+
+As before, we need fit() and get_error() methods. The error measure chosen here is
+the Sampson distance (see [13]). The fit() method now selects eight points and uses
+a normalized Version of the eight point algorithm.
+
+def compute,fundamental_normalized(X1,X2):
+""" Computes the fundamental matrix from corresponding points
+(x1,X2 3*n arrays) using the normalized 8 point algorithm. """
+n = X1.shape[l]
+if x2.shape[1] != n:
+raise Va1ueError("Number of points don't match.")
+
+# normalize image coordinates
+
+X1 = X1 / X1[2]
+
+meanil = mean(xl[:2],axis=1)
+
+S1 = sqrt(2) / std(X1[:2])
+
+T1 = array([[S1,0,-S1*mean_1[0]],[0,S1,-S1*mean_1[1]],[0,0,1]])
+X1 = dot(Tl,X1)
+
+X2 = X2 / X2[2]
+
+mean,2 = mean(X2[:2],aXis=1)
+
+S2 = sqrt(2) / std(X2[:2])
+
+T2 = array([[S2,0,-S2*mean_2[0]],[0,S2,-S2*mean,2[1]],[0,0,1]])
+X2 = dot(T2,X2)
+
+# compute F with the normalized coordinates
+
+5.3. Multiple View Reconstruction 145
+

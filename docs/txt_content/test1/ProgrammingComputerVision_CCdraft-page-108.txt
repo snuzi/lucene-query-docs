@@ -1,0 +1,48 @@
+T = diag(sign(diag(K)))
+if 1ina1g.det(T) < 0
+T[1,l] *= -1
+
+se1f.K dot(K,T)
+se1f.R dot(T,R) # T is its own inverse
+se1f.t = dot(1ina1g.inv(se1f.K),se1f.P[:,3])
+
+return se1f.K, se1f.R, se1f.t
+
+RQ-factorization is not unique, there is a sign ambiguity in the factorization. Since
+we need the rotation matrix R to have positive determinant (otherwise coordinate axis
+can get ﬂipped) we can add a transform T to change the sign when needed.
+
+Try this on a sample camera to see that it works:
+
+import camera
+
+K = array([[1000,0,500],[0,l000,300],[0,0,1]])
+tmp = camera.rotation_matrix([0,0,l])[:3,:3]
+Rt = hstack((tmp,array([[50],[40],[30]])))
+
+cam = camera.Camera(dot(K,Rt))
+
+print K,Rt
+print cam.factor()
+
+You should get the same printout in the console.
+
+Computing the camera center
+
+Given a camera projection matrix, P, it is useful to be able to compute the camera's
+position in space. The camera center, C is a 3D point with the property PC = 0. For a
+camera with P = K [R | t] this gives
+
+K[R|t]C=KRC—I—Kt=0,
+and the camera center can be computed as
+C = —RTt .
+
+Note that the camera center is independent of the intrinsic calibration K , as expected.
+Add the following method for computing the camera center according to the for-
+mula above and/or returning the camera center to the Camera class.
+
+def center(se1f):
+""" Compute and return the camera center. """
+
+108 4.1. The Pin—hole Camera Model
+

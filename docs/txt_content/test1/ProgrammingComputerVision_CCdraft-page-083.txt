@@ -1,0 +1,10 @@
+ 
+
+Figure 3.3: Comparing an afﬁne warp of the full image with an afﬁne warp using two
+triangles. The image is placed on a billboard with some perspective effects. (top) using
+an afﬁne transform for the whole image results in a bad ﬁt. The two right hand corners
+are enlarged for clarity. (bottom) using an afﬁne warp consisting of two triangles gives
+an exact ﬁt.
+
+3.2. Warping images 83
+

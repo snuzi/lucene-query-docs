@@ -1,0 +1,31 @@
+- I‘ ’\ On-ncluaoma
+
+ 
+
+Figure 4.6: Loading a 3D model from an .obj ﬁle and placing it on a book in a scene
+using camera parameters computed from feature matches.
+
+Exercises
+
+1. Modify the example code for the motion in Figure 4.2 to transform the points
+instead of the camera. You should get the same plot. Experiment with different
+transformations and plot the results.
+
+2. Some of the Oxford multi-View datasets have camera matrices given. Compute
+the camera positions for one of the sets an plot the camera path. Does it match
+with what you are seeing in the images?
+
+3. Take some images of a scene with a planar marker or object. Match features to a
+full frontal image to compute the pose of each image's camera location. Plot the
+camera trajectory and the plane of the marker. Add the feature points if you like.
+
+4. In our augmented reality example we assumed the object to be placed at the
+origin and applied only the cameras position to the model View matrix. Modify
+the example to place several objects at different locations by adding the object
+transformation to the matrix. For example, place a grid of teapots on the marker.
+
+5. Take a look at the online documentation for .obj model ﬁles and see how to use
+textured models. Find a model (or create your own) and add it to the scene.
+
+4.4. Augmented Reality 1 2 5
+

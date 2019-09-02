@@ -1,0 +1,43 @@
+Text is typeset according to these conventions:
+
+Italic is used for deﬁnitions, ﬁlenames and variable names.
+
+Typewriter is used for functions and Python modules.
+
+small constant width is used for console printout and results from calls and APIs.
+Hyperlink is used for URLs (clickable in the electronic version).
+
+Plain text is used for everything else.
+
+Mathematical formulas are given inline like this f (x) = wTx -|— b or centered indepen-
+dently
+
+f(X) =  +5,
+
+and are only numbered when a reference is needed.
+
+In the mathematical sections we will use lowercase (5, r A, 6, ...) for scalars,
+uppercase (A, V, H, ...) for matrices (including I for the image as an array) and
+lowercase bold (t, c, . . .) for vectors. We will use x = [12, y] and X = [X, Y, Z] to mean
+points in 2D (images) and 3D respectively.
+
+Acknowledgments
+
+I'd like to express my gratitude to everyone involved in the development and produc-
+tion of this book. The whole O’Reilly team has been helpful. Special thanks to Andy
+Oram (O’Reilly) for editing, and Paul Anagnostopoulos (Windfall) for efﬁcient produc-
+tion work.
+
+Many people commented on the various drafts of this book as I shared them on-
+line. Klas Josephson and Hakan Ardo deserves lots of praise for thorough comments
+and feedback. Fredrik Kahl and Pau Gargallo helped with fact checks. Thank you
+all readers for encouraging words and for making the text and code examples bet-
+ter. Receiving emails from strangers sharing their thoughts on the drafts was a great
+motivator.
+
+Finally, I'd like to thank my friends and family for support and understanding when
+I spend nights and weekends on writing. Most thanks of all to my wife Sara, my long
+time supporter.
+
+CONTENTS 1 1
+

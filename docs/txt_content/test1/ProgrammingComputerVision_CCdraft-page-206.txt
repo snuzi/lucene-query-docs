@@ -1,0 +1,45 @@
+The ﬁrst part speciﬁes which IP address and port to use. The second part enables a
+local folder for reading (in this case "tmp/"). This should be set to the folder containing
+your images.
+
+Note: Don ’t put anything secret in that folder ifyou plan to show this to people. The
+content of the folder will be accessible through CherIyPy.
+
+Start you web server with
+
+$ python searchdemo.py
+
+from the command line. Opening your browser and pointing it at the right URL (in this
+case http : // 127 . 0 . 0 . 1 : 8080/) should show the initial screen with a random selection
+of images. This should look like Figure 7.4a. Clicking an image starts a query and
+shows the top results. Clicking an image in the results starts a new query with that
+image, and so on. There is a link to get back to the starting state of a random selection
+(by passing an empty query). Some examples are shown in Figure 7.4.
+
+This example shows a full integration from webpage to database queries and pre-
+sentation of results. Naturally, we kept the styling and options to a minimum and there
+are many possibilities for improvement. For example, adding a stylesheet to make it
+prettier or upload ﬁles to use as queries.
+
+Exercises
+
+1. Try to speed up queries by only using part of the words in the query image to
+construct the list of candidates. Use the idf weight as a criteria for which words
+to use.
+
+2. Implement a visual stop word list of the most common visual words in your vo-
+cabulary (say the top 10%) and ignore these words. How does this change the
+search quality?
+
+3. Visualize a visual word by saving all image features that are mapped to a given
+word id. Crop image patches around the feature locations (at the given scale)
+and plot them in a ﬁgure. Do the patches for a given word look the same?
+
+4. Experiment with using different distance measures and weighting in the query()
+method. Use the score from compute_ukbench_score() to measure your progress.
+
+5. Throughout this chapter we only used SIFT features in our vocabulary. This
+completely disregards the color information as you can see in the example results
+
+206 7.6. Building Demos and Web Applications
+

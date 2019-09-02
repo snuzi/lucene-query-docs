@@ -1,0 +1,38 @@
+   
+
+(a) (b) (C)
+
+Figure 2.1: An example of corner detection with the Harris corner detector. (a) the
+Harris response function, (b), (c) and (d) corners detected with threshold 0.01, 0.05,
+and 0.1 respectively.
+
+Harris corner points are usually combined with a descriptor consisting of the graylevel
+values in a neighboring image patch together with normalized cross correlation for
+comparison. An image patch is almost always a rectangular portion of the image cen-
+tered around the point in question.
+
+In general, correlation between two (equally sized) image patches I1(x) and I2(x)
+is deﬁned as
+
+C(I1J2) = Zf(I1(X)»I2(X)) ,
+
+where the function f varies depending on the correlation method. The sum is taken
+over all positions x in the image patches. For cross correlation f (I1, I2) = I1 I2, and
+then c(I1, I2) = I1 -I2 with - denoting the scalar product (of the row- or column-stacked
+patches). The larger the value of c(I1, I2), the more similar the patches I1 and I2 are-1.
+Normalized cross correlation is a variant of cross correlation deﬁned as
+
+nCC(I1’I2) : ni 1 Z (I1(X:1’ H1) _ (I2(X()j2’ H2) ’ (2.3)
+
+where n is the number of pixels in a patch, ,u1 and 112 are the mean intensities, and
+01 and 02 are the standard deviations in each patch respectively. By subtracting the
+mean and scaling with the standard deviation, the method becomes robust to changes
+in image brightness.
+
+To extract image patches and compare them using normalized cross correlation,
+you need two more functions in harris.py. Add these:
+
+1Another popular function is f (I 1, I2) = (I 1 — I2)2 which gives sum of squared differences (SSD).
+
+2.1. Harris corner detector 49
+

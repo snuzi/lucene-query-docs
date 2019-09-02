@@ -1,0 +1,52 @@
+se1f.detect_points()
+else:
+self.track_points()
+
+# create a copy in RGB
+
+f = array(self.features).reshape(—1,2)
+
+im = cv2.cvtCo1or(se1f.image,cv2.COLOR_BGR2RGB)
+yield im,f
+
+This creates a generator which makes it easy to step through a sequence and get
+tracks and the images as RGB arrays so that it is easy to plot the result. To use it on
+the classic Oxford "dinosaur" sequence (from the same multi-View dataset page as the
+corridor above) and plot the points and their tracks, the code looks like this:
+
+import lktrack
+
+imnames = ['viff.000.ppm’, 'viff.00l.ppm',
+'viff.002.ppm', 'viff.003.ppm', 'viff.004.ppm’]
+
+# track using the LKTracker generator
+lkt = lktrack.LKTracker(imnames)
+for im,ft in 1kt.track():
+
+print 'tracking %d features’ % len(ft)
+
+# plot the tracks
+figure()
+imshow(im)
+for p in ft:
+
+D10’C(D[0],D[1].’b0’)
+for t in 1kt.tracks:
+
+p1ot([p[0] for p in t],[p[l] for p in t])
+axis('off')
+show()
+
+This generator makes it really easy to use the tracker class and completely hides the
+OpenCV functions from the user. The example generates a plot like the one shown in
+Figure 10.7 and the bottom right of Figure 10.6.
+
+10.5 More Examples
+
+With OpenCV comes a number of useful sample examples of how to use the python
+interface. These are in the sub-directory samples/python2/ and are a good way to
+get familiar with OpenCV. Here are a few selected examples to illustrate some other
+capabilities of OpenCV.
+
+10.5. More Examples 273
+

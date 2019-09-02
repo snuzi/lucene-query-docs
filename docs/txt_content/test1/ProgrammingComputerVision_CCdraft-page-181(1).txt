@@ -1,0 +1,46 @@
+on page 67 is a similarity matrix with scores equal to the number of matching features
+(without any normalization). With 1'm11'st containing the ﬁlenames of the images and
+the similarity matrix saved to a ﬁle using NumPy’s savetxt() we only need to modify
+the ﬁrst rows of the code above to:
+
+n = 1en(im1ist)
+
+# load the similarity matrix and reformat
+S 1oadtXt( 'panoramio,matches.txt ')
+S 1 / (S + 1e—6)
+
+where we invert the scores to have low values for similar images (so we don't have to
+modify the code above). We add a small number to avoid division with zero. The rest
+of the code you can leave as is.
+
+Choosing k is a bit tricky in this case. Most people would consider there to be only
+two classes (the two sides of the White House) and then some junk images. With k = 2,
+you get something like Figure 6.9, with one large cluster of images of one side and the
+other cluster containing the other side plus all the junk images. Picking a larger value
+of k: like k: = 10 gives several clusters with only one image (hopefully the junk images)
+and some real clusters. An example run is shown in Figure 6.10. In this case there
+were only two actual clusters, each containing images of one side of the White House.
+
+There are many different versions and alternatives to the algorithm presented here.
+Each of them with its own idea of how to construct the matrix L and what to do with
+the eigenvectors. For further reading on spectral clustering and the details of some
+common algorithms see for example the review paper [37].
+
+Exercises
+
+1. Hierarchical k-means is a clustering method that applies k:-means recursively to
+the clusters to create a tree of incrementally reﬁned clusters. In this case, each
+node in the tree will branch to k: child nodes. Implement this and try it on the
+font images.
+
+2. Using the hierarchical k-means from the previous exercise, make a tree visu-
+alization (similar to the dendrogram for hierarchical clustering) that shows the
+average image for each cluster node. Tip: you can take the average PCA coef-
+ﬁcients feature vector and use the PCA basis to synthesize an image for each
+feature vector.
+
+3. By modifying the class used for hierarchical clustering to include the number of
+images below the node you have a simple and fast way of ﬁnding similar (tight)
+
+6.3. Spectral Clustering 181
+

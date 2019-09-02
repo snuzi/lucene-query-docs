@@ -1,0 +1,37 @@
+@l 94
+
+Figure 9.7: The piece-wise constant Chan-Vese segmentation model.
+
+in Figure 9.7 the segmentation is given by minima of the Chan-Vese model energy
+
+E(I‘) = A length(I‘) +[
+
+(I— c1)2dx+[ (I — c2)2dx ,
+91
+
+92
+
+which measures the deviation from the constant graylevels in each region, c1 and C2.
+Here the integrals are taken over each region and the length of the separating curves
+are there to prefer smoother solutions.
+
+With a piece-wise constant image U = X101 + X202 this can we re-written as
+
+E(r) = @ /|VU|dx + ||I — U||2 ,
+where X1 and X2 are characteristic (indicator) functions for the two regions5. This
+transformation is non-trivial and requires some heavy mathematics that are not needed
+for understanding and are well outside the scope of this book.
+
+The point is that this equation is now the same as the ROF equation (1.1) with A
+replaced by )\|c1 — c2|. The only difference is that in the Chan-Vese case we are looking
+for an image U which is piece-wise constant. It can be shown that thresholding the
+ROF solution will give a good minimizer. The interested reader can check [8] for the
+details.
+
+Minimizing the Chan-Vese model now becomes a ROF de-noising followed by thresh-
+olding.
+
+5Character1'st1'c functions are 1 in the region and 0 outside.
+
+254 9.3. Variational Methods
+

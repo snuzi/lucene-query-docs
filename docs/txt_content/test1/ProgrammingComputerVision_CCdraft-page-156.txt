@@ -1,0 +1,55 @@
+""" Find disparity image using normalized cross-correlation
+with Gaussian weighted neigborhoods. """
+
+m,n = im,l.shape
+
+# arrays to hold the different sums
+meanil = zeros((m,n))
+
+meanir = zeros((m,n))
+
+s = zeros((m,n))
+
+sil = zeros((m,n))
+
+sir zeros((m,n))
+
+# array to hold depth planes
+dmaps = zeros((m,n,steps))
+
+# compute mean
+filters.gaussian_filter(im_1,wid,0,mean,1)
+filters.gaussian_filter(im_r,wid,0,mean,r)
+
+# normalized images
+nom§L=iml-Imaml
+nom,r=imr-Imamr
+
+# try different disparities
+
+for displ in range(steps):
+# move left image to the right, compute sums
+filters.gaussian,fi1ter(roll(norm,1,-displ-start)*norm,r,wid,0,s) # sum nominator
+fi1ters.gaussian,fi1ter(roll(norm,1,-displ-start)*rol1(norm,1,-displ-start),wid,0,s,1)
+filters.gaussian,fi1ter(norm,r*norm,r,wid,0,s_r) # sum denominator
+
+# store ncc scores
+dmaps[:,:,displ] = s/sqrt(s,l*s,r)
+
+#pKkbwtdwﬂ1mreahpUd
+return argmax(dmaps,axis=2)
+
+The code is the same as for the uniform ﬁlter with the exception of the extra argument
+in the ﬁltering. We need to pass a zero to gaussian_fi1ter() to indicate that we want
+a standard Gaussian and not any derivatives (see page 1.4 for details).
+
+Use this function the same way as the previous plane sweep function. Figures 5.10
+and ﬁg-stereo-cones show some results of these two plane sweep implementations on
+some standard stereo benchmark images. The images are from [29] and [30] and
+are available at http://vision.midd1ebu ry.edu/stereo/data/. Here we used the
+"tsukuba" and "cones" images and set wid to 9 in the standard version and 3 for the
+Gaussian version. The top row shows the image pair, bottom left is the standard NCC
+plane sweep, and bottom right is the Gaussian version. As you can see, the Gaussian
+
+156 5.4. Stereo Images
+

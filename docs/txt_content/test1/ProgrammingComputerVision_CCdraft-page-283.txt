@@ -1,0 +1,48 @@
+A.8 PyOpenGL
+
+Installing PyOpenGL is easiest done by downloading the package from http : // pypi.
+python .0 rg/pypi/ PyOpenGL as suggested on the PyOpenGL webpage http : //pyopengl.
+sou rceforge . net/. Get the latest version, currently 3.0.1.
+
+In the downloaded folder do the usual:
+
+$ python setup.py install
+
+from the command line. If you get stuck or need information on dependencies etc,
+more documentation can be found at http : //pyopengl . sou rceforge . net/documentation/
+installation.html. Some good demo scripts for getting started are available at
+http://pypi.python.org/pypi/PyOpenGL-Demo.
+
+A.9 Pydot
+
+Begin by installing the dependencies, GraphViz and Pyparsing. Go to http: //www.
+g raphviz . org/ and download the latest GraphViz binary for your platform. The install
+ﬁles should install GraphViz automatically.
+
+Then, go to the Pyparsing project page http : //pypa rsing .wikispaces . com/. The
+download page is at http : //sou rcefo rge . net/proj ects/pypa rsing/. Get the latest
+version (currently 1.5.5) and unzip the ﬁle to a directory. Type
+
+$ python setup.py install
+
+from the command line.
+
+Finally, go to the project page http : //code . google . com/ p/ pydot/ and click "down-
+load". From the download page, download the latest version (currently 1.0.4). Unzip
+and again type
+
+$ python setup.py install
+
+from the command line. Now you should be able to import pydot in your python
+sessions.
+
+A. 10 Python-graph
+
+Python-graph is a python module for working with graphs and contains lots of useful
+algorithms like traversals, shortest path, pagerank and maximum ﬂow. The latest
+version is 1.8.1 and can be found on the project website http://code.google . com/
+p/python-graph/. If you have easy_install on your system, the simplest way to get
+python-graph is:
+
+AB.PyOpenGL 283
+

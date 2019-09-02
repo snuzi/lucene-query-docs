@@ -1,0 +1,51 @@
+# setup video capture
+cap = cv2.VideoCapture(0)
+
+while True:
+ret,im = cap.read()
+cv2.imshow(’video test’,im)
+key = cv2.waitKey(10)
+
+if key == 27:
+break
+if key == ord(’ ’):
+
+cv2.imwrite(’vid_resu1t.jpg’,im)
+
+The capture object VideoCapture captures video from cameras or ﬁles. Here we pass
+an integer at initialization. This is the id of the video device, with a single camera
+connected this is O. The method read() decodes and returns the next video frame.
+The ﬁrst value is a success ﬂag and the second the actual image array. The waitKey()
+function waits for a key to be pressed and quit the application if the ’esc’ key (Ascii
+number 27) is pressed or saves the frame if the ’space’ key is pressed.
+
+Let's extend this example with some simple processing by taking the camera input
+and show a blurred (color) version of the input in an OpenCV window. This is only a
+slight modiﬁcation to the base example above:
+
+import cv2
+
+# setup video capture
+cap = cv2.VideoCapture(0)
+
+# get frame, apply Gaussian smoothing, show result
+while True:
+ret,im = cap.read()
+blur = cv2.GaussianB1ur(im,(0,0),5)
+cv2.imshow('camera blur',b1ur)
+if cv2.waitKey(l0) == 27:
+break
+
+Each frame is passed to the function GaussianB1ur() which applies a Gaussian ﬁlter to
+the image. In this case we are passing a color image so each color channel is blurred
+separately. The function takes a tuple for ﬁlter size and the standard deviation for the
+Gaussian function (in this case 5). If the ﬁlter size is set to zero, it will automatically
+be determined from the standard deviation. The result looks like Figure 10.4.
+
+Reading video from ﬁles works the same way but with the call to VideoCapture()
+taking the video ﬁlename as input.
+
+capture = cv2.VideoCapture('fi1ename')
+
+10.3. Processing Video 263
+

@@ -1,0 +1,46 @@
+ 
+
+Figure 2.4: An example of extracting SIFT features for an image. (a) SIFT features (b)
+SIFT features shown with circle indicating the scale of the feature (c) Harris points for
+
+the same image for comparison.
+
+def match(desc1,desc2):
+""" For each descriptor in the first image,
+select its match in the second image.
+input: descl (descriptors for the first image)
+
+desc2 (same for second image). """
+
+descl = array([d/linalg.norm(d) for d in desc1])
+desc2 = array([d/linalg.norm(d) for d in desc2])
+dist_ratio = 0.6
+
+desc1_size = desc1.shape
+
+matchscores = zeros((desc1,size[0],1),'int')
+desc2t = desc2.T # precompute matrix transpose
+
+for i in range(desc1_size[0]):
+dotprods dot(desc1[i,:],desc2t) # vector of
+dotprods 0.9999*dotprods
+
+I
+
+dot products
+
+# inverse cosine and sort, return index for features in second image
+
+indx argsort(arccos(dotprods))
+
+# check if nearest neighbor has angle less than dist_ratio times 2nd
+if arccos(dotprods)[indx[0]] < dist_ratio * arccos(dotprods)[indx[1]]:
+
+matchscores[i] int(indx[0])
+
+return matchscores
+
+58
+
+2.2. SIFT — Scale-Invariant Feature Transform
+

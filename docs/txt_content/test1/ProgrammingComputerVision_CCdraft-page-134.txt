@@ -1,0 +1,62 @@
+As usual we compute the least squares solution using SVD. Since the resulting solution
+might not have rank 2 as a proper fundamental matrix should, we replace the result
+with the closest rank 2 approximation by zeroing out the last singular value. This is
+a standard trick and a useful one to know. The function ignores the important step
+of normalizing the image coordinates. Ignoring normalization could give numerical
+
+problems. Let's leave that for later.
+
+The epipole and epipolar lines
+
+As mentioned at the start of this section, the epipole satisﬁes Fel = O and can be
+
+computed from the null space of F. Add this function to sfm.py.
+
+def compute_epipo1e(F):
+
+””" Computes the (right) epipole from a
+
+fundamental matrix F.
+
+(Use with F.T for left epipole.) ””"
+
+# return null space of F (Fx=0)
+U,S,V = linalg.svd(F)
+
+e = V[-1]
+
+return e/e[2]
+
+If you want the epipole corresponding to the left null vector (corresponding to the
+epipole in the other image), just transpose F before passing it as input.
+We can try these two functions on the ﬁrst two views of our sample data set like
+
+this:
+
+import sfm
+
+# index for points in first two views
+ndX = (corr[:,0]>=0) & (corr[:,l]>=0)
+
+# get coordinates and make homogeneous
+
+X1 = points2D[0][:,corr[ndX,0]]
+
+X1 = vstack( (Xl,ones(Xl.shape[l])) )
+X2 = points2D[l][ ,corr[ndX,l]]
+
+X2 = vstack( (X2,ones(X2.shape[l])) )
+# compute F
+
+F = sfm.compute_fundamental(X1,X2)
+
+# compute the epipole
+e = sfm.compute,epipo1e(F)
+
+# plotting
+figure()
+
+134
+
+5.1. Epipolar Geometry
+

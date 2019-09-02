@@ -1,0 +1,56 @@
+The epipolar constraint (5.1) can be written as a linear system like
+
+F11
+  acﬁw}  wﬁuﬁ F12
+F13 =Af=0,
+Lmgw? mgyf mguﬂl ... 1u3u€J '
+F33
+
+where f contains the elements of F, X3 = [$3, yﬁ, wﬁ] and X3 = [$3, yg, wg] is a correspon-
+dence pair and there are n point correspondences in total. The fundamental matrix
+has nine elements but since the scale is arbitrary, only eight equations are needed.
+Eight point correspondences are therefore needed to compute F, hence the name of
+the algorithm.
+
+Create a ﬁle sfm.py, and add the following function for the eight point algorithm
+that minimizes ||Af
+
+def compute_fundamental(x1,x2):
+
+”"" Computes the fundamental matrix from corresponding points
+(x1,x2 3*n arrays) using the normalized 8 point algorithm.
+each row is constructed as
+[x’*x, x’*y, X’, y’*X, y’*y, y’, X, y, 1] 
+
+n = xl.shape[l]
+if x2.shape[1] != n:
+raise Va1ueError(“Number of points don't match.")
+
+# build matrix for equations
+
+A = zeros((n,9))
+
+for i in range(n):
+
+A[i] = [x1[0,i]*x2[0,i], xl[0,i]*x2[1,i], xl[0,i]*x2[2,i],
+
+Xl[l,i]*X2[0,i], Xl[l,i]*X2[l,i], Xl[l,i]*X2[2,i],
+x1[2,i]*x2[0,i], x1[2,i]*x2[1,i], x1[2,i]*x2[2,i] ]
+
+# compute linear least square solution
+U,S,V = linalg.svd(A)
+F = V[-1].reshape(3,3)
+
+# constrain F
+
+# make rank 2 by zeroing out last singular value
+U,S,V = linalg.svd(F)
+
+S[2] = 0
+
+F = dot(U,dot(diag(S),V))
+
+return F
+
+5.1. Epipolar Geometry 133
+

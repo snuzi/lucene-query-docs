@@ -1,0 +1,48 @@
+nodeim.thumbnail([20,20])
+ns = nodeim.size
+im.paste(nodeim,[int(x),int(y—ns[l]//2),int(x+ns[0]),int(y+ns[l]—ns[l]//2)])
+
+The height of a dendrogram (and the sub parts) is determined by the distance values.
+These need to be scaled to ﬁt inside the chosen image resolution. The nodes are drawn
+recursively with the coordinates passed down to the level below. Leaf nodes are drawn
+with small thumbnail images of 20 x 20 pixels. Two helper methods are used to get the
+height and width of the tree, get_height() and get_depth()
+The dendrogram is drawn like this:
+
+hcluster.drauudendrogram(tree,imlist,filename='sunset.pdf')
+
+The cluster dendrogram for the sunset images is shown in Figure 6.5. As can be
+seen, images with similar color are close in the tree. Three example clusters are shown
+in Figure 6.6. The clusters are in this example extracted as follows.
+
+# visualize clusters with some (arbitrary) threshold
+clusters = tree.extract_clusters(0.23*tree.distance)
+
+# plot images for clusters with more than 3 elements
+for c in clusters:
+elements = c.get,cluster,elements()
+nbrielements = len(elements)
+if nbr_elements>3:
+figure()
+for p in range(minimum(nbrielements,20)):
+subplot(4,5,p+1)
+im = array(Image.open(imlist[elements[p]]))
+imshow(im)
+axis('off')
+show()
+
+As a ﬁnal example we can create a dendrogram for the font images
+
+tree = hcluster.hcluster(projected)
+hcluster.dramLdendrogram(tree,imlist,filename='fonts.jpg')
+
+where projected and 1'm11'st refer to the variables used in the k-means example in
+Section 6.1. The resulting font images dendrogram is shown in Figure 6.7.
+
+6.3 Spectral Clustering
+
+An interesting type of clustering algorithms are spectra] clustering methods which
+have a different approach compared to k-means and hierarchical clustering.
+
+6.3. Spectral Clustering 175
+

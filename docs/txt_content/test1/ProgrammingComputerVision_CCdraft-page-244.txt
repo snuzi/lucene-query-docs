@@ -1,0 +1,29 @@
+ 
+
+Figure 9.2: An example of graph cut segmentation using a Bayesian probability model.
+Image is downsampled to size 54 x 38. (left) label image for model training. (center)
+training regions shown on the image. (right) segmentation.
+
+be lost. Choosing the right value is up to you, the right value will depend on your
+application and the type of result you desire.
+
+Segmentation with user input
+
+Graph cut segmentation can be combined with user input in a number of ways. For
+example, a user can supply markers for foreground and background by drawing on an
+image. Another way is to select a region that contains the foreground with a bounding
+box or using a "lasso" tool.
+
+Let's look at this last example using some images from the Grab Cut dataset from
+Microsoft Research Cambridge, see [27] and Appendix B.5 for details.
+
+These images come with ground truth labels for measuring segmentation perfor-
+mance. They also come with annotations simulating a user selecting a rectangular
+image region or drawing on the image with a "lasso" type tool to mark foreground and
+background. We can use these user inputs to get training data and apply graph cuts
+to segment the image guided by the user input.
+
+The user input is encoded in bitmap images with the following meaning.
+
+244 9.1. Graph Cuts
+

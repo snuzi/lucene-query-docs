@@ -1,0 +1,39 @@
+(a) (b) (C) ((1)
+
+Figure 9.3: The effect of changing the relative weighting between pixel similarity and
+class probability. The same segmentation as in Figure 9.2 with: (a) is = 1, (b) [<3 = 2,
+(c) K: = 5 and (d) is = 10.
+
+pixel value meaning |
+
+O, 64 background
+1 2 8 unknown
+2 55 foreground
+
+Here's a complete code example of loading an image and annotations and passing
+that to our graph cut segmentation routine.
+from scipy.misc import imresize
+
+import graphcut
+
+def create_msr,labels(m,lasso=False):
+”“" Create label matrix for training from
+user annotations. ”“"
+
+labels = zeros(im.shape[:2])
+# background
+
+labels[m==0] = -1
+labels[m==64] = -1
+
+# foreground
+
+if lasso:
+labels[m==255] = 1
+else:
+labels[m==128] = 1
+
+return labels
+
+9.1.Graph.Cuts 245
+

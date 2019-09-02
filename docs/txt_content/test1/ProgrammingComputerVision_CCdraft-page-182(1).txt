@@ -1,0 +1,12 @@
+1‘
+1*
+
+:i1~IMhi»:1
+
+R t
+
+Figure 6.9: Spectral clustering of geotagged images of the White House with k: = 2
+and the similarity scores as the number of matching local descriptors.
+
+182 6.3. Spectral Clustering
+

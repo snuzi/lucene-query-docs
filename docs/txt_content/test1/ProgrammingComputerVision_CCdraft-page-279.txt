@@ -1,0 +1,33 @@
+Appendix A
+
+Installing Packages
+
+Here are short installation instructions for the packages used in the book. They are
+written based on the latest versions as of writing of this book. Things change (urls
+change!), so if the instructions become outdated, check the individual project websites
+for help.
+
+In addition to the speciﬁc instructions, an option that often works on most plat-
+forms is Python’s easy_install. If you run into problems with the installation instruc-
+tions given here, easy_install is worth a try. Find out more on the package website
+http://packages.python.org/distribute/easy_install.html.
+
+A.1 NumPy and SciPy
+
+Installing NumPy and SciPy is a little different depending on your operating system.
+Follow the applicable instructions below. The current versions are 2.0 (NumPy) and
+0.1 1 (SciPy) on most platforms. A package that currently works on all major platforms
+is the Enthought EPD Free bundle, a free light version of the commercial Enthought
+distribution, available for free at http : //enthought . com/products/epd_free . php.
+
+Windows
+
+The easiest way to install NumPy and SciPy is to download and install the binary distri-
+butions from http : //www. scipy . org/Download.
+
+Mac OS X
+
+Later versions of Mac OS X (10.7.0 (Lion) and up) comes with NumPy pre-installed.
+
+279
+

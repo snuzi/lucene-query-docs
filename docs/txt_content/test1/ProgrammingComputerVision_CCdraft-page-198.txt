@@ -1,0 +1,57 @@
+def compute_ukbench,score(src,imlist):
+“"" Returns the average number of correct
+images on the top four results of queries.“""
+
+nbriimages = len(imlist)
+pos = zeros((nbr_images,4))
+# get first four results for each image
+for i in range(nbr,images):
+pos[i] = [w[1]-1 for w in src.query(imlist[i])[:4]]
+
+# compute score and return average
+score = array([ (pos[i]//4)==(i//4) for i in range(nbr,images)])*1.0
+return sum(score) / (nbriimages)
+
+This function gets the top four results and subtracts one from the index returned by
+query() since the database index starts at one and the list of images at zero. Then we
+compute the score using integer division, using the fact that the correct images are
+consecutive in groups of four. A perfect result gives a score of 4, nothing right gives
+a score of 0 and only retrieving the identical images gives a score of 1. Finding the
+identical image together with two of the three other images gives a score of 3.
+Try it out like this:
+
+imagesearch.compute,ukbench_score(src,imlist)
+
+or if you don't want to wait (it will take some time to do 1000 queries), just use a
+subset of the images
+
+imagesearch.compute_ukbench_score(src,imlist[:100])
+
+We can consider a score close to 3 as pretty good in this case. The state-of-the-art
+results reported on the ukbench website are just over 3 (note that they are using more
+images and your score will decrease with a larger set).
+
+Finally, a function for showing the actual search results will be useful. Add this
+function,
+
+def plot_results(src,res):
+“"" Show images in result list
+
+I
+
+rest nun
+
+figure()
+
+nbr_results = len(res)
+
+for i in range(nbr,results):
+imname = src.get,filename(res[i])
+subplot(1,nbr,results,i+1)
+imshow(array(Image.open(imname)))
+axis('off')
+
+show()
+
+198 7.4. Searching the Database for Images
+

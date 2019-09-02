@@ -1,0 +1,58 @@
+the details).
+
+The following code sample takes an image, reduces it to a lower resolution version
+with pixels as mean values of the original image regions (taken over a square grid of
+size steps >< steps) and clustering the regions using k:-means.
+
+from scipy.c1uster.vq import *
+from scipy.misc import imresize
+
+steps = 50 #image is divided in steps*steps region
+im = array(Image.open('empire.jpg'))
+
+dx
+dy
+
+im.shape[0] / steps
+im.shape[1] / steps
+
+# compute color features for each region
+features = []
+for x in range(steps):
+for y in range(steps):
+R mean(im[x*dx:(X+l)*dX,y*dy:(y+l)*dy,0])
+G = mean(im[x*dX:(X+l)*dX,y*dy:(y+l)*dy,l])
+B mean(im[x*dX:(X+l)*dX,y*dy:(y+l)*dy,2])
+features.append([R,G,B])
+features = array(features,'f') # make into array
+
+II
+
+II
+
+# cluster
+centroids,variance = kmeans(features,3)
+code,distance = vq(features,centroids)
+
+# create image with cluster labels
+codeim = code.reshape(steps,steps)
+codeim = imresize(codeim,im.shape[:2],interp='nearest')
+
+figure()
+imshow(codeim)
+show()
+
+The input to k:-means is an array with steps*steps rows, each containing the R, G and
+B mean values. To Visualize the result we use SciPy’s imresize() function to show the
+steps*steps image at the original image coordinates. The parameter interp speciﬁes
+what type of interpolation to use, here we use nearest neighbor so we don't introduce
+new pixel values at the transitions between classes.
+
+Figure 6.4 shows results using 50 x 50 and 100 x 100 regions for two relatively
+simple example images. Note the ordering of the k-means labels (in this case the
+colors in the result images) is arbitrary. As you can see, the result is noisy despite
+down-sampling to only use a few regions. There is no spatial consistency and it is
+hard to separate regions, like the boy and the grass in the lower example. Spatial
+
+6.1. K—means Clustering 167
+

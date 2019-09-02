@@ -1,0 +1,49 @@
+An easy way to install NumPy and SciPy for Mac OS X is with the "superpack" from
+https://github . com/fonnesbeck/Scipysuperpack. This also gives you Matplotlib.
+
+Another alternative is to use the package system MacPorts (http : //www . macpo rts .
+org / ). This also works for Mat plotlib instead of the instructions below.
+
+If none of those work, the project webpage has other alternatives listed (http:
+//scipy.org/1
+
+Linux
+
+Installation requires that you have administrator rights on your computer. On some
+distributions NumPy comes pre-installed, on others not. Both NumPy and SciPy is easiest
+installed with the built in package handler (for example Synaptic on Ubuntu). You can
+also use the package handler for Mat plotlib instead of the instructions below.
+
+A.2 Matplotlib
+
+Here are instructions for installing Mat plotlib in case your NumPy/SciPy installation
+
+did not also install Matplotlib. Matplotlib is freely available at http : //matplotlib.
+
+sou rcefo rge . net / . Click the "download" link and download the installer for the latest
+
+version for your system and Python version. Currently the latest version is 1.1.0.
+Alternatively, just download the source and unpack. Run
+
+$ python setup.py install
+
+from the command line and everything should work. General tips on installing for dif-
+
+ferent systems can be found at http : //matplotlib . sou rcefo rge . net/use rs/installing .
+
+html but the process above should work for most platforms and Python versions.
+
+A.3 PIL
+
+PIL, the Python Imaging Library is available at http : //www . pythonwa re . com/pr‘oducts/
+pil/ . The latest free version is 1.1.7. Download the source kit and unpack the folder.
+In the downloaded folder run
+
+$ python setup.py install
+from the command line.
+
+You need to have JPEG (libjpeg) and PNG (zlib) supported if you want to save im-
+ages using PIL. See the README ﬁle or the PIL website if you encounter any problems.
+
+280 A.2. Matplotlib
+

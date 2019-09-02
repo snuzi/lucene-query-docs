@@ -1,0 +1,47 @@
+The visual words are constructed using some clustering algorithm applied to the
+feature descriptors extracted from a (large) training set of images. The most common
+choice is k:-means2, which is what we will use here. Visual words are nothing but a
+collection of vectors in the given feature descriptor space, in the case of k-means they
+are the cluster centroids. Representing an image with a histogram of visual words is
+then called a bag of visual words model.
+
+Let's introduce an example data set and use that to illustrate the concept. The ﬁle
+ﬁrst1000.z1'p contains the ﬁrst 1000 images from the University of Kentucky object
+recognition benchmark set (also known as "ukbench"). The full set, reported bench-
+marks and some supporting code can be found at http://www.vis . uky.edu/~stewe/
+ukbench/ . The ukbench set contains many sets of four images, each of the same scene
+or object (stored consecutively so that 0 . . .3, 4 . . . 7, etc. belong together). Figure 7.1
+shows some examples from the data set. The appendix has the details on the set and
+how to get the data.
+
+Creating a vocabulary
+
+To create a vocabulary of visual words we ﬁrst need to extract descriptors. Here we
+will use the SIFT descriptor. Running the following lines of code, with 1'm11'st, as usual,
+containing the ﬁlenames of the images,
+
+nbriimages = 1en(im1ist)
+featlist = [ im1ist[i][:—3]+'sift' for i in range(nbr,images)]
+
+for i in range(nbr,images):
+sift.process,image(im1ist[i],feat1ist[i])
+
+will give you descriptor ﬁles for each image. Create a ﬁle vocabularypy and add the
+following code for a vocabulary class and a method for training a vocabulary on some
+training image data.
+
+from scipy.c1uster.vq import *
+import vlfeat as sift
+
+class Vocabu1ary(object):
+
+def ,_init__(se1f,name):
+se1f.name = name
+se1f.voc = []
+se1f.idf = []
+se1f.trainingdata = []
+
+2Or in the more advanced cases hierarchical k—means.
+
+7.2.VﬁsualVVords 187
+

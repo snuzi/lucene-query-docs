@@ -1,0 +1,53 @@
+efﬁciently since the model chosen is applied to each feature independently. Despite
+their simplistic assumptions, Bayes classiﬁers have been very successful in practical
+applications, in particular for email spam ﬁltering. Another beneﬁt of this classiﬁer is
+that once the model is learned, no training data needs to be stored. Only the model
+parameters are needed.
+
+The classiﬁer is constructed by multiplying the individual conditional probabilities
+from each feature to get the total probability of a class. Then the class with highest
+probability is selected.
+
+Let's look at a basic implementation of a Bayes classiﬁer using Gaussian probability
+distribution models. This means that each feature is individually modeled using the
+feature mean and variance, computed from a set of training data. Add the following
+classiﬁer class to a ﬁle called bayes.py.
+
+class BayesClassifier(object):
+
+def ,,init,,(self):
+"““ Initialize classifier with training data. "““
+
+self.labels = [] # class labels
+
+self.mean = [] # class mean
+self.var = [] # class variances
+self.n = 0 # nbr of classes
+
+def train(self,data,labels=None):
+"““ Train on data (list of arrays n*dim).
+Labels are optional, default is 0...n-1. "““
+
+if labels==None:
+
+labels = range(len(data))
+self.labels = labels
+self.n = len(labels)
+
+for c in data:
+self.mean.append(mean(c,axis=0))
+self.var.append(var(c,axis=0))
+
+def classify(self,points):
+"““ Classify the points by computing probabilities
+for each class and return most probable label. "““
+
+# compute probabilities for each class
+estiprob = array([gauss(m,v,points) for m,v in zip(self.mean,self.var)])
+
+# get index of highest probability, this gives class label
+ndx = est_prob.argmax(axis=0)
+estilabels = array([self.labels[n] for n in ndx])
+
+8.2. Bayes Classiﬁer 219
+

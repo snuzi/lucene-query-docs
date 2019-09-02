@@ -1,0 +1,47 @@
+1.2 Matplotlib
+
+When working with mathematics and plotting graphs or drawing points, lines and
+curves on images, Matplotlib is a good graphics library with much more powerful
+features than the plotting available in PIL. Matplotlib produces high quality ﬁgures
+like many of the illustrations used in this book. Mat p1ot1ib’s PyLab interface is the set
+of functions that allow the user to create plots. Mat plotlib is open source and avail-
+able freely from http://matplotlib . sou rceforge . net/ where detailed documenta-
+tion and tutorials are available. Here are some examples showing most of the functions
+we will need in this book.
+
+Plotting images, points and lines
+
+Although it is possible to create nice bar plots, pie charts, scatter plots, etc., only a few
+commands are needed for most computer vision purposes. Most importantly, we want
+to be able to show things like interest points, correspondences and detected objects
+using points and lines. Here is an example of plotting an image with a few points and
+a line.
+
+from PIL import Image
+from pylab import *
+
+# read image to array
+im = array(Image.open('empire.jpg'))
+
+# plot the image
+imshow(im)
+
+# some points
+x = [100,100,400,400]
+y [200,500,200,500]
+
+# plot the points with red star-markers
+p1ot(x,y,'r*')
+
+# line plot connecting the first two points
+P10t(X[:2].y[:2])
+
+# add title and show the plot
+tit1e('P1otting: ”empire.jpg“')
+show()
+
+This plots the image, then four points with red star markers at the x and y coordinates
+given by the X and y lists, and ﬁnally draws a line (blue by default) between the two
+
+16 1.2.Matp1ot1ib
+

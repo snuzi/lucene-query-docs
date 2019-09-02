@@ -1,0 +1,50 @@
+def draw(se1f):
+”"" Draw the current image with points using
+0penCV’s own drawing functions.
+Press ant key to close window."""
+
+# draw points as green circles
+for point in se1f.features:
+cv2.circ1e(se1f.image,(int(point[0][0]),int(point[0][l])),3,(0,255,0),-1)
+
+cv2.imshow('LKtrack',se1f.image)
+cv2.waitKey()
+
+Now we have a complete self-contained tracking system using OpenCV functions.
+
+Using the tracker Let's tie it all together by using this tracker class on a real track-
+ing scenario. The following script will initialize a tracker object, detect and track
+points through the sequence and draw the result.
+
+import lktrack
+imnames = ['bt.003.pgm', 'bt.002.pgm', 'bt.00l.pgm', 'bt.000.pgm']
+
+# create tracker object
+lkt = lktrack.LKTracker(imnames)
+
+# detect in first frame, track in the remaining
+
+1kt.detect_points()
+
+1kt.draw()
+
+for i in range(1en(imnames)-1):
+1kt.track_points()
+1kt.draw()
+
+The drawing is one frame at a time and show the points currently tracked. Pressing
+any key will move to the next image in the sequence. The resulting ﬁgure windows
+for the ﬁrst four images of the Oxford corridor sequence (one of the Oxford multi-View
+datasets available at http ://www. robots . ox. ac . uk/~vgg/data/data - mview. html) looks
+like Figure 10.6.
+
+Using generators Add the following method to the LKTracker class.
+
+def track(se1f):
+”"" Generator for stepping through a sequence.”""
+
+for i in range(1en(se1f.imnames)):
+if se1f.features == []:
+
+10.4. Tracking 27 1
+

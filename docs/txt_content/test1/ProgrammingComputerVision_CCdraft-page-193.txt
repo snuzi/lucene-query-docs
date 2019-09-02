@@ -1,0 +1,50 @@
+(word by word) and imhistograms. We used two helper functions, is_indexed() which
+checks if the image has been indexed already, and get_id() which gives the image id
+for an image ﬁlename. Add these to imagesearchpy.
+
+def is,indexed(se1f,imname):
+”"" Returns True if imname has been indexed. ”""
+
+im = se1f.con.execute("se1ect rowid from imlist where
+fi1ename='%s'” % imname).fetchone()
+return im != None
+
+def get,id(se1f,imname):
+”"" Get an entry id and add if not present. ”""
+
+cur = se1f.con.execute(
+"select rowid from imlist where fi1ename='%s'“ % imname)
+res=cur.fetchone()
+if res==None:
+cur = se1f.con.execute(
+"insert into im1ist(fi1ename) values ('%s')“ % imname)
+return cur.1astrowid
+else:
+return res[0]
+
+Did you notice that we used pickle in add_to_index()? Databases like SQLite do
+not have a standard type for storing objects or arrays. Instead, we can create a string
+representation using Pickle’s dumps() function and write the string to the database.
+Consequently, we need to un-pickle the string when reading from the database. More
+on that in the next section.
+
+The following code example will go through the ukbench sample images and add
+them to our index. Here we assume that the lists 1'm11'st and featlist contain the ﬁle-
+names of the images and the descriptor ﬁles and that the vocabulary you trained ear-
+lier was pickled to a ﬁle Vocabu1ary.pk1.
+import pickle
+
+import sift
+import imagesearch
+
+nbriimages = 1en(im1ist)
+# load vocabulary
+with open('vocabu1ary.pk1', 'rb') as f:
+
+voc = pick1e.1oad(f)
+
+# create indexer
+indx = imagesearch.Indexer('test.db',voc)
+
+7.3. Indexing Images 193
+

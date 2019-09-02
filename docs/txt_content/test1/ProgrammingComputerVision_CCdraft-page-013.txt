@@ -1,0 +1,34 @@
+Chapter 1
+
+Basic Image Handling and
+Processing
+
+This chapter is an introduction to handling and processing images. With extensive ex-
+amples, it explains the central Python packages you will need for working with images.
+This chapter introduces the basic tools for reading images, converting and scaling im-
+ages, computing derivatives, plotting or saving results, and so on. We will use these
+throughout the remainder of the book.
+
+1.1 PIL — the Python Imaging Library
+
+The Python Imaging Library (PIL) provides general image handling and lots of useful
+basic image operations like resizing, cropping, rotating, color conversion and much
+more. PIL is free and available from http://www.pythonwa re . com/products/pil/.
+
+With PIL you can read images from most formats and write to the most common
+ones. The most important module is the Image module. To read an image use
+
+from PIL import Image
+pil,im = Image.open('empire.jpg')
+
+The return value, p1'1_1'm, is a PIL image object.
+Color conversions are done using the convert() method. To read an image and
+convert it to grayscale, just add convert(’L’) like this:
+
+pil,im = Image.open('empire.jpg').convert('L')
+
+Here are some examples taken from the PIL documentation, available at http : //
+www. pythonwa re . com/lib ra ry/ pil/hand boo k/index . htm. Output from the examples
+
+13
+

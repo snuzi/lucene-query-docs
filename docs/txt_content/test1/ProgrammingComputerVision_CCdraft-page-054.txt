@@ -1,0 +1,44 @@
+across the whole image. SIFT features are invariant to scale, rotation and intensity and
+can be matched reliably across 3D viewpoint and noise. A brief overview is available
+online at http : //en .wikipedia . org/wiki/Sca1e- inva riant_featu re_t ransform.
+
+Interest points
+
+SIFT interest point locations are found using difference-of-Gaussian functions
+D(X, 0) = [Gkcr(X) - Ga(X)l * I(X) = [Gkcr - Gal * I = Ikcr - Ia 7
+
+where G0 is the Gaussian 2D kernel described on page 31, I0 the GU-blurred grayscale
+image and k: a constant factor determining the separation in scale. Interest points
+are the maxima and minima of D(x, 0) across both image location and scale. These
+candidate locations are ﬁltered to remove unstable points. Points are dismissed based
+on a number of criteria like low contrast and points on edges. The details are in the
+
+paper
+
+Descriptor
+
+The interest point (keypoint) locator above gives position and scale. To achieve invari-
+ance to rotation, a reference direction is chosen based on the direction and magnitude
+of the image gradient around each point. The dominant direction is used as reference
+and determined using an orientation histogram (weighted with the magnitude).
+
+The next step is to compute a descriptor based on the position, scale and rotation.
+To obtain robustness against image intensity, the SIFT descriptor uses image gradients
+(compare that to normalized cross correlation above that uses the image intensities).
+The descriptor takes a grid of subregions around the point and for each subregion
+computes an image gradient orientation histogram. The histograms are concatenated
+to form a descriptor vector. The standard setting uses 4 x 4 subregions with 8 bin
+orientation histograms resulting in a 128 bin histogram (4 * 4 >x< 8 = 128). Figure 2.3
+illustrates the construction of the descriptor. The interested reader should look at
+[18] for the details or http : //en .wikipedia . org/wiki/Scale- invariant_featu re_
+t ransform for an overview.
+
+Detecting interest points
+
+To compute SIFT features for images we will use the binaries available with the open
+source package VLFeat [36]. A full Python implementation of all the steps in the
+algorithm would not be very efﬁcient and really is outside the scope of this book.
+VLFeat is available at http : / /www . vl feat .0 rg/, with binaries for all major platforms.
+
+54 2.2. SIFT — Scale—lnvariant Feature Transform
+

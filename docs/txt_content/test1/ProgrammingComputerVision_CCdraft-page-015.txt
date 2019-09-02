@@ -1,0 +1,45 @@
+”"" Returns a list of filenames for
+all jpg images in a directory. ”""
+
+return [os.path.join(path,f) for f in os.listdir(path) if f.endswith('.jpg')]
+
+Now, back to PIL.
+
+Create thumbnails
+
+Using PIL to create thumbnails is very simple. The thumbnai1() method takes a tuple
+specifying the new size and converts the image to a thumbnail image with size that ﬁts
+within the tuple. To create a thumbnail with longest side 128 pixels, use the method
+like this:
+
+pil,im.thumbnail((128,128))
+
+Copy and paste regions
+
+Cropping a region from an image is done using the crop() method.
+
+box = (l00,100,400,400)
+region = pil,im.crop(boX)
+
+The region is deﬁned by a 4-tuple, where coordinates are (left, upper, right, lower).
+PIL uses a coordinate system with (0, O) in the upper left corner. The extracted region
+can for example be rotated and then put back using the paste() method like this:
+
+region = region.transpose(Image.ROTATE,l80)
+pil,im.paste(region,box)
+
+Resize and rotate
+
+To resize an image, call resize() with a tuple giving the new size.
+
+out = pil,im.resize((l28,l28))
+
+To rotate an image, use counter clockwise angles and rotate() like this:
+
+out = pil_im.rotate(45)
+
+Some examples are shown in Figure 1.1. The leftmost image is the original, followed
+by a grayscale version, a rotated crop pasted in, and a thumbnail image.
+
+1.1. PIL — the Python Imaging Library 15
+

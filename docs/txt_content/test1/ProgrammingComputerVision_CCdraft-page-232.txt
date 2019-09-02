@@ -1,0 +1,57 @@
+im = array(Image.open(imname).convert('L'))
+
+# find the cell edges
+x = find,sudoku_edges(im,axis=0)
+y find,sudoku,edges(im,axis=1)
+
+ll
+
+# crop cells and classify
+crops = []
+for col in range(9):
+for row in range(9):
+crop = im[y[co1]:y[co1+l],x[row]:x[row+1]]
+crops.append(compute_feature(crop))
+
+res = svm,predict(loadtxt(vername),map(1ist,crops),m)[0]
+res_im = array(res).reshape(9,9)
+
+print ’Resu1t:’
+print res,im
+
+The edges are found and then crops are extracted for each cell. The crops are passed
+to the same feature extraction function used for the training and stored in an array.
+These feature vectors are classiﬁed using svm_predict() with the true labels read us-
+ing 1oadtxt(). The result in your console should be:
+
+Accuracy = 100% (81/81) (classification)
+
+Result:
+
+[[
+[
+
+333333333
+9 9 9 9 9 F 9 9 9
+9 P 9 9 9 9 9 9 9
+P 9 9 9 9 9 9 9 9
+9 9 9 9 9 9 9 9 F
+9 9 9 9 9 P 9 9 F
+9 9 9 9 9 9 P P 9
+9 9 9 P 9 9 9 9 9
+9 9 9 9 9 P 9 F 9
+
+Now, this was one of the easier images. Try some of the others and see what the errors
+look like and where the classiﬁer makes mistakes.
+
+If you plot the crops using a 9 x 9 subplot, they should look like the right image of
+Figure 8.7.
+
+Rectifying images
+
+If you are happy with the performance of your classiﬁer, the next challenge is to apply
+it to non-aligned images. We will end our sudoku example with a simple way of rectify-
+ing an image given that the four outer corner points of the grid have been detected or
+
+232 8.4. Optical Character Recognition
+

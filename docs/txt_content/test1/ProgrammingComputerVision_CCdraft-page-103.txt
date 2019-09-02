@@ -1,0 +1,32 @@
+Chapter 4
+
+Camera Models and Augmented
+Reality
+
+In this chapter we will look at modeling cameras and how to effectively use such mod-
+els. In the previous chapter we covered image to image mappings and transforms. To
+handle mappings between 3D and images the projection properties of the camera gen-
+erating the image needs to be part of the mapping. Here we show how to determine
+camera properties and how to use image projections for applications like augmented
+reality. In the next chapter, we will use the camera model to look at applications with
+multiple views and mappings between them.
+
+4.1 The Pin-hole Camera Model
+
+The pin-hole camera model (or sometimes projective camera model) is a widely used
+camera model in computer vision. It is simple and accurate enough for most applica-
+tions. The name comes from the type of camera, like a camera obscura, that collects
+light through a small hole to the inside of a dark box or room. In the pin-hole camera
+model, light passes through a single point, the camera center, C, before it is projected
+onto an image plane. Figure 4.1 shows an illustration where the image plane is drawn
+in front of the camera center. The image plane in an actual camera would be upside
+down behind the camera center but the model is the same.
+
+The projection properties of a pin-hole camera can be derived from this illustration
+and the assumption that the image axis are aligned with the :r and y axis of a 3D
+coordinate system. The optical axis of the camera then coincides with the z axis and
+the projection follows from similar triangles. By adding rotation and translation to
+put a 3D point in this coordinate system before projecting, the complete projection
+
+103
+

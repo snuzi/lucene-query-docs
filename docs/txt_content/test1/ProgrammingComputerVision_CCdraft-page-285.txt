@@ -1,0 +1,16 @@
+A. 1 3 CherryPy
+
+CherryPy (http://www. cherrypy.org/) is a fast, stable and lightweight web server
+built on python using an object oriented model. CherryPy is easy to install, just down-
+load the latest version from http://www. cherrypy . org/wiki/CherryPyInsta11. The
+latest stable release is 3.2.0. Unpack and run
+
+$ python setup.py install
+
+from the command line. After installing, look at the ten tiny tutorial examples that
+come with CherryPy in the cherrypy/tutor1'a1/ folder. These examples show you how
+to pass GET/POST variables, inheritance of page properties, ﬁle upload and download
+etc.
+
+A. 13. CherryPy 285
+

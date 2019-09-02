@@ -1,0 +1,64 @@
+n = 200
+
+# two normal distributions
+
+class_l = 0.6 * randn(n,2)
+
+class_2 = 1.2 * randn(n,2) + array([5,1])
+labels = hstack((ones(n),—ones(n)))
+
+# save with Pickle
+
+with open(’points,normal.pkl',
+pickle.dump(class,1,f)
+pickle.dump(class,2,f)
+pickle.dump(labels,f)
+
+I
+
+w’) as f:
+
+# normal distribution and ring around it
+class_l = 0.6 * randn(n,2)
+
+r = 0.8 * randn(n,l) + 5
+
+angle = 2*pi * randn(n,l)
+
+class,2 = hstack((r*cos(angle),r*sin(angle)))
+labels = hstack((ones(n),—ones(n)))
+
+# save with Pickle
+
+with open('points,ring.pkl',
+pickle.dump(class,1,f)
+pickle.dump(class,2,f)
+pickle.dump(labels,f)
+
+I
+
+w’) as f:
+
+Run the script twice with different ﬁlenames, for example po1'nts_norma1_test.pkl and
+po1'nts_r1'ng_test.pk1 the second time. You will now have four ﬁles with 2D data sets,
+two ﬁles for each of the distributions. We can use one for training and the other for
+testing.
+
+Let's see how to do that with the kNN classiﬁer. Create a script with the following
+commands.
+
+import pickle
+import knn
+import imtools
+
+# load 2D points using Pickle
+
+with open('points,normal.pkl', 'r') as f:
+class_1 = pickle.load(f)
+class,2 = pickle.load(f)
+labels = pickle.load(f)
+
+model = knn.KnnClassifier(labels,vstack((class_1,class_2)))
+
+8.1. K—Nearest Neighbors 21 1
+

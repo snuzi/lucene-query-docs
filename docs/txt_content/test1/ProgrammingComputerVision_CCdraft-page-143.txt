@@ -1,0 +1,53 @@
+in the new image coordinates. The points in these new image coordinates satisfy the
+same fundamental equation as before
+
+T
+XK2FXK1 = O .
+
+The fundamental matrix for calibration normalized coordinates is called the essential
+matrix and is usually denoted E instead of F to make it clear that this is the calibrated
+case and the image coordinates are normalized.
+
+The camera matrices recovered from an essential matrix respect metric relation-
+ships but there are four possible solutions. Only one of them has the scene in front of
+both cameras so it is easy to pick the right one.
+
+Here is an algorithm for computing the four solutions (see [1 3] for the details). Add
+this function to sfm.py.
+
+def compute_P_from,essential(E):
+”"" Computes the second camera matrix (assuming P1 = [I 0])
+from an essential matrix. Output is a list of four
+possible camera matrices. ”""
+
+# make sure E is rank 2
+U,S,V = svd(E)
+if det(dot(U,V))<0:
+v=-v
+E = dot(U,dot(diag([1,1,0]),V))
+
+# create matrices (Hartley p 258)
+skew([0,0,-1])
+ar-ray([[0r']-I0] I [11010]] 
+
+W
+
+# return all four solutions
+
+P2 = [vstack((dot(U,dot(W,V)).T,U[:,2])).T,
+vstack((dot(U,dot(W,V)).T,-U[:,2])).T,
+vstack((dot(U,dot(W.T,V)).T,U[:,2])).T,
+vstack((dot(U,dot(w.T,V)).T,—U[:,2])).T]
+
+return P2
+
+First this function makes sure the essential matrix is rank 2 (with two equal non-zero
+singular values), then the four solutions are created according to the recipe in [13]. A
+list with four camera matrices is returned. How to pick the right one, we leave to the
+example later.
+
+This concludes all the theory needed to compute 3D reconstructions from a collec-
+tion of images.
+
+5.2. Computing with Cameras and 3D Structure 143
+

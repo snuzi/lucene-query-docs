@@ -1,0 +1,40 @@
+ 
+
+Figure 5.6: Projected points in View 1 computed using an estimated camera matrix.
+
+Xest = Pest.project(X)
+
+# plotting
+
+figure()
+
+imshow(im1)
+p1ot(x[0],x[1],'b.')
+p1ot(xest[0],xest[1],'r.')
+axis('off')
+
+show()
+
+To check the camera matrices they are printed to the console in normalized form (by
+dividing with the last element). The printout looks like this.
+
+[[ 1.G652G794e+00 -5.23431275e+01 2.06902749e+G1 5.08729305e+02]
+[ -5.05773115e+01 -1.33243276e+01 -1.47388537e+01 4.79178838e+02]
+[ 3.05121915e-03 -3.19264684e-02 -3.43703738e-02 1.0000G000e+G0]]
+
+[[ 1.@6774679e+00 -5.23448212e+01 2.06926980e+G1 5.08764487e+02]
+[ -5.05834364e+G1 -1.33201976e+G1 -1.47406641e+01 4.79228998e+02]
+[ 3.06792659e-03 -3.19008054e-02 -3.43665129e-02 1.00000000e+00]]
+
+The top is the estimated camera matrix and below the one computed by the creators
+of the data set. As you can see, they are almost identical. Lastly, the 3D points are
+projected using the estimated camera and plotted. The result looks like Figure 5.6
+with the true points in blue and the estimated camera projection in red.
+
+Computing the camera matrix from a fundamental matrix
+
+In a two View scenario, the camera matrices can be recovered from the fundamental
+matrix. Assuming the ﬁrst camera matrix is normalized to P1 = [I | 0], the problem is
+
+5.2. Computing with Cameras and 3D Structure 141
+

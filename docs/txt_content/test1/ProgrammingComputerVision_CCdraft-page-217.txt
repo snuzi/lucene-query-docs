@@ -1,0 +1,52 @@
+# create list of all files ending in .dsift
+featlist = [os.path.join(path,f) for f in os.listdir(path) if f.endswith('.dsift')]
+
+# read the features
+features = []
+for featfile in featlist:
+l,d = sift.read,features,from,file(featfile)
+features.append(d.f1atten())
+features = array(features)
+
+# create labels
+labels = [featfile.split(’/’)[-1][0] for featfile in featlist]
+
+return features,array(labels)
+
+Then we can read the features and labels for our test and training sets using the
+following commands.
+
+features,labels = readsgesture_features,labels('train/')
+test,features,test,labels = readsgesture,features_labels('test/')
+classnames = unique(labe1s)
+
+Here we used the ﬁrst letter in the ﬁlename to create class labels. Using the NumPy
+function unique() we get a sorted list of unique class names.
+Now we can try our nearest neighbor code on this data:
+
+# test kNN
+
+k = 1
+
+knn,classifier = knn.KnnClassifier(labels,features)
+
+res = array([knn,classifier.classify(test_features[i],k) for i in
+range(len(test_labels))])
+
+# accuracy
+acc = sum(1.0*(res==test_1abe1s)) / len(test_labels)
+print 'Accuracy:', acc
+
+First the classiﬁer object is created with the training data and labels as input. Then
+we iterate over the test set and classify each image using the c1assify() method. The
+accuracy is computed by multiplying the boolean array with one and summing. In this
+case the true Values are 1 so it is a simple thing to count the correct classiﬁcations.
+This gives a printout like this
+
+Accuracy: 0.811518324607
+
+which means that 81% were correctly classiﬁed in this case. The value will vary with
+the choice of k: and the parameters for the dense SIFT image descriptor.
+
+8.1. K—Nearest Neighbors 21 7
+

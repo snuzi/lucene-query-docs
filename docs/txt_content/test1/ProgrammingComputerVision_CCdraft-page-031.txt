@@ -1,0 +1,49 @@
+The last parameter indicates that integer format should be used. Similarly, reading is
+done like this:
+
+X = 1oadtxt('test.txt')
+
+You can ﬁnd out more from the online documentation http : //docs . scipy.org/doc/
+numpy/ reference/generated/numpy . loadtxt . html.
+
+Lastly, NumPy has dedicated functions for saving and loading arrays. Look for save()
+and load() in the online documentation for the details.
+
+1.4 SciPy
+
+SciPy (http : //scipy . org/) is an open-source package for mathematics that builds on
+NumPy and provides efﬁcient routines for a number of operations, including numerical
+integration, optimization, statistics, signal processing, and most importantly for us,
+image processing. As the following will show, there are many useful modules in SciPy.
+SciPy is free and available at http://scipy . org/Download.
+
+Blurring images
+
+A classic and very useful example of image convolution is Gaussian blurring of images.
+In essence, the (grayscale) image I is convolved with a Gaussian kernel to create a
+blurred version
+
+I0 2: I'* (10 ,
+
+where * indicates convolution and GU is a Gaussian 2D-kernel with standard deviation
+0 deﬁned as
+G0 : Le—<m2+y2>/2a2 _
+27r0
+
+Gaussian blurring is used to deﬁne an image scale to work in, for interpolation, for
+computing interest points, and in many more applications.
+
+SciPy comes with a module for ﬁltering called scipy.ndimage.fi1ters that can be
+used to compute these convolutions using a fast 1D separation. All you need to do is:
+
+from PIL import Image
+from numpy import *
+from scipy.ndimage import filters
+
+im = array(Image.open('empire.jpg').convert('L'))
+im2 = filters.gaussian,fi1ter(im,5)
+
+Here the last parameter of gaussian_fi1ter() is the standard deviation.
+
+1.4.SciPy 31
+

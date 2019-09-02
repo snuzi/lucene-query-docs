@@ -1,0 +1,50 @@
+and ﬁnally calcoptica1F1owFarneback() based on [10]. The last one is considered one
+of the best methods for obtaining dense ﬂow ﬁelds. Let's look at an example of using
+this to ﬁnd motion vectors in video (the Lucas-Kanade version is the subject of the next
+section).
+
+Try running the following script.
+
+import CV2
+
+def drawLf1ow(im,f1ow,step=l6):
+“"" Plot optical flow at sample points
+spaced step pixels apart. “""
+
+h,w = im.shape[:2]
+y,x mgrid[step/2:h:step,step/2:w:step].reshape(2,-1)
+fX,fy = f1ow[y,X].T
+
+# create line endpoints
+lines = vstack([x,y,x+fx,y+fy]).T.reshape(-1,2,2)
+lines = int32(1ines)
+
+# create image and draw
+vis = cv2.cvtCo1or(im,cv2.COLOR,GRAY2BGR)
+for (X1,y1),(x2,y2) in lines:
+cv2.1ine(vis,(Xl,yl),(x2,y2),(0,255,0),l)
+cv2.circ1e(vis,(Xl,yl),l,(0,255,0), -1)
+return vis
+
+# setup video capture
+cap = cv2.VideoCapture(0)
+
+ret,im = cap.read()
+previgray = cv2.cvtCo1or(im,cv2.COLOR,BGR2GRAY)
+
+while True:
+# get grayscale image
+ret,im = cap.read()
+gray = CV2.cvtCo1or(im,cv2.COLOR,BGR2GRAY)
+
+# compute flow
+flow = cv2.ca1c0ptica1F1owFarneback(prev_gray,gray,None,0.5,3,15,3,5,1.2,0)
+prev_gray = gray
+
+# plot the flow vectors
+cv2.imshow('0ptica1 flow’,draw_f1ow(gray,f1ow))
+if cv2.waitKey(l0) == 27:
+break
+
+266 10.4. Tracking
+

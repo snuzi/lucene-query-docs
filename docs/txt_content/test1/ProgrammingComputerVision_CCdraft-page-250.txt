@@ -1,0 +1,53 @@
+pixel feature vector. Then the function loops over all N pixels and ﬁlls out the values
+in the N X N normalized cut matrix W.
+
+We can compute the segmentation either by sequentially cutting each eigenvector
+or by taking a number of eigenvectors and apply clustering. We chose the second
+approach which also works without modiﬁcation for any number of segments. We take
+the top ndim eigenvectors of the Laplacian matrix corresponding to W and cluster the
+pixels. The following function implements the clustering, as you can see it is almost
+the same as the spectral clustering example in Section 6.3.
+
+from scipy.c1uster.vq import *
+
+def c1uster(S,k,ndim):
+“"“ Spectral clustering from a similarity matrix.”""
+
+# check for symmetry
+if sum(abs(S—S.T)) > le-10:
+print 'not symmetric’
+
+# create Laplacian matrix
+
+rowsum = sum(abs(S),axis=0)
+
+D diag(1 / sqrt(rowsum + 1e—6))
+L dot(D,dot(S,D))
+
+# compute eigenvectors of L
+U,sigma,V = 1ina1g.svd(L)
+
+# create feature vector from ndim first eigenvectors
+# by stacking eigenvectors as columns
+features = array(V[:ndim]).T
+
+# k-means
+
+features = whiten(features)
+centroids,distortion = kmeans(features,k)
+code,distance = vq(features,centroids)
+
+return code,V
+
+Here we used the k-means clustering algorithm (see Section 6.1 for details) to group
+the pixels based on the values in the eigenvector images. You could try any clustering
+algorithm or grouping criteria if you feel like experimenting with the results.
+
+Now we are ready to try this on some sample images. The following script shows a
+complete example:
+
+import ncut
+from scipy.misc import imresize
+
+250 9.2. Segmentation using Clustering
+

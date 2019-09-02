@@ -1,0 +1,71 @@
+The binaries need the image in grayscale .pgm format, so if another image format is
+used we ﬁrst convert to a temporary .pgm ﬁle. The result is stored in a text ﬁle in an
+easy to read format. The ﬁles look something like this
+
+318.861 7.48227 .12001 1.68523 0 0 0 1 0 0 0 0 0 11 16 0 ...
+
+318.861 7.48227 .12001 2.99965 11 2 0 0 1 0 0 0 173 67 0 0 ...
+
+54.2821 14.8586 .895827 4.29821 60 46 0 0 0 0 0 0 99 42 0 0 ...
+
+155.714 23.0575 .10741 1.54095 6 0 0 0 150 11 0 0 150 18 2 1 ...
+1 2 10 79 45 5 11 ...
+
+229.037 23.7603 .921754 1.48754 3 0 0 0 141 31 0 0 141 45 0 0 ...
+232.362 24.0091 .0578 1.65089 11 1 0 16 134 0 0 0 106 21 16 33 ...
+
+1
+
+1
+
+0
+
+1
+
+42.9729 24.2012 0.969313 4.68892 90 29 0 0 0
+
+0
+
+1
+
+201.256 25.5857 1.04879 2.01664 10 4 1 8 14 2 1 9 88 13 0 0 ...
+
+where each row contains the coordinates, scale and rotation angle for each interest
+point as the ﬁrst four values, followed by the 128 values of the corresponding descrip-
+tor. The descriptor is represented with the raw integer values and is not normalized.
+This is something you will want to do when comparing descriptors. More on that later.
+
+The example above shows the ﬁrst part of the ﬁrst eight features found in an image.
+Note that the two ﬁrst rows have the same coordinates but different rotation. This can
+happen if several strong directions are found at the same interest point.
+
+Here's how to read the features to NumPy arrays from an output ﬁle like the one
+above. Add this function to sift. py,
+
+def readifeatures,from,fi1e(fi1ename):
+""” Read feature properties and return in matrix form. ""”
+
+f = 1oadtXt(fi1ename)
+return f[:,:4],f[:,4:] # feature locations, descriptors
+
+Here we used the NumPy function 1oadtXt() to do all the work for us.
+
+If you modify the descriptors in your Python session writing the result back to fea-
+ture ﬁles can be useful. The function below does this for you using NumPy’s savetxt().
+def write_features_to_fi1e(filename,1ocs,desc):
+
+""” Save feature location and descriptor to file. ""”
+savetxt(fi1ename,hstack((1ocs,desc)))
+
+This uses the function hstack() that horizontally stacks the two arrays by concatenat-
+ing the rows so that the descriptor part comes after the locations on each row.
+
+Having read the features, visualizing them by plotting their locations in the image
+is a simple task. Just add p1ot_features() as below to your ﬁle s1'ft.py.
+def plot_features(im,locs,circle=False):
+
+""” Show image with features. input: im (image as array),
+locs (row, col, scale, orientation of each feature). ""”
+
+56 2.2. SIFT — Scale—lnvariant Feature Transform
+

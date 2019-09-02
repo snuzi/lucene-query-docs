@@ -1,0 +1,47 @@
+transform follows. The interested reader can ﬁnd the details in [13] and [25, 26].
+With a pin-hole camera, a 3D point X is projected to an image point x (both ex-
+pressed in homogeneous coordinates) as
+
+)\x=PX. (4.1)
+
+Here the 3 x 4 matrix P is called the camera matrix (or projection matrix). Note that
+the 3D point X has four elements in homogeneous coordinates, X = [X , Y, Z , W]. The
+scalar A is the inverse depth of the 3D point and is needed if we want all coordinates
+to be homogeneous with the last value normalized to one.
+
+The camera matrix
+The camera matrix can be decomposed as
+P=K[R|t], (4.2)
+
+where R is a rotation matrix describing the orientation of the camera, 1: a 3D transla-
+tion vector describing the position of the camera center, and the intrinsic calibration
+matrix K describing the projection properties of the camera.
+
+The calibration matrix depends only on the camera properties and is in a general
+form written as
+
+af 5 cm
+K: 0 f Cy
+0 O 1
+
+The focal length, f, is the distance between the image plane and the camera center.
+The skew, s, is only used if the pixel array in the sensor is skewed and can in most
+cases safely be set to zero. This gives
+
+fr 0 Cm
+K = 0 fy Cy , (4.3)
+0 0 1
+
+where we used the alternative notation f,, and fy, with f,, = Ozfy.
+The aspect ratio, a is used for non-square pixel elements. It is often safe to assume
+a = 1. With this assumption the matrix becomes
+
+f 0 Cm
+K: 0 f Cy
+0 0 1
+
+Besides the focal length, the only remaining parameters are the coordinates of the
+optical center (sometimes called the principal point), the image point c = [c,,, Cy] where
+
+104 4.1. The Pin—hole Camera Model
+

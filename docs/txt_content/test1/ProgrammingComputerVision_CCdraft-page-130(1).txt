@@ -1,0 +1,52 @@
+# load 2D points for each View to a list
+points2D = [loadtXt('2D/00'+str(i+1)+'.corners').T for i in range(3)]
+
+# load 3D points
+points3D = loadtXt(’3D/p3d’).T
+
+# load correspondences
+corr = genfromtxt(’2D/nview-corners’,dtype=’int',missing=’*’)
+
+# load cameras to a list of Camera objects
+P = [camera.Camera(loadtxt(’2D/00’+str(i+1)+'.P')) for i in range(3)]
+
+This will load the ﬁrst two images (out of three), all the image feature points2 for the
+three views, the reconstructed 3D points corresponding to the image points, which
+points correspond across views and ﬁnally the camera matrices (where we used the
+Camera class from the previous chapter). Here we used 1oadtxt() to read the text ﬁles
+to NumPy arrays. The correspondences contain missing data since not all points are
+visible or successfully matched in all views. The correspondences need to be loaded
+with this taken into account. The function genfromtxt() solves this by replacing the
+missing values (denoted with ’*’ in this ﬁle) with -1.
+
+A convenient way of running this script and getting all the data is to save the code
+above in a ﬁle, for example 1oad_vggdata.py, and use the command execfile() like
+this
+
+execfile('load_vggdata.py')
+
+at the beginning of your scripts or experiments.
+Let's see what this data looks like. Try to project the 3D points into one view and
+compare the results with the observed image points.
+
+# make 3D points homogeneous and project
+X = vstack( (points3D,ones(points3D.shape[1])) )
+x = P[0].project(X)
+
+# plotting the points in View 1
+figure()
+
+imshow(iml)
+plot(points2D[0][0],points2D[0][l],'*')
+axis('off')
+
+figure()
+
+imshow(iml)
+plot(X[0],X[l],'r.’)
+axis('off')
+
+2Actually Harris corner points, see Section 2.1.
+
+130 5.1. Epipolar Geometry
+

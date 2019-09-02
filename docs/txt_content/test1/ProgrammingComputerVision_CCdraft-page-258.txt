@@ -1,0 +1,47 @@
+import cv2.cv
+
+We will focus on the cv2 module in this chapter. Look out for future name changes, as
+well as changes in function names and deﬁnitions in future versions. OpenCV and the
+Python interface is under rapid development.
+
+10.2 OpenCV Basics
+
+OpenCV comes with functions for reading and writing images as well as matrix oper-
+ations and math libraries. For the details on OpenCV, there is an excellent book [3]
+(C++ only). Let's look at some of the basic components and how to use them.
+
+Reading and writing images
+
+This short example will load an image, print the size and convert and save the image
+in .png format.
+
+import CV2
+
+# read image
+
+im = cv2.imread(’empire.jpg')
+h,w = im.shape[:2]
+
+print h,w
+
+# save image
+cv2.imwrite('resu1t.png',im)
+
+The function imread() returns the image as a standard NumPy array and can handle
+a wide range of image formats. You can use this function as an alternative to the
+PIL image reading if you like. The function imwrite() automatically takes care of any
+conversion based on the ﬁle ending.
+
+Color spaces
+
+In OpenCV images are not stored using the conventional RGB color channels, they are
+stored in BGR order (the reverse order). When reading an image the default is BGR,
+however there are several conversions available. Color space conversion are done
+using the function cvtCo1or(). For example, converting to grayscale is done like this.
+im = cv2.imread(’empire.jpg')
+
+# create a grayscale version
+gray = cv2.cvtCo1or(im,cv2.COLOR,BGR2GRAY)
+
+258 10.2. OpenCV Basics
+

@@ -1,0 +1,51 @@
+Image search demo
+
+First we need to initialize with a few html tags and load the data using Pickle. We need
+the Vocabulary for the Searcher object that interfaces with the database. Create a ﬁle
+searchdemo.py and add the following class with two methods.
+
+import cherrypy, os, urllib, pickle
+import imagesearch
+
+class SearchDemo(object):
+
+def _,init,,(self):
+# load list of images
+with open('webimlist.txt') as f:
+self.imlist = f.readlines()
+
+self.nbr,images = len(self.imlist)
+self.ndx = range(self.nbr_images)
+
+# load vocabulary
+with open('vocabulary.pkl', 'rb') as f:
+self.voc = pickle.load(f)
+
+# set max number of results to show
+self.maXres = 15
+
+# header and footer html
+
+self.header = ”""
+<!doctype html>
+<head>
+<title>Image search example</title>
+</head>
+<body>
+
+self.footer = ”""
+</body>
+</html>
+
+def index(self,query=None):
+self.src = imagesearch.Searcher('web.db',self.voc)
+
+html = self.header
+
+html += ”""
+<br />
+Click an image to search. <a href=’?query=’>Random selection</a> of images.
+<br /><br />
+
+204 7.6. Building Demos and Web Applications
+

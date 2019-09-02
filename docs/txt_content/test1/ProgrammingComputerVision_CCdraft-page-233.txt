@@ -1,0 +1,46 @@
+17 5 __ __ ,_
+9 3 52 7 7‘ V‘l7V~5
+4 |9\ 3| l5|2p 7
+16 4 2 ll I ‘I4;
+81 VT?T”WT5?
+ll I8 my
+8 5 64 y8\__|5_\_|e4_
+9 . H at «F?
+7 21 8 9 |7\ 2|1 \|8p 9
+5 23 ll5 I2 3l I;
+'-- 7h1l) -1.! V Indium
+
+Figure 8.7: An example of detecting and cropping the ﬁelds of a sudoku grid. (left)
+image of a sudoku grid. (right) the 9 x 9 cropped images of the individual cells to be
+sent to the OCR classiﬁer.
+
+marked manually. The left image in Figure 8.8 shows an example of a sudoku image
+with strong perspective effects.
+
+A homography can map the grid to align the edges as in the examples above, all we
+need to do is estimate the transform. The example below shows the case of manually
+marking the four corner points and then warping the image to a square target image
+of 1000 x 1000 pixels.
+
+from scipy import ndimage
+import homography
+
+imname = 'sudoku8.jpg'
+im = array(Image.open(imname).convert('L'))
+
+# mark corners
+figure()
+imshow(im)
+9Fay()
+
+X = ginput(4)
+
+# top left, top right, bottom right, bottom left
+fp = array([array([p[l],p[0],l]) for p in x]).T
+tp = array([[0,0,l],[0,1000,l],[l000,1000,1],[1000,0,1]]).T
+
+# estimate the homography
+H = homography.H,from,points(tp,fp)
+
+8.4. Optical Character Recognition 233
+

@@ -1,0 +1,63 @@
+Confusion matrix for
+[’A’ ’B’ ’C’ ’F’ ’P’ ’V’]
+[[2 . 0. 0. 4. 0
+[ 26. 1. 7. 2.
+0. 27. 5. 1.
+0
+2
+8.
+
+U1I—|<D<3l\J<D
+
+0
+0
+[ 1.
+[ 0.
+[ 0
+[ 8
+
+l\JI—|l\)
+
+7. .
+4. 2 .
+1 2 ]
+
+Not as good as the kNN classiﬁer but with the Bayes classiﬁer we don't need to keep
+any training data, just the model parameters for each of the classes. The result will
+vary greatly with the choice of dimensions after PCA.
+
+8.3 Support Vector Machines
+
+Support Vector Machines (SVM) are a powerful type of classiﬁers that often give state-
+of-the-art results for many classiﬁcation problems. In its simplest form an SVM ﬁnds
+a linear separating hyperplane (a plane in higher dimensional spaces) with the best
+possible separation between two classes. The decision function for a feature vector x
+is
+f (X) = W - X — b .
+
+where w is the hyperplane normal and b an offset constant. The zero level of this
+function then ideally separates the two classes so that one class has positive values
+and the other negative. The parameters w and b are found by solving an optimization
+problem on a training set of labelled feature vectors x,- with labels y,- E {-1, 1} so
+that the hyperplane has maximal separation between the two classes. The normal is a
+linear combination of some of the training feature vectors
+
+W = Z aiyixi 7
+2'
+so that the decision function can be written
+
+f(X):ZaiyiXi‘X_b-
+
+Here i runs over a selection of the training vectors, the selected vectors X, are called
+support vectors since they help deﬁne the classiﬁcation boundary.
+
+One of the strengths of SVM is that by using kernel functions, that is functions
+that map the feature vectors to a different (higher) dimensional space, non-linear or
+very difﬁcult classiﬁcation problems can be effectively solved while still keeping some
+control over the decision function. Kernel functions replace the inner product of the
+classiﬁcation function, x,- - x, with a function K (X,-, x).
+
+Some of the most common kernel functions are:
+
+8.3. Support Vector Machines 223
+

@@ -1,0 +1,44 @@
+The images used from Flickr are (names are the ones used in the examples, not the
+original ﬁlenames):
+
+b1'11board_for_rent.jpg by @stIiatic http : //flickr. com/photos/st riatic/2l67l910/
+used in Figures 3.2.
+
+b1ank_b1'11board.jpg by @mediaboytodd http://flickr.com/photos/23883605@
+N06/23l7982570/ used in Figures 3.3.
+
+beat1es.jpg by @oddsock http://flickr. com/photos/oddsock/8253506l/ used
+in Figures 3.2, 3.3.
+
+turningtorsoljpg by @rutgerblom http : //www. flickr. com/photos/ rutgerblom/
+2873l85336/ used in Figure 3.5.
+
+sunset_tree.jpg by @jpck http://www.flickr.com/photos/jpck/3344929385/
+used in Figure 3.5.
+
+Other images
+
+The face images used in Figures 3.6, 3.7, and 3.8 are courtesy of JK Keller. The
+eye and mouth annotations are the author's.
+
+The Lund University building images used in Figures 3.9, 3.1 1, and 3.12 are from
+a dataset used at the Mathematical Imaging Group, Lund University. Photogra-
+pher was probably Magnus Oskarsson.
+
+The toy plane 3D model used in Figure 4.6 is from Gilles Tran (Creative Commons
+License By Attribution).
+
+The Alcatraz images in Figures 5.7 and 5.8 are courtesy of Carl Olsson.
+
+The font data set used in Figures 1.8, 6.2, 6.3 6.7, and 6.8 is courtesy of Martin
+Solli.
+
+The sudoku images in Figures 8.6, 8.7, and 8.8 are courtesy of Martin Byrod.
+
+Illustrations
+
+The epipolar geometry illustration in Figure 5.1 is based on an illustration by Klas
+Josephson and adapted for this book.
+
+292
+

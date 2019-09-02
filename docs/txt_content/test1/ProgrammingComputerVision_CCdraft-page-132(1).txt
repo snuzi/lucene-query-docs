@@ -1,0 +1,40 @@
+   
+
+=~\.
+
+Figure 5.3: The 3D points of the Mertonl data set from the Oxford multi-View datasets
+shown using Mat plotlib. (left) view from above and to the side. (middle) View from
+the top showing the building walls and points on the roof. (right) side View showing
+the proﬁle of one of the walls and a frontal View of points on the other wall.
+
+show()
+
+The function get_test_data() generates sample points on a regular :17, y grid with the
+parameter determining the spacing. Flattening these grids gives three lists of points
+that can be sent to plot(). This should plot 3D points on what looks like a surface. Try
+it out and see for yourself.
+
+Now we can plot the Merton sample data to see what the 3D points look like.
+
+# plotting 3D points
+
+from mpLtoo1kits.mp1ot3d import aXes3d
+
+fig = figure()
+
+ax = fig.gca(projection='3d')
+
+ax. plot(points3D[0] ,points3D[l] , points3D[2] , 'k. ')
+
+Figure 5.3 shows the 3D points from three different views. The ﬁgure window and
+controls look like the standard plot windows for images and 2D data with an additional
+3D rotation tool.
+
+Computing F - The eight point algorithm
+
+The eight point algorithm is an algorithm for computing the fundamental matrix from
+point correspondences. Here's a brief description, the details can be found in [14] and
+[1 3].
+
+132 5.1. Epipolar Geometry
+

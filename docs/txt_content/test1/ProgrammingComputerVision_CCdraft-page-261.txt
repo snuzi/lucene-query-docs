@@ -1,0 +1,40 @@
+ 
+
+Figure 10.2: Flood ﬁll of a color image. The cyan area marks all pixels ﬁlled using a
+single seed in the upper left corner.
+
+import cv2
+
+# read image
+im = cv2.imread('empire.jpg')
+
+# down sample
+im,1owres = cv2.pyrDown(im)
+
+# convert to grayscale
+gray = cv2.cvtCo1or(im,1owres,cv2.COLOR,RGB2GRAY)
+
+# detect feature points
+
+5 = cv2.SURF()
+
+mask = uint8(ones(gray.shape))
+keypoints = s.detect(gray,mask)
+
+# show image and points
+vis = CV2.cvtCo1or(gray,cv2.COLOR,GRAY2BGR)
+
+for k in keypoints[::10]:
+cv2.circ1e(vis,(int(k.pt[0]),int(k.pt[l])),2,(0,255,0),-1)
+cv2.circ1e(vis,(int(k.pt[0]),int(k.pt[l])),int(k.size),(0,255,0),2)
+
+cv2.imshow('1oca1 descriptors',vis)
+cv2.waitKey()
+
+After reading the image it is down sampled using the function pyrDown() which if no
+new size is given, creates a new image half the size of the original. Then the image
+is converted to grayscale and passed to a SURF keypoint detection object. The mask
+determines what areas to apply the keypoint detector. When it comes to plotting we
+
+10.2. OpenCV Basics 26 1
+

@@ -1,0 +1,41 @@
+-2
+
+-4
+
+ 
+
+10
+
+Figure 8.1: Classifying 2D data using a k: nearest neighbor classiﬁer. For each example
+the color shows the class label (blue and red). Correctly classiﬁed points are shown
+with stars and misclassiﬁed points with circles. The curve is the classiﬁer decision
+boundary.
+
+# for each class, plot the points with ’*’ for correct, '0’ for incorrect
+
+for i in range(1en(points)):
+d = decisionfcn(points[i][:,0],points[i][:,l])
+correct_ndx = 1abe1s[i]==d
+incorrect,ndx = 1abe1s[i]!=d
+p1ot(points[i][correct,ndX,0],points[i][correct,ndX,l],'*',co1or=c1ist[i])
+p1ot(points[i][incorrect,ndX,0],points[i][incorrect,ndX,l],'o',co1or=c1ist[i])
+
+axis(’equa1')
+
+This function takes a decision function (the classiﬁer) and evaluates it on a grid using
+meshgrid(). The contours of the decision function can be plotted to show where the
+boundaries are. The default is the zero contour. The resulting plots look like the ones
+in Figure 8.1. As you can see the kNN decision boundary can adapt to the distribution
+of the classes without any explicit modeling.
+
+Dense SIFT as image feature
+
+Let's look at classifying some images. To do so we need a feature Vector for the image.
+We saw feature Vectors with average RGB and PCA coefﬁcients as examples in the
+clustering chapter. Here we will introduce another representation, the dense SIFT
+feature vector.
+
+A dense SIFT representation is created by applying the descriptor part of SIFT
+
+8.1. K—Nearest Neighbors 213
+

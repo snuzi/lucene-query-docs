@@ -1,0 +1,34 @@
+ 
+
+Figure 8.2: An example of applying dense SIFT descriptors over an image.
+
+on the local dominant gradient direction, if it is false all descriptors are simply oriented
+upwards.
+Use it like this to compute the dense SIFT descriptors and visualize the locations:
+
+import dsift , sift
+
+dsift . process,image,dsift( 'empire.jpg' , 'empire.sift ' ,90,40,True)
+1,d = sift. read,features,from,fi1e( 'empire.sift’)
+
+im = array(Image.open('empire.jpg'))
+sift.p1ot,features(im,1,True)
+show()
+
+This will compute SIFT features densely across the image with the local gradient ori-
+entation used to orient the descriptors (by setting force_or1'entat1'on to true). The
+locations are shown in Figure 8.2.
+
+Classifying images - hand gesture recognition
+
+In this application, we will look at applying the dense SIFT descriptor to images of
+hand gestures to build a simple hand gesture recognition system. We will use some
+images from the Static Hand Posture Database (available at http://www.idiap.ch/
+resource/gestures/) to illustrate. Download the smaller test set ("test set 16.3Mb"
+on the webpage) and take all the images in the "uniform" folders and split each class
+evenly into two folders called "train" and "test".
+
+Process the images with the dense SIFT function above to get feature vectors for
+
+8.1. K—Nearest Neighbors 21 5
+

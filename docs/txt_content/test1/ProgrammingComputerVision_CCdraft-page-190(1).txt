@@ -1,0 +1,50 @@
+vocabulary. There is also an option of subsampling the training data for the k:-means
+step which (will take a long time if too many features are used).
+
+With the images and the feature ﬁles in a folder on your computer, the following
+code will create a vocabulary of length k m 1000 (again assuming that 1'm11'st contains
+a list of ﬁlenames for the images).
+
+import pickle
+import vocabulary
+
+nbriimages = 1en(im1ist)
+featlist = [ im1ist[i][:-3]+’sift’ for i in range(nbr,images) ]
+
+voc = vocabulary.Vocabu1ary(’ukbenchtest’)
+voc.train(featlist,1000,10)
+
+# saving vocabulary
+
+with open(’vocabu1ary.pk1’, ’wb’) as f:
+pick1e.dump(voc,f)
+
+print 'vocabulary is:', voc.name, voc.nbr,words
+
+The last part also saves the entire vocabulary object for later use using the pickle
+module.
+
+7.3 Indexing Images
+
+Setting up the database
+
+To start indexing images we ﬁrst need to set up a database. Indexing images in
+this context means extracting descriptors from the images, converting them to vi-
+sual words using a vocabulary and storing the visual words and word histograms with
+information about which image they belong to. This will make it possible to query the
+database using an image and get the most similar images back as search result.
+
+Here we will use SQLite as database. SQLite is a database which stores everything
+in a single ﬁle and is very easy to set up and use. We are using it here since it is
+the easiest way to get started without having to go into database and server conﬁg-
+urations and other details way outside the scope of this book. The Python version,
+pysqlite, is available from http://code.goog1e.com/p/pysq1ite/ (and also through
+many package repositories on Mac and Linux). SQLite uses the SQL query language
+so the transition should be easy if you want to use another database.
+
+To get started we need to create tables and indexes and an indexer class to write
+image data to the database. First, create a ﬁle imagesearchpy and add the following
+code:
+
+190 7.3. Indexing Images
+

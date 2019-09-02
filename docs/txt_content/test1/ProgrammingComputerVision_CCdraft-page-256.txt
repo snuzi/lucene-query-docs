@@ -1,0 +1,39 @@
+Try this out and measure the difference graph size and in segmentation time
+compared to the simpler construction we used.
+
+. Create a user interface or simulate a user selecting regions for graph cut seg-
+
+mentation. Then try "hard coding" background and foreground by setting weights
+to some large value.
+
+. Change the feature vector in the graph cut segmentation from a RGB vector to
+
+some other descriptor. Can you improve on the segmentation results?
+
+. Implement an iterative segmentation approach using graph cut where a current
+
+segmentation is used to train new foreground and background models for the
+next. Does it improve segmentation quality?
+
+. The Microsoft Research Grab Cut dataset contains ground truth segmentation
+
+maps. Implement a function that measures the segmentation error and evaluate
+different settings and some of the ideas in the exercises above.
+
+. Try to vary the parameters of the normalized cuts edge weight and see how they
+
+affect the eigenvector images and the segmentation result.
+
+. Compute image gradients on the ﬁrst normalized cuts eigenvectors. Combine
+
+these gradient images to detect image contours of objects.
+
+. Implement a linear search over the threshold value for the de-noised image in
+
+Chan-Vese segmentation. For each threshold, store the energy E(F) and pick the
+segmentation with the lowest value.
+
+256
+
+9.3. Variational Methods
+

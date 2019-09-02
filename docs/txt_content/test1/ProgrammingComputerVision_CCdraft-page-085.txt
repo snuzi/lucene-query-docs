@@ -1,0 +1,56 @@
+First we need a general warp function for piecewise afﬁne image warping. The
+code below does the trick, where we also take the opportunity to show how to warp
+color images (you simply warp each color channel).
+
+def pmLaffine(fromim,toim,fp,tp,tri):
+”“" Warp triangular patches from an image.
+
+fromim = image to warp
+
+toim = destination image
+
+fp = from points in hom. coordinates
+
+tp = to points in hom. coordinates
+
+tri = triangulation. ”“"
+
+im = toim.copy()
+
+# check if image is grayscale or color
+is,color = len(fromim.shape) ==
+
+# create image to warp to (needed if iterate colors)
+im,t = zeros(im.shape, 'uint8')
+
+for t in tri:
+# compute affine transformation
+H = homography.Haffine,from,points(tp[:,t],fp[:,t])
+
+if is,color:
+for col in range(fromim.shape[2]):
+im,t[:,:,col] = ndimage.affine_transform(
+fromim[:,:,col],H[:2,:2],(H[0,2],H[l,2]),im.shape[:2])
+else:
+imit = ndimage.affine,transform(
+fromim,H[:2,:2],(H[0,2],H[l,2]),im.shape[:2])
+
+# alpha for triangle
+alpha = alpha,for,triangle(tp[:,t],im.shape[0],im.shape[l])
+
+# add triangle to image
+im[alpha>0] = im_t[alpha>0]
+
+return im
+
+Here we ﬁrst check if the image is grayscale or color and in the case of colors, we warp
+each color channel. The afﬁne transform for each triangle is uniquely determined so
+we use Haffine_from_points(). Add this function to the ﬁle WaI‘p.py.
+
+To use this function on the current example, the following short script puts it all
+together:
+
+import homography
+
+3.2. Warping images 85
+

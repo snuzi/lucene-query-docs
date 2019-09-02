@@ -1,0 +1,73 @@
+def compute,P(x,X):
+
+This function takes the image points and 3D points and builds up the matrix M above.
+The ﬁrst 12 values of the last eigenvector are the elements of the camera matrix and
+
+”"" Compute camera matrix from pairs of
+
+2D-3D correspondences (in homog. coordinates). ”""
+n = x.shape[1]
+if X.shape[1] != n:
+
+raise Va1ueError("Number of points don't match.")
+
+# create matrix for DLT solution
+
+M = zeros((3*n,12+n))
+
+for i in range(n):
+M[3*i,0:4] = X[ ,i]
+M[3*i+1,4:8] = X[:,i]
+M[3*i+2,8:12] = X[:,i]
+M[3*i:3*i+3,i+l2] = —x[:,i]
+
+U,S,V = 1ina1g.svd(M)
+
+return V[—1,:l2].reshape((3,4))
+
+are returned after a reshaping operation.
+
+Again, let's try this on our sample data set. The following script will pick out
+the points that are visible in the ﬁrst View (using the missing values from the corre-
+spondence list), make them into homogeneous coordinates and estimate the camera
+
+matrix.
+
+import sfm, camera
+
+corr =
+ndx3D
+ndx2D
+
+><><><><=N:
+II
+
+#
+
+corr[:,0] # view 1
+where(corr>=0)[0] # missing values are -1
+corr[ndx3D]
+
+select visible points and make homogeneous
+points2D[0][:,ndX2D] # view 1
+
+vstack( (X,ones(X.shape[1])) )
+points3D[:,ndx3D]
+
+vstack( (X,ones(X.shape[1])) )
+
+estimate P
+
+Pest = camera.Camera(sfm.compute_P(x,X))
+
+#
+
+compare!
+
+print Pest.P / Pest.P[2,3]
+print P[0].P / P[0].P[2,3]
+
+140
+
+5.2. Computing with Cameras and 3D Structure
+

@@ -1,0 +1,5 @@
+Figure 2.2: Example of matches resulting from applying normalized cross correlation
+to patches around Harris corner points.
+
+2.2. SIFT — Sca1e—InVariant Feature Transform 53
+

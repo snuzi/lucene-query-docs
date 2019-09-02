@@ -1,0 +1,28 @@
+ 
+
+Figure 5.10: Example of computing disparity maps from a stereo image pair with
+normalized cross-correlation.
+
+version is less noisy but also has less detail than the standard version.
+
+Exercises
+
+1. Use the techniques introduced in this chapter to verify matches in the White
+house example on page 66 (or even better, an example of your own) and see if
+you can improve on the results.
+
+2. Compute feature matches for an image pair and estimate the fundamental ma-
+trix. Use the epipolar lines to do a second pass to ﬁnd more matches by searching
+for the best match along the epipolar line for each feature.
+
+3. Take a set with three or more images. Pick one pair and compute 3D points
+and camera matrices. Match features to the remaining images to get correspon-
+dences. Then take the 3D points for the correspondences and compute camera
+matrices for the other images using resection. Plot the 3D points and the camera
+positions. Use a set of your own or one of the Oxford multi-View sets.
+
+4. Implement a stereo version that uses sum of squared differences (SSD) instead
+of NCC using ﬁltering the same way as in the NCC example.
+
+5.4. Stereo Images 157
+

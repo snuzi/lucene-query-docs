@@ -1,0 +1,58 @@
+This will create a kNN classiﬁer mode] using the data in the Pickle ﬁle. Now add the
+following:
+
+# load test data using Pickle
+
+with open('points,normal_test.pkl', 'r') as f:
+class_1 = pickle.load(f)
+class_2 = pickle.load(f)
+labels = pickle.load(f)
+
+# test on the first point
+print model.classify(class,1[0])
+
+This loads the other data set (the test set) and prints the estimated class label of the
+ﬁrst point to your console.
+
+To visualize the classiﬁcation of all the test points and show how well the classiﬁer
+separates the two classes we can add these lines.
+
+# define function for plotting
+def classify(x,y,model=model):
+return array([model.classify([XX,yy]) for (xx,yy) in zip(x,y)])
+
+# plot the classification boundary
+imtools.plot_2D_boundary([-6,6,-6,6],[class_1,class,2],classify,[1,-1])
+show()
+
+Here we created a small helper function that takes arrays of 2D coordinates X and y
+and the classiﬁer and returns an array of estimated class labels. Now we can pass this
+function as an argument to the actual plotting function. Add the following function to
+your ﬁle imtools.
+
+def plot_2D,boundary(plotirange,points,decisionfcn,labels,values=[0]):
+“"" Plot,range is (Xmin,XmaX,ymin,ymaX), points is a list
+of class points, decisionfcn is a funtion to evaluate,
+labels is a list of labels that decisionfcn returns for each class,
+values is a list of decision contours to show. “""
+
+clist = [’b’,'r','g','k','m','y'] # colors for the classes
+
+# evaluate on a grid and plot contour of decision function
+x arange(plot_range[0],plot_range[l],.1)
+
+y arange(plot_range[2],plot,range[3],.l)
+
+xx,yy = meshgrid(x,y)
+
+xxx,yyy = Xx.flatten(),yy.flatten() # lists of x,y in grid
+22 = array(decisionfcn(xxx,yyy))
+
+22 = zz.reshape(xx.shape)
+
+# plot contour(s) at values
+
+contour(xx,yy,zz,values)
+
+212 8.1. K—Nearest Neighbors
+

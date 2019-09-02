@@ -1,0 +1,51 @@
+- Measure the width and height of the object in pixels. Let's call these dac and dy.
+
+See Figure 4.3 for an example of a setup. Now, using similar triangles (look at Fig-
+ure 4.1 to convince yourself that) the following relation gives the focal lengths:
+
+f,,=(;%dZ, fy=(;%dZ.
+
+For the particular setup in Figure 4.3, the object was measured to be 130 by 185
+mm, so dX = 130 and dY = 185. The distance from camera to object was 460 mm,
+so dZ = 460. You can use any unit of measurement, it doesn't matter, only the ratios
+of the measurements matter. Using ginput() to select four points in the image, the
+width and height in pixels was 722 and 1040. This means that dz): = 722 and dy = 1040.
+Putting these values in the relationship above gives
+
+f,, = 2555 , fy = 2586 .
+
+Now, it is important to note that this is for a particular image resolution. In this case
+the image was 2592 >< 1936 pixels. Remember that the focal length and the optical cen-
+ter are measured in pixels and scale with the image resolution. If you take other image
+resolutions (for example a thumbnail image) the values will change. It is convenient
+to add the constants of your camera to a helper function like this
+def my,ca1ibration(sz):
+
+row,co1 = sz
+
+fx = 2555*co1/2592
+
+fy = 2586*row/1936
+
+K = diag([fx.fy.1])
+
+K[0,2] = 0.5*co1
+
+K[1,2] = 0.5*row
+
+return K
+
+This function then takes a size tuple and returns the calibration matrix. Here we
+assume the optical center to be the center of the image. Go ahead and replace the focal
+lengths with their mean if you like, for most consumer type cameras this is ﬁne. Note
+that the calibration is for images in landscape orientation. For portrait orientation,
+you need to interchange the constants. Let's keep this function and make use of it in
+the next section.
+
+4.3 Pose Estimation from Planes and Markers
+
+In Chapter 3 we saw how to estimate homographies between planes. Combining this
+with a calibrated camera makes it possible to compute the camera's pose (rotation and
+
+110 4.3. Pose Estimation from Planes and Markers
+

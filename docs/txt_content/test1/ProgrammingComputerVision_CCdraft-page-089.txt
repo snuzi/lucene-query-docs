@@ -1,0 +1,57 @@
+with scale s = \/ a2 —I— b2 and rotation matrix R.
+
+More point correspondences would work the same way and only add extra rows
+to the matrix. The least squares solution is found using 1ina1g.1stsq(). This idea of
+using least squares solutions is a standard trick that will be used many times in this
+book. Actually this is the same as used in the DLT algorithm earlier.
+
+The code looks like this (add to 1'mreg1'strat1'on.py):
+
+from scipy import linalg
+def compute,rigid_transform(refpoints,points):
+
+”"" Computes rotation, scale and translation for
+aligning points to refpoints. ”""
+
+A = array([ [points[0], -points[l], 1, 0],
+[points[1], points[0], 0, 1],
+[points[2], -points[3], 1, 0],
+[points[3], points[2], 0, 1],
+[points[4], -points[5], 1, 0],
+[points[5], points[4], 0, 1]])
+
+y = array([ refpoints[0],
+refpoints[1],
+refpoints[2],
+refpoints[3],
+refpoints[4],
+
+refpoints[5]])
+
+# least sq solution to mimimize ||Ax - y||
+a,b,tx,ty = linalg.1stsq(A,y)[0]
+R = array([[a, -b], [b, a]]) # rotation matrix incl scale
+
+return R,tx,ty
+
+The function returns a rotation matrix with scale as well as translation in the x and y di-
+
+rections. To warp the images and store new aligned images we can apply ndimage.affine_transform()
+to each color channel (these are color images). As reference frame, any three point
+
+coordinates could be used. Here we will use the landmark locations in the ﬁrst image
+
+for simplicity.
+
+from scipy import ndimage
+
+from scipy.misc import imsave
+import os
+
+def rigidialignment(faces,path,plotflag=False):
+”"" Align images rigidly and save as new images.
+path determines where the aligned images are saved
+set plotflag=True to plot the images. ”""
+
+3.2. Warping images 89
+

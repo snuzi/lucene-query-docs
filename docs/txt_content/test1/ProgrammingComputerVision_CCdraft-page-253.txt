@@ -1,0 +1,5 @@
+Figure 9.6: Examples of two-class image segmentation using the normalized cuts al-
+gorithm. (left) original image. (right) segmentation result.
+
+9.3. Variational Methods 253
+

@@ -1,0 +1,35 @@
+Plotting: "empire.jpg" Plotting: "empire.jpg"
+
+   
+
+Figure 1.2: Examples of plotting with Matplotlib. An image with points and a line
+with and without showing the axes.
+
+ﬁrst points in these lists. Figure 1.2 shows the result. The show() command starts the
+ﬁgure GUI and raises the ﬁgure windows. This GUI loop blocks your scripts and they
+are paused until the last ﬁgure window is closed. You should call show() only once
+per script, usually at the end. Note that PyLab uses a coordinate origin at the top left
+corner as is common for images. The axes are useful for debugging, but if you want a
+prettier plot, add:
+
+axis('off')
+
+This will give a plot like the one on the right in Figure 1.2 instead.
+There are many options for formatting color and styles when plotting. The most
+useful are the short commands shown in Tables 1.1, 1.2 and 1.3. Use them like this.
+
+plot(x,y) # default blue solid line
+plot(X,y,'r*') # red star-markers
+plot(X,y,'go-') # green line with circle-markers
+
+plot(X,y,'ks:') # black dotted line with square-markers
+
+Image contours and histograms
+
+Let's look at two examples of special plots: image contours and image histograms. Vi-
+sualizing image iso-contours (or iso-contours of other 2D functions) can be very useful.
+This needs grayscale images, because the contours need to be taken on a single value
+for every coordinate [23, y]. Here's how to do it.
+
+1.2.Matplotlib 17
+

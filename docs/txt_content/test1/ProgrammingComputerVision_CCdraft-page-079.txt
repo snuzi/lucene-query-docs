@@ -1,0 +1,35 @@
+ 
+
+Figure 3.1: An example of warping an image using an afﬁne transform, (left) original,
+(right) image after warping with nd1'mage.afﬁne_transform( ).
+
+iml,t = ndimage.affine_transform(im1,H[:2,:2],
+(H[0,2],H[1,2]),im2.shape[:2])
+alpha = (im1,t > 0)
+
+return (1-a1pha)*im2 + a1pha*im1,t
+
+As you can see, there is not much needed to do this. When blending together the
+warped image and the second image we create an alpha map which deﬁnes how much
+of each pixel to take from each image. Here we use the fact that the warped image is
+ﬁlled with zeros outside the borders of the warped area to create a binary alpha map.
+To be really strict we could have added a small number to the potential zero pixels of
+the ﬁrst image, or done it properly, see exercises at the end of the chapter. Note that
+the image coordinates are in homogeneous form.
+
+To try this function, let's insert an image on a billboard in another image. The
+following lines of code will put the leftmost image of Figure 3.2 into the second image.
+The coordinates were determined manually by looking at a plot of the image (in PyLab
+ﬁgures the mouse coordinates are shown near the bottom). PyLab’s ginput() could of
+course also have been used.
+
+import warp
+# example of affine warp of iml onto im2
+iml = array(Image.open('beat1es.jpg').convert('L'))
+
+im2 = array(Image.open('bi11board_forsrent.jpg').convert('L'))
+
+# set to points
+
+3.2. Warping images 79
+

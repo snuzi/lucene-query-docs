@@ -1,0 +1,5 @@
+Figure 5.11: Example of computing disparity maps from a stereo image pair with
+normalized cross-correlation.
+
+158 5.4. Stereo Images
+

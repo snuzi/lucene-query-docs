@@ -1,0 +1,58 @@
+Normalized cross correlation can be efﬁciently computed when applied densely
+across images. This is different from when we applied it between sparse point corre-
+spondences in Chapter 2. We want to evaluate normalized cross correlation on a patch
+(basically a local neighborhood) around each pixel. For this case we can rewrite the
+NCC around a pixel, equation (2.3), as
+
+Zx(I1(X) — M1)(I2(X) — M2)
+\/Zx(I1(X) - M1)2 Zx(I2(X) - M2)2
+
+where we skip the normalizing constant in front (it is not needed here) and the sums
+are taken over the pixels of a local patch around the pixel.
+
+Now, we want this for every pixel in the image. The three sums are over a local
+patch region and can be computed efﬁciently using image ﬁlters, just like we did for
+blur and derivatives. The function uniform_filter() in the ndimagefilters module
+will compute the sums over a rectangular patch.
+
+Here's the function that does the plane sweep and returns the best disparity for
+each pixel. Create a ﬁle stereo.py and add the following.
+
+ncc(I1,I2) =
+
+def p1ane,sweep,ncc(im,1,im,r,start,steps,wid):
+""" Find disparity image using normalized cross-correlation. """
+
+m,n = im,l.shape
+
+# arrays to hold the different sums
+meanil = zeros((m,n))
+
+meanir zeros((m,n))
+
+s = zeros((m,n))
+
+sil = zeros((m,n))
+
+sir zeros((m,n))
+
+# array to hold depth planes
+dmaps = zeros((m,n,steps))
+
+# compute mean of patch
+filters.uniform,fi1ter(im_1,wid,mean,1)
+filters.uniform,fi1ter(im_r,wid,mean,r)
+
+# normalized images
+nom§L=iml—Imam1
+nom,r=imr—Imamr
+
+# try different disparities
+
+for displ in range(steps):
+# move left image to the right, compute sums
+fi1ters.uniform_fi1ter(roll(norm,1,-disp1—start)*norm,r,wid,s) # sum nominator
+fi1ters.uniform_fi1ter(ro1l(norm,1,—disp1-start)*ro11(normil,—disp1—start),wid,s_1)
+
+154 5.4. Stereo Images
+

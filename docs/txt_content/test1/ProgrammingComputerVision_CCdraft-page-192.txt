@@ -1,0 +1,54 @@
+def create_tab1es(se1f):
+
+“"“ Create the database tables. “"“
+
+se1f.con.execute('create table im1ist(fi1ename)')
+se1f.con.execute('create table imwords(imid,wordid,vocname)')
+se1f.con.execute('create table imhistograms(imid,histogram,vocname)')
+se1f.con.execute('create index imiidx on im1ist(fi1ename)')
+se1f.con.execute('create index wordidiidx on imwords(wordid)')
+se1f.con.execute('create index imidiidx on imwords(imid)')
+se1f.con.execute('create index imidhistiidx on imhistograms(imid)')
+se1f.db_commit()
+
+Adding images
+
+With the database tables in place, we can start adding images to the index. To do
+this, we need a method add_to_index() for our Indexer class. Add this method to
+imagesearch.py.
+
+def addito_index(se1f,imname,descr):
+“"“ Take an image with feature descriptors,
+project on vocabulary and add to database. “"“
+
+if se1f.isiindexed(imname): return
+print ’indexing’, imname
+
+# get the imid
+imid = se1f.get_id(imname)
+
+# get the words
+imwords = se1f.voc.project(descr)
+nbriwords = imwords.shape[0]
+
+# link each word to image
+
+for i in range(nbr_words):
+word = imwords[i]
+# wordid is the word number itself
+se1f.con.execute("insert into imwords(imid,wordid,vocname)
+
+values (?,?,?)", (imid,word,se1f.voc.name))
+
+# store word histogram for image
+
+# use pickle to encode NumPy arrays as strings
+
+se1f.con.execute("insert into imhistograms(imid,histogram,vocname)
+values (?,?,?)", (imid,pick1e.dumps(imwords),se1f.voc.name))
+
+This method takes the image ﬁlename and a NumPy array with the descriptors found in
+the image. The descriptors are projected on the vocabulary and inserted in imwords
+
+192 7.3. Indexing Images
+

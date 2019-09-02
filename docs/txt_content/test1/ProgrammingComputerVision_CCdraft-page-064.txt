@@ -1,0 +1,59 @@
+{ "count": 349,
+
+"photos": [{"photo,id": 7715073, "photo,tit1e": "White House", “photo,ur1”:
+"http://www.panoramio.com/photo/7715073", "photo,fi1e,ur1“:
+"http://mw2.google.com/mw-panoramio/photos/medium/7715073.jpg", "longitude":
+-77.036583, "latitude": 38.897488, "width": 500, "height": 375, "up1oad,date“:
+"10 February 2008“, ”owner,id”: 1213603, "owner,name“: ”***”, ”owner,ur1”:
+"http://www.panoramio.com/user/1213603"}
+
+{"photo,id": 1303971, "photo,tit1e“: "AAAt'i1'ACAEAt'ALA§éL'éACAiéLd", "photo_ur1":
+”http://www.panoramio.com/photo/1303971", "photo,fi1e,ur1“:
+"http://mw2.goog1e.com/mw-panoramio/photos/medium/1303971.jpg", "longitude":
+-77.036353, "latitude": 38.897471, "width": 500, "height": 336, "up1oad_date":
+
+"13 March 2007", "owner_id": 195000, "owner_name": "***“, "owner_ur1":
+"http://www.panoramio.com/user/195000"}
+
+ii"
+To parse this JSON response we can use the simple j son package. Simplejson is avail-
+able at http://github . com/simplej son/simplejson and there is online documenta-
+tion available on the project page.
+
+If you are running Python 2.6 or later there is no need to use simple j son as there
+
+is a JSON library included with these later versions of Python. To use the built in one,
+just import like this
+
+import json
+
+If you want to use simple j son where available (it is faster and could contain newer
+features than the built in one) a good idea is to import with a fallback, like this
+
+try: import simplejson as json
+except ImportError: import json
+
+The following code will use the urllib package that comes with Python to handle
+the requests and then parse the result using simple j son.
+
+import os
+import urllib, urlparse
+import simplejson as json
+
+# query for images
+
+url = 'http://www.panoramic.com/map/getipanoramas.php?order=popu1arity&\
+set=pub1ic&from=0&to=20&minx=-77.037564&miny=38.896662&\
+maxx=-77.035564&maxy=38.898662&size=medium'
+
+c = ur11ib.ur1open(ur1)
+
+# get the urls of individual images from JSON
+j = json.1oads(c.read())
+
+imurls = []
+
+for im in j['photos']:
+
+64 2.3. Matching Geotagged Images
+

@@ -1,0 +1,47 @@
+A.4 LibSVM
+
+The current release is version 3.1 (released April 2011). Download the zip ﬁle from
+the LibSVM website http://www.csie.ntu.edu.tw/~cj1in/libsvm/. Unzip the ﬁle
+(a directory "libsvm-3.1" will be created). In a terminal window go to this directory
+and type "make".
+
+$ Cd 1ibsvm—3.0
+$ make
+
+Then go to the "python" directory and do the same:
+
+$ cd python/
+$ make
+
+This should be all you need to do. To test your installation, start python from the
+command line and try
+
+import svm
+
+The authors wrote a practical guide for using LivSVM [7]. This is a good starting point.
+
+A.5 OpenCV
+
+Installing OpenCV is a bit different depending on your operating system. Follow the
+applicable instructions below.
+
+To check your installation, start python and try the cookbook examples http: //
+opencv .wi11owga rage. com/documentation/python/cookbook. html. The online OpenCV
+Python reference guide gives more examples and details http : / / open cv . willowga rage.
+com/documentation/python/index . html on how to use OpenCV with Python.
+
+Windows and Unix
+
+There are installers for Windows and Unix available at the SourceForge repository
+http://sourceforge.net/projects/opencvlibra ry/.
+
+Mac OS X
+
+Mac OS X support has been lacking but is on the rise. There are several ways to
+install from source as described on the OpenCV wiki http://opencv.wi11owga rage.
+com/wiki/Insta11Guide. MacPorts is one option that works well if you are using
+Python/Numpy/Scipy/Matplotlib also from MacPorts. Building OpenCV from source
+can be done like this:
+
+A.4. LibSVM 281
+

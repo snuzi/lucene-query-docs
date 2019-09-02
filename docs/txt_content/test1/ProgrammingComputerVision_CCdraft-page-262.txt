@@ -1,0 +1,24 @@
+Figure 10.3: Sample SURF features extracted and plotted using OpenCV.
+
+convert the grayscale image to a color image and use the green channel for plotting.
+We loop over every tenth keypoint and plot a circle at the center and one circle showing
+the scale (size) of the keypoint. The plotting function circ1e() takes an image, a tuple
+with image coordinates (integer only), a radius, a tuple with plot color and ﬁnally the
+line thickness (-1 gives a solid circle). Figure 10.3 shows the result.
+
+10.3 Processing Video
+
+Video with pure Python is hard. There is speed, codecs, cameras, operating systems
+and ﬁle formats to consider. There is currently no video library for Python. OpenCV
+with its Python interface is the only good option. In this section we'll look at some
+basic examples using video.
+
+Video input
+
+Reading video from a camera is very well supported in OpenCV. A basic complete
+example that captures frames and shows them in an OpenCV window looks like this.
+
+H impo rt cv2
+
+262 10.3. Processing Video
+

@@ -1,0 +1,36 @@
+Appendix B
+
+Image Datasets
+
+B. 1 Flickr
+
+The immensely popular photo sharing site Flickr (http : //flickr . com/) is a gold mine
+for computer vision researchers and hobbyists. With hundreds of millions of images,
+many of them tagged by users, it is a great resource to get training data or for do-
+ing experiments on real data. Flickr has an API for interfacing with the service that
+makes it possible to upload, download and annotate images (and much more). A full
+description of the API is available here http : //flickr. com/se rvices/¢api/ and there
+are kits for many programming languages, including Python.
+
+Let's look at using a library called ﬂickrpy available freely at http : // code .goog1e.
+com/p/flickrpy/. Download the ﬁle f11'ckr.py. You will need an API Key from Flickr
+to get this to work. Keys are free for non-commercial use and can be requested for
+commercial use. Just click the link "Apply for a new API Key" on the Flickr API page
+and follow the instructions. Once you have an API key, open ﬂ1'ckr.py and replace the
+empty string on the line
+
+API,KEY = "
+
+with your key. It should look something like this:
+APLKEY = 'l23fbbb8l441231l23cgg5bl23d92l23'
+
+Let's create a simple command line tool that downloads images tagged with a par-
+ticular tag. Add the following code to a new ﬁle called tagdown1oad.py.
+import flickr
+import urllib, urlparse
+
+import os
+import sys
+
+287
+

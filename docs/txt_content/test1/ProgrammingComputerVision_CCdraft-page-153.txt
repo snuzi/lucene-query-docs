@@ -1,0 +1,8 @@
+X1 X1.
+
+Figure 5.9: An illustration of a rectiﬁed stereo image setup where corresponding
+points are on the same rows in both images. (Images from the Middlebury Stereo
+Vision set "cones".)
+
+5.4. Stereo Images 153
+

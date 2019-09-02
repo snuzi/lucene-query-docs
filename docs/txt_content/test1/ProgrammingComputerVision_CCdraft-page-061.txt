@@ -1,0 +1,4 @@
+Figure 2.6: An example of detecting and matching SIFT features between two images.
+
+2.2. SIFT — Sca1e—InVariant Feature Transform 61
+

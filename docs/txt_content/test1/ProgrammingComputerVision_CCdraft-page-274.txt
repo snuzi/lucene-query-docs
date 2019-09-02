@@ -1,0 +1,28 @@
+ 
+
+Figure 10.7: An example of using Lucas-Kanade tracking on a turntable sequence and
+plotting the tracks of points.
+
+Inpainting
+
+The reconstruction of lost or deteriorated parts of images is called inpainting. This
+covers both algorithms to recover lost or corrupted parts of image data for restoration
+purposes as well as removing red-eyes or objects in photo editing applications. Typi-
+cally a region of the image is marked as "corrupt" and needs to be ﬁlled using the data
+from the rest of the image.
+Try the following command:
+
+$ python inpaint.py empire.jpg
+
+This will open an interactive window where you can draw regions to be inpainted. The
+results are shown in a separate window. An example is shown in Figure 10.8.
+
+Segmentation with the watershed transform
+
+Watershed is an image processing technique that can be used for segmentation. A
+(graylevel) image is treated as a topological landscape that is "ﬂooded" from a number
+of seed regions. Usually a gradient magnitude image is used since this has ridges at
+strong edges and will make the segmentation stop at image edges.
+
+274 10.5. More Examples
+

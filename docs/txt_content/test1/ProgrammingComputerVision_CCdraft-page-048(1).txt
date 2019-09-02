@@ -1,0 +1,54 @@
+filteredlcoords.append(coords[i])
+a11owed_1ocations[(coords[i,0]—min,dist):(coords[i,0]+min,dist),
+(coords[i,1]-min,dist):(coords[i,1]+min,dist)] = 0
+
+return fi1tered_coords
+
+Now you have all you need to detect corner points in images. To show the corner
+points in the image you can add a plotting function to harr1's.py using Mat plotlib as
+follows.
+
+def p1ot_harris_points(image,fi1tered_coords):
+""" Plots corners found in image. """
+
+figure()
+
+9Fay()
+
+imshow(image)
+
+p1ot([p[l] for p in fi1tered_coords],[p[0] for p in fi1tered_coords],'*')
+axis('off')
+
+show()
+
+Try running the following commands:
+
+im = array(Image.open('empire.jpg').convert(’L'))
+harrisim = harris.compute,harris,response(im)
+fi1tered,coords = harris.get,harris_points(harrisim,6)
+harris.p1ot_harris,points(im, filteredlcoords)
+
+The image is opened and converted to grayscale. Then the response function is com-
+puted and points selected based on the response values. Finally, the points are plotted
+overlaid on the original image. This should give you a plot like the images in Fig-
+ure 2.1.
+
+For an overview of different approaches to corner detection, including improve-
+ments on the Harris detector and further developments, see for example http : / / en.
+wikipedia.org/wiki/Corne r_detection.
+
+Finding corresponding points between images
+
+The Harris corner detector gives interest points in images but does not contain an
+inherent way of comparing these interest points across images to ﬁnd matching cor-
+ners. What we need is to add a descriptor to each point and a way to compare such
+descriptors.
+
+An interest point descriptor is a vector assigned to an interest point that describes
+the image appearance around the point. The better the descriptor, the better your cor-
+respondences will be. With point correspondence or corresponding points we mean
+points in different images that refer to the same object or scene point.
+
+48 2.1. Harris corner detector
+

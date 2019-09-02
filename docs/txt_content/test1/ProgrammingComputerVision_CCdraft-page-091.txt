@@ -1,0 +1,33 @@
+ 
+
+Figure 3.6: Sample images before (top) and after rigid registration (bottom).
+
+Now let's see how this affects the mean image. Figure 3.7 shows the mean image
+for the unaligned face images next to the mean image of the aligned images (note
+the size difference due to cropping the borders of the aligned images). Although the
+original images show very little variation in size of the face, rotation and position, the
+effects on the mean computation is drastic.
+
+Not surprisingly, using badly registered images also has a drastic impact on the
+computation of principal components. Figure 3.8 shows the result of PCA on the ﬁrst
+150 images from this set without and with registration. Just as with the mean image,
+the PCA-modes are blurry. When computing the principal components we used a mask
+consisting of an ellipse centered around the mean face position. By multiplying the
+images with this mask before stacking them we can avoid bringing background vari-
+ations into the PCA-modes. Just replace the line that creates the matrix in the PCA
+example in Section 1.3 (page 29) with:
+
+immatrix = array([mask*array(Image.open(im1ist[i]).convert('L')).f1atten()
+for i in range(l50)],'f')
+
+where mask is a binary image of the same size, already ﬂattened.
+
+3.3 Creating Panoramas
+
+Two (or more) images that are taken at the same location (that is, the camera position
+is the same for the images) are homographically related. This is frequently used for
+creating panoramic images where several images are stitched together into one big
+mosaic. In this section we will explore how this is done.
+
+3.3. Creating Panoramas 91
+

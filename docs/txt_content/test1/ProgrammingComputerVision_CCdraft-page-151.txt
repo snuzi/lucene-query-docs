@@ -1,0 +1,44 @@
+reading.
+
+More views With more than two views of the same scene the 3D reconstruction
+will usually be more accurate and more detailed. Since the fundamental matrix only
+relates a pair of views, the process is a little different with many images.
+
+For video sequences, one can use the temporal aspect and match features in con-
+secutive frame pairs. The relative orientation needs to be added incrementally from
+each pair to the next (similar to how we added homographies in the panorama example
+in Figure 3.12). This approach usually works well and tracking can be used to effec-
+tively ﬁnd correspondences (see Section 10.4 for more on tracking). One problem is
+that errors will accumulate the more views are added. This can be ﬁxed with a ﬁnal
+optimization step, see below.
+
+With still images, one approach is to ﬁnd a central reference view and compute all
+the other camera matrices relative to that one. Another method is to compute camera
+matrices and a 3D reconstruction for one image pair and then incrementally add new
+images and 3D points, see for example [34]. As a side note, there are ways to compute
+3D and camera positions from three views at the same time (see for example [13]) but
+beyond that an incremental approach is needed.
+
+Bundle adjustment From our simple 3D reconstruction example in Figure 5.8 it is
+clear that there will be errors in the position of the recovered points and the camera
+matrices computed from the estimated fundamental matrix. With more views the er-
+rors will accumulate. A ﬁnal step in multiple view reconstructions is therefore often
+to try to minimize the reprojection errors by optimizing the position of the 3D points
+and the camera parameters. This process is called bundle adustment. Details can
+be found in [13] and [35] and a short overview at http://en.wikipedia.org/wiki/
+Bund1e_adjustment.
+
+Self calibration In the case of uncalibrated cameras, it is sometimes possible to
+compute the calibration from image features. This process is called self-calibration.
+There are many different algorithms depending on what assumptions can be made on
+parameters of the camera calibration matrix and depending on what types of image
+data is available (feature matches, parallel lines, planes etc.). The interested reader
+can take a look at [13] and [26] (Chapter 6).
+
+As a side note to calibration, there is a useful script extract_foca1.p1 as part of the
+Bundler Sﬂ\/I system http://phototour. cs.washington.edu/bundler/. This uses a
+lookup table for common cameras and estimates the focal length based on the image
+EXIF data.
+
+5.3. Multiple View Reconstruction 151
+

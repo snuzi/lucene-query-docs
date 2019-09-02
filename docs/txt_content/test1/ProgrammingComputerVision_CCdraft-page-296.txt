@@ -1,0 +1,15 @@
+[37] Deepak Verma and Marina Meila. A comparison of spectral clustering algorithms.
+Technical report, 2003.
+
+[38] Luminita A. Vese and Tony F. Chan. A multiphase level set framework for image
+segmentation using the mumford and shah model. Int. J. Comput. Vision, 50:271-
+293, December 2002.
+
+[39] Paul Viola and Michael Jones. Robust real-time object detection. In International
+journal of Computer V1's1'on, 2001.
+
+[40] Marco Zuliani. Ransac for dummies. Technical report, Vision Research Lab,
+UCSB, 2011.
+
+296 BIBLIOGRAPHY
+

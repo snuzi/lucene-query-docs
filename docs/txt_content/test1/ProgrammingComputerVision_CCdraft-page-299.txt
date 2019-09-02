@@ -1,0 +1,123 @@
+measurements, 44, 47, 313
+metric reconstruction, 171, 191
+min cut, 322
+
+minidom, 113, 114
+
+minimum cut, 322
+
+misc, 47
+
+Morphology, 44
+
+morphology, 44, 47, 55
+mp1ot3d, 175, 200
+
+multi-class SVM, 310
+multi-dimensional arrays, 25
+multi-dimensional histograms, 232
+Multiple View geometry, 1 69
+
+naive Bayes classiﬁer, 294
+ndimage,100
+
+ndimage.filters, 207
+Normalized cross correlation, 63
+normalized cut, 336
+
+Numpy, 24
+
+obj1oader,165
+
+OCR, 308
+
+OpenCV, 10, 349
+
+OpenGL, 153
+
+OpenGL projection matrix, 155
+optic ﬂow, 360
+
+optical axis, 136
+
+optical center, 137
+
+Optical character recognition, 308
+Optical ﬂow, 360
+
+optical ﬂow equation, 360
+outliers, 120
+
+overﬁtting, 31 8
+
+panograph, 133
+
+panorama, 120
+
+PCA, 33
+
+pickle, 37, 218, 254, 255, 259
+pickling, 37
+
+piece-wise constant image model, 344
+piecewise afﬁne warping, 106
+PIL, 15
+
+pin-hole camera, 135
+
+plane sweeping, 205
+
+plot formatting, 20
+
+plotting, 19
+
+point correspondence, 63
+pose estimation, 146
+
+Prewitt ﬁlters, 42
+
+Principal Component Analysis, 33, 299
+principal point, 137
+projection, 135
+
+projection matrix, 136
+projective camera, 135
+projective transformation, 93
+pydot,86
+
+PyGame, 153
+
+pygame,154
+pygame.image,154
+pygame.1oca1s, 154
+
+Pylab, 19
+
+PyOpenGL, 153
+
+pyp1ot,56
+
+pysqlite, 255
+
+pysq1ite2,255
+
+Python Imaging Library, 15
+python-graph, 322, 324
+
+quad,158
+query with image, 263
+quotient image, 54
+
+radial basis functions, 302
+RANSAC, 120, 194
+rectiﬁed, 204
+registration, 1 1 3
+
+rigid transformation, 95
+ROF, 49, 345
+RQ-factorization, 141
+
+INDEX
+
+299
+

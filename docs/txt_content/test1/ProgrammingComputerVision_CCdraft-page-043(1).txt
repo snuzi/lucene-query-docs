@@ -1,0 +1,41 @@
+original. This gives a sharpening effect to the image. Try this on both color and
+grayscale images.
+
+3. An alternative image normalization to histogram equalization is a quotient im-
+age. A quotient image is obtained by dividing the image with a blurred version
+I / (I >x< GU). Implement this and try it on some sample images.
+
+4. Write a function that ﬁnds the outline of simple objects in images (for example a
+square against white background) using image gradients.
+
+5. Use gradient direction and magnitude to detect lines in an image. Estimate the
+extent of the lines and their parameters. Plot the lines overlaid on the image.
+
+6. Apply the label() function to a thresholded image of your choice. Use histograms
+and the resulting label image to plot the distribution of object sizes in the image.
+
+7. Experiment with successive morphological operations on a thresholded image of
+your choice. When you have found some settings that produce good results, try
+the function center_of_mass in morphology to ﬁnd the Center coordinates of each
+object and plot them in the image.
+
+From Chapter 2 and onwards we assume PIL, NumPy and Mat plotlib
+to be included at the top of every ﬁle you create and in every code
+example as
+
+from PIL import Image
+
+from numpy import *
+from pylab import *
+
+This makes the example code cleaner and the presentation easier to
+follow. In the cases when we use SciPy modules, we will explicitly
+declare that in the examples.
+
+Purists will object to this type of blanket imports and insist on something like
+
+import numpy as np
+import matp1ot1ib.pyp1ot as plt
+
+1.5. Advanced example: Image de—noising 43
+

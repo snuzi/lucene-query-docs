@@ -1,0 +1,53 @@
+Selecting features
+
+We need to decide on what feature vector to use for representing each cell image.
+There are many good choices, here we'll try something simple but still effective.
+The following function takes an image and returns a feature vector of the ﬂattened
+grayscale values.
+
+def compute_feature(im):
+
+""" Returns a feature vector for an
+ocr image patch. """
+
+# resize and remove border
+normiim = imresize(im,(30,30))
+normiim = norm,im[3:-3,3:—3]
+
+return norm,im.flatten()
+
+This function uses the resizing function imresize() from 1'mtoo1s to reduce the length
+of the feature vector. We also crop away about 10% border pixels since the crops often
+get parts of the grid lines on the edges as you can see in Figure 8.6.
+
+Now we can read the training data using a function like this.
+
+def load_ocr_data(path):
+""" Return labels and ocr features for all images
+in  IIIIII
+
+# create list of all files ending in .jpg
+
+imlist = [os.path.join(path,f) for f in os.listdir(path) if f.endswith('.jpg')]
+# create labels
+
+labels = [int(imfile.split('/')[-l][0]) for imfile in imlist]
+
+# create features from the images
+features = []
+for imname in imlist:
+im = array(Image.open(imname).convert('L'))
+features.append(compute_feature(im))
+return array(features),labels
+
+The labels are extracted as the ﬁrst character of the ﬁlename of each of the JPEG ﬁles
+and stored in the labels list as integers. The feature vectors are computed using the
+function above and stored in an array.
+
+Multi-class SVM
+
+With the training data in place, we are ready to learn a classiﬁer. Here we'll use a
+multi-class support vector machine. The code looks just like in the previous section.
+
+8.4. Optical Character Recognition 229
+

@@ -1,0 +1,47 @@
+Exercises
+
+1. The performance of the kNN classiﬁer depends on the value of k. Try to vary this
+number and see how the accuracy changes. Plot the decision boundaries of the
+2D point sets to see how they change.
+
+2. The hand gesture data set in Figure 8.3 also contains images with more complex
+background (in the "complex/" folders). Try to train and test a classiﬁer on these
+images. What is the difference in performance? Can you suggest improvements
+to the image descriptor?
+
+3. Try to vary the number of dimensions after PCA projection of the gesture recog-
+nition features for the Bayes classiﬁer. What is a good choice? Plot the singular
+values S, they should give a typical "knee" shaped curve as the one below. A good
+compromise between ability to generate the variability of the training data and
+keeping the number of dimensions low is usually found at a number before the
+curve ﬂattens out.
+
+20000
+
+15000
+
+10000
+
+5000
+
+50
+
+100 150 Z 0
+number of dlmenslons
+
+4. Modify the Bayes classiﬁer to use a different probability model than Gaussian
+distributions. For example, try using the frequency counts of each feature in
+the training set. Compare the results to using a Gaussian distribution for some
+different datasets.
+
+5. Experiment with using non-linear SVMs for the gesture recognition problem. Try
+polynomial kernels and increase the degree (using the  parameter) incremen-
+tally. What happens to the classiﬁcation performance on the training set and the
+test set. With a non-linear classiﬁer there is a risk of training and optimizing
+it for a speciﬁc set so that performance is close to perfect on the training set
+but the classiﬁer has poor performance on other test sets. This phenomenon of
+breaking the generalization capabilities of a classiﬁer is called overﬁtting and
+should be avoided.
+
+8.4. Optical Character Recognition 235
+

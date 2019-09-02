@@ -1,0 +1,36 @@
+ 
+
+Figure 1.14: An example of ROF de-noising of a grayscale image. (a) original image,
+(b) image after Gaussian blurring (0 = 5). (c) image after ROF de-noising.
+
+from pylab import *
+import rof
+
+im = array(Image.open('empire.jpg').convert('L'))
+U,T = rof.denoise(im,im)
+
+figure()
+9Fay()
+imshow(U)
+axis('equa1')
+axis('off')
+show()
+
+The result should look something like Figure 1 .14c, which also shows a blurred version
+of the same image for comparison. As you can see, ROF de-noising preserves edges
+and image structures while at the same time blurring out the "noise".
+
+Exercises
+
+. Take an image and apply Gaussian blur like in Figure 1.9. Plot the image contours
+
+for increasing values of 0. What happens? Can you explain why?
+
+. Implement an unsharp masking operation (http://en .wikipedia .0 rg/wiki/Unsha rp_
+
+masking) by blurring an image and then subtracting the blurred version from the
+
+42
+
+1.5. Advanced example: Image de-noising
+

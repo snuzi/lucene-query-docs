@@ -1,0 +1,57 @@
+‘Tl
+[fl
+ll:-kl
+[$913-1
+
+..
+~l
+;. .‘
+...j...‘
+a.
+Q
+
+[“.l.ll—.:"J
+FL [--d ‘
+'~l.:f~l
+l::L'-§T
+
+'4 -1‘ ~‘
+l‘-.3-,;_
+"fl
+lfl;
+
+it”.
+
+Figure 8.6: Sample training images for the 10 classes of the sudoku OCR classiﬁer.
+
+8.4 Optical Character Recognition
+
+As an example of a multi-class problem, let's look at interpreting images of sudokus.
+Optical character recognition (OCR) is the process of interpreting images of hand- or
+machine written text. A common example is text extraction from scanned documents
+such as zip codes on letters or book pages as the library volumes in Google Books
+(http://books.goog1e . com/). Here we will look at a simple OCR problem of recog-
+nizing numbers in images of printed sudokus. Sudokus are a form of logic puzzles
+where the goal is to ﬁll a 9 x 9 grid with the numbers 1 . . .9 so that each column, each
+row, and each 3 x 3 sub-grid contains all nine digits4. In this example we are just in-
+terested in reading the puzzle and interpreting it correctly, actually solving the puzzle
+we leave to you.
+
+Training a classiﬁer
+
+For this classiﬁcation problem we have ten classes, the numbers 1 . . .9 and the empty
+cells. Let's give the empty cells the label 0 so that our class labels are 0. ..9. To
+train this ten-class classiﬁer, we will use a dataset of images of cropped sudoku cells5.
+In the ﬁle sudoku_images.zip are two folders, "ocr_data" and "sudokus". The latter
+contains images of sudokus under varying conditions. We will save those for later. For
+now, take a look at the folder "ocr_data". It contains two sub-folders with images one
+for training and one for testing. The images are named with the ﬁrst character equal
+to the class (0 . . . 9). Figure 8.6 shows some samples from the training set. The images
+are grayscale and roughly 80 x 80 pixels (with some variation).
+
+4See http : //en .wikipedia . 0 rg/wi ki/Sudoku for more details if you are unfamiliar with the concept.
+5Images courtesy of Martin Byrod [4], http://www.maths .1th .se/matematiklth/personal/byrod/,
+collected and cropped from photos of actual sudokus.
+
+228 8.4. Optical Character Recognition
+

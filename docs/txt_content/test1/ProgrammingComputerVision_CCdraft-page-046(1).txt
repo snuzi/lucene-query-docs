@@ -1,0 +1,49 @@
+around x. The idea of averaging the matrix M] over a region like this is that the
+eigenvalues will change depending on the local image properties. If the gradients vary
+in the region, the second eigenvalue of M; will no longer be zero. If the gradients are
+the same, the eigenvalues will be the same as for M1.
+
+Depending on the values of VI in the region, there are three cases for the eigen-
+values of the Harris matrix, M1:
+
+- If A1 and A2 are both large positive values, then there is a corner at x.
+
+- If A1 is large and A2 m 0, then there is an edge and the averaging of M1 over the
+region doesn't change the eigenvalues that much.
+
+0 If A1 3 A2 % 0 then there is nothing.
+
+To distinguish the important case from the others without actually having to com-
+pute the eigenvalues, Harris and Stephens [12] introduced an indicator function
+
+det(M1) — /<trace(M1)2 .
+
+To get rid of the weighting constant /<, it is often easier to use the quotient
+
+as an indicator.
+
+Let's see what this looks like in code. For this we need the scipy.ndimage.filters
+module for computing derivatives using Gaussian derivative ﬁlters as described on
+page 33. The reason is again that we would like to suppress noise sensitivity in the
+corner detection process.
+
+First add the corner response function to a ﬁle harr1's.py which will make use of
+the Gaussian derivatives. Again the parameter 0 deﬁnes the scale of the Gaussian
+ﬁlters used. You can also modify this function to take different scales in the an and y
+directions as well as a different scale for the averaging to compute the Harris matrix.
+
+from scipy.ndimage import filters
+
+def compute,harris_response(im,sigma=3):
+""“ Compute the Harris corner detector response function
+for each pixel in a graylevel image. ""“
+
+#dwNﬁN%
+
+imx = zeros(im.shape)
+
+filters.gaussian,fi1ter(im, (sigma,sigma), (0,1), imx)
+imy = zeros(im.shape)
+
+46 2.1. Harris corner detector
+

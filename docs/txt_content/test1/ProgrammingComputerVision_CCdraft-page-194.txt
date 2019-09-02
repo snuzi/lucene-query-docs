@@ -1,0 +1,52 @@
+indx.create,tables()
+
+# go through all images, project features on vocabulary and insert
+for i in range(nbr,images)[:100]:
+1ocs,descr = sift.read_features_from_file(featlist[i])
+indX.add_to,indeX(imlist[i],descr)
+
+# commit to database
+indx.db_commit()
+
+We can now inspect the contents of our database:
+
+from pysqlite2 import dbapi2 as sqlite
+
+con = sqlite.connect('test.db')
+
+print con.eXecute(’select count (filename) from imlist').fetchone()
+(1000,)
+
+print con.eXecute(’select * from imlist').fetchone()
+(u'ukbench00000.jpg',)
+
+If you try fetcha11() instead of f et chone() in the last line you will get a long list of all
+the ﬁlenames.
+
+7.4 Searching the Database for Images
+
+With a set of images indexed we can search the database for similar images. Here
+we have used a bag-of-word representation for the whole image but the procedure
+explained here is generic and can be used to ﬁnd similar objects, similar faces, similar
+colors etc. It all depends on the images and descriptors used.
+
+To handle searches we introduce a Searcher class to 1'magesearch.py.
+
+class Searcher(object):
+
+def _,init,,(self,db,voc):
+""" Initialize with the name of the database. """
+self.con = sqlite.connect(db)
+self.voc = voc
+
+def ,_del__(self):
+self.con.close()
+
+A new Searcher object connects to the database and closes the connection upon dele-
+tion, same as for the Indexer class before.
+
+If the number of images is large, it is not feasible to do a full histogram comparison
+across all images in the database. We need a way to ﬁnd a reasonably sized set of
+
+194 7.4. Searching the Database for Images
+

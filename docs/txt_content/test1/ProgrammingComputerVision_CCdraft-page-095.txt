@@ -1,0 +1,25 @@
+Figure 3.1 1: Matching correspondences found between consecutive image pairs using
+SIFT features.
+
+‘import sift
+
+featname = ['Univ'+str(i+1)+'.sift' for i in range(5)]
+imname = ['Univ'+str(i+1)+'.jpg' for i in range(5)]
+1={}
+
+d={}
+
+for i in range(5):
+sift.process,image(imname[i],featname[i])
+1[i],d[i] = sift.read_features,from,fi1e(featname[i])
+
+matches = {}
+for i in range(4):
+matches[i] = sift.match(d[i+1],d[i])
+
+It is clear from the images that not all correspondences are correct. SIFT is actually
+a very robust descriptor and gives fewer false matches than for example Harris points
+with patch correlation, but still it is far from perfect.
+
+3.3. Creating Panoramas 95
+

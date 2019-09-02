@@ -1,0 +1,43 @@
+Chapter 5 Explains how to work with several images of the same scene, the fun-
+damentals of multiple-view geometry and how to compute 3D reconstructions from
+images.
+
+Chapter 6 Introduces a number of clustering methods and shows how to use them
+for grouping and organizing images based on similarity or content.
+
+Chapter 7 Shows how to build efﬁcient image retrieval techniques that can store
+image representations and search for images based on their visual content.
+
+Chapter 8 Describes algorithms for classifying image content and how to use them
+recognizing objects in images.
+
+Chapter 9 Introduces different techniques for dividing an image into meaningful
+regions using clustering, user interactions or image models.
+
+Chapter 10 Shows how to use the Python interface for the commonly used OpenCV
+computer vision library and how to work with video and camera input.
+
+Introduction to Computer Vision
+
+Computer vision is the automated extraction of information from images. Information
+can mean anything from 3D models, camera position, object detection and recognition
+to grouping and searching image content. In this book we take a wide deﬁnition of
+computer vision and include things like image warping, de-noising and augmented
+realityl.
+
+Sometimes computer vision tries to mimic human vision, sometimes uses a data
+and statistical approach, sometimes geometry is the key to solving problems. We will
+try to cover all of these angles in this book.
+
+Practical computer vision contains a mix of programming, modeling, and mathe-
+matics and is sometimes difﬁcult to grasp. I have deliberately tried to present the ma-
+terial with a minimum of theory in the spirit of "as simple as possible but no simpler".
+The mathematical parts of the presentation are there to help readers understand the
+algorithms. Some chapters are by nature very math heavy (chapters 4 and 5 mainly).
+Readers can skip the math if they like and still use the example code.
+
+1These examples produce new images and are more image processing than actually extracting infor-
+mation from images.
+
+CONTENTS 9
+

@@ -1,0 +1,6 @@
+Figure 6.4: Clustering of pixels based on their color value using k:-means. (left) original
+image. (center) cluster result with k: = 3 and 50 x 50 resolution. (right) cluster result
+with k = 3 and 100 x 100 resolution.
+
+168 6.1. K—means Clustering
+

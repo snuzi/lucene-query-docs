@@ -1,0 +1,35 @@
+ 
+
+Figure 10.5: Optical ﬂow vectors (sampled at every 16th pixel) shown on video of a
+translating book and a turning head.
+
+This example will capture images from a webcam and call the optical ﬂow estimation
+on every consecutive pair of images. The motion ﬂow vectors are stored in the two-
+channel image flow returned by calcoptica1F1owFarneback(). Besides the previous
+frame and the current frame, this function takes a sequence of parameters. Look
+them up in the documentation if you are interested. The helper function draw_f1ow()
+plots the motion vectors at regularly sample points in the image. It uses the OpenCV
+drawing functions line() and circle() and the variable step controls the spacing of
+the ﬂow samples. The result can look like the screenshots in Figure 10.5. Here the
+positions of the ﬂow samples are shown as a grid of green circles and the ﬂow vectors
+with lines show how each sample point moves.
+
+The Lucas-Kanade algorithm
+
+Tracking is the process of following objects through a sequence of images or video.
+The most basic form of tracking is to follow interest points such as corners. A popular
+algorithm for this is the Lucas-Kanade tracking algorithm which uses a sparse optical
+ﬂow algorithm.
+
+Lucas-Kanade tracking can be applied to any type of features but usually makes
+use of corner points similar to the Harris corner points in Section 2.1. The function
+goodFeaturesToTrack() detects corners according to an algorithm by Shi and Tomasi
+[33] where corners are points with two large eigenvalues of the structure tensor (Har-
+ris matrix) equation (2.2) and where the smaller eigenvalue is above a threshold.
+
+The optical ﬂow equation is under-determined (meaning that there are too many
+unknowns per equation) if considered on a per-pixel basis. Using the assumption that
+neighboring pixels have the same motion it is possible to stack many of these equations
+
+10.4. Tracking 267
+

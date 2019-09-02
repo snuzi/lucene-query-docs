@@ -1,0 +1,36 @@
+ 
+
+Figure 5.2: The Merton1 data set from the Oxford multi-View datasets. (left) View 1
+with image points shown. (right) View 1 with projected 3D points.
+
+show()
+
+This creates a plot with the ﬁrst view and image points in that view, for comparison
+the projected points are shown in a separate ﬁgure. Figure 5.2 shows the resulting
+plots. If you look closely, you will see that the second plot with the projected 3D points
+contains more points than the ﬁrst. These are image feature points reconstructed from
+View 2 and 3 but not detected in View 1.
+
+Plotting 3D data with Matplotlib
+
+To visualize our 3D reconstructions, we need to be able to plot in 3D. The mplot3d
+toolkit in Matplotlib provides 3D plotting of points, lines, contours, surfaces and most
+other basic plotting components as well as 3D rotation and scaling from the controls
+of the ﬁgure window.
+
+Making a plot in 3D is done by adding the project1'on="3d" keyword to the axes
+object like this:
+
+from mpl_too1kits.mp1ot3d import axes3d
+
+fig = figure()
+ax = fig.gca(projection="3d")
+
+# generate 3D sample data
+X,Y,Z = axes3d.get,test,data(0.25)
+
+# plot the points in 3D
+ax.p1ot(X.f1atten(),Y.f1atten(),Z.f1atten(),'0')
+
+5.1. Epipolar Geometry 131
+

@@ -1,0 +1,59 @@
+The method track_points() below does this.
+
+def track_points(se1f):
+""" Track the detected features. """
+
+if se1f.features != []:
+se1f.step() # move to the next frame
+
+# load the image and create grayscale
+se1f.image = cv2.imread(se1f.imnames[se1f.current_frame])
+se1f.gray = CV2.cvtCo1or(se1f.image,cv2.COLOR,BGR2GRAY)
+
+# reshape to fit input format
+tmp = f1oat32(se1f.features).reshape(-1, 1, 2)
+
+# calculate optical flow
+features,status,track_error = cv2.calc0ptica1F1owPyrLK(self.prev_gray,
+self.gray,tmp,None,**1k,params)
+
+# remove points lost
+se1f.features = [p for (st,p) in zip(status,features) if st]
+
+# clean tracks from last points
+
+features = array(features).reshape((-1,2))
+
+for i,f in enumerate(features):
+se1f.tracks[i].append(f)
+
+ndx = [i for (i,st) in enumerate(status) if not st]
+
+ndx.reverse() #remove from back
+
+for i in ndx:
+se1f.tracks.pop(i)
+
+se1f.prev,gray = se1f.gray
+
+This makes use of a simple helper method step() that moves to the next available
+frame.
+
+def step(se1f,framenbr=None):
+""" Step to another frame. If no argument is
+given, step to the next frame. """
+
+if framenbr is None:
+se1f.current_frame = (se1f.current_frame + 1) % 1en(se1f.imnames)
+
+else:
+se1f.current_frame
+
+framenbr % 1en(se1f.imnames)
+
+This method jumps to a given frame or just to the next if no argument is given.
+Finally, we also want to be able to draw the result using OpenCV windows and
+drawing functions. Add this draw() method to the LKTracker class.
+
+270 10.4. Tracking
+

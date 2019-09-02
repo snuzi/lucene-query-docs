@@ -1,0 +1,38 @@
+Appendix C
+
+Image Credits
+
+Throughout this book we have made use of publicly available datasets and images
+available from web services, these were listed in Appendix B. The contributions of the
+researchers behind these datasets are greatly appreciated.
+
+Some of the reoccurring example images are the author's own. You are free to use
+these images under a Creative Commons Attribution 3.0 (CC BY 3.0) license http:
+//c reativecommons . org/licenses/by/3 . 0/, for example by citing this book.
+
+These images are:
+
+- The Empire State building image used in almost every example throughout the
+book.
+
+- The low contrast image in Figure 1.7.
+
+- The feature matching examples used in Figures 2.2, 2.5, 2.6, and 2.7.
+
+- The Fisherman's Wharf sign used in Figures 9.6, 10.1, and 10.2.
+
+- The little boy on top of a hill used in Figures 6.4, 9.6.
+
+- The book image for calibration used in Figures 4.3.
+
+- The two images of the O’Reilly open source book used in Figures 4.4, 4.5, and
+
+4.6.
+Images from Flickr
+
+We used some images from Flickr available with a Creative Commons Attribution 2.0
+Generic (CC BY 2.0) license http : //c reativecommons .0 rg/licenses/by/2 . 0/deed.
+en. The contributions from these photographers is greatly appreciated.
+
+291
+

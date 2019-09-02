@@ -1,0 +1,44 @@
+-2
+
+-4
+
+ 
+
+Figure 8.4: Classifying 2D data using a Bayes classiﬁer. For each example the color
+shows the class label (blue and red). Correctly classiﬁed points are shown with stars
+and misclassiﬁed points with circles. The curve is the classiﬁer decision boundary.
+
+Now, we can load the other one and test the classiﬁer.
+
+# load test data using Pickle
+
+with open('points,norma1,test.pkl', 'r') as f:
+c1ass_1 = pick1e.1oad(f)
+c1ass,2 = pick1e.1oad(f)
+labels = pick1e.1oad(f)
+
+# test on some points
+print bc.c1assify(c1ass_1[:10])[0]
+
+# plot points and decision boundary
+def c1assify(x,y,bc=bc):
+
+points = vstack((x,y))
+
+return bc.c1assify(points.T)[0]
+
+imtools.p1ot_2D_boundary([—6,6,—6,6],[c1ass_l,c1ass_2],c1assify.[1,—1])
+show()
+
+This prints the classiﬁcation result for the ﬁrst 10 points to the console. It might look
+like this:
+
+[1111111111]
+
+Again, we used a helper function classify() to pass to the plotting function for visu-
+alizing the classiﬁcation results by evaluating the function on a grid. The plots for the
+two sets look like Figure 8.4. The decision boundary in this case will be the ellipse-like
+level curves of a 2D Gaussian function.
+
+8.2. Bayes Classiﬁer 221
+

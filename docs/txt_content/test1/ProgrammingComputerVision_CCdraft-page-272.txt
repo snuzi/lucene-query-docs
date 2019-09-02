@@ -1,0 +1,4 @@
+Figure 10.6: Tracking using the Lucas-Kanade algorithm through the LKTrack class.
+
+272 10.4. Tracking
+

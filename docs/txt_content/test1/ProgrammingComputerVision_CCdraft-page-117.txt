@@ -1,0 +1,47 @@
+The two main components of setting up an OpenGL scene are the projection and
+model view matrices. Let's get started and see how to create these matrices from our
+pin-hole cameras.
+
+From camera matrix to OpenGL format
+
+OpenGL uses 4 x 4 matrices to represent transforms (both 3D transforms and projec-
+tions). This is only slightly different from our use of 3 x 4 camera matrices. However,
+the camera-scene transformations are separated in two matrices, the GL_PROJE CT ION
+matrix and the GL_MODELVIEW matrix. GL_PROJECTION handles the image forma-
+tion properties and is the equivalent of our internal calibration matrix K. GL_MODELVIEW
+handles the 3D transformation of the relation between the objects and the camera.
+This corresponds roughly to the R and 26 part of our camera matrix. One differ-
+ence is that the coordinate system is assumed to be centered at the camera so the
+GL_MODELVIEW matrix actually contains the transformation that places the objects
+in front of the camera. There are many peculiarities with working in OpenGL, we will
+comment on them as they are encountered in the examples below.
+
+Given that we have a camera calibrated so that the calibration matrix K is known,
+the following function translates the camera properties to an OpenGL projection ma-
+trix.
+
+def set_projection_from_camera(K):
+""" Set view from a camera calibration matrix. """
+
+g1MatriXMode(GL_PROJECTION)
+
+g1LoadIdentity()
+fx = K[0,0]
+fy = K[1,1]
+
+fovy = 2*arctan(0.5*height/fy)*180/pi
+aspect = (width*fy)/(height*fx)
+
+# define the near and far clipping planes
+near = 0.1
+far = 100.0
+
+# set perspective
+g1uPerspective(fovy,aspect,near,far)
+glviewport(0,0,width,height)
+
+We assume the calibration to be of the simpler form in (4.3) with the optical cen-
+ter at the image center. The ﬁrst function glMatriXMode() sets the working ma-
+
+4.4. Augmented Reality 1 1 7
+

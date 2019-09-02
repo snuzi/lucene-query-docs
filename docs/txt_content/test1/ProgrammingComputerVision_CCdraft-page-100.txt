@@ -1,0 +1,28 @@
+ 
+
+Figure 3.12: Horizontal panorama automatically created from SIFT correspondences.
+(top) the full panorama. (bottom) a crop of the central part.
+
+delta = 2000 #for padding and translation
+
+iml array(Image.open(imname[1]))
+im2 = array(Image.open(imname[2]))
+im,12 = warp.panorama(H,l2,iml,im2,de1ta,de1ta)
+
+iml = array(Image.open(imname[0]))
+im_02 = warp.panorama(dot(H,12,Hb01),iml,im,12,de1ta,de1ta)
+
+iml = array(Image.open(imname[3]))
+im,32 = warp.panorama(H,32,im1,im,02,de1ta,de1ta)
+
+iml = array(Image.open(imname[j+1]))
+im_42 = warp.panorama(dot(H,32,Hn43),iml,im,32,de1ta,2*de1ta)
+
+Note that, in the last line, 1'm_32 is already translated once. The resulting panorama
+image is shown in Figure 3.12. As you can see there are effects of different exposure
+and edge effects at the boundaries between individual images. Commercial panorama
+software has extra processing to normalize intensity and smooth transitions to make
+the result look even better.
+
+100 3.3. Creating Panoramas
+

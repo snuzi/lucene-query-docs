@@ -1,0 +1,49 @@
+The idea behind graph cut segmentation is to partition a graph representation of
+the image such that the cut cost Em is minimized. In this graph representation, two
+additional nodes, a source and a sink node, are added to the graph and only cuts that
+separate the source and sink are considered.
+
+Finding the minimum cut (or min cut) is equivalent to ﬁnding the maximum flow
+(or max flow) between the source and the sink (see [2] for details). There are efﬁcient
+algorithms for solving these max ﬂow / min cut problems.
+
+For our graph cut examples we will use the python — graph package. This pack-
+age contains many useful graph algorithms. The website with downloads and docu-
+mentation is http://code.goog1e.com/p/python-graph/. We will need the function
+maximum_f1ow() which computes the max ﬂow / min cut using the Edmonds-Karp al-
+gorithm http : //en .wikipedia . org/wiki/Edmonds - Karp_a1gorithm. The good thing
+about using a package written fully in Python is ease of installation and compatibility,
+the downside is speed. Performance is adequate for our purposes but for anything but
+small images, a faster implementation is needed.
+
+Here's a simple example of using python — graph to compute the max ﬂow / min
+cut of a small graph2.
+
+from pygraph.c1asses.digraph import digraph
+from pygraph.a1gorithms.minmax import maximumiflow
+
+gr = digraph()
+gr.add,nodes([0,1,2,3])
+
+gr.add,edge((0,1), wt=4)
+gr.add,edge((1,2), wt=3)
+gr.add_edge((2,3), wt=5)
+gr.add_edge((0,2), wt=3)
+gr.add,edge((1,3), wt=4)
+
+f1ows,cuts = maximum,f1ow(gr,0,3)
+print 'flow is:', flows
+print 'cut is:', cuts
+
+First a directed graph is created with four nodes with index 0 . . .3. Then the edges
+are added using add_edge() with an edge weight speciﬁed. This will be used as the
+maximum ﬂow capacity of the edge. The maximum ﬂow is computed with node 0 as
+source and node 3 as sink. The ﬂow and the cuts are printed and should look like this:
+
+flow is: {(0, 1): 4, (1, 2): 0, (1, 3): 4, (2, 3): 3, (0, 2): 3}
+cut is: {0: 0, 1: 1, 2: 1, 3: 1}
+
+2Sannagraph.astheexanuﬂe athttp://en.wikipedia.org/wiki/Max-f1ouLmin-cut_theorem
+
+238 9.1.Graph.Cuts
+

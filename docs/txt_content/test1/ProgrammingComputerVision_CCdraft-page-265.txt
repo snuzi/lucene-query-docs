@@ -1,0 +1,46 @@
+this:
+
+(480, 640, 3)
+(40, 480, 640, 3)
+
+In this case there were 40 frames recorded. Arrays with video data like this are useful
+for video processing such as computing frame differences and tracking.
+
+10.4 Tracking
+
+Optical ﬂow
+
+Optical flow (sometimes called optic flow) is the image motion of objects as the objects,
+scene or camera moves between two consecutive images. It is a 2D vector ﬁeld of
+within-image translation. Is is a classic and well studied ﬁeld in computer vision with
+many successful applications in for example video compression, motion estimation,
+object tracking and image segmentation.
+Optical ﬂow relies on three major assumptions.
+
+1. Brightness constancy: The pixel intensities of an object in an image does not
+change between consecutive images.
+
+2. Temporal regularity: The between-frame time is short enough to consider the
+motion change between images using differentials (used to derive the central
+equation below).
+
+3. Spatial consistency: Neighboring pixels have similar motion.
+
+In many cases these assumptions break down, but for small motions and short time
+steps between images it is a good model. Assuming that an object pixel I (m, y,t) at
+time t has the same intensity at time t + 62? after motion [6;r, 6y]) means that I (:U, y, t) =
+I (:1: + 6:13, y + 6y, t —|— 626). Differentiating this constraint gives the optical flow equation:
+
+VITV = -1, ,
+
+where v = [u, 12] is the motion vector and It the time derivative. For individual points
+in the image, this equation is under-determined and cannot be solved (one equation
+with two unknowns in v). By enforcing some spatial consistency, it is possible to
+obtain solutions though. In the Lucas-Kanade algorithm below we will see how that
+assumption is used.
+OpenCV contains several optical ﬂow implementations, Ca1cDptica1F1owBM() which
+uses block matching, Ca1c0ptica1F1owHS() which uses [15] (both of these currently
+only in the old cv module), the pyramidal Lucas-Kanade algorithm [19] ca1cOptica1F1owPyrLK()
+
+10.4. Tracking 265
+

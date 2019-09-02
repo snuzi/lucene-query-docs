@@ -1,0 +1,99 @@
+in one image to their corresponding locations in the other image. Let's deﬁne our
+3D coordinate system so that the marker lies in the X-Y plane (Z = 0) with the origin
+somewhere on the marker.
+To check our results we will need some simple 3D object placed on the marker.
+Here we will use a cube and generate the cube points using the function:
+
+def
+
+cube_points(c,wid):
+
+""" Creates a list of points for plotting
+
+P
+
+a cube with plot.
+
+=[]
+
+#bottom
+
+.append([c[0]-wid,c[1]—wid,c[2]-wid]
+.append([c[0]-wid,c[1]+wid,c[2]-wid]
+.append(
+.append([c[0]+wid,c[1]—wid,c[2]-wid]
+.append([c[0]-wid,c[1]—wid,c[2]-wid]
+
+)
+)
+[c[0]+wid,C[1]+wid,c[2]-wid])
+)
+)
+
+#top
+
+.append([c[0]-wid,c[1]-wid,c[2]+wid]
+.append([c[0]-wid,c[1]+wid,c[2]+wid]
+.append(
+.append([c[0]+wid,c[1]-wid,c[2]+wid]
+.append([c[0]—wid,c[1]-wid,c[2]+wid]
+
+)
+)
+[c[0]+wid,C[1]+wid,c[2]+wid])
+)
+)
+
+#vertical sides
+
+'U'U'U'U'U'U'U
+
+.append([c[0]—wid,c[1]-wid,c[2]+wid]
+.append
+.append
+.append
+.append
+.append
+.append
+
+)
+[c[0]-wid,c[l]+wid,c[2]+wid])
+[c[0]-wid,c[l]+wid,c[2]-wid])
+[c[0]+wid,c[l]+wid,c[2]-wid])
+[c[0]+wid,c[l]+wid,c[2]+wid])
+[c[0]+wid,c[1]-wid,c[2]+wid])
+[c[0]+wid,c[1]-wid,c[2]-wid])
+
+,.,‘,~,‘,‘,~
+
+return array(p).T
+
+(the first 5 points are
+the bottom square, some sides repeated).
+
+#same as first to close plot
+
+#same as first to close plot
+
+Some points are reoccurring so that plot() will generate a nice looking cube.
+With a homography and a camera calibration matrix, we can now determine the
+relative transformation between the two views.
+
+# camera calibration
+
+K:
+
+my,ca1ibration((747,l000))
+
+# 3D points at plane z=0 with sides of length 0.2
+
+box
+
+= cube,points([0,0,0.1],0.1)
+
+# project bottom square in first image
+
+112
+
+4.3. Pose Estimation from Planes and Markers
+

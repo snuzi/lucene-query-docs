@@ -1,0 +1,27 @@
+ 
+
+Figure 2.8: Images taken at the same geographic location (square region centered
+around the White house) downloaded from panoramio.com.
+
+imu rls . append (im[ ' photo_file,u rl ' ])
+
+# download images
+
+for url in imurls:
+image = urllib.URLopener()
+image. ret rieve(url, os . path . basename(urlpa rse.urlparse(url) .path))
+print 'downloading:', url
+
+As you can easily see by looking at the JSON output, it is the "photo_ﬁle_url" ﬁeld we
+are after. Running the code above, you should see something like this in your console.
+
+downloading: http://mw2.google.com/mw-panoramio/photos/medium/7715073.jpg
+downloading: http://mw2.google.com/mw-panoramio/photos/medium/1303971.jpg
+downloading: http://mw2.google.com/mw-panoramio/photos/medium/270077.jpg
+downloading: http://mw2.google.com/mw-panoramio/photos/medium/15502.jpg
+
+Figure 2.8 shows the 20 images returned for this example. Now we just need to ﬁnd
+and match features between pairs of images.
+
+2.3. Matching Geotagged Images 65
+

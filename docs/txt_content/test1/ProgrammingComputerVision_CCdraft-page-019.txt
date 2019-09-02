@@ -1,0 +1,59 @@
+from PIL import Image
+from pylab import *
+
+# read image to array
+im = array(Image.open('images/empire.jpg').convert('L'))
+
+# create a new figure
+
+figure()
+
+# don't use colors
+
+9Fay()
+
+# show contours with origin upper left corner
+contour(im, origin='image')
+
+axis(’equa1')
+
+axis('off')
+
+As before, the PIL method convert() does conversion to grayscale.
+
+An image histogram is a plot showing the distribution of pixel values. A number of
+bins is speciﬁed for the span of values and each bin gets a count of how many pixels
+have values in the bin’s range. The visualization of the (graylevel) image histogram is
+done using the hist() function.
+figure()
+
+hist(im.f1atten(),l28)
+show()
+
+The second argument speciﬁes the number of bins to use. Note that the image needs to
+be ﬂattened ﬁrst, because hist() takes a one-dimensional array as input. The method
+f1atten() converts any array to a one-dimensional array with Values taken row-wise.
+Figure 1.3 shows the contour and histogram plot.
+
+Interactive annotation
+
+Sometimes users need to interact with an application, for example by marking points
+in an image, or you need to annotate some training data. PyLab comes with a simple
+function, ginput(), that let's you do just that. Here's a short example.
+
+from PIL import Image
+from pylab import *
+
+im = array(Image.open(’empire.jpg'))
+imshow(im)
+
+print 'Please click 3 points’
+
+X = ginput(3)
+
+print 'you c1icked:',x
+
+show()
+
+1.2.Matp1ot1ib 19
+

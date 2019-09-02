@@ -1,0 +1,61 @@
+" 03 I. I
+a a .
+a n a
+a
+3 a 3 d Ha
+“ 1 a a a a <9 3
+.2 3 3
+4’ 3 3
+a d 3 a «'1 1 ,7"
+a a
+n (I a a
+a 3 1‘ a " a
+2! : :
+ﬂu ‘ “,1 ‘a a 3 n a :1 ,
+,, 0 3 a 8 aa a (a ” a
+“Z, 4 . (I H O
+/., H 4 a aaa a
+(1 0 a a , n (1 (7
+a :1
+.2; O Q 0
+a 3 “ 0”
+a
+a " a
+pa (1
+a (L
+
+Figure 6.3: The projection of the font images on pairs of principal components. (left)
+the ﬁrst and second principal components. (right) the second and third.
+
+for i in range(imnbr):
+
+nodeim = Image.open(im1ist[i])
+
+nodeim.thumbnai1((25,25))
+
+ns = nodeim.size
+img.paste(nodeim,(sca1ed[i][0]—ns[0]//2,sca1ed[i][1]-
+
+ns[1]//2,sca1ed[i][0]+ns[0]//2+1,sca1ed[i][1]+ns[1]//2+1))
+
+img.save('pca_font.jpg')
+
+Here we used the integer or ﬂoor division operator // which returns an integer pixel
+position by removing any values after the decimal point.
+
+Plots like these illustrate how the images are distributed in the 40 dimensions
+and can be very useful for choosing a good descriptor. Already in just these two-
+dimensional projections the closeness of similar font images is clearly visible.
+
+Clustering pixels
+
+Before closing this section we will take a look at an example of clustering individual
+pixels instead of entire images. Grouping image regions (and pixels) into "meaningful"
+components is called image segmentation and will be the topic of chapter 9. Naively
+applying k-means on the pixel values will not give anything meaningful except in very
+simple images. More sophisticated class models (than average pixel color) or spatial
+consistency is needed to produce useful results. For now, let's just apply k:-means to
+the RGB values and worry about solving segmentation problems later (Section 9.2 has
+
+166 6.1. K—means Clustering
+

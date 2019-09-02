@@ -1,0 +1,51 @@
+The calibration is known so here we just hardcode the K matrix at the beginning.
+As in earlier examples, we pick out the points that belong to matches. After that we
+normalize them with K ‘1 and run the RANSAC estimation with the normalized eight
+point algorithm. Since the points are normalized, this gives us an essential matrix.
+We make sure to keep the index of the inliers, we will need them. From the essential
+matrix we compute the four possible solutions of the second camera matrix.
+
+From the list of camera matrices, we pick the one that has the most scene points
+in front of both cameras after triangulation.
+
+# pick the solution with points in front of cameras
+ind = 0
+maxres = 0
+for i in range(4):
+# triangulate inliers and compute depth for each camera
+X = sfm.triangu1ate(Xln[:,in1iers],x2n[:,in1iers],Pl,P2[i])
+d1 = dot(P1,X)[2]
+d2 = dot(P2[i],X)[2]
+if sum(d1>0)+sum(d2>0) > maxres:
+maxres = sum(d1>0)+sum(d2>0)
+ind = i
+infront = (dl>0) & (d2>0)
+
+# triangulate inliers and remove points not in front of both cameras
+X = sfm.triangu1ate(Xln[:,in1iers],x2n[:,in1iers],Pl,P2[ind])
+X[:,infront]
+
+><
+II
+
+We loop through the four solutions and each time triangulate the 3D points corre-
+sponding to the inliers. The sign of the depth is given by the third value of each image
+point after projecting the triangulated X back to the images. We keep the index with
+the most positive depths and also store a boolean for each point in the best solution
+so that we can pick only the ones that actually are in front. Due to noise and errors
+in all of the estimations done, there is a risk that some points still are behind one
+camera, even with the correct camera matrices. Once we have the right solution, we
+triangulate the inliers and keep the points in front of the cameras.
+Now we can plot the reconstruction.
+
+# 3D plot
+from mp1_too1kits.mp1ot3d import axes3d
+
+fig = figure()
+
+ax = fig.gca(projection='3d')
+ax.plot(-X[0],X[1],X[2],'k.')
+axis('off')
+
+148 5.3. Multiple View Reconstruction
+

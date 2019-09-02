@@ -1,0 +1,39 @@
+ 
+
+Figure 4.2: An example of projecting 3D points. (left) sample image. (middle) pro-
+jected points into a view. (right) trajectory of projected points under camera rotation.
+Data from the Oxford "Model House" dataset.
+
+Here we used the helper function rotation_matrix() which creates a rotation matrix
+for 3D rotations around a vector (add this to camera.py).
+def rotation,matrix(a):
+“"" Creates a 3D rotation matrix for rotation
+around the axis of the vector a. “""
+R = eye(4)
+R[:3.:3] = linalg-eXpm([[0,-a[2].a[1]].[a[2].0.-a[0]].[-a[1].a[0].0]])
+return R
+
+Figure 4.2 shows one of the images from the sequence, a projection of the 3D points
+and the projected 3D point tracks after the points have been rotated around a random
+vector. Try this example a few times with different random rotations and you will get
+a feel for how the points rotate from the projections.
+
+Factoring the camera matrix
+
+If we are given a camera matrix P of the form in equation (4.2), we need to be able
+to recover the internal parameters K and the camera position and pose t and R. Par-
+titioning the matrix is called factorization. In this case we will use a type of matrix
+factorization called RQ-factorization.
+
+Add the following method to the Camera class.
+
+def factor(se1f):
+“"" Factorize the camera matrix into K,R,t as P = K[R|t]. “""
+
+# factor first 3*3 part
+K,R = 1ina1g.rq(se1f.P[:,:3])
+
+# make diagonal of K positive
+
+4.1. The Pin—hole Camera Model 107
+

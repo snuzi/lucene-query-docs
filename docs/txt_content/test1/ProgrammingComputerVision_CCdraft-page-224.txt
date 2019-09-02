@@ -1,0 +1,68 @@
+- linear, a hyperplane in feature space, the simplest case, K (X,-, x) = x,- - x.
+
+- polynomial, features are mapped with polynomials of a deﬁned degree d, K (x,-, x) =
+
+(7x,' - x+r)d, 7 > 0.
+
+- radial basis functions, exponential functions, usually a very effective choice,
+
+ : e(_A7/||xi_x||2), ry > O_
+
+- sigmoid, a smoother alternative to hyperplane, K (x,, x) = tanh(7X,- - x —|— r).
+
+The parameters of each kernel are also determined during training.
+
+For multi-class problems, the usual procedure is to train multiple SVMs that each
+separates one class from the rest (also known as "one-versus-all" classiﬁers).
+
+more details on SVMs see for example the book [9] and the online references at http:
+
+//www. suppo rt-vector . net/ references . html.
+
+Using Lib SVM
+
+We will use one of the best and most commonly used implementation available, Lib-
+SVM [7]. LibSVM comes with a nice Python interface (there are also interfaces for
+
+many other programming languages). For installation instructions, see Appendix A.4.
+
+Let's use LibSVM on the sample 2D point data to see how it works. This script will
+
+load the same points and train a SVM classiﬁer using radial basis functions.
+
+import pickle
+from svmutil import *
+import imtools
+
+# load 2D example points using Pickle
+
+with open('points,normal.pkl', 'r') as f:
+class_1 = pickle.load(f)
+class_2 = pickle.load(f)
+labels = pickle.load(f)
+
+# convert to lists for Zibsvm
+
+classil = map(list,class_1)
+
+class_2 map(list,classi2)
+
+labels = list(labels)
+
+samples = class,1+class,2 # concatenate the two lists
+
+# create SVM
+
+prob = svm,problem(labels,samples)
+param = svm,parameter('-t 2')
+
+# train SVM on data
+
+m = svm_train(prob,param)
+
+224
+
+8.3. Support Vector Machines
+
+For
+

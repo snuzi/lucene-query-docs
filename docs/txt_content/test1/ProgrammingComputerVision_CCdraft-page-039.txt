@@ -1,0 +1,50 @@
+The imsave() function is available through the scipy.misc module. To save an array
+im to ﬁle just do:
+
+import scipy.misc
+scipy.misc.imsave('test.jpg',im)
+
+The scipy.misc module also contains the famous "Lena" test image.
+
+lena = scipy.misc.1ena()
+
+This will give you a 512 x 512 grayscale array version of the image.
+
+1.5 Advanced example: Image de-noising
+
+We conclude this chapter with a very useful example, de-noising of images. Image
+de-noising is the process of removing image noise while at the same time trying to
+preserve details and structures. We will use the Rudin-Osher-Fatemi de-noising mode]
+(ROF) originally introduced in [28]. Removing noise from images is important for
+many applications, from making your holiday photos look better to improving the qual-
+ity of satellite images. The ROF model has the interesting property that it ﬁnds a
+smoother version of the image while preserving edges and structures.
+
+The underlying mathematics of the ROF model and the solution techniques are
+quite advanced and outside the scope of this book. We'll give a brief (simpliﬁed) in-
+troduction before showing how to implement a ROF solver based on an algorithm by
+Chambolle [5].
+
+The total variation (TV) of a (grayscale) image I is deﬁned as the sum of the gradi-
+ent norm. In a continuous representation this is
+
+J(I)=l|VI|dx. (1.1)
+In a discrete setting, the total variation becomes
+
+M) = Z IVII .
+
+where the sum is taken over all image coordinates x = [;r, y].
+
+In the (Chambolle) version of ROF, the goal is to ﬁnd a de-noised image U that
+minimizes
+
+mgn ||I — U||2 + 2AJ(U),
+
+where the norm ||I — U || measures the difference between U and the original image I.
+What this means is in essence that the model looks for images that are "ﬂat" but allow
+
+"jumps" at edges between regions.
+Following the recipe in the paper, here's the code.
+
+L5.Advancedexanuﬂe:hnagedequnﬁng 39
+

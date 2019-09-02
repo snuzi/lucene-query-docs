@@ -1,0 +1,50 @@
+to ﬁnd the second camera matrix P2. There are two different cases, the uncalibrated
+case and the calibrated case.
+
+The uncalibrated case - projective reconstruction Without any knowledge of the
+camera's intrinsic parameters the camera matrix can only be retrieved up to a pro-
+jective transformation. This means that if the camera pair is used to reconstruct 3D
+points, the reconstruction is only accurate up to a projective transformation (you can
+get any solution out of the whole range of projective scene distortions). This means
+that angles and distances are not respected.
+
+This means that in the uncalibrated case the second camera matrix can be chosen
+up to a (3 x 3) projective transformation. A simple choice is
+
+P2: [S’eF|e],
+
+where e is the left epipole, eTF = O and Se a skew matrix as in equation (5.2). Re-
+member, a triangulation with this matrix will most likely give distortions, for example
+in the form of skewed reconstructions.
+
+Here is what it looks like in code:
+def compute,P_from_fundamenta1(F):
+
+""“ Computes the second camera matrix (assuming P1 = [I 0])
+from a fundamental matrix. ""“
+
+e = compute_epipo1e(F.T) # left epipole
+Te = skew(e)
+return vstack((dot(Te,F.T).T,e)).T
+
+We used the helper function skew() deﬁned as.
+
+def skew(a):
+""“ Skew matrix A such that a x v = Av for any V. ""“
+
+return arral/([[0,-a[2].a[1]].[a[2].0.-a[0]].[-a[1].a[0].0]])
+
+Add both these functions to the ﬁle sfm.py.
+
+The calibrated case - metric reconstruction With known calibration the recon-
+struction will be metric and preserve properties of Euclidean space (except for a global
+scale parameter). In terms of reconstructing a 3D scene, this calibrated case is the
+interesting one.
+
+With known calibration K, we can apply its inverse K ‘1 to the image points xK =
+K ‘lx so that the camera equation becomes
+
+XK = K-1K[R | t]X = [R | t]X ,
+
+142 5.2. Computing with Cameras and 3D Structure
+

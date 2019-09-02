@@ -1,0 +1,52 @@
+t = Rt[:,3]
+
+# setup 4*4 model view matrix
+
+M = eye(4)
+
+M[:3,:3] = dot(R,Rx)
+
+M[:3,3] = t
+
+# transpose and flatten to get column order
+M = M.T
+
+m = M.flatten()
+
+# replace model View with the new matrix
+glLoadMatriXf(m)
+
+First we switch to work on the GL_MODELVIEW matrix and reset it. Then we create
+a 90 degree rotation matrix since the object we want to place needs to be rotated
+(you will see below). Then we make sure that the rotation part of the camera matrix
+is indeed a rotation matrix in case there are errors or noise when we estimated the
+camera matrix. This is done with SVD and the best rotation matrix approximation is
+given by R = U VT. The OpenGL coordinate system is a little different so we ﬂip the
+x-axis around. Then we set the model View matrix M by multiplying the rotations.
+The function g1LoadMatrixf() sets the model View matrix and takes an array of the 16
+values of the matrix taken column-wise. Transposing and then ﬂattening accomplishes
+this.
+
+Placing virtual objects in the image
+
+The ﬁrst thing we need to do is to add the image (the one we want to place Virtual
+objects in) as a background. In OpenGL this is done by creating a quadrilateral, a
+quad, that ﬁlls the whole view. The easiest way to do this is to draw the quad with
+the projection and model View matrices reset so that the coordinates go from -1 to 1
+in each dimension.
+
+This function loads an image, converts it to an OpenGL texture and places that
+texture on the quad.
+
+def dramLbackground(imname):
+””" Draw background image using a quad. ””"
+
+# load background image (should be .bmp) to OpenGL texture
+bg_image = pygame.image.load(imname).convert()
+bgidata = pygame.image.tostring(bg_image,"RGBX",1)
+
+glMatrixMode(GL,MODELVIEW)
+glLoadIdentity()
+
+4.4. Augmented Reality 1 19
+

@@ -1,0 +1,53 @@
+The accuracy above shows how many correct classiﬁcations there are for a given
+test set but does not tell us which signs are hard to classify or which mistakes are
+typically made. A confusion matrix is a matrix that shows how many samples of each
+class is classiﬁed as each of the classes. It shows how the errors are distributed and
+what classes are often "confused" for each other.
+
+The following function will print the labels and the corresponding confusion matrix.
+
+def print,confusion(res,1abels,classnames):
+n = 1en(classnames)
+
+# confusion matrix
+classiind = dict([(c1assnames[i],i) for i in range(n)])
+
+confuse = zeros((n,n))
+for i in range(1en(test,1abe1s)):
+confuse[c1ass,ind[res[i]],c1ass_ind[test,1abe1s[i]]] += 1
+
+print 'Confusion matrix for’
+print classnames
+print confuse
+
+The printout of running
+
+print_confusion(res,test,1abe1s,classnames)
+
+looks like this:
+
+Confusion matrix for
+[.A. .B. .C. .F. .P. .V.
+
+]
+
+[[ 26. 0. 2. 0. 1 1.]
+[ 0. 26. 0. 1. 1. 1.]
+[ 0. 0. 25. 0. 0. 1.]
+[ 0. 3. 0. 37. 0 0.]
+[ 0. 1. 2. 0. 17 1.]
+[ 3. 1. 3. 0. 14 24.]]
+
+This shows that, for example, in this case "P" ("Point") is often misclassiﬁed as 
+
+8.2 Bayes Classiﬁer
+
+Another simple but powerful classiﬁer is the Bayes c1assiﬁer3 (or naive Bayes classi-
+ﬁer). A Bayes classiﬁer is a probabilistic classiﬁer based on applying Bayes’ theorem
+for conditional probabilities. The assumption is that all features are independent and
+unrelated to each other (this is the "naive" part). Bayes classiﬁers can be trained very
+
+3After Thomas Bayes, an 18th century English mathematician and minister.
+
+218 8.2. Bayes Classiﬁer
+

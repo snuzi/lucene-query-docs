@@ -1,0 +1,47 @@
+""" Normalize a collection of points in
+homogeneous coordinates so that last row = 1. """
+
+for row in points:
+row /= points[—l]
+return points
+
+def make_homog(points):
+""" Convert a set of points (dim*n array) to
+homogeneous coordinates. """
+
+return vstack((points,ones((1,points.shape[1]))))
+
+When working with points and transformations we will store the points column-wise so
+that a set of n points in 2 dimensions will be a 3 x n array in homogeneous coordinates.
+This format makes matrix multiplications and point transforms easier. For all other
+cases we will typically use rows to store data, for example features for clustering and
+classiﬁcation.
+
+There are some important special cases of these projective transformations. An
+afﬁne transformation
+
+:r' (11 (12 tm an A t
+y’ = a3 a4 ty y or X’ = [0 1] X ,
+1 0 0 1 1
+
+preserves w = 1 and can not represent as strong deformations as a full projective
+transformation. The afﬁne transformation contains an invertible matrix A and a trans-
+lation vector 1: = [tm ty]. Afﬁne transformations are used for example in warping.
+
+A similarity transformation
+
+:13’ 5 c0s(9) -5 sin(0) 7533 :r SR t
+y’ = 3 sin(0) 5 c0s(6) ty y or X’ = [ 0 1] x ,
+1 0 0 1 1
+
+is a rigid 2D transformation that also includes scale changes. The scalar .9 speciﬁes
+scaling, R is a rotation of an angle 6 and t = [tm ty] is again a translation. With .9 = 1
+distances are preserved and it is then a rigid transformation. Similarity transforma-
+tions are used for example in image registration.
+
+Let's look at algorithms for estimating homographies and then go into examples
+of using afﬁne transformations for warping, similarity transformations for registration
+and ﬁnally full projective transformations for creating panoramas.
+
+74 3.1. Homographies
+

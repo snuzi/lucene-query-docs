@@ -1,0 +1,35 @@
+Chapter 5
+
+Multiple View Geometry
+
+This chapter will show you how to handle multiple views and how to use the geometric
+relationships between them to recover camera positions and 3D structure. With im-
+ages taken at different view points it is possible to compute 3D scene points as well as
+camera locations from feature matches. We introduce the necessary tools and show
+a complete 3D reconstruction example. The last part of the chapter shows how to
+compute dense depth reconstructions from stereo images.
+
+5. 1 Epipolar Geometry
+
+Multiple View geometry is the ﬁeld studying the relationship between cameras and
+features when there are correspondences between many images that are taken from
+varying viewpoints. The image features are usually interest points and we will focus
+on that case throughout this chapter. The most important constellation is two-view
+geometry.
+
+With two views of a scene and corresponding points in these views there are ge-
+ometric constraints on the image points as a result of the relative orientation of the
+cameras, the properties of the cameras, and the position of the 3D points. These ge-
+ometric relationships are described by what is called ep1'po1ar geometry. This section
+will give a very short description of the basic components we need. For more details
+on the subject see [13].
+
+Without any prior knowledge of the cameras, there is an inherent ambiguity in that
+a 3D point, X, transformed with an arbitrary (4 X4) homography H as H X will have the
+same image point in a camera PH ‘1 as the original point in the camera P. Expressed
+with the camera equation, this is
+
+Ax = PX = PH—1HX = PX .
+
+127
+

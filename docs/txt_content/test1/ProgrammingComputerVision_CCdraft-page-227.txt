@@ -1,0 +1,51 @@
+# Create SVM
+prob = svm,prob1em(convert_1abe1s(1abe1s,trans1),features)
+param = svm_parameter('-t 0')
+
+# train SVM on data
+m = svm_train(prob,param)
+
+# how did the training do?
+res = svmipredict(convertilabels(1abe1s,trans1),features,m)
+
+# test the SWW
+res = svmipredict(convertilabels(test_1abe1s,trans1),test_features,m)[0]
+res = convert_1abe1s(res,trans1)
+
+Same as before, we convert the data to lists using a map() call. Then the labels need
+to be converted since LibSVM does not handle string labels. The dictionary trans] will
+contain a conversion between string and integer labels. Try to print it to your console
+to see what happens. The parameter "-t 0" makes it a linear classiﬁer and the decision
+boundary will be a hyperplane in the original feature space of some 10000 dimensions.
+Now compare the labels, just like before
+
+acc = sum(1.0*(res==test_1abe1s)) / 1en(test_1abe1s)
+print 'Accuracy:', acc
+
+print_confusion(res,test,labe1s,c1assnames)
+
+The output using this linear kernel should look like this:
+
+Accuracy: 0.916230366492
+Confusion matrix for
+[.A. .B. .C. .F. .P. .V.
+
+]
+
+[[ 26. 0. 1. 0. 2. 0.]
+[ 0 28. 0. 0. 1. 0.]
+[ 0 0. 29. 0. 0. 0.]
+[ 0. 2. 0. 38. 0. 0.]
+[ 0 1. 0. 0. 27. 1.]
+[ 3 0. 2. 0. 3. 27.]]
+
+Now if we apply PCA to reduce the dimensions to 50, as we did in Section 8.2, this
+changes the accuracy to
+
+Accuracy: 0.890052356021
+
+Not bad seeing that the feature vectors are about 200 times smaller than the original
+data (and the space to store the support vectors then also 200 times less).
+
+8.3. Support Vector Machines 227
+

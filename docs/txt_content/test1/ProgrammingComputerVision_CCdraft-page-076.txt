@@ -1,0 +1,55 @@
+C2 = diag([l/maxstd, 1/maxstd, 1])
+C2[0][2] = —m[0]/maxstd
+
+C2[l][2] = —m[l]/maxstd
+
+tp = dot(C2,tp)
+
+# create matrix for linear method, 2 rows for each correspondence pair
+nbricorrespondences = fp.shape[1]
+
+A = zeros((2*nbr_correspondences,9))
+
+for i in range(nbricorrespondences):
+
+A[2*i] = [-fD[0][i].-fD[1][i].-1.0.0.0.
+’CD[0][i]*fD[0][i],’ED[0][i]*fD[1][i].’ED[0][i]]
+A[2*i+1] = [0.0.0,-fD[0][i].-fD[1][i].-1.
+
+’CD[l] [i]*fD[0][i].’CD[1][i]*fD[1][i].’CD[1][i]]
+
+U,S,V = 1ina1g.svd(A)
+H = V[8].reshape((3,3))
+
+# decondition
+H = dot(1ina1g.inv(C2),dot(H,Cl))
+
+# normalize and return
+return H / H[2,2]
+
+The ﬁrst thing that happens in this function is a check that the number of points
+are equal. If not an exception is thrown. This is useful for writing robust code but
+we will only use exceptions in very few cases in this book to make the code samples
+simpler and easier to follow. You can read more about exception types at http: //
+docs . python . org/library/exceptions . html and how to use them at http://docs.
+python.org/tutorial/errors.html.
+
+The points are conditioned by normalizing so that they have zero mean and unit
+standard deviation. This is very important for numerical reasons since the stability
+of the algorithm is dependent of the coordinate representation. Then the matrix A is
+created using the point correspondences. The least squares solution is found as the
+last row of the matrix V of the SVD. The row is reshaped to create H. This matrix is
+then de-conditioned and normalized before returned.
+
+Afﬁne transformations
+
+An afﬁne transformation has six degrees of freedom and therefore three point corre-
+spondences are needed to estimate H. Afﬁne transforms can be estimated using the
+DLT algorithm above by setting the last two elements equal to zero, h7 = h8 = 0.
+
+Here we will use a different approach, described in detail in [13] (page 130). Add
+the following function to homographypy, which computes the afﬁne transformation
+matrix from point correspondences.
+
+76 3.1. Homographies
+

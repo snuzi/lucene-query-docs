@@ -1,0 +1,6 @@
+Figure 9.4: Sample graph cut segmentation results using images from the Grab Cut
+data set. (left) original image, downsampled. (middle) mask used for training. (right)
+resulting segmentation using RGB values as feature vectors.
+
+9.1. Graph Cuts 247
+

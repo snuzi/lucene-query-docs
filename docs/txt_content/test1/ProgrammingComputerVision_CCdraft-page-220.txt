@@ -1,0 +1,58 @@
+return est_labels, estiprob
+
+The model has two variables per class, the class mean and covariance. The train()
+method takes a lists of feature arrays (one per class) and computes mean and covari-
+ance for each. The method c1assify() computes the class probabilities for an array of
+data points and selects the class with highest probability. The estimated class labels
+and probabilities are returned. The helper function for the actual Gaussian function is
+also needed:
+
+def gauss(m,v,x):
+
+“”" Evaluate Gaussian in d-dimensions with independent
+mean m and variance v at the points in (the rows of) X. “”"
+
+if len(x.shape)== :
+n,d = l,x.shape[0]
+
+else:
+n,d = x.shape
+
+covariance matrix, subtract mean
+
+= diag(1/v)
+
+= x-m
+
+product of probabilities
+
+= exp(-0.5*diag(dot(x,dot(S,x.T))))
+
+‘<=ﬂ:><U')='~‘2:
+
+# normalize and return
+return y * (2*pi)**(-d/2.0) / ( sqrt(prod(v)) + 1e—6)
+
+This function computes the product of the individual Gaussian distributions and re-
+turns the probability for a given pair of model parameters m,v. For more details on this
+function see for example http : //en .wi kipedia . o rg/wi ki/Multiva riate_no rmal_dist ribution.
+Try this Bayes classiﬁer on the 2D data from the previous section. This script will
+load the exact same point sets and train a classiﬁer.
+
+import pickle
+import bayes
+import imtools
+
+# load 2D example points using Pickle
+
+with open('points,normal.pkl', 'r') as f:
+class_1 = pickle.load(f)
+class_2 = pickle.load(f)
+labels = pickle.load(f)
+
+# train Bayes classifier
+bc = bayes.BayesClassifier()
+bc.train([class_1,class_2],[l,-1])
+
+220 8.2. Bayes Classiﬁer
+

@@ -1,0 +1,38 @@
+ 
+
+Figure 1.10: An example of computing image derivatives using Sobel derivative ﬁl-
+ters. (a) original image in grayscale, (b) x-derivative, (c) y-derivative, (d) gradient
+magnitude.
+
+This computes x and y derivatives and gradient magnitude using the Sobel ﬁlter. The
+second argument selects the x or y derivative, and the third stores the output. Fig-
+ure 1.10 shows an image with derivatives computed using the Sobel ﬁlter. In the
+two derivative images, positive derivatives are shown with bright pixels and negative
+derivatives are dark. Gray areas have values close to zero.
+
+Using this approach has the drawback that derivatives are taken on the scale de-
+termined by the image resolution. To be more robust to image noise and to compute
+derivatives at any scale, Gaussian derivative ﬁlters can be used,
+
+Im=I>I<G” and Iy=I>x<G,,y,
+
+where Gm, and Gay are the x and y derivatives of G0, a Gaussian function with standard
+deviation 0.
+
+The :Eilters.gaussian_fi1ter() function we used for blurring earlier can also take
+extra arguments to compute Gaussian derivatives instead. To try this on an image,
+simply do:
+
+sigma = 5 #standard deviation
+
+imx = zeros(im.shape)
+filters.gaussian_fi1ter(im, (sigma,sigma), (0,1), imx)
+
+imy = zeros(im.shape)
+filters.gaussian1fi1ter(im, (sigma,sigma), (1,0), imy)
+
+The third argument speciﬁes which order of derivatives to use in each direction using
+the standard deviation determined by the second argument. See the documentation
+
+34 1.4.SciPy
+

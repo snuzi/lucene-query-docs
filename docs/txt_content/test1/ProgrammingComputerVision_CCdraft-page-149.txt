@@ -1,0 +1,60 @@
+The 3D plots with mp1ot3d have the ﬁrst axis reversed compared to our coordinate
+system so we change the sign.
+We can then plot the reprojection in each view.
+
+# plot the projection of X
+import camera
+
+# project 3D points
+caml = camera.Camera(
+cam2 = camera.Camera(
+xlp - cam1.project(X)
+x2p cam2.project(X)
+
+)
+
+Pl
+P2[ind])
+
+# reverse K normalization
+xlp - dot(K,xlp)
+x2p dot(K,x2p)
+
+figure()
+
+imshow(iml)
+
+9Fay()
+plot(xlp[0],xlp[l],'o')
+plot(xl[0],x1[l],'r.’)
+axis('off')
+
+figure()
+
+imshow(im2)
+
+9Fay()
+
+plot x2p[0],x2p[l],'o')
+plot x2[0],x2[l],'r.’)
+axis 'off')
+
+show )
+
+—~,‘,~,‘
+
+After projecting the 3D points we need to reverse the initial normalization by multiply-
+ing with the calibration matrix.
+
+The result looks like Figure 5.8. As you can see, the reprojected points (blue) don't
+exactly match the original feature locations (red) but they are reasonably close. It
+is possible to further reﬁne the camera matrices to improve the reconstruction and
+reprojection but that is outside the scope of this simple example.
+
+Extensions and more than two views
+
+There are some steps and further extensions to multiple view reconstructions that we
+cannot cover in a book like this. Here are some of them with references for further
+
+5.3. Multiple View Reconstruction 149
+

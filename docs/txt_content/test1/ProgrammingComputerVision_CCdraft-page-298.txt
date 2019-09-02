@@ -1,0 +1,116 @@
+Edmonds-Karp algorithm, 322
+eight point algorithm, 177
+epipolar constraint, 1 7 1
+epipolar geometry, 170
+epipolar line, 172
+
+epipole, 172
+
+essential matrix, 192
+
+factorization, 141
+feature matches, 66
+feature matching, 75
+ﬂood ﬁll, 354
+
+focal length, 137
+fundamental matrix, 171
+
+Gaussian blurring, 39
+Gaussian derivative ﬁlters, 43
+Gaussian distributions, 297
+Geotagged images, 80
+gesture recognition, 290
+GL_MODELVIEW, 155
+GL_PROJECTION, 155
+Grab Cut dataset, 331
+gradient angle, 41
+
+gradient magnitude, 41
+graph, 321
+
+graph cut, 321
+
+GraphViz, 86
+
+graylevel transforms, 26
+
+Harris corner detection, 57
+
+Harris matrix, 58
+
+Hierarchical clustering, 224
+Hierarchical k-means, 244
+
+histogram equalization, 29
+Histogram of Oriented Gradients, 288
+HOG, 288
+
+Homogeneous coordinates, 94
+homography, 93
+
+Hough transform, 374
+
+Image,15
+
+image contours, 22
+
+image gradient, 41
+
+image graph, 324
+
+image histograms, 22
+image patch, 63
+
+image plane, 136
+
+Image registration, 1 1 3
+image retrieval, 247
+
+image search demo, 273
+image segmentation, 222, 321
+image thumbnails, 18
+ImageD raw, 221
+
+inliers, 120
+
+inpainting, 373
+
+integral image, 352
+interest point descriptor, 63
+interest points, 57
+
+inverse depth, 136
+
+inverse document frequency, 249
+io, 47
+
+iso-contours, 22
+
+JSON, 81
+
+k-nearest neighbor classiﬁer, 281
+kernel functions, 302
+kNN, 281
+
+Laplacian matrix, 239
+
+least squares triangulation, 183
+LibSVM, 302
+
+local descriptors, 57
+
+Lucas-Kanade tracking algorithm, 363
+
+marking points, 24
+mathematical morphology, 44
+Matplotlib, 19
+
+max ﬂow, 322
+
+maximum ﬂow, 322
+
+298
+
+INDEX
+

@@ -1,0 +1,27 @@
+ 
+
+Figure 10.9: An example of segmenting an image using a watershed transform. The
+left image is the input image with seed regions drawn. The right image shows the
+resulting segmentation starting.
+
+This gives two windows like the ones shown in Figure 10.10. One window shows the
+source image in grayscale, the other shows the edge map used together with lines
+detected as those with most votes in parameter space. Note that the lines are always
+inﬁnite, if you want to ﬁnd the endpoints of line segments in the image you can use
+the edge map to try to ﬁnd them.
+
+Exercises
+
+1. Use optical ﬂow to build a simple gesture recognition system. For example, you
+could sample the ﬂow as in the plotting function and use these sample vectors as
+input.
+
+2. There are two Warp functions available in OpenCV, cv2.warpAffine() and cv2.warpPerspective()
+Try to use them on some of the examples from Chapter 3.
+
+3. Use the ﬂood ﬁll function to do background subtraction on the Oxford "dinosaur"
+images used in Figure 10.7. Create new images with the dinosaur placed on a
+different color background or on a different image.
+
+276 10.5. More Examples
+

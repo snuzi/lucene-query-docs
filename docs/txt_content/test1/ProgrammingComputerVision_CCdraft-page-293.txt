@@ -1,0 +1,53 @@
+Bibliography
+
+[1]
+
+Herbert Bay, Tinne Tuytelaars, and Luc Van G001. SURF: Speeded up robust
+features. In European Conference on Computer Vision, 2006.
+
+[2] Yuri Boykov, Olga Veksler, and Ramin Zabih. Fast approximate energy minimiza-
+
+[3]
+[4]
+
+[5]
+
+[6]
+
+[7]
+
+[8]
+
+[9]
+
+tion via graph cuts. IEEE Transactions on Pattern Analysis and Machine Intelli-
+gence, 23:2001, 2001.
+
+Gary Bradski and Adrian Kaehler. Learning OpenCV. O’Reilly Media Inc., 2008.
+
+Martin Byrod. An optical sudoku solver. In Swedish Symposium on Image Analy-
+sis, SSBA. http://www.maths.lth.se/matematiklth/personal/byrod/papers/
+sudokuocr. pdf, 2007.
+
+Antonin Chambolle. Total variation minimization and a class of binary mrf mod-
+els. In Energy Minimization Methods in Computer Vision and Pattern Recog-
+nition, Lecture Notes in Computer Science, pages 136-152. Springer Berlin /
+Heidelberg, 2005.
+
+T. Chan and L. Vese. Active contours without edges. IEEE Trans. Image Process-
+ing, 10(2):266—277, 2001.
+
+Chih-Chung Chang and Chih-Jen Lin. LIBSVM: a library for support Vector
+machines, 2001. Software available at http://www.csie.ntu.edu.tw/~cjlin/
+libsvm.
+
+D. Cremers, T. Pock, K. Kolev, and A. Chambolle. Convex relaxation techniques
+for segmentation, stereo and multiview reconstruction. In Advances in Markov
+Random Fields for Vision and Image Processing. MIT Press, 201 1.
+
+Nello Cristianini and John Shawe-Taylor. An Introduction to Support Vector Ma-
+chines and Other Kernel-based Learning Methods. Cambridge University Press,
+2000.
+
+293
+

@@ -1,0 +1,47 @@
+it looks like it belongs in the scene, and moves naturally with the camera motion in
+the case of video. Given an image with a marker plane as in the section above, we
+can compute the camera's position and pose and use that to place computer graphics
+models so that they are rendered correctly. In this last section of our camera chapter
+we will show how to build a simple AR example. We will use two tools for this, PyGame
+and PyOpenGL.
+
+PyGame and PyOpenGL
+
+PyGame is a popular package for game development that easily handles display win-
+dows, input devices, events and much more. PyGame is open source and available
+from http : //www. pygame . org/. It is actually a Python binding for the SDL game en-
+gine. For installation instructions, see the Appendix. For more details on programming
+with PyGame, see for example [21].
+
+PyOpenGL is the Python binding to the OpenGL graphics programming interface.
+OpenGL comes pre-installed on almost all systems and is a crucial part for graph-
+ics performance. OpenGL is cross platform and works the same across operating
+systems. Take a look at http: //www. openg1.org/ for more information on OpenGL.
+The getting started page (http://www.openg1.org/wiki/Getting_started) has re-
+sources for beginners. PyOpenGL is open source and easy to install, see the Ap-
+pendix for details. More information can be found on the project website http:
+//pyopeng1.sou rceforge.net/.
+
+There is no way we can cover any signiﬁcant portion of OpenGL programming,
+we will instead just show the important parts, for example how to use camera ma-
+trices in OpenGL and setting up a basic 3D model. Some good examples and de-
+mos are available in the PyOpenGL-Demo package (http : //pypi . python . org/pypi/
+Py0penGL- Demo). This is a good place to start if you are new to PyOpenGL.
+
+We want to place a 3D model in a scene using OpenGL. To use PyGame and Py-
+OpenGL for this application we need to import the following at the top of our scripts:
+from 0penGL.GL import *
+from 0penGL.GLU import *
+
+import pygame, pygame.image
+from pygame.1ocals import *
+
+As you can see we need two main parts from OpenGL. The GL part contains all func-
+tions stating with "gl", which you will see are most of the ones we need. The GLU
+part is the OpenGL Utility library and contains some higher-level functionality. We will
+mainly use it to set up the camera projection. The pygame part sets up the window
+and event controls, and pygame.image is used for loading image and creating OpenGL
+textures. The pygame.1oca1s is needed for setting up the display area for OpenGL.
+
+1 1 6 4.4. Augmented Reality
+

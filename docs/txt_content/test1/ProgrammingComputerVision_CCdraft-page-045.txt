@@ -1,0 +1,35 @@
+Chapter 2
+
+Local Image Descriptors
+
+This chapter is about ﬁnding corresponding points and regions between images. Two
+different types of local descriptors are introduced with methods for matching these be-
+tween images. These local features will be used in many different contexts throughout
+this book and are an important building block in many applications such as creating
+panoramas, augmented reality, and computing 3D reconstructions.
+
+2.1 Harris corner detector
+
+The Harris corner detection algorithm (or sometimes the Harris & Stephens corner
+detector) is one of the simplest corner indicators available. The general idea is to
+locate interest points where the surrounding neighborhood shows edges in more than
+one direction, these are then image corners.
+
+We deﬁne a matrix M1 = M1(x), on the points x in the image domain, as the
+positive semi-deﬁnite, symmetric matrix
+
+_ T _ I,, _ Ii I,,Iy
+M1 _vI VI _ Ly] [1, Iy] _ Lug I3] , (2.1)
+where as before VI is the image gradient containing the derivatives I,, and Iy (we
+deﬁned the derivatives and the gradient on page 32). Because of this construction,
+M1 has rank one with eigenvalues A1 = |VI|2 and A2 = 0. We now have one matrix for
+each pixel in the image.
+Let W be a weight matrix (typically a Gaussian ﬁlter G,,), the component-wise
+convolution
+M1=W*M1, (2.2)
+
+gives a local averaging of M1 over the neighboring pixels. The resulting matrix M;
+is sometimes called a Harris matrix. The width of W determines a region of interest
+
+45
+

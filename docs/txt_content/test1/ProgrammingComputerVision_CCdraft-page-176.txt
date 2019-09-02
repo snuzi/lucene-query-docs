@@ -1,0 +1,18 @@
+_r.
+_ r
+“' 5
+5.
+.l
+— t—‘
+I.‘-
+? .
+:8
+2.
+
+Figure 6.5: An example of hierarchical clustering of 100 images of sunsets using a 512
+
+bin histogram in RGB coordinates as feature vector. Images close together in the tree
+have similar color distribution.
+
+176 6.3. Spectral Clustering
+

@@ -1,0 +1,50 @@
+ 
+
+(a) (b) (C)
+
+Figure 1.13: An example of ROF de-noising of a synthetic example. (a) original noisy
+image, (b) image after Gaussian blurring (0 = 10). (c) image after ROF de-noising.
+
+values of an array cyclically around an axis. This is very convenient for computing
+neighbor differences, in this case for derivatives. We also used 1ina1g.norm() which
+measures the difference between two arrays (in this case the image matrices U and
+Uold). Save the function denoise() in a ﬁle rof.py.
+
+Let's start with a synthetic example of a noisy image:
+
+from numpy import *
+
+from numpy import random
+
+from scipy.ndimage import filters
+import rof
+
+# create synthetic image with noise
+
+im = zeros((500,500))
+
+im[100:400,100:400] = 128
+
+im[200:300,200:300] = 255
+
+im = im + 30*random.standard_norma1((500,500))
+
+rof.denoise(im,im)
+
+U,T =
+G = filters.gaussian_fi1ter(im,l0)
+
+# save the result
+
+import scipy.misc
+scipy.misc.imsave('synth_rof.pdf',U)
+scipy.misc.imsave('synth_gaussian.pdf',G)
+
+The resulting images are shown in Figure 1.13 together with the original. As you can
+see, the ROF version preserves the edges nicely.
+Now, let's see what happens with a real image:
+
+from PIL import Image
+
+L5.Advancedexanuﬂe:hnagedequnﬁng 41
+

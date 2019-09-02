@@ -1,0 +1,48 @@
+F = compute_fundamenta1(xl,x2)
+
+# reverse normalization
+F = dot(T1.T,dot(F,T2))
+
+return F/F[2,2]
+
+This function normalizes the image points to zero mean and ﬁxed Variance.
+Now we can use this class in a function. Add the following function to sfm.py.
+def F,from,ransac(Xl,X2,mode1,maXiter=5000,match,thesho1d=le-6):
+“"“ Robust estimation of a fundamental matrix F from point
+
+correspondences using RANSAC (ransac.py from
+http://www.scipy.org/Cookbook/RANSAC).
+
+input: X1,X2 (3*n arrays) points in hom. coordinates. “"“
+import ransac
+data = vstack((x1,x2))
+
+# compute F and return with inlier index
+F,ransac_data = ransac.ransac(data.T,mode1,8,maxiter,match_thesho1d,20,return_a11=True)
+return F, ransac_data['in1iers']
+
+Here we return the best fundamental matrix F together with the inlier index (so that
+we know what matches were consistent with F). Compared to the homography esti-
+mation, we increased the default max iterations and changed the matching threshold
+which was in pixels before and is in Sampson distance now.
+
+3D reconstruction example
+
+In this section we will see a complete example of reconstructing a 3D scene from start
+to ﬁnish. We will use two images taken with a camera with known calibration. The
+images are of the famous Alcatraz prison and are shown in Figure 5.73.
+
+Let's split the code up in a few chunks so that it is easier to follow. First we extract
+features, match them and estimate a fundamental matrix and camera matrices.
+import homography
+
+import sfm
+import sift
+
+# calibration
+K = array([[2394,0,932],[0,2398,628],[0,0,l]])
+
+3hnagescourtesy(n?Car1CHsson.http://www.maths.1th.se/matematiklth/personal/Qalle/.
+
+146 5.3. Multiple View Reconstruction
+

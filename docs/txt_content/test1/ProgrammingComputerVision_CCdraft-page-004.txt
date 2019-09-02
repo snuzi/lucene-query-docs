@@ -1,0 +1,48 @@
+5 Multiple View Geometry 127
+
+5.1 Epipolar Geometry . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 127
+5.2 Computing with Cameras and 3D Structure . . . . . . . . . . . . . . . . . . 136
+5.3 Multiple View Reconstruction . . . . . . . . . . . . . . . . . . . . . . . . . . 144
+5.4 Stereo Images . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 152
+6 Clustering Images 161
+6.1 K-means Clustering . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 161
+6.2 Hierarchical Clustering . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 169
+6.3 Spectral Clustering . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 175
+7 Searching Images 185
+7.1 Content-based Image Retrieval . . . . . . . . . . . . . . . . . . . . . . . . . 185
+
+7.2 Visual Words . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 186
+
+7.3 Indexing Images . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 190
+
+7.4 Searching the Database for Images . . . . . . . . . . . . . . . . . . . . . . . 194
+
+7.5 Ranking Results using Geometry . . . . . . . . . . . . . . . . . . . . . . . . 199
+
+7.6 Building Demos and Web Applications . . . . . . . . . . . . . . . . . . . . . 202
+8 Classifying Image Content 209
+8.1 K-Nearest Neighbors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 209
+8.2 Bayes Classiﬁer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 218
+8.3 Support Vector Machines . . . . . . . . . . . . . . . . . . . . . . . . . . . . 223
+8.4 Optical Character Recognition . . . . . . . . . . . . . . . . . . . . . . . . . 228
+9 Image Segmentation 237
+9.1 Graph Cuts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 237
+9.2 Segmentation using Clustering . . . . . . . . . . . . . . . . . . . . . . . . . 248
+9.3 Variational Methods . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 252
+100penCV 257
+10.1The OpenCV Python Interface . . . . . . . . . . . . . . . . . . . . . . . . . . 257
+
+10.20penCV Basics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 258
+
+10.3Processing Video . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 262
+
+10.4Tracking . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 265
+
+10.5More Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 273
+A Installing Packages 279
+A.1 NumPy and SciPy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 279
+A.2 Matplotlib . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 280
+A.3 PIL . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 280
+
+4 CONTENTS
+

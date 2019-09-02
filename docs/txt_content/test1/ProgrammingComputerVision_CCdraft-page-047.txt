@@ -1,0 +1,51 @@
+filters.gaussian,filter(im, (sigma,sigma), (1,0), imy)
+
+# compute components of the Harris matrix
+
+Wxx = filters.gaussian_filter(imx*imx,sigma)
+Wxy filters.gaussian,filter(imx*imy,sigma)
+Wyy filters.gaussian_filter(imy*imy,sigma)
+
+# determinant and trace
+Wdet = Wxx*Wyy - WXy**2
+wtr = Wxx + Wyy
+
+return Wdet / Wtr
+
+This gives an image with each pixel containing the value of the Harris response func-
+tion. Now it is just a matter of picking out the information needed from this image.
+Taking all points with values above a threshold with the additional constraint that cor-
+ners must be separated with a minimum distance is an approach that often gives good
+results. To do this, take all candidate pixels, sort them in descending order of corner
+response values and mark off regions too close to positions already marked as corners.
+Add the following function to harris.py.
+
+def getiharrisipoints(harrisim,min,dist=l0,threshold=0.1):
+”"" Return corners from a Harris response image
+minidist is the minimum number of pixels separating
+corners and image boundary. ”""
+
+# find top corner candidates above a threshold
+cornerithreshold = harrisim.max() * threshold
+harrisim_t = (harrisim > corner_threshold) * 1
+
+# get coordinates of candidates
+coords = array(harrisim_t.nonzero()).T
+
+# ...and their values
+candidate_values = [harrisim[c[0],c[1]] for c in coords]
+
+# sort candidates
+index = argsort(candidate_values)
+
+# store allowed point locations in array
+allowed_locations = zeros(harrisim.shape)
+allowed_locations[minidistz-min,dist,min_dist:-min_dist] = 1
+
+# select the best points taking minidistance into account
+filteredicoords = []
+for i in index:
+if allowed_locations[coords[i,0],coords[i,1]] == 1:
+
+2.1. Harris corner detector 47
+

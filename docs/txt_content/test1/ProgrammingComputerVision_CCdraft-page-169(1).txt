@@ -1,0 +1,55 @@
+consistency and better separation will be dealt with later, together with other image
+segmentation algorithms. Now let's move on to the next basic clustering algorithm.
+
+6.2 Hierarchical Clustering
+
+Hierarchical clustering (or agglomerative clustering) is another simple but powerful
+clustering algorithm. The idea is to build a similarity tree based on pairwise distances.
+The algorithm starts with grouping the two closest objects (based on the distance
+between feature vectors) and creates an "average" node in a tree with the two objects
+as children. Then the next closest pair is found among the remaining objects but
+also including any average nodes, and so on. At each node the distance between the
+two children is also stored. Clusters can then be extracted by traversing this tree
+and stopping at nodes with distance smaller some threshold that then determines the
+cluster size.
+
+Hierarchical clustering has several beneﬁts. For example, the tree structure can
+be used to visualize relationships and show how clusters are related. A good feature
+vector will give a nice separation in the tree. Another beneﬁt is that the tree can be
+reused with different cluster thresholds without having to recompute the tree. The
+drawback is that one needs to choose a threshold if the actual clusters are needed.
+
+Let's see what this looks like in codel. Create a ﬁle hclusteitpy and add the follow-
+ing code (inspired by the hierarchical clustering example in [31]).
+
+from itertools import combinations
+
+class ClusterNode(object):
+def ,,init,,(self,vec,left,right,distance=0.0,count=l):
+
+self.left = left
+
+self.right = right
+
+self.vec = vec
+
+self.distance = distance
+
+self.count = count # only used for weighted average
+
+def extract_clusters(self,dist):
+
+""" Extract list of sub-tree clusters from
+hcluster tree with distance<dist. """
+
+if self.distance < dist:
+return [self]
+
+return self.left.extract,clusters(dist) + self.right.extract_clusters(dist)
+
+1There is also a version of hierarchical clustering in the SciPy clustering package that you can look
+at if you like. We will not use that here as parts of the implementation below (creating trees, visualizing
+dendrograms) is interesting and will be useful later.
+
+6.2. Hierarchical Clustering 169
+

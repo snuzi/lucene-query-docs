@@ -1,0 +1,73 @@
+if query:
+
+# query the database and get top images
+
+res = self.src.query(query)[:se1f.maxres]
+
+for dist,ndx in res:
+imname = self.src.get,fi1ename(ndx)
+html += “<a href=’?query="+imname+"’>“
+html += “<img src='“+imname+"’ width=’100’ />"
+
+html += “</a>”
+else:
+
+# show random selection if no query
+
+random.shuffle(se1f.ndX)
+for i in se1f.ndX[:se1f.maXres]:
+imname = se1f.im1ist[i]
+
+html += “<a href=’?query=“+imname+"’>“
+html += “<img src='"+imname+“’ width=’l00’ />"
+
+html += “</a>”
+
+html += se1f.footer
+return html
+
+index.exposed = True
+
+cherrypy.quickstart(SearchDemo(), '/',
+
+config=os.path.join(os.path.dirname(,,file,,),
+
+'service.conf’))
+
+As you can see, this simple demo consists of a single class with one method for ini-
+
+tialization and one for the "index" page (the only page in this case).
+automatically mapped to URLs and arguments to the methods can be passed directly
+in the URL. The index method has a query parameter which in this case is the query
+
+Methods are
+
+image to sort the others agains. If it is empty, a random selection of images is shown
+
+instead. The line
+
+index.exposed = True
+
+makes the index URL accessible and the last line starts the CherryPy web server with
+conﬁgurations read from serV1'ce.conf. Our conﬁguration ﬁle for this example has the
+
+following lines
+
+[global]
+
+server.socket_host = "127.0.0.1“
+server.socket_port = 8080
+server.thread_pool = 50
+
+tools.sessions.on = True
+
+[/1
+
+tools.staticdir.root = “tmp/"
+too1s.staticdir.on = True
+tools.staticdir.dir = ""
+
+7.6. Building Demos and Web Applications
+
+205
+

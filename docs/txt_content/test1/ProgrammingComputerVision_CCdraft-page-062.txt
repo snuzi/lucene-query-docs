@@ -1,0 +1,10 @@
+ 
+
+(a) A (b)
+
+Figure 2.7: An example of matching SIFT features between two images. (a) matches
+from features in the left image without using the two-sided match function (h) the
+remaining matches after using the two-sided version.
+
+62 2.2. SIFT — Scale-Invariant Feature Transform
+

@@ -1,0 +1,49 @@
+into one system of equations like this
+
+VIT(X1) Im(X1) Iy(X1) It(X1)
+VIT(x2) V : Ix(x2) Iy(x2)  Z _ It(X2)
+VI.T.(‘xn)  Iy(xn) U It 
+
+for some neighborhood of n pixels. This has the advantage that the system now has
+more equations than unknowns and can be solved with least square methods. Typi-
+cally, the contribution from the surrounding pixels is weighted so that pixels farther
+away have less inﬂuence. A Gaussian weighting is the most common choice. This turns
+the matrix above into the structure tensor in equation (2.2) and we have the relation
+
+-7t(X1)
+
+It(X2)
+
+MIV = — or simpler Av = b .
+
+z.'<é<}.>
+
+This over-determined equation system can be solved in a least square sense and the
+motion vector is given by
+v = (ATA)-1ATb .
+
+This is solvable only when ATA is invertible, which it is by construction if applied at
+Harris corner points or the "good features to track" of Shi-Tomasi. This is how the
+motion vectors are computed in the Lucas-Kanade tracking algorithms.
+
+Standard Lucas-Kanade tracking works for small displacements. To handle larger
+displacements a hierarchical approach is used. In this case the optical ﬂow is com-
+puted at coarse to ﬁne versions of the image. This is what the OpenCV function
+ca1cOptica1FlowPyrLK() does.
+
+The Lucas-Kanade functions are included in OpenCV. Let's look at how to use those
+to build a Python tracker class. Create a ﬁle 1ktrack.py and add the following class
+and constructor.
+
+import CV2
+# some constants and default parameters
+llcparams = dict(winSize=(15,l5) ,maxLeve1=2,
+criteria=(cv2 .TERM_CRITERILEPS | cv2.TERM,CRITERI/-LCOUNT, 10,0 . 03))
+
+subpix,params = dict(zeroZone=(-1, -1) ,winSize=(10,10),
+criteria = (cv2.TERM,CRITERI/-LCOUNT | CV2.TER|VLCRITERIA_EPS,20,0.03))
+
+featu re_pa rams = dict (maxCorners=500,qua1ityLeve1=0 . 01, minDistance=10)
+
+268 10.4. Tracking
+

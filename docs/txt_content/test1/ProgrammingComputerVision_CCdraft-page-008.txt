@@ -1,0 +1,42 @@
+Prerequisites and Overview
+
+What you need to know
+
+- Basic programming experience. You need to know how to use an editor and run
+scripts, how to structure code as well as basic data types. Familiarity with Python
+or other scripting style languages like Ruby or Matlab will help.
+
+- Basic mathematics. To make full use of the examples it helps if you know about
+matrices, vectors, matrix multiplication, the standard mathematical functions
+and concepts like derivatives and gradients. Some of the more advanced mathe-
+matical examples can be easily skipped.
+
+What you will learn
+0 Hands-on programming with images using Python.
+- Computer vision techniques behind a wide variety of real-world applications.
+
+- Many of the fundamental algorithms and how to implement and apply them your-
+self.
+
+The code examples in this book will show you object recognition, content-based
+image retrieval, image search, optical character recognition, optical ﬂow, tracking,
+3D reconstruction, stereo imaging, augmented reality, pose estimation, panorama cre-
+ation, image segmentation, de-noising, image grouping and more.
+
+Chapter Overview
+
+Chapter 1 Introduces the basic tools for working with images and the central Python
+modules used in the book. This chapter also covers many fundamental examples
+needed for the remaining chapters.
+
+Chapter 2 Explains methods for detecting interest points in images and how to use
+them to ﬁnd corresponding points and regions between images.
+
+Chapter 3 Describes basic transformations between images and methods for com-
+puting them. Examples range from image warping to creating panoramas.
+
+Chapter 4 Introduces how to model cameras, generate image projections from 3D
+space to image features and estimate the camera viewpoint.
+
+8 CONTENTS
+

@@ -1,0 +1,49 @@
+which can be called with any number of search results in the list res. For example like
+this:
+nbr_resu1ts = 6
+
+res = [w[l] for w in src.query(im1ist[0])[:nbr,resu1ts]]
+imagesearch.p1ot,resu1ts(src,res)
+
+The helper function
+
+def get,fi1ename(se1f,imid):
+"“" Return the filename for an image id"”"
+
+5 = se1f.con.execute(
+"select filename from imlist where rowid='%d'“ % imid).fetchone()
+return s[0]
+
+translates image id to ﬁlenames which we need for loading the images when plotting.
+Some example queries on our data set are shown using p1ot_resu1ts() in Figure 7.2.
+
+7.5 Ranking Results using Geometry
+
+Let's brieﬂy look at a common way of improving results obtained using a bag of visual
+words model. One of the drawbacks if the model is that the visual words representa-
+tion of an image does not contain the positions of the image features. This was the
+price paid to get speed and scalability.
+
+One way to have the feature points improve results is to re-rank the top results
+using some criteria that takes the features geometric relationships into account. The
+most common approach is to ﬁt homographies between the feature locations in the
+query image and the top result images.
+
+To make this efﬁcient the feature locations can be stored in the database and cor-
+respondences determined by the word id of the features (this only works if the vocab-
+ulary is large enough so that the word id matches contain mostly correct matches).
+This would require a major rewrite of our database and code above and complicate
+the presentation. To illustrate we will just reload the features for the top images and
+match them.
+
+Here is what a complete example of loading all the model ﬁles and re-ranking the
+top results using homographies looks like.
+import pickle
+import sift
+import imagesearch
+import homography
+
+# load image list and vocabulary
+
+7.5. Ranking Results using Geometry 199
+

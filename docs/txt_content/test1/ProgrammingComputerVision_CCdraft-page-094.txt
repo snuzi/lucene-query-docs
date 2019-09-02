@@ -1,0 +1,24 @@
+ 
+
+Figure 3.9: Five images of the main university building in Lund, Sweden. The images
+are all taken from the same viewpoint.
+
+   
+
+zoc l l l
+X _ - - data
+* Xx‘ __ ,.._°.  x x RANSACdata
+0— X  >§< X-,'s, _' -3: .'3_-. 3' — RANSACfit
+" - ' ‘ '_ — exact system
+>< Iinearfit
+—2oo—
+—4oo—
+—soo—
+—soo—
+’t;.
+‘1°°95 6 5 io is in 25
+
+Figure 3.10: An example of using RANSAC to ﬁt a line to points with outliers.
+
+94 3.3. Creating Panoramas
+

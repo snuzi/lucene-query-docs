@@ -1,0 +1,50 @@
+The main drawback of this algorithm is that the number of clusters needs to be
+decided beforehand and an inappropriate choice will give poor clustering results. The
+beneﬁts are that it is simple to implement, it is parallelizable and works well for a
+large range of problems without any need for tuning.
+
+The SciPy clustering package
+
+Although simple to implement, there is no need to. The SciPy vector quantization
+package scipy.c1uster.vq comes with a k-means implementation. Here's how to use
+it.
+
+Let's start with creating some sample 2D data to illustrate.
+
+from scipy.c1uster.vq import *
+
+classl = 1.5 * randn(100,2)
+class2 = randn(100,2) + array([5,5])
+features = vstack((class1,c1ass2))
+
+This generates two normally distributed classes in two dimensions. To try to cluster
+the points, run k-means with k: = 2 like this.
+
+centroids,variance = kmeans(features,2)
+
+The variance is returned but we don't really need it since the SciPy implementation
+computes several runs (default is 20) and selects the one with smallest variance for us.
+Now you can check where each data point is assigned using the vector quantization
+function in the SciPy package.
+
+code,distance = vq(features,centroids)
+
+By checking the value of code we can see if there are any incorrect assignments. To
+visualize, we can plot the points and the ﬁnal centroids.
+
+figure()
+
+ndx = where(code==0)[0]
+plot(features[ndx,0],features[ndx,1],'*')
+ndx = where(code==1)[0]
+plot(features[ndx,0],features[ndx,1],'r.')
+plot(centroids[:,0],centroids[:,1],'go')
+axis('off')
+
+show()
+
+Here the function where() gives the indices for each class. This should give a plot like
+the one in Figure 6.1.
+
+162 6.1. K—means Clustering
+

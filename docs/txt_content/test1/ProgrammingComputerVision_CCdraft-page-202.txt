@@ -1,0 +1,45 @@
+# sort dictionary to get the most inliers first
+
+sorted_rank = sorted(rank.items(), key=1ambda t: t[l], reverse=True)
+res_geom = [res_reg[0]]+[s[0] for s in sorted_rank]
+print ‘top matches (homography):’, res,geom
+
+# plot the top results
+imagesearch . plot, results(s rc, res_ reg [ : 8] )
+imagesearch . plot_ results(s rc, res_geom[ :8])
+
+First the image list, feature list (containing the ﬁlenames of the images and SIFT
+feature ﬁles respectively) and the vocabulary is loaded. Then a Searcher object is
+created and a regular query is performed and stored in the list res_reg. The features
+for the query image are loaded. Then for each image in the result list, the features
+are loaded and matched against the query image. Homographies are computed from
+the matches and the number of inliers counted. If the homography ﬁtting fails we set
+the inlier list to an empty list. Finally we sort the dictionary rank that contains image
+index and inlier count according to decreasing number of inliers. The result lists are
+printed to the console and the top images visualized.
+The output looks like this:
+
+top matches (regular): [39, 22, 74, 82, 50, 37, 38, 17, 29, 68, 52, 91, 15, 90, 31,  ]
+top matches (homography): [39, 38, 37, 45, 67, 68, 74, 82, 15, 17, 50, 52, 85, 22, 87,  ]
+
+Figure 7.3 shows some sample results with the regular and re-ranked top images.
+
+7.6 Building Demos and Web Applications
+
+In this last section on searching we'll take a look at a simple way of building demos and
+web applications with Python. By making demos as web pages, you automatically get
+cross platform support and an easy way to show and share your project with minimal
+requirements. In the sections below we will go through an example of a simple image
+search engine.
+
+Creating web applications with CherryPy
+
+To build these demos we will use the CherryPy package, available at http://www.
+cherrypy . org / . CherryPy is a pure Python lightweight web server that uses an object
+oriented model. See the appendix for more details on how to install and conﬁgure
+CherryPy. Assuming that you have studied the tutorial examples enough to have an
+initial idea of how CherryPy works, let's build an image search web demo on top of the
+image searcher you created earlier in this chapter.
+
+202 7.6. Building Demos and Web Applications
+

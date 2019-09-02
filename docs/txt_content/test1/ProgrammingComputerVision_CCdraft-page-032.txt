@@ -1,0 +1,39 @@
+   
+
+(C) T ((1)
+
+Figure 1.9: An example of Gaussian blurring using the scipy.ndimage.filters module.
+(a) original image in grayscale, (b) Gaussian ﬁlter with 0' = 2, (c) with 0 = 5, (d) with
+0 ::10.
+
+Figure 1.9 shows examples of an image blurred with increasing 0. Larger values
+gives less details. To blur color images, simply apply Gaussian blurring to each color
+channel.
+
+im = array(Image open('empire.jpg'))
+im2 = zeros(im shape)
+for i in range(3):
+
+im2[:,:,i] = filters.gaussian_fi1ter(im[:,:,i],5)
+im2 = uint8(im2)
+
+Here the last conversion to "uint8" is not always needed but forces the pixel values to
+be in 8-bit representation. We could also have used
+
+im2 = array(im2,'uint8')
+
+for the conversion.
+
+For more information on using this module and the different parameter choices,
+check out the SciPy documentation of scipy.ndimage at http://docs.scipy.org/
+doc/scipy/reference/ndimage.html.
+
+Image derivatives
+
+How the image intensity changes over the image is important information, used for
+many applications as we will see throughout this book. The intensity change is de-
+scribed with the x and y derivatives I3, and Iy of the graylevel image I (for color images,
+derivatives are usually taken for each color channel).
+
+32 1.4.SciPy
+

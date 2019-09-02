@@ -1,0 +1,37 @@
+   
+
+transform after
+
+Figure 1.7: Example of histogram equalization. On the left is the original image and
+histogram. The middle plot is the graylevel transform function. On the right is the
+image and histogram after histogram equalization.
+
+Assuming the images all have the same size, we can compute the average of all those
+
+images by simply summing them up and dividing with the number of images. Add the
+following function to 1'mtoo1s.py.
+
+def compute_average(im1ist):
+""" Compute the average of a list of images. """
+
+# open first image and make into array of type float
+averageim = array(Image.open(im1ist[0]), 'f')
+
+for imname in im1ist[l:]:
+
+try:
+averageim += array(Image.open(imname))
+except:
+print imname + '...skipped'
+
+averageim /= 1en(im1ist)
+
+# return average as uint8
+return array(averageim, 'uint8')
+
+This includes some basic exception handling to skip images that can't be opened.
+There is another way to compute average images using the mean() function. This
+requires all images to be stacked into an array (and will use lots of memory if there
+
+26 1.3.NumPy
+

@@ -1,0 +1,48 @@
+5.4 Stereo Images
+
+A special case of multi-view imaging is stereo vision (or stereo imaging) where two
+cameras are observing the same scene with only a horizontal (sideways) displacement
+between the cameras. When the cameras are conﬁgured so that the two images have
+the same image plane with the image rows vertically aligned, the image pair is said to
+be rectiﬁed . This is common in robotics and such a setup is often called a stereo rig.
+
+Any stereo camera setup can be rectiﬁed by warping the images to a common plane
+so that the epipolar lines are image rows (a stereo rig is usually constructed to give
+such rectiﬁed image pairs). This is outside the scope of this section but the interested
+reader can ﬁnd the details in [13] (page 303) or [3] (page 430).
+
+Assuming that the two images are rectiﬁed, ﬁnding correspondences is constrained
+to searching along image rows. Once a corresponding point is found, its depth (Z co-
+ordinate) can be computed directly from the horizontal displacement as it is inversely
+proportional to the displacement,
+
+fb
+
+Z: ,
+$l—$r
+
+where f is the rectiﬁed image focal length, (9 the distance between the camera cen-
+ters, and $1 and x, the x-coordinate of the corresponding point in the left and right
+image. The distance separating the camera centers is called the baseline. Figure 5.9
+illustrates a rectiﬁed stereo camera setup.
+
+Stereo reconstruction (sometimes called dense depth reconstruction) is the prob-
+lem of recovering a depth map (or inversely a disparity map) where the depth (or dis-
+parity) for each pixel in the image is estimated. This is a classic problem in computer
+vision and there are many algorithms for solving it. The Middlebury Stereo Vision
+Page (http://vision .midd1ebury.edu/stereo/) contains a constantly updated eval-
+uation of the best algorithms with code and descriptions of many implementations. In
+the next section we will implement a stereo reconstruction algorithm based on nor-
+malized cross correlation.
+
+Computing disparity maps
+
+In this stereo reconstruction algorithm we will try a range of displacements and record
+the best displacement for each pixel by selecting the one with the best score according
+to normalized cross correlation of the local image neighborhood. This is sometimes
+called plane sweeping since each displacement step corresponds to a plane at some
+depth. While not exactly state of the art in stereo reconstruction, this is a simple
+method that usually gives decent results.
+
+152 5.4. Stereo Images
+

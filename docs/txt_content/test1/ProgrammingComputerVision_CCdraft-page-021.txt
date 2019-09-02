@@ -1,0 +1,54 @@
+like a list (or list of lists) but restricted to having all elements of the same type. Unless
+speciﬁed on creation, the type will automatically be set depending on the data.
+The following example illustrates this for images
+
+im = array(Image.open('empire.jpg'))
+print im.shape, im.dtype
+
+im = array(Image.open('empire.jpg').convert('L'),'f')
+print im.shape, im.dtype
+
+The printout in your console will look like
+
+(800, 569, 3) uint8
+(800. 569) f1oat32
+
+The ﬁrst tuple on each line is the shape of the image array (rows, columns, color
+channels), and the following string is the data type of the array elements. Images
+are usually encoded with unsigned 8-bit integers (uint8), so loading this image and
+converting to an array gives the type "uint8" in the ﬁrst case. The second case does
+grayscale conversion and creates the array with the extra argument  This is a short
+command for setting the type to ﬂoating point. For more data type options, see [24].
+Note that the grayscale image has only two values in the shape tuple; obviously it has
+no color information.
+
+Elements in the array are accessed with indexes. The value at coordinates i,j and
+color channel k are accessed like this:
+
+value = im[i,j,k]
+Multiple elements can be accessed using array slicing. Slicing returns a view into the
+array speciﬁed by intervals. Here are some examples for a grayscale image:
+
+im[i,:] = im[j,:] # set the values of row i with values from row j
+
+im[ ,i] = 100 # set all values in column i to 100
+
+im[:100,:50].sum() # the sum of the values of the first 100 rows and 50 columns
+im[50:100,50:100] # rows 50-100, columns 50-100 (100th not included)
+im[i].mean() # average of row i
+
+im[:,-1] # last Column
+
+im[-2,:] (or im[-2]) # second to last row
+
+Note the example with only one index. If you only use one index it is interpreted as the
+row index. Note also the last examples. Negative indices count from the last element
+backwards. We will frequently use slicing to access pixel values, and it is an important
+concept to understand.
+
+There are many operations and ways to use arrays. We will introduce them as they
+are needed throughout this book. See the online documentation or the book [24] for
+more explanations.
+
+1.3.NumPy 21
+

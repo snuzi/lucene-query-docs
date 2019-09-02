@@ -1,0 +1,31 @@
+ 
+
+Figure 10.10: An example of detecting lines using a Hough transform. The left image
+is the source in grayscale. The right image shows an edge map with detected lines in
+
+. OpenCV has a function ccv2.findChessboardCorners() which automatically ﬁnds
+
+the corners of a chessboard pattern. Use this function to get correspondences
+for calibrating a camera with the function cv2.calibrateCamera().
+
+. If you have two cameras, mount them in a stereo rig setting and capture stereo
+
+image pairs using cv2.VideoCapture() with different Video device ids. Try 0 and
+1 for starters. Compute depth maps for some varying scenes.
+
+. Use Hu moments with cv2.HuMoments() as features for the sudoku OCR classiﬁ-
+
+cation problem in Section 8.4 and check the performance.
+
+. OpenCV has an implementation of the Grab Cut segmentation algorithm. Use
+
+the function cv2.grabCut() on the Microsoft Research Grab Cut dataset (see Sec-
+tion 9.1). Hopefully you will get better results that the low resolution segmenta-
+tion in our examples.
+
+. Modify the Lucas-Kanade tracker class to take a video ﬁle as input and write a
+
+script that tracks points between frames and detects new points every k: frames.
+
+10.5. More Examples 277
+

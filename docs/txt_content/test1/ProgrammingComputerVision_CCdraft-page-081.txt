@@ -1,0 +1,52 @@
+freedom and three correspondences give exactly six constraints (:2: and y coordinates
+must match for all three). So if you really want the image to ﬁt the billboard using
+afﬁne transforms, you can divide the image into two triangles and warp them sepa-
+rately. Here's how to do it.
+
+# set from points to corners of im1
+m,n = iml.shape[:2]
+fp = array([[0.m.m.0].[0.0.n.n].[1.1.1.1]])
+
+# first triangle
+tp2 = tp[:, 3]
+fp2 = tp[:,:3]
+
+# compute H
+
+H = homography.Haffineifromipoints(tp2,fp2)
+
+imlit = ndimage.affine_transform(iml,H[:2,:2],
+(H[0,2],H[1,2]),im2.shape[:2])
+
+# alpha for triangle
+alpha = warp.a1pha,for,triangle(tp2,im2.shape[0],im2.shape[1])
+im3 = (1-alpha)*im2 + a1pha*im1,t
+
+# second triangle
+‘CD2 = tp[:.[0.2.3]]
+fp2 fp[:.[0.2.3]]
+
+# compute H
+
+H = homography.Haffineifromipoints(tp2,fp2)
+
+imlit = ndimage.affine_transform(iml,H[:2,:2],
+(H[0,2],H[1,2]),im2.shape[:2])
+
+# alpha for triangle
+alpha = warp.a1pha,for,triangle(tp2,im2.shape[0],im2.shape[1])
+im4 = (1-alpha)*im3 + alpha*im1,t
+
+figure()
+9Fay()
+imshow(im4)
+axis(’equal')
+axis('off')
+show()
+
+Here we simply create the alpha map for each triangle and then merge all images
+together. The alpha map for a triangle can be computed by simply checking for each
+pixel if that pixel’s coordinates has a convex combination of the triangle’s corner points
+
+3.2. Warping images 81
+

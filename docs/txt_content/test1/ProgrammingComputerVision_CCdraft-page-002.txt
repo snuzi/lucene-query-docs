@@ -1,0 +1,13 @@
+Programming Computer Vision with Python
+
+Copyright © 20 1 2 Jan Erik Solem.
+
+This version of the work is a pre-production draft made available under the terms
+of the Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 United
+States License.
+
+http : //c reativecommons . org/1icenses/by- nc - nd/3 . 0/us/
+
+creative
+commons
+

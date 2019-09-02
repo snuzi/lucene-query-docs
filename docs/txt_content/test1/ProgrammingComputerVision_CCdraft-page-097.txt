@@ -1,0 +1,53 @@
+phy. Remember, four points are the minimal number to compute a homography. The
+method get_error() applies the homography and returns the sum of squared distance
+for each correspondence pair so that RANSAC can chose which points to keep as in-
+liers and outliers. This is done with a threshold on this distance. For ease of use, add
+the following function to homographypy.
+
+def H_from_ransac(fp,tp,mode1,maxiter=1000,match_thesho1d=10):
+
+”“" Robust estimation of homography H from point
+
+correspondences using RANSAC (ransac.py from
+http://www.scipy.org/Cookbook/RANSAC).
+
+input: fp,tp (3*n arrays) points in hom. coordinates. ”“"
+import ransac
+
+# group corresponding points
+data = vstack((fp,tp))
+
+# compute H and return
+H,ransac_data = ransac.ransac(data.T,mode1,4,maxiter,match_thesho1d,10,return,a11=True)
+return H,ransac_data['in1iers']
+
+The function also lets you supply the threshold and the minimum number of points
+desired. The most important parameter is the maximum number of iterations, exiting
+too early might give a worse solution, too many iterations will take more time. The
+resulting homography is returned together with the inlier points.
+
+Apply RANSAC to the correspondences like this.
+
+# function to convert the matches to hom. points
+
+def convert,points(j):
+ndx = matches[j].nonzero()[0]
+fp = homography.make_homog(1[j+l][ndx,:2].T)
+ndx2 = [int(matches[j][i]) for i in ndx]
+tp = homography.make,homog(1[j][ndX2,:2].T)
+return fp,tp
+
+# estimate the homographies
+model = homography.RansacMode1()
+
+fp,tp = convert,points(l)
+H,l2 = homography.H,from,ransac(fp,tp,mode1)[0] #im 1 to 2
+
+fp,tp = convert,points(0)
+H,0l = homography.H,from,ransac(fp,tp,mode1)[0] #im 0 to 1
+
+tp,fp = convert,points(2) #NB: reverse order
+H,32 = homography.H,from,ransac(fp,tp,mode1)[0] #im 3 to 2
+
+3.3. Creating Panoramas 97
+

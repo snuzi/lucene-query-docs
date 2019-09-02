@@ -1,0 +1,45 @@
+if self.c is not None:
+return self.c
+
+else:
+# compute c by factoring
+self.factor()
+self.c = —dot(self.R.T,self.t)
+return self.c
+
+This concludes the basic functions of our Camera class. Now, let's see how to work
+with this pin-hole camera model.
+
+4.2 Camera Calibration
+
+Calibrating a camera means determining the internal camera parameters, in our case
+the matrix K. It is possible to extend this camera model to include radial distortion
+and other artifacts if your application needs precise measurements. For most appli-
+cations however, the simple model in equation (4.3) is good enough. The standard
+way to calibrate cameras is to take lots of pictures of a ﬂat checkerboard pattern. For
+example, the calibration tools in OpenCV use this approach, see [3] for details.
+
+A simple calibration method
+
+Here we will look at a simple calibration method. Since most of the parameters can be
+set using basic assumptions (square straight pixels, optical center at the center of the
+image) the tricky part is getting the focal length right. For this calibration method you
+need a ﬂat rectangular calibration object (a book will do), measuring tape or a ruler
+and preferable a ﬂat surface. Here's what to do:
+
+- Measure the sides of your rectangular calibration object. Let's call these dX and
+dY.
+
+- Place the camera and the calibration object on a ﬂat surface so that the camera
+back and calibration object are parallel and the object is roughly in the center
+of the camera's view. You might have to raise the camera or object to get a nice
+alignment.
+
+- Measure the distance from the camera to the calibration object. Let's call this
+dZ.
+
+- Take a picture and check that the setup is straight, meaning that the sides of the
+calibration object align with the rows and columns of the image.
+
+4.2. Camera Calibration 109
+

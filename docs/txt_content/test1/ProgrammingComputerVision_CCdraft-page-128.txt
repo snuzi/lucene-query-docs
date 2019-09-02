@@ -1,0 +1,49 @@
+Because of this ambiguity, when analyzing two view geometry we can always transform
+the cameras with a homography to simplify matters. Often this homography is just a
+rigid transformation to change the coordinate system. A good choice is to set the
+origin and coordinate axis to align with the ﬁrst camera so that
+
+P1 =  I  and P2  | 13] .
+
+Here we use the same notation as in Chapter 4; K1 and K 2 are the calibration matrices,
+R is the rotation of the second camera, and t is the translation of the second camera.
+Using these camera matrices one can derive a condition for the projection of a point X
+to image points x1 and x2 (with P1 and P2 respectively). This condition is what makes
+it possible to recover the camera matrices from corresponding image points.
+The following equation must be satisﬁed
+
+x§Fx1=0, (5.1)
+
+where
+F = K;T stn Kfl
+
+and the matrix St is the skew symmetric matrix
+
+0 -153 f2
+St = 153 0 -231 . (5.2)
+-152 f1 0
+
+Equation (5.1) is called the epipolar constraint. The matrix F in the epipolar constraint
+is called the fundamental matrix and as you can see, it is expressed in components of
+the two camera matrices (their relative rotation R and translation t). The fundamental
+matrix has rank 2 and det(F) = 0. This will be used in algorithms for estimating F.
+The fundamental matrix makes it possible to compute the camera matrices and then a
+3D reconstruction.
+
+The equations above mean that the camera matrices can be recovered from F,
+which in turn can be computed from point correspondences as we will see later. With-
+out knowing the internal calibration (K 1 and K 2) the camera matrices are only recover-
+able up to a projective transformation. With known calibration, the reconstruction will
+be metric. A metric reconstruction is a 3D reconstruction that correctly represents
+distances and anglesl.
+
+There is one ﬁnal piece of geometry needed before we can proceed to actually
+using this theory on some image data. Given a point in one of the images, for example
+x2 in the second view, equation (5.1) deﬁnes a line in the ﬁrst image since
+
+xgFx1=l{x1=O.
+
+1The absolute scale of the reconstruction cannot be recovered but that is rarely a problem.
+
+128 5.1. Epipolar Geometry
+

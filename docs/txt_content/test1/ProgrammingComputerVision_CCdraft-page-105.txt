@@ -1,0 +1,35 @@
+ 
+
+Figure 4.1: The pin-hole camera model. The image point x is at the intersection of the
+image plane and the line joining the 3D point X and the camera center C. The dashed
+line is the optical axis of the camera.
+
+the optical axis intersects the image plane. Since this is usually in the center of the
+image and image coordinates are measured from the top left corner, these values are
+often well approximated with half the width and height of the image. It is worth noting
+that in this last case the only unknown variable is the focal length f.
+
+Projecting 3D points
+
+Let's create a camera class to handle all operations we need for modeling cameras
+and projections.
+
+from scipy import linalg
+
+class Camera(object):
+”"" Class for representing pin-hole cameras. ”""
+
+def ,_init_,(self,P):
+”"" Initialize P = K[R|t] camera model. ”""
+
+self.P = P
+
+self.K = None # calibration matrix
+self.R = None # rotation
+
+self.t = None # translation
+
+self.c = None # camera center
+
+4.1. The Pin—hole Camera Model 105
+

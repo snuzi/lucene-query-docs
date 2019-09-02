@@ -1,0 +1,28 @@
+moo
+
+   
+
+before transform
+
+Figure 1.6: Example of histogram equalization. On the left is the original image and
+histogram. The middle plot is the graylevel transform function. On the right is the
+image and histogram after histogram equalization.
+
+from PIL import Image
+from numpy import *
+
+im = array(Image.open('AquaTermi,1owcontrast.jpg').convert('L'))
+im2,cdf = imtoo1s.histeq(im)
+
+Figure 1.6 and 1.7 show examples of histogram equalization. The top row shows the
+graylevel histogram before and after equalization together with the cdf mapping. As
+you can see, the contrast increases and the details of the dark regions now appear
+clearly.
+
+Averaging images
+
+Averaging images is a simple way of reducing image noise and is also often used for
+artistic effects. Computing an average image from a list of images is not difﬁcult.
+
+1.3.NumPy 25
+

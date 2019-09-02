@@ -1,0 +1,34 @@
+ 
+
+Figure 3.7: Comparing mean images. (left) without alignment. (right) with three-point
+rigid alignment.
+
+RAN SAC
+
+RANSAC, short for "RANdom SAmple Consensus", is an iterative method to ﬁt models
+to data that can contain outliers. Given a model, for example a homography between
+sets of points, the basic idea is that the data contains inliers, the data points that can
+be described by the model, and outliers, those that do not ﬁt the model.
+
+The standard example is the case of ﬁtting a line to a set of points that contains
+outliers. Simple least squares ﬁtting will fail but RANSAC can hopefully single out
+the inliers and obtain the correct ﬁt. Let's look at using ransac.py from http://
+www. scipy . o rg/Cookbook/RANSAC which contains this particular example as test case.
+Figure 3.10 shows an example of running ransac.test(). As you can see, the algorithm
+selects only points consistent with a line model and correctly ﬁnds the right solution.
+
+RANSAC is a very useful algorithm which we will use in the next section for homog-
+raphy estimation and again for other examples. For more information, see the original
+paper by Fischler and Bolles [1 1], Wikipedia http : //en .wi kipedia . o rg/wiki/RANSAC
+or the report [40].
+
+Robust homography estimation
+
+We can use this RANSAC module for any model. All that is needed is a Python class
+with fit() and get_error() methods, the rest is taken care of by ransac.py. Here we
+are interested in automatically ﬁnding a homography for the panorama images using
+a set of possible correspondences. Figure 3.11 shows the matching correspondences
+found automatically using SIFT features by running the following commands:
+
+92 3.3. Creating Panoramas
+

@@ -1,0 +1,48 @@
+def get_descriptors(image,filtered,coords,wid=5):
+“"" For each point return pixel values around the point
+using a neighbourhood of width 2*wid+1. (Assume points are
+extracted with minidistance > wid). “""
+
+desc = []
+for coords in filteredicoords:
+patch = image[coords[0]—wid:coords[0]+wid+1,
+coords[1]—wid:coords[1]+wid+1].flatten()
+desc.append(patch)
+
+return desc
+
+def match(descl,desc2,threshold=0.5):
+“"" For each corner point descriptor in the first image,
+select its match to second image using
+normalized cross correlation. “""
+
+n = len(desc1[0])
+
+# pair-wise distances
+d = -ones((1en(desc1),len(desc2)))
+for i in range(len(descl)):
+for j in range(len(desc2)):
+d1 = (desc1[i] — mean(desc1[i])) / std(desc1[i])
+d2 = (desc2[j] — mean(desc2[j])) / std(desc2[j])
+ncc_value = sum(d1 * d2) / (n—1)
+if ncc_value > threshold:
+d[i,j] = nccivalue
+
+ndx = argsort(—d)
+matchscores = ndx[:,0]
+
+return matchscores
+
+The ﬁrst function takes a square grayscale patch of odd side length centered around
+the point, ﬂattens it and adds to a list of descriptors. The second function matches each
+descriptor to its best candidate in the other image using normalized cross correlation.
+Note that the distances are negated before sorting since a high Value means better
+match. To further stabilize the matches, we can match from the second image to the
+ﬁrst and ﬁlter out the matches that are not the best both ways. The following function
+does just that.
+
+def matchitwosided(desc1,desc2,threshold=0.5):
+“"" Two-sided symmetric version of match(). “""
+
+50 2.1. Harris corner detector
+

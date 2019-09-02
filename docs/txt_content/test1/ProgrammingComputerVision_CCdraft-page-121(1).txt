@@ -1,0 +1,49 @@
+g1Materia1fv(GL,FRONT,GL,AMBIENT,[0,0,0,0])
+g1Materia1fv(GL,FRONT,GL,DIFFUSE,[0.5,0.0,0.0,0.0])
+g1Materia1fv(GL,FRONT,GL,SPECULAR,[0.7,0.6,0.6,0.0])
+g1Materia1f(GL,FRONT,GL,SHININESS,0.25*l28.0)
+g1utSo1idTeapot(size)
+
+The ﬁrst two lines enable lighting and a light. Lights are numbered as GL_LIGHTO,
+GL_LIGHT1, etc. We will only use one light in this example. The g1Enab1e() function
+is used to turn on OpenGL features. These are deﬁned with uppercase constants.
+Turning off a feature is done with the corresponding function g1Disab1e(). Next depth
+testing is turned on so that objects are rendered according to their depth (so that far
+away objects are not drawn in front of near objects) and the depth buffer is cleared.
+Next the material properties of the object, such as the diffuse and specular colors, are
+speciﬁed. The last line adds a solid Utah teapot with the speciﬁed material properties.
+
+Tying it all together
+
+The full script for generating an image like the one in Figure 4.5 looks like this (as-
+suming that you also have the functions introduced above in the same ﬁle).
+
+from 0penGL.GL import *
+from 0penGL.GLU import *
+from 0penGL.GLUT import *
+import pygame, pygame.image
+from pygame.1oca1s import *
+import pickle
+
+width,height = l000,747
+
+def setup():
+”"" Setup window and pygame environment. ”""
+pygame.init()
+pygame.disp1ay.set_mode((width,height),0PENGL | DOUBLEBUF)
+pygame.disp1ay.set_caption('0penGL AR demo’)
+
+# load camera data
+
+with open('ar_camera.pk1','r') as f:
+K = pickle.load(f)
+Rt = pick1e.1oad(f)
+
+setup()
+draw_background('book,perspective.bmp')
+set,projection_from_camera(K)
+set_mode1viewLfrom,camera(Rt)
+draw_teapot(0.02)
+
+4.4. Augmented Reality 121
+

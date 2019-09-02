@@ -1,0 +1,37 @@
+ 
+
+Figure 3.2: An example of placing an image inside another image using an afﬁne
+transformation.
+
+tp = array([[264,538,540,264],[40,36,605,605],[l,l,l,l]])
+
+im3 = warp.image,in,image(iml,im2,tp)
+
+figure()
+9Fay()
+imshow(im3)
+axis('equa1')
+axis('off')
+show()
+
+This puts the image on the upper part of the billboard. Note again that the landmark
+coordinates tp are in homogeneous coordinates. Changing the coordinates to
+
+tp = array([[675,826,826,677],[55,52,28l,277],[l,l,l,l]])
+
+will put the image on the lower left "for rent" part.
+
+The function Haffine_from_points() gives the best afﬁne transform for the given
+point correspondences. In the example above those were the image corners and the
+corners of the billboard. If the perspective effects are small, this will give good results.
+The top row of Figure 3.3 shows what happens if we try to use an afﬁne transformation
+to a billboard image with more perspective. It is not possible to transform all four
+corner points to their target locations with the same afﬁne transform (a full projective
+transform would have been able to do this though). If you want to use an afﬁne warp
+so that all corner points match, there is a useful trick.
+
+For three points an afﬁne transform can warp an image so that the three corre-
+spondences match perfectly. This is because an afﬁne transform has six degrees of
+
+80 3.2. Warping images
+

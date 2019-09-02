@@ -1,0 +1,50 @@
+from svmutil import *
+
+# TRAINING DATA
+features,labels = load_ocr,data('training/')
+
+# TESTING DA TA
+testsfeatures,test_labels = load,ocr_data('testing/')
+
+# train a linear SVM classifier
+features = map(list,features)
+test_features = map(list,test,features)
+
+prob = svm,problem(labels,features)
+param = svm_parameter('-t 0')
+
+m = svm_train(prob,param)
+
+# how did the training do?
+res = svm,predict(labels,features,m)
+
+# how does it perform on the test set?
+res = svm,predict(test_labels,test_features,m)
+
+This trains a linear SVM classiﬁer and tests the performance on the unseen images
+in the test set. You should get the following printout from the last two svm_predict()
+calls.
+
+ACCUFBCY
+ACCUFBCY
+
+100% (1409/1409) (classification)
+99.2979% (990/997) (classification)
+
+Great news. The 1409 images of the training set are perfectly separated in the ten
+classes and the recognition performance on the test set is around 99%. We can now
+use this classiﬁer on crops from new sudoku images.
+
+Extracting cells and recognizing characters
+
+With a classiﬁer that recognizes cell contents, the next step is to automatically ﬁnd
+the cells. Once we solve that, we can crop them and pass the crops to the classiﬁer.
+Let's for now assume that the image of the sudoku is aligned so that the horizontal
+and vertical lines of the grid are parallel to the image sides (like the left image of
+Figure 8.8). Under these conditions, we can threshold the image and sum up the pixel
+values horizontally and vertically. Since the edges will have values of one and the
+other parts values of zeros, this should give strong response at the edges and tells us
+where to crop.
+
+230 8.4. Optical Character Recognition
+
